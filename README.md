@@ -1,5 +1,9 @@
 
 
+## 🔑 Licencia Template hecho por midudev de un diseño de BartoszJarocki y modificado por Felipe Arce
+
+[MIT](LICENSE.txt) - Creado por [**midudev**](https://midu.dev).
+
 <div align="center">
 <img src="logo.png" height="90px" width="auto" /> 
 <h2>
@@ -12,7 +16,10 @@ Esquema del JSON de CV de <a href="https://jsonresume.org/schema/">jsonresume.or
 
 <p>
 Basado en el diseño de <a href="https://github.com/BartoszJarocki/cv">Bartosz Jarocki</a>
+</p>
 
+<p>
+Arregaldo por midudev <a href="https://github.com/midudev">Bartosz Jarocki</a>
 </p>
 
 </div>
@@ -35,8 +42,6 @@ Basado en el diseño de <a href="https://github.com/BartoszJarocki/cv">Bartosz J
     </a>
    
 </div>
-
-<p></p>
 
 <div align="center">
 
@@ -94,6 +99,20 @@ pnpm dev
 | ⚙️  | `build`          | Comprueba posibles errores y hace un empaquetado de producción en `./dist/`.      |
 | ⚙️  | `preview`        | Vista previa en local `localhost:4321` |
 
+
+# Felipe Arce
+
+# Como seguir estructura de commits a futuro
+
+- 🌈 Change Styles: Úsarlo para commits que afecten principalmente la apariencia o el diseño de la aplicación.
+- ✨ New Features: Usarlo cuando agregue una nueva característica o funcionalidad a la aplicación.
+- ⛔ Critical Changes: usarlo cuando se  que contengan cambios críticos que puedan afectar gravemente el funcionamiento de la aplicación.
+- 🐛 Error Fix: Para commits que solucionen problemas o errores en el código existente.
+- 🧼 Cleanup: Utiliza este emoji cuando realices tareas delimpieza de código, sin cambios funcionales.
+- 🚀 Refactor: Marca commits que mejoren el rendimiento de la aplicación o cambios funcionales.
+- 🚧 Work in Progress: Usarlo para indicar que el commit contiene trabajo en progreso que no está listo para ser implementado.
+- 📚 student in progress : usarlo para indicar que es un elemento a estudiar a futuro
+- 📁 Added archives : Commit para publicaciones donde se agreguen archivos necesarios
 
 
 ## 🔑 Licencia

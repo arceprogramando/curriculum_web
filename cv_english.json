@@ -1,190 +1,144 @@
 {
   "basics": {
-    "name": "Miguel Ángel Durán",
-    "label": "Full-Stack developer with more than 15 years of experience & development content creator",
-    "image": "/me.webp",
-    "email": "miduga@gmail.com",
-    "phone": "+34 688888888",
-    "url": "https://midu.dev",
-    "summary": "+15 years of experience as a web developer. Currently I am a content creator and development dommunicator. I live in Barcelona, Spain. I have worked in different environments: from accelerating the development of start-ups to leading teams in multinational companies.",
+    "name": "Felipe Arce",
+    "label": "MERN FullStack Developer",
+    "image": "https://avatars.githubusercontent.com/u/85712228?v=4",
+    "email": "arceprogramando@gmail.com",
+    "phone": "+54 91150990913",
+    "url": "https://arceprog.vercel.app",
+    "summary": "I am a web developer who enjoys working on layout projects. I use client-side web technologies (HTML, CSS, JavaScript, ReactJS) and server-side technologies (Node.js, Express, MongoDB).",
     "location": {
-      "address": "",
-      "postalCode": "08820",
-      "city": "el Prat de Llobregat",
-      "countryCode": "ES",
-      "region": "Spain"
+      "address": "Gonzalez Catan",
+      "postalCode": "1759",
+      "city": "Buenos Aires",
+      "countryCode": "AR",
+      "region": "Argentina"
     },
     "profiles": [
       {
         "network": "LinkedIn",
-        "username": "midudev",
-        "url": "https://linkedin.com/in/midudev"
+        "username": "Felipe Arce",
+        "url": "https://linkedin.com/in/arcefelipe/"
       },
       {
         "network": "X",
-        "username": "midudev",
-        "url": "https://x.com/midudev"
+        "username": "Felipe Arce",
+        "url": "https://x.com/Felipe_skt1"
       },
       {
         "network": "GitHub",
-        "username": "midudev",
-        "url": "https://github.com/midudev"
+        "username": "arceprogramando",
+        "url": "https://github.com/arceprogramando"
       }
     ]
   },
   "work": [
     {
-      "name": "midudev",
-      "position": "Web programming communicator",
-      "url": "https://twitch.tv/midudev",
-      "startDate": "2021-01-01",
-      "endDate": null,
-      "summary": "Most watched development streamer in Spanish on Twitch. +1 million followers across all my social networks. Recognised by Google, Microsoft and GitHub for my impact on the development community.",
-      "highlights": [
-        "Started the company"
-      ]
-    },
-    {
-      "name": "Adevinta",
-      "position": "Lead Frontend Architect",
-      "url": "https://twitch.tv/midudev",
-      "startDate": "2016-06-01",
+      "name": "Microgenesis",
+      "position": "Frontend Developer",
+      "url": "https://www.microgenesis.net/en/",
+      "startDate": "2022-06-22",
       "endDate": "2022-09-01",
-      "summary": "I led a technical convergence between different products and migrated from a monolithic architecture to a more flexible and optimised one. I fostered best practices and performance culture improvements, as well as rapid delivery of value to users.",
-      "highlights": [
-        "Started the company"
+      "summary": "I participated in a group web development project, where I integrated the frontend with the backend. I used HTML, CSS, and JavaScript in a collaborative environment, applying pair programming methodology.",
+      "highlights": ["I improved my teamwork skills"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "National Technological University - CUDI",
+      "certificates": [
+        {
+          "url": "https://www.coderhouse.com/certificates/6539a9e2f2e5240787425381?lang=es",
+          "area": "University Technical Degree in Programming",
+          "studyType": "University Technical Degree",
+          "startDate": "2-15-2024",
+          "score": "9",
+          "courses": ["Backend Programming with Node.js, Express, and MongoDB"]
+        }
       ]
     },
     {
-      "name": "Hubii",
-      "position": "Senior FrontEnd Developer",
-      "startDate": "2011-03-01",
-      "endDate": "2016-05-01",
-      "summary": "I developed a geolocated news platform and an API to consume the information. Scaled services to support the load of over hundreds of thousands of requests per day. Cut delivery times and deployments to production by half. Collaborated with Mozilla and Telefónica to develop the first FirefoxOS TV app.",
-      "highlights": [
-        "Started the company"
+      "institution": "Coderhouse",
+      "certificates": [
+        {
+          "url": "https://www.coderhouse.com/certificates/6539a9e2f2e5240787425381?lang=es",
+          "area": "Backend Programming",
+          "studyType": "Course",
+          "startDate": "03-4-2023",
+          "endDate": "03-10-2023",
+          "score": "9",
+          "courses": ["Backend Programming with Node.js, Express, and MongoDB"]
+        },
+        {
+          "url": "https://www.coderhouse.com/certificates/6422ef2e1553510002cd5b4f",
+          "area": "ReactJS Programming",
+          "studyType": "Course",
+          "startDate": "2-1-2023",
+          "endDate": "2-3-2023",
+          "score": "8",
+          "courses": ["ReactJS"]
+        },
+        {
+          "url": "https://www.coderhouse.com/ar/certificates/63f649e3f457ee000ea355d6?lang=es",
+          "area": "JavaScript Programming",
+          "studyType": "Course",
+          "startDate": "1-2-2022",
+          "endDate": "1-18-2023",
+          "score": "9",
+          "courses": ["Javascript"]
+        },
+        {
+          "url": "https://www.coderhouse.com/ar/certificates/637579203779c3000ed1cb30?lang=es",
+          "area": "Web Development",
+          "studyType": "Web Development Course",
+          "startDate": "8-17-2022",
+          "endDate": "10-17-2022",
+          "score": "8",
+          "courses": ["HTML and CSS"]
+        }
       ]
     }
   ],
-  "volunteer": [{
-    "organization": "Organization",
-    "position": "Volunteer",
-    "url": "https://organization.com/",
-    "startDate": "2012-01-01",
-    "endDate": "2013-01-01",
-    "summary": "Description…",
-    "highlights": [
-      "Awarded 'Volunteer of the Month'"
-    ]
-  }],
-  "education": [{
-    "institution": "Universitat Oberta de Catalunya",
-    "url": "https://www.uoc.edu/portal/es/index.html",
-    "area": "Software Engineer",
-    "studyType": "Bachelor",
-    "startDate": "2003-01-01",
-    "endDate": "2009-01-01",
-    "score": "4.0",
-    "courses": [
-      "DB1101 - Basic SQL"
-    ]
-  }],
-  "awards": [{
-    "title": "Award",
-    "date": "2014-11-01",
-    "awarder": "Company",
-    "summary": "There is no spoon."
-  }],
-  "certificates": [{
-    "name": "Certificate",
-    "date": "2021-11-07",
-    "issuer": "Company",
-    "url": "https://certificate.com"
-  }],
-  "publications": [{
-    "name": "Publication",
-    "publisher": "Company",
-    "releaseDate": "2014-10-01",
-    "url": "https://publication.com",
-    "summary": "Description…"
-  }],
   "skills": [
     {
       "name": "HTML",
       "level": "Master",
-      "keywords": [
-        "Web development", "Frontend"
-      ]
+      "keywords": ["Web Development", "Frontend", "Layout", "Seo", "SEM"]
     },
     {
       "name": "CSS",
-      "level": "Master",
-      "keywords": [
-        "Web development", "Frontend", "Diseño Responsive"
-      ]
+      "level": "Intermediate",
+      "keywords": ["Web Development", "Frontend", "CSS Frameworks", "Preprocessors", "tailwind"]
     },
     {
       "name": "JavaScript",
-      "level": "Master",
-      "keywords": [
-        "Web development", "Frontend", "Backend", "Fullstack"
-      ]
-    },
-    {
-      "name": "Tailwind",
-      "level": "Advanced",
-      "keywords": [
-        "Web development", "Frontend", "CSS Framework", "Diseño Responsive"
-      ]
-    },
-    {
-      "name": "TypeScript",
-      "level": "Advanced",
-      "keywords": [
-        "Web development", "Frontend", "Backend", "JavaScript Superset"
-      ]
-    },
-    {
-      "name": "Node",
-      "level": "Advanced",
-      "keywords": [
-        "Web development", "Backend", "JavaScript", "Servidor"
-      ]
-    },
-    {
-      "name": "MySQL",
-      "level": "Advanced",
-      "keywords": [
-        "Bases de Datos", "SQL", "Database", "Backend"
-      ]
-    },
-    {
-      "name": "Git",
-      "level": "Advanced",
-      "keywords": [
-        "Version control", "Colaboración", "Source code"
-      ]
-    },
-    {
-      "name": "GitHub",
-      "level": "Advanced",
-      "keywords": [
-        "Version control", "Collaboration", "Source code", "Git"
-      ]
-    },
-    {
-      "name": "Next.js",
-      "level": "Advanced",
-      "keywords": [
-        "Web development", "Frontend", "React Framework", "SSR", "Static Generation"
-      ]
+      "level": "Intermediate",
+      "keywords": ["Web Development", "Frontend", "Backend", "Fullstack", "NodeJS", "React", "Express"]
     },
     {
       "name": "React",
       "level": "Advanced",
-      "keywords": [
-        "Web development", "Frontend", "JavaScript Library", "UI"
-      ]
+      "keywords": ["Web Development", "Frontend", "JavaScript Library", "UI"]
+    },
+    {
+      "name": "Tailwind",
+      "level": "Advanced",
+      "keywords": ["Web Development", "Frontend", "CSS Framework"]
+    },
+    {
+      "name": "Node",
+      "level": "Advanced",
+      "keywords": ["Web Development", "Backend", "JavaScript", "Server"]
+    },
+    {
+      "name": "Git",
+      "level": "Intermediate",
+      "keywords": ["Version Control", "Collaboration", "Source Code"]
+    },
+    {
+      "name": "GitHub",
+      "level": "Intermediate",
+      "keywords": ["Version Control", "Collaboration", "Source Code", "Git"]
     }
   ],
   "languages": [
@@ -197,79 +151,77 @@
       "fluency": "Advanced"
     }
   ],
-  "interests": [{
-    "name": "Wildlife",
-    "keywords": [
-      "Ferrets",
-      "Unicorns"
-    ]
-  }],
-  "references": [{
-    "name": "Jane Doe",
-    "reference": "Reference…"
-  }],
+  "interests": [
+    {
+      "name": "Wildlife",
+      "keywords": ["Ferrets", "Unicorns"]
+    }
+  ],
+  "references": [
+    {
+      "name": "Jane Doe",
+      "reference": "Reference…"
+    },
+    {
+      "name": "midudev",
+      "reference": "Reference…"
+    }
+  ],
   "projects": [
     {
-      "name": "mars.codes",
-      "isActive": true,
-      "description": "Interactive story with programming challenges to travel to Mars",
-      "highlights": [
-        "Choose your own adventure",
-        "In progress"
-      ],
-      "url": "https://mars.codes"
+      "name": "Microgenesis",
+      "isActive": false,
+      "description": "Work project for a health and maternity company",
+      "highlights": ["HTML", "CSS", "JAVASCRIPT"],
+      "url": "https://www.microgenesis.net/en/"
     },
     {
-      "name": "AdventJS",
+      "name": "University Technical Degree in Programming",
       "isActive": true,
-      "description": "JavaScript programming challenges for every day of December until Christmas",
-      "highlights": [
-        "+1 million visits",
-        "Multilanguage",
-        "JavaScript & TypeScript"
-      ],
-      "url": "https://advent.js/dev"
+      "description": "Website for the university technical degree in programming UTN",
+      "highlights": ["Astro", "Html", "CSS", "Javascript"],
+      "url": "https://astro-practice-woad.vercel.app",
+      "github": "https://github.com/arceprogramando/astro-practice"
     },
     {
-      "name": "Codember",
+      "name": "Architecture of a Javascript Server",
       "isActive": true,
-      "description": "Interactive programming game with challenges and secrets",
-      "highlights": [
-        "+2000 active users",
-        "Challenges for any language"
-      ],
-      "url": "https://codember.dev"
+      "description": "HTML, CSS, and JavaScript code playground for sharing",
+      "highlights": ["NodeJS", "Express", "MongoDB"],
+      "url": "https://arquitectura-del-servidor-production.up.railway.app",
+      "github": "https://github.com/arceprogramando/arquitectura-del-servidor"
     },
     {
-      "name": "codi.link",
+      "name": "React Project",
       "isActive": true,
-      "description": "Playground of HTML, CSS and JavaScript code for sharing",
-      "highlights": [
-        "100k monthly visit",
-        "Developed by the community"
-      ],
-      "url": "https://codi.link",
-      "github": "https://github.com/midudev/codi.link"
+      "description": "React project done for CoderHouse",
+      "highlights": ["ReactJs", "Tailwind"],
+      "url": "https://primer-proyecto-react-coderhouse.vercel.app",
+      "github": "https://github.com/arceprogramando/primer_proyecto_react_coderhouse"
     },
     {
-      "name": "Pruebas Técnicas",
+      "name": "Javascript Project",
       "isActive": true,
-      "description": "List of technical tests of companies to practice programming",
-      "highlights": [
-        "100% free",
-        "+500 community solutions"
-      ],
-      "url": "https://pruebastecnicas.com",
-      "github": "https://github.com/midudev/pruebas-tecnicas"
+      "description": "Javascript project done for CoderHouse",
+      "highlights": ["Javascript", "HTML", "CSS", "Bootstrap"],
+      "url": "https://arceprogramando.github.io/primer_proyecto_javascript_coderhouse/",
+      "github": "https://github.com/arceprogramando/primer_proyecto_javascript_coderhouse"
     },
     {
-      "name": "miduConf",
-      "description": "Streaming programming conference for the Spanish-speaking community with top talks",
-      "highlights": [
-        "+15k tickets handed over",
-        "+50k live viewers"
-      ],
-      "url": "https://miduconf.com"
+      "name": "HTML CSS Project",
+      "isActive": true,
+      "description": "HTML project done for CoderHouse",
+      "highlights": ["HTML", "CSS", "Responsive Design"],
+      "url": "https://primer-proyecto-desarrolloweb-coderhouse.vercel.app",
+      "github": "https://github.com/arceprogramando/primer_proyecto_desarrolloweb_coderhouse"
+    },
+    {
+      "name": "First Portfolio",
+      "isActive": true,
+      "description": "First portfolio done",
+      "highlights": ["HTML", "CSS", "Responsive Design"],
+      "url": "https://primer-proyecto-desarrolloweb-coderhouse.vercel.app",
+      "github": "https://arceprog.vercel.app"
     }
   ]
 }

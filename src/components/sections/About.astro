@@ -1,8 +1,8 @@
 ---
-import Section from "../Section.astro"
+import Section from '../Section.astro';
 
-import { basics } from "@cv"
-const { summary } = basics
+import { basics } from '@cv';
+const { summary } = basics;
 ---
 
 <Section title="Sobre mí">
@@ -10,3 +10,9 @@ const { summary } = basics
     {summary}
   </p>
 </Section>
+
+<style>
+  p {
+    color: #000;
+  }
+</style>

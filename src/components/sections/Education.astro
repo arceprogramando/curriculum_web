@@ -1,36 +1,44 @@
 ---
-import Section from "../Section.astro"
-
-import { education } from "@cv"
+import Section from '../Section.astro';
+import { education } from '@cv';
 ---
 
 <Section title="Educación">
   <ul>
     {
-      education.map(({ institution, startDate, endDate, area }) => {
-        const startYear = new Date(startDate).getFullYear()
-        const endYear =
-          endDate != null ? new Date(endDate).getFullYear() : "Actual"
-        const years = `${startYear} - ${endYear}`
+      education.map(({ institution, certificates }) => (
+        <li>
+          <div class="institucion">
+            <h3>{institution}</h3>
+          </div>
+          <ul>
+            {certificates.map(({ startDate, endDate, area, url }: any) => {
+              const startYear = new Date(startDate).getFullYear();
+              const endYear = endDate != null ? new Date(endDate).getFullYear() : 'Actual';
+              const years = `${startYear} - ${endYear}`;
 
-        return (
-          <li>
-            <article>
-              <header>
-                <div>
-                  <h3>{institution}</h3>
-                </div>
+              return (
+                <li>
+                  <article>
+                    <header>
+                      <div>
+                        <a href={url} target="_blank" rel="noopener noreferrer">
+                          {area}
+                        </a>
+                      </div>
+                      <time>{years}</time>
+                    </header>
 
-                <time>{years}</time>
-              </header>
-
-              <footer>
-                <p>{area}</p>
-              </footer>
-            </article>
-          </li>
-        )
-      })
+                    <footer>
+                      <p>{area}</p>
+                    </footer>
+                  </article>
+                </li>
+              );
+            })}
+          </ul>
+        </li>
+      ))
     }
   </ul>
 </Section>
@@ -39,7 +47,11 @@ import { education } from "@cv"
   ul {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 16px;
+  }
+
+  li a:hover {
+    text-decoration: underline;
   }
 
   article h3 {
@@ -60,9 +72,27 @@ import { education } from "@cv"
     min-width: 102px;
   }
 
+  footer p {
+    color: #555;
+    font-size: 0.85rem;
+  }
   @media (width <= 700px) {
     time {
       text-align: right;
     }
+  }
+
+  .institucion {
+    display: inline-block;
+    background-color: #11111175;
+    color: white;
+    margin-bottom: 1rem;
+    padding: 0.2rem;
+    rotate: -01deg;
+  }
+
+  h3 {
+    display: inline-block;
+    rotate: 02deg;
   }
 </style>
