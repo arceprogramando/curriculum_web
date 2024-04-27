@@ -192,12 +192,12 @@
       "github": "https://github.com/arceprogramando/arquitectura-del-servidor"
     },
     {
-      "name": "Proyecto React",
+      "name": "React Para mi Servidor",
       "isActive": true,
       "description": "Proyecto react realizado para CoderHouse",
       "highlights": ["ReactJs", "Tailwind"],
-      "url": "https://primer-proyecto-react-coderhouse.vercel.app",
-      "github": "https://github.com/arceprogramando/primer_proyecto_react_coderhouse"
+      "url": "https://www.figma.com/proto/W2PsvXJEoywwCVJCjQMSpg/Wine-World?type=design&node-id=4-19824&t=UrJlvKtKGiMBgYue-0&scaling=min-zoom&page-id=1%3A4&starting-point-node-id=4%3A19824",
+      "github": "https://github.com/arceprogramando/react-para-mi-servidor"
     },
     {
       "name": "Proyecto Javascript",
