@@ -184,10 +184,18 @@
       "github": "https://github.com/arceprogramando/astro-practice"
     },
     {
+      "name": "Primer Portfolio",
+      "isActive": true,
+      "description": "Primer portfolio realizado",
+      "highlights": ["HTML", "CSS", "Diseño Responsive"],
+      "url": "https://arceprog.vercel.app",
+      "github": "https://github.com/arceprogramando/arceprog"
+    },
+    {
       "name": "Arquitectura de un Servidor Javascript",
       "isActive": true,
       "description": "Playground de código HTML, CSS y JavaScript para compartir",
-      "highlights": ["NodeJS", "Express", "MongoDB"],
+      "highlights": ["NodeJS", "Express", "MongoDB", "Handlebars"],
       "url": "https://arquitectura-del-servidor-production.up.railway.app",
       "github": "https://github.com/arceprogramando/arquitectura-del-servidor"
     },
@@ -214,14 +222,6 @@
       "highlights": ["HTML", "CSS", "Diseño Responsive"],
       "url": "https://primer-proyecto-desarrolloweb-coderhouse.vercel.app",
       "github": "https://github.com/arceprogramando/primer_proyecto_desarrolloweb_coderhouse"
-    },
-    {
-      "name": "Primer Portfolio",
-      "isActive": true,
-      "description": "Primer portfolio realizado",
-      "highlights": ["HTML", "CSS", "Diseño Responsive"],
-      "url": "https://primer-proyecto-desarrolloweb-coderhouse.vercel.app",
-      "github": "https://arceprog.vercel.app"
     }
   ]
 }
