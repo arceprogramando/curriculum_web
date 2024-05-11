@@ -180,8 +180,8 @@
       "isActive": true,
       "description": "Web para la tecnitatura universitaria en programación UTN",
       "highlights": ["Astro", "Html", "CSS", "Javascript"],
-      "url": "https://astro-practice-woad.vercel.app",
-      "github": "https://github.com/arceprogramando/astro-practice"
+      "url": "https://utn-cursoingreso.vercel.app",
+      "github": "https://github.com/arceprogramando/utn_cursoingreso"
     },
     {
       "name": "Primer Portfolio",
