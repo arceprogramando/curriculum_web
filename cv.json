@@ -46,7 +46,7 @@
         {
           "url": "https://utn-cursoingreso.vercel.app",
           "area": "Tecnicatura Universitaria en Programación",
-          "studyType": "Tecnicatura Universitaria",
+          "studyType": "Proyecto para la Tecnicatura",
           "startDate": "2-15-2024",
           "score": "9",
           "courses": ["Programación Backend con Node.js, Express y MongoDB"]
@@ -59,7 +59,7 @@
         {
           "url": "https://www.coderhouse.com/certificados/6539a9e2f2e5240787425381?lang=es",
           "area": "Programación backend",
-          "studyType": "Curso",
+          "studyType": "Curso de Programación Backend",
           "startDate": "03-4-2023",
           "endDate": "03-10-2023",
           "score": "9",
@@ -68,7 +68,7 @@
         {
           "url": "https://www.coderhouse.com/certificados/6422ef2e1553510002cd5b4f",
           "area": "Programación ReactJS",
-          "studyType": "Curso",
+          "studyType": "Curso de Programación ReactJS",
           "startDate": "2-1-2023",
           "endDate": "2-3-2023",
           "score": "8",
@@ -77,7 +77,7 @@
         {
           "url": "https://www.coderhouse.com/ar/certificados/63f649e3f457ee000ea355d6?lang=es",
           "area": "Programación Javascript",
-          "studyType": "Curso",
+          "studyType": "Curso de Programación Javascript",
           "startDate": "1-2-2022",
           "endDate": "1-18-2023",
           "score": "9",
@@ -86,7 +86,7 @@
         {
           "url": "https://www.coderhouse.com/ar/certificados/637579203779c3000ed1cb30?lang=es",
           "area": "Desarrollo Web",
-          "studyType": "Curso de Desarrollo Web",
+          "studyType": "Curso de Programación html y css",
           "startDate": "8-17-2022",
           "endDate": "10-17-2022",
           "score": "8",

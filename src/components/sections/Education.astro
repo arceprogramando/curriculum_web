@@ -12,7 +12,7 @@ import { education } from '@cv';
             <h3>{institution}</h3>
           </div>
           <ul>
-            {certificates.map(({ startDate, endDate, area, url }: any) => {
+            {certificates.map(({ startDate, endDate, area, url, studyType }: any) => {
               const startYear = new Date(startDate).getFullYear();
               const endYear = endDate != null ? new Date(endDate).getFullYear() : 'Actual';
               const years = `${startYear} - ${endYear}`;
@@ -30,7 +30,7 @@ import { education } from '@cv';
                     </header>
 
                     <footer>
-                      <p>{area}</p>
+                      <p>{studyType}</p>
                     </footer>
                   </article>
                 </li>
