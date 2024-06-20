@@ -30,6 +30,15 @@
   },
   "work": [
     {
+      "name":"Protolylab",
+      "position": "Frontend Developer",
+      "startDate":"2024-04-10",
+      "url":"https://www.protolylab.digital",
+      "endDate":null,
+      "summary":"Participo en la implementación de frontends en proyectos empresariales, utilizando next.js , tailwind , tambien aporto con algunas maquetaciones en proyectos de la empresa.",
+      "highlights":["Desarrollo de frontends","Maquetación de proyectos"]
+    },
+    {
       "name": "Microgenesis",
       "position": "Frontend Developer",
       "url": "https://www.microgenesis.net/en/",
@@ -38,6 +47,7 @@
       "summary": "Participé en un proyecto grupal de desarrollo web, donde integré el frontend con el backend. Utilicé HTML, CSS y JavaScript en un entorno colaborativo, aplicando la metodología de programación en pareja (pair programming).",
       "highlights": ["mejore mi habilidad de trabajo en equipo"]
     }
+    
   ],
   "education": [
     {
@@ -59,7 +69,7 @@
         {
           "url": "https://www.coderhouse.com/certificados/6539a9e2f2e5240787425381?lang=es",
           "area": "Programación backend",
-          "studyType": "Curso de Programación Backend",
+          "studyType": "Título  de Programador Backend",
           "startDate": "03-4-2023",
           "endDate": "03-10-2023",
           "score": "9",
@@ -68,7 +78,7 @@
         {
           "url": "https://www.coderhouse.com/certificados/6422ef2e1553510002cd5b4f",
           "area": "Programación ReactJS",
-          "studyType": "Curso de Programación ReactJS",
+          "studyType": "Título de Programador ReactJS",
           "startDate": "2-1-2023",
           "endDate": "2-3-2023",
           "score": "8",
@@ -77,7 +87,7 @@
         {
           "url": "https://www.coderhouse.com/ar/certificados/63f649e3f457ee000ea355d6?lang=es",
           "area": "Programación Javascript",
-          "studyType": "Curso de Programación Javascript",
+          "studyType": "Título de ProgramadorJavascript",
           "startDate": "1-2-2022",
           "endDate": "1-18-2023",
           "score": "9",
@@ -86,7 +96,7 @@
         {
           "url": "https://www.coderhouse.com/ar/certificados/637579203779c3000ed1cb30?lang=es",
           "area": "Desarrollo Web",
-          "studyType": "Curso de Programación html y css",
+          "studyType": "Título de Desarrollador web HTML y CSS",
           "startDate": "8-17-2022",
           "endDate": "10-17-2022",
           "score": "8",
