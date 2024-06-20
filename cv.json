@@ -1,12 +1,12 @@
 {
   "basics": {
     "name": "Felipe Arce",
-    "label": "Desarrollador FullStack MERN",
+    "label": "Desarrollador Web",
     "image": "https://avatars.githubusercontent.com/u/85712228?v=4",
     "email": "arceprogramando@gmail.com",
     "phone": "+54 91150990913",
     "url": "https://arceprog.vercel.app",
-    "summary": "Soy un desarrollador  web que le gusta trabajar en proyectos de maquetación .  Utilizo tecnologias  Web del lado del cliente (HTML, CSS, JavaScript, ReactJS) y del lado del servidor (Node.js, Express, MongoDB). ",
+    "summary": "Soy un desarrollador  web que le gusta trabajar en proyectos de maquetación .  Utilizo tecnologias  Web del lado del cliente (HTML, CSS, JavaScript, ReactJS) y del lado del servidor (Node.js, Express, MongoDB). Ademas para la creación de diseños utilizo herramientas como Figma , Aporto en proyectos tanto libres como privados.",
     "location": {
       "address": "Gonzalez Catan",
       "postalCode": "1759",
@@ -142,9 +142,14 @@
       "keywords": ["Control de Versiones", "Colaboración", "Código Fuente"]
     },
     {
-      "name": "GitHub",
+      "name": "TypeScript",
       "level": "Medio",
-      "keywords": ["Control de Versiones", "Colaboración", "Código Fuente", "Git"]
+      "keywords": ["Desarrollo Web", "Frontend", "Backend", "Fullstack", "NodeJS", "React", "Express"]
+    },
+    {
+      "name":"Next.js",
+      "level":"Medio",
+      "keywords":["Desarrollo Web","Frontend","React","Framework"]
     }
   ],
   "languages": [
