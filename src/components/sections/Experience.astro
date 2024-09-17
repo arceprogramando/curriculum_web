@@ -1,54 +1,47 @@
 ---
-import Section from "../Section.astro"
+import Section from '../Section.astro';
 
-import { work } from "@cv"
+import { work } from '@cv';
 ---
 
 <Section title="Experiencia laboral">
   <ul>
     {
-      work.map(
-        ({ name, startDate, endDate, position, summary, highlights, url }) => {
-          const startYear = new Date(startDate).getFullYear()
-          const endYear =
-            endDate != null ? new Date(endDate).getFullYear() : "Actual"
+      work.map(({ name, startDate, endDate, position, summary, highlights, url }) => {
+        const startYear = new Date(startDate).getFullYear();
+        const endYear = endDate != null ? new Date(endDate).getFullYear() : 'Actual';
 
-          return (
-            <li>
-              <article>
-                <header>
-                  <div>
-                    <h3>
-                      <a href={url} title={`Ver ${name}`} target="_blank">
-                        {name}
-                      </a>
-                    </h3>
-                    <h4>{position}</h4>
-                  </div>
+        return (
+          <li>
+            <article>
+              <header>
+                <div>
+                  <h3>
+                    <a href={url} title={`Ver ${name}`} target="_blank">
+                      {name}
+                    </a>
+                  </h3>
+                  <h4>{position}</h4>
+                </div>
 
-                  <div>
-                    <time 
-                      datetime={startDate}
-                      data-title={startDate}>
-                        {startYear}
-                    </time>
-                    {" - "}
-                    <time 
-                      datetime={endDate}
-                      data-title={endDate}>
-                        {endYear}
-                    </time>
-                  </div>
-                </header>
+                <div>
+                  <time datetime={startDate} data-title={startDate}>
+                    {startYear}
+                  </time>
+                  {' - '}
+                  <time datetime={endDate} data-title={endDate}>
+                    {endYear}
+                  </time>
+                </div>
+              </header>
 
-                <footer>
-                  <p>{summary}</p>
-                </footer>
-              </article>
-            </li>
-          )
-        }
-      )
+              <footer>
+                <p>{summary}</p>
+              </footer>
+            </article>
+          </li>
+        );
+      })
     }
   </ul>
 </Section>
@@ -61,14 +54,13 @@ import { work } from "@cv"
     gap: 8px;
   }
 
-  h3{
-    padding-bottom:  4px;
+  h3 {
+    padding-bottom: 4px;
   }
 
   article h3 {
     font-weight: 600;
     color: #111;
-    text-decoration: underline;
   }
 
   article a {
@@ -108,10 +100,15 @@ import { work } from "@cv"
     content: attr(data-title);
     background-color: #333;
     color: #fff;
-    font-size: .75rem;
-    font-family: Menlo, Monaco, Lucida Console, "Courier New", monospace;;
+    font-size: 0.75rem;
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      'Courier New',
+      monospace;
     position: absolute;
-    padding: .2rem .5rem;
+    padding: 0.2rem 0.5rem;
     bottom: -1.4rem;
     left: 50%;
     white-space: nowrap;
