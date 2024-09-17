@@ -30,13 +30,13 @@
   },
   "work": [
     {
-      "name":"Protolylab",
+      "name": "Protolylab",
       "position": "Frontend Developer",
-      "startDate":"2024-04-10",
-      "url":"https://www.protolylab.digital",
-      "endDate":null,
-      "summary":"Participo en la implementación de frontends en proyectos empresariales, utilizando next.js , tailwind , tambien aporto con algunas maquetaciones en proyectos de la empresa.",
-      "highlights":["Desarrollo de frontends","Maquetación de proyectos"]
+      "startDate": "2024-04-10",
+      "url": "https://www.protolylab.digital",
+      "endDate": null,
+      "summary": "Participo en la implementación de frontends en proyectos empresariales, utilizando next.js , tailwind , tambien aporto con algunas maquetaciones en proyectos de la empresa.",
+      "highlights": ["Desarrollo de frontends", "Maquetación de proyectos"]
     },
     {
       "name": "Microgenesis",
@@ -47,7 +47,6 @@
       "summary": "Participé en un proyecto grupal de desarrollo web, donde integré el frontend con el backend. Utilicé HTML, CSS y JavaScript en un entorno colaborativo, aplicando la metodología de programación en pareja (pair programming).",
       "highlights": ["mejore mi habilidad de trabajo en equipo"]
     }
-    
   ],
   "education": [
     {
@@ -147,9 +146,9 @@
       "keywords": ["Desarrollo Web", "Frontend", "Backend", "Fullstack", "NodeJS", "React", "Express"]
     },
     {
-      "name":"Next.js",
-      "level":"Medio",
-      "keywords":["Desarrollo Web","Frontend","React","Framework"]
+      "name": "Next.js",
+      "level": "Medio",
+      "keywords": ["Desarrollo Web", "Frontend", "React", "Framework"]
     }
   ],
   "languages": [
@@ -180,19 +179,19 @@
   ],
   "projects": [
     {
-      "name": "Microgenesis",
-      "isActive": false,
-      "description": "Proyecto Laboral para una empresa de salud y maternidad",
-      "highlights": ["HTML", "CSS", "JAVASCRIPT"],
-      "url": "https://www.microgenesis.net/en/"
-    },
-    {
       "name": "Tecnicatura Universitaria en Programación",
       "isActive": true,
       "description": "Web para la tecnitatura universitaria en programación UTN",
       "highlights": ["Astro", "Html", "CSS", "Javascript"],
       "url": "https://utn-cursoingreso.vercel.app",
       "github": "https://github.com/arceprogramando/utn_cursoingreso"
+    },
+    {
+      "name": "Microgenesis",
+      "isActive": false,
+      "description": "Proyecto Laboral para una empresa de salud y maternidad",
+      "highlights": ["HTML", "CSS", "JAVASCRIPT"],
+      "url": "https://www.microgenesis.net/en/"
     },
     {
       "name": "Primer Portfolio",
