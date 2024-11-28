@@ -34,7 +34,7 @@
       "position": "Frontend Developer",
       "startDate": "2024-04-10",
       "url": "https://www.protolylab.digital",
-      "endDate": null,
+      "endDate": "2024-09-10",
       "summary": "Participo en la implementación de frontends en proyectos empresariales, utilizando next.js , tailwind , tambien aporto con algunas maquetaciones en proyectos de la empresa.",
       "highlights": ["Desarrollo de frontends", "Maquetación de proyectos"]
     },
@@ -54,7 +54,7 @@
       "certificates": [
         {
           "url": "https://utn-cursoingreso.vercel.app",
-          "area": "Tecnicatura Universitaria en Programación",
+          "area": "Segundo Año de Tecnicatura Universitaria en Programación",
           "studyType": "Proyecto para la Tecnicatura",
           "startDate": "2-15-2024",
           "score": "9",
@@ -100,6 +100,47 @@
           "endDate": "10-17-2022",
           "score": "8",
           "courses": ["HTML y CSS"]
+        }
+      ]
+    },
+    {
+      "institution": "Autodidacta",
+      "certificates": [
+        {
+          "url": "https://cert.efset.org/5DYD2H",
+          "area": "Ingles Intermedio",
+          "studyType": "Certificado de Ingles",
+          "startDate": "03-4-2022",
+          "endDate": null,
+          "score": "9",
+          "courses": ["Ingles"]
+        },
+        {
+          "url": null,
+          "area": "SQL",
+          "studyType": "Diseño de Base de Datos",
+          "startDate": "03-4-2024",
+          "endDate": null,
+          "score": "9",
+          "courses": ["SQL"]
+        },
+        {
+          "url": null,
+          "area": "Linux",
+          "studyType": "Linux Entusiasta",
+          "startDate": "03-4-2022",
+          "endDate": null,
+          "score": "9",
+          "courses": ["Linux"]
+        },
+        {
+          "url": null,
+          "area": "Figma",
+          "studyType": "Diseño de Interfaces",
+          "startDate": "03-4-2022",
+          "endDate": null,
+          "score": "9",
+          "courses": ["Figma"]
         }
       ]
     }
