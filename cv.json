@@ -34,8 +34,8 @@
       "position": "Frontend Developer",
       "startDate": "2024-04-10",
       "url": "https://www.protolylab.digital",
-      "endDate": "2024-09-10",
-      "summary": "Participo en la implementación de frontends en proyectos empresariales, utilizando next.js , tailwind , tambien aporto con algunas maquetaciones en proyectos de la empresa.",
+      "endDate": "2024-12-12",
+      "summary": "En mi último trabajo, participé en la implementación y el control de un proyecto de gasoducto, donde desarrollamos un dashboard administrativo para la gestión de sistemas y usuarios. Implementé funcionalidades como control de acceso para administradores, diferentes tipos de cargas de gasoductos, y utilicé Docker para las pruebas. También trabajé con Redux para manejar de forma eficiente los estados de la aplicación.",
       "highlights": ["Desarrollo de frontends", "Maquetación de proyectos"]
     },
     {
@@ -44,7 +44,7 @@
       "url": "https://www.microgenesis.net/en/",
       "startDate": "2022-06-22",
       "endDate": "2022-09-01",
-      "summary": "Participé en un proyecto grupal de desarrollo web, donde integré el frontend con el backend. Utilicé HTML, CSS y JavaScript en un entorno colaborativo, aplicando la metodología de programación en pareja (pair programming).",
+      "summary": "Participé en un proyecto grupal de desarrollo web, donde integré el frontend con el backend utilizando HTML, CSS y JavaScript. Trabajé en un entorno colaborativo bajo la metodología de pair programming, aprendiendo de compañeros con experiencia en servidores desarrollados con PHP y bases de datos MySQL. Este enfoque me permitió entender cómo conectar las interfaces de usuario con el backend, gestionar datos eficientemente y fortalecer mis habilidades trabajando en equipo.",
       "highlights": ["mejore mi habilidad de trabajo en equipo"]
     }
   ],
