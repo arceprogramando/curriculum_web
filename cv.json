@@ -6,7 +6,7 @@
     "email": "arceprogramando@gmail.com",
     "phone": "+54 91150990913",
     "url": "https://arceprog.vercel.app",
-    "summary": "Soy desarrollador web porque me apasiona crear soluciones y entender cómo funcionan las aplicaciones. Disfruto tanto de la maquetación del frontend como trabajar la logica del desarrollo backend, además me encanta la automatización para hacer procesos más eficientes. Tengo experiencia en proyectos diversos, y sé lo importante que es trabajar en equipo, coordinar tareas y planificar adecuadamente. Me gusta colaborar, mejorar continuamente y optimizar procesos.",
+    "summary": "Soy desarrollador web con un año de experiencia en frontend. Me apasiona trabajar en equipo, aprender constantemente y generar soluciones efectivas. He participado en diversos proyectos, donde he aprendido a coordinar tareas, planificar eficientemente y optimizar procesos para mejorar los resultados.",
     "location": {
       "address": "Gonzalez Catan",
       "postalCode": "1759",
@@ -154,12 +154,26 @@
     {
       "name": "CSS",
       "level": "Medio",
-      "keywords": ["Desarrollo Web", "Frontend", "CSS Frameworks", "Preprocesadores", "tailwind"]
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "CSS Frameworks",
+        "Preprocesadores",
+        "tailwind"
+      ]
     },
     {
       "name": "JavaScript",
       "level": "Medio",
-      "keywords": ["Desarrollo Web", "Frontend", "Backend", "Fullstack", "NodeJS", "React", "Express"]
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "Backend",
+        "Fullstack",
+        "NodeJS",
+        "React",
+        "Express"
+      ]
     },
     {
       "name": "React",
@@ -184,7 +198,15 @@
     {
       "name": "TypeScript",
       "level": "Medio",
-      "keywords": ["Desarrollo Web", "Frontend", "Backend", "Fullstack", "NodeJS", "React", "Express"]
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "Backend",
+        "Fullstack",
+        "NodeJS",
+        "React",
+        "Express"
+      ]
     },
     {
       "name": "Next.js",
