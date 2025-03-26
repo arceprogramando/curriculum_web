@@ -93,7 +93,7 @@ interface Education {
   institution: string;
   url: string;
   area: string;
-  studyType: string;
+  description: string;
   startDate: DateStr;
   endDate: DateStr | null;
   score: string;

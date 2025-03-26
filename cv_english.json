@@ -45,7 +45,7 @@
         {
           "url": "https://utn-cursoingreso.vercel.app",
           "area": "University Technical Degree in Programming",
-          "studyType": "University Technical Degree",
+          "description": "University Technical Degree",
           "startDate": "2-15-2024",
           "score": "9",
           "courses": ["Backend Programming with Node.js, Express, and MongoDB"]
@@ -58,7 +58,7 @@
         {
           "url": "https://www.coderhouse.com/certificates/6539a9e2f2e5240787425381?lang=es",
           "area": "Backend Programming",
-          "studyType": "Course",
+          "description": "Course",
           "startDate": "03-4-2023",
           "endDate": "03-10-2023",
           "score": "9",
@@ -67,7 +67,7 @@
         {
           "url": "https://www.coderhouse.com/certificates/6422ef2e1553510002cd5b4f",
           "area": "ReactJS Programming",
-          "studyType": "Course",
+          "description": "Course",
           "startDate": "2-1-2023",
           "endDate": "2-3-2023",
           "score": "8",
@@ -76,7 +76,7 @@
         {
           "url": "https://www.coderhouse.com/ar/certificates/63f649e3f457ee000ea355d6?lang=es",
           "area": "JavaScript Programming",
-          "studyType": "Course",
+          "description": "Course",
           "startDate": "1-2-2022",
           "endDate": "1-18-2023",
           "score": "9",
@@ -85,7 +85,7 @@
         {
           "url": "https://www.coderhouse.com/ar/certificates/637579203779c3000ed1cb30?lang=es",
           "area": "Web Development",
-          "studyType": "Web Development Course",
+          "description": "Web Development Course",
           "startDate": "8-17-2022",
           "endDate": "10-17-2022",
           "score": "8",
@@ -103,12 +103,26 @@
     {
       "name": "CSS",
       "level": "Intermediate",
-      "keywords": ["Web Development", "Frontend", "CSS Frameworks", "Preprocessors", "tailwind"]
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "CSS Frameworks",
+        "Preprocessors",
+        "tailwind"
+      ]
     },
     {
       "name": "JavaScript",
       "level": "Intermediate",
-      "keywords": ["Web Development", "Frontend", "Backend", "Fullstack", "NodeJS", "React", "Express"]
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Backend",
+        "Fullstack",
+        "NodeJS",
+        "React",
+        "Express"
+      ]
     },
     {
       "name": "React",

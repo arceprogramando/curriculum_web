@@ -54,8 +54,8 @@
       "certificates": [
         {
           "url": "https://utn-cursoingreso.vercel.app",
-          "area": "Segundo Año de Tecnicatura Universitaria en Programación",
-          "studyType": "Proyecto para la Tecnicatura",
+          "area": "Tecnicatura Universitaria en Programación",
+          "description": "Estoy en segundo año de la Tecnicatura Universitaria en Programación en la UTN Avellaneda. Durante la carrera, he adquirido conocimientos en bases de datos, matemáticas discretas, programación con C y C#, desarrollo con WPF, SQL, trabajo en equipo e introducción a sistemas.",
           "startDate": "2-15-2024",
           "score": "9",
           "courses": ["Programación Backend con Node.js, Express y MongoDB"]
@@ -68,7 +68,7 @@
         {
           "url": "https://www.coderhouse.com/certificados/6539a9e2f2e5240787425381?lang=es",
           "area": "Programación backend",
-          "studyType": "Título  de Programador Backend",
+          "description": "En este curso Aprendi los conceptos basicos de Backend , APrendi a crear una aplicación nodejs, extender mis conocimientos de javascript , crear una api restt con expressjs . conectarme  y crear una base no relacional con mongo DB , Poder aplicar patrones MVC",
           "startDate": "03-4-2023",
           "endDate": "03-10-2023",
           "score": "9",
@@ -77,7 +77,7 @@
         {
           "url": "https://www.coderhouse.com/certificados/6422ef2e1553510002cd5b4f",
           "area": "Programación ReactJS",
-          "studyType": "Título de Programador ReactJS",
+          "description": "En este curso aprendí lo básico de React.js, incluyendo manejo de estados, creación de contextos y renderizado de componentes. Desarrollé una mini aplicación de e-commerce que gestionaba el carrito de compras, implementaba inicio de sesión y almacenaba información en Firebase",
           "startDate": "2-1-2023",
           "endDate": "2-3-2023",
           "score": "8",
@@ -86,7 +86,7 @@
         {
           "url": "https://www.coderhouse.com/ar/certificados/63f649e3f457ee000ea355d6?lang=es",
           "area": "Programación Javascript",
-          "studyType": "Título de ProgramadorJavascript",
+          "description": "En este curso Aprendi a utilizar lo basico de javascript para el DOM, hacer pequeñas llamadas a APIS Y poder renderizar esto a traves de HTML Y CSS",
           "startDate": "1-2-2022",
           "endDate": "1-18-2023",
           "score": "9",
@@ -95,7 +95,7 @@
         {
           "url": "https://www.coderhouse.com/ar/certificados/637579203779c3000ed1cb30?lang=es",
           "area": "Desarrollo Web",
-          "studyType": "Título de Desarrollador web HTML y CSS",
+          "description": "En este curso Aprendi a utilizar lo basico de las herramientas web , aplicando HTML Y CSS vanilla",
           "startDate": "8-17-2022",
           "endDate": "10-17-2022",
           "score": "8",
@@ -109,7 +109,7 @@
         {
           "url": "https://cert.efset.org/5DYD2H",
           "area": "Ingles Intermedio",
-          "studyType": "Certificado de Ingles",
+          "description": "Certificado rápido de EFSET que refleja mi nivel de inglés:  B1 en lectura y comprensión auditiva, y A2 en habla.",
           "startDate": "03-4-2022",
           "endDate": null,
           "score": "9",
@@ -118,7 +118,7 @@
         {
           "url": null,
           "area": "SQL",
-          "studyType": "Diseño de Base de Datos",
+          "description": "Diseño de Base de Datos SQL , Estoy aprendiendo :(",
           "startDate": "03-4-2024",
           "endDate": null,
           "score": "9",
@@ -127,7 +127,7 @@
         {
           "url": null,
           "area": "Linux",
-          "studyType": "Linux Entusiasta",
+          "description": "Entusiasta de Linux aveces escribo mkdir, ls, pwd, y rm -rf. Utilizo Fedora como mi distribución principal desde 2022.",
           "startDate": "03-4-2022",
           "endDate": null,
           "score": "9",
@@ -136,7 +136,7 @@
         {
           "url": null,
           "area": "Figma",
-          "studyType": "Diseño de Interfaces",
+          "description": "He contribuido en diversas simulaciones laborales, utilizando Figma como herramienta principal para el diseño UX/UI. He creado todo lo necesario para desarrollar una aplicación web y me siento cómodo trabajando con Figma.",
           "startDate": "03-4-2022",
           "endDate": null,
           "score": "9",
