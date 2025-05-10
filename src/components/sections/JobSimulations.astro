@@ -1,0 +1,75 @@
+---
+import { jobSimulations } from '@cv';
+import Section from '../Section.astro';
+---
+
+<Section title="Simulaciones Laborales">
+  <ul>
+    {
+      jobSimulations.map(({ simulationName, description, projects }) => (
+        <li>
+          <div class="simulacion">
+            <h3>{simulationName}</h3>
+          </div>
+          <p>{description}</p>
+          <ul>
+            {projects.map(({ name: projectName, url }) => {
+              return (
+                <li>
+                  <a href={url} target="_blank" rel="noopener noreferrer">
+                    {projectName}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
+<style>
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  li a {
+    text-decoration: underline;
+  }
+
+  li a:hover {
+    color: blue;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+  }
+
+  footer p {
+    color: #555;
+    font-size: 0.85rem;
+    max-width: 600px;
+  }
+
+  .simulacion {
+    display: inline-block;
+    background-color: #11111175;
+    color: white;
+    margin-bottom: 1rem;
+    padding: 0.4rem 0.7rem;
+  }
+
+  h3 {
+    display: inline-block;
+  }
+
+  a {
+    margin-top: px;
+  }
+</style>

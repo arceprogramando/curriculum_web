@@ -6,7 +6,7 @@
     "email": "arceprogramando@gmail.com",
     "phone": "+54 91150990913",
     "url": "https://arceprog.vercel.app",
-    "summary": "Soy desarrollador web con un año de experiencia en frontend. Me apasiona trabajar en equipo, aprender constantemente y generar soluciones efectivas. He participado en diversos proyectos, donde he aprendido a coordinar tareas, planificar eficientemente y optimizar procesos para mejorar los resultados.",
+    "summary": "Soy desarrollador web y estudiante de Técnico Universitario en Programación, con un año de experiencia en desarrollo frontend. Me interesa el trabajo en equipo, el aprendizaje continuo y la generación de soluciones eficaces. He participado en diversos proyectos, donde adquirí experiencia en la coordinación de tareas, la planificación eficiente y la optimización de procesos para mejorar los resultados.",
     "location": {
       "address": "Gonzalez Catan",
       "postalCode": "1759",
@@ -30,13 +30,19 @@
   },
   "work": [
     {
+      "name": "America Virtual",
+      "position": "Frontend Developer",
+      "startDate": "2025-05-20",
+      "url": "https://americavirtualsa.com/",
+      "summary": "Estoy por iniciar como desarrollador Frontend en America Virtual, primer trabajo a relación de dependencia formal , Esperemos que todo vaya bien ♥"
+    },
+    {
       "name": "Protolylab",
       "position": "Frontend Developer",
       "startDate": "2024-04-10",
       "url": "https://www.protolylab.digital",
       "endDate": "2024-12-12",
-      "summary": "En mi último trabajo, participé en la implementación y el control de un proyecto de gasoducto, donde desarrollamos un dashboard administrativo para la gestión de sistemas y usuarios. Implementé funcionalidades como control de acceso para administradores, diferentes tipos de cargas de gasoductos, y utilicé Docker para las pruebas. También trabajé con Redux para manejar de forma eficiente los estados de la aplicación.",
-      "highlights": ["Desarrollo de frontends", "Maquetación de proyectos"]
+      "summary": "En mi último trabajo, participé en la implementación y el control de un proyecto de gasoducto, donde desarrollamos un dashboard administrativo para la gestión de sistemas y usuarios. Implementé funcionalidades como control de acceso para administradores, diferentes tipos de cargas de gasoductos, y utilicé Docker para las pruebas. También trabajé con Redux para manejar de forma eficiente los estados de la aplicación."
     },
     {
       "name": "Microgenesis",
@@ -44,8 +50,7 @@
       "url": "https://www.microgenesis.net/en/",
       "startDate": "2022-06-22",
       "endDate": "2022-09-01",
-      "summary": "Participé en un proyecto grupal de desarrollo web, donde integré el frontend con el backend utilizando HTML, CSS y JavaScript. Trabajé en un entorno colaborativo bajo la metodología de pair programming, aprendiendo de compañeros con experiencia en servidores desarrollados con PHP y bases de datos MySQL. Este enfoque me permitió entender cómo conectar las interfaces de usuario con el backend, gestionar datos eficientemente y fortalecer mis habilidades trabajando en equipo.",
-      "highlights": ["mejore mi habilidad de trabajo en equipo"]
+      "summary": "Participé en un proyecto grupal de desarrollo web, donde integré el frontend con el backend utilizando HTML, CSS y JavaScript. Trabajé en un entorno colaborativo bajo la metodología de pair programming, aprendiendo de compañeros con experiencia en servidores desarrollados con PHP y bases de datos MySQL. Este enfoque me permitió entender cómo conectar las interfaces de usuario con el backend, gestionar datos eficientemente y fortalecer mis habilidades trabajando en equipo."
     }
   ],
   "education": [
@@ -66,7 +71,7 @@
       "institution": "Coderhouse",
       "certificates": [
         {
-          "url": "https://www.coderhouse.com/certificados/6539a9e2f2e5240787425381?lang=es",
+          "url": "https://pub.coderhouse.com/legacy-certificates/6539a9e2f2e5240787425381?lang=es",
           "area": "Programación backend",
           "description": "En este curso Aprendi los conceptos basicos de Backend , APrendi a crear una aplicación nodejs, extender mis conocimientos de javascript , crear una api restt con expressjs . conectarme  y crear una base no relacional con mongo DB , Poder aplicar patrones MVC",
           "startDate": "03-4-2023",
@@ -75,7 +80,7 @@
           "courses": ["Programación Backend con Node.js, Express y MongoDB"]
         },
         {
-          "url": "https://www.coderhouse.com/certificados/6422ef2e1553510002cd5b4f",
+          "url": "https://pub.coderhouse.com/legacy-certificates/6422ef2e1553510002cd5b4f",
           "area": "Programación ReactJS",
           "description": "En este curso aprendí lo básico de React.js, incluyendo manejo de estados, creación de contextos y renderizado de componentes. Desarrollé una mini aplicación de e-commerce que gestionaba el carrito de compras, implementaba inicio de sesión y almacenaba información en Firebase",
           "startDate": "2-1-2023",
@@ -84,7 +89,7 @@
           "courses": ["ReactJS"]
         },
         {
-          "url": "https://www.coderhouse.com/ar/certificados/63f649e3f457ee000ea355d6?lang=es",
+          "url": "https://pub.coderhouse.com/legacy-certificates/63f649e3f457ee000ea355d6",
           "area": "Programación Javascript",
           "description": "En este curso Aprendi a utilizar lo basico de javascript para el DOM, hacer pequeñas llamadas a APIS Y poder renderizar esto a traves de HTML Y CSS",
           "startDate": "1-2-2022",
@@ -93,7 +98,7 @@
           "courses": ["Javascript"]
         },
         {
-          "url": "https://www.coderhouse.com/ar/certificados/637579203779c3000ed1cb30?lang=es",
+          "url": "https://pub.coderhouse.com/legacy-certificates/637579203779c3000ed1cb30",
           "area": "Desarrollo Web",
           "description": "En este curso Aprendi a utilizar lo basico de las herramientas web , aplicando HTML Y CSS vanilla",
           "startDate": "8-17-2022",
@@ -221,7 +226,7 @@
     },
     {
       "language": "English",
-      "fluency": "Advanced"
+      "fluency": "B1"
     }
   ],
   "interests": [
@@ -295,6 +300,28 @@
       "highlights": ["HTML", "CSS", "Diseño Responsive"],
       "url": "https://primer-proyecto-desarrolloweb-coderhouse.vercel.app",
       "github": "https://github.com/arceprogramando/primer_proyecto_desarrolloweb_coderhouse"
+    }
+  ],
+  "jobSimulations": [
+    {
+      "simulationName": "No Country",
+      "isActive": false,
+      "description": "Desarrollé múltiples MVPs para la plataforma No Country, asumiendo el rol de Frontend con React y Tailwind, en proyectos colaborativos de 4 semanas.",
+      "highlights": ["Astro", "Html", "CSS", "Javascript"],
+      "projects": [
+        {
+          "name": "Página de subida de recetas de cocina",
+          "url": "https://www.youtube.com/watch?v=sGd9I3OyZ-M",
+          "startDate": "2025-02-10",
+          "endDate": "2025-03-10"
+        },
+        {
+          "name": "Página de intercambios de libros",
+          "url": "https://www.linkedin.com/feed/update/urn:li:activity:7305990481996308481/?originalSubdomain=es",
+          "startDate": "2025-03-10",
+          "endDate": "2025-04-10"
+        }
+      ]
     }
   ]
 }
