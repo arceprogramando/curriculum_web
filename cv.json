@@ -37,14 +37,6 @@
       "summary": "Desarrollo e integración de interfaces web con AngularJS, jQuery y Bootstrap sobre entornos .NET con vistas en Razor. Implementación visual orientada a requerimientos del cliente, sin lineamientos de diseño.  Participación en equipos ágiles mediante Jira, colaborando en estimaciones, seguimiento de tareas y reuniones diarias bajo marco Scrum."
     },
     {
-      "name": "Protolylab",
-      "position": "Frontend Developer",
-      "startDate": "2024-04-10",
-      "url": "https://www.protolylab.digital",
-      "endDate": "2024-12-12",
-      "summary": "En mi último trabajo, participé en la implementación y el control de un proyecto de gasoducto, donde desarrollamos un dashboard administrativo para la gestión de sistemas y usuarios. Implementé funcionalidades como control de acceso para administradores, diferentes tipos de cargas de gasoductos, y utilicé Docker para las pruebas. También trabajé con Redux para manejar de forma eficiente los estados de la aplicación."
-    },
-    {
       "name": "Microgenesis",
       "position": "Frontend Developer",
       "url": "https://www.microgenesis.net/en/",
