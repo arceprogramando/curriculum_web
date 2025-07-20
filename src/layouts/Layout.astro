@@ -5,56 +5,72 @@ interface Props {
   title: string;
 }
 
-const { title } = Astro.props;
 
-const { image, summary, url } = basics;
+const { image } = basics;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Portafolio de Felipe Arce - Desarrollador Web</title>
-    <meta name="description" content="Soy desarrollador web y estudiante Técnico Universitario en Programación, con un año de experiencia en desarrollo frontend. Me interesa el trabajo en equipo, el aprendizaje continuo y la generación de soluciones eficaces. He participado en diversos proyectos, donde adquirí experiencia en la coordinación de tareas, la planificación eficiente y la optimización de procesos para mejorar los resultados." />
+    <title>Felipe Arce - Desarrollador FullStack MERN | Portfolio</title>
+    <meta name="description" content="Desarrollador web y estudiante Técnico Universitario en Programación, con experiencia en React, Node.js, MongoDB y tecnologías modernas. Especializado en desarrollo frontend y backend con un año de experiencia profesional." />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
     <!-- Preload critical resources -->
     <link rel="preload" as="image" href={image} />
+    <link rel="preload" as="image" href="/portada.png" />
     <link rel="preconnect" href="https://res.cloudinary.com" />
     <link rel="dns-prefetch" href="https://res.cloudinary.com" />
     
     <meta name="google-site-verification" content="jfdI3O_sVUKVWOWPcViT3dZF-JayDl6N87uwcqGkXXU" />
     
-    <!-- Facebook Meta Tags -->
+    <!-- Facebook Meta Tags / Open Graph -->
     <meta property="og:url" content="https://www.arceprog.dev" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Portafolio de Felipe Arce - Desarrollador Web" />
-    <meta property="og:description" content="Soy desarrollador web y estudiante Técnico Universitario en Programación, con un año de experiencia en desarrollo frontend. Me interesa el trabajo en equipo, el aprendizaje continuo y la generación de soluciones eficaces. He participado en diversos proyectos, donde adquirí experiencia en la coordinación de tareas, la planificación eficiente y la optimización de procesos para mejorar los resultados." />
+    <meta property="og:title" content="Felipe Arce - Desarrollador FullStack MERN" />
+    <meta property="og:description" content="Desarrollador web y estudiante Técnico Universitario en Programación, con experiencia en React, Node.js, MongoDB y tecnologías modernas. Especializado en desarrollo frontend y backend." />
     <meta property="og:site_name" content="Felipe Arce - Desarrollador Web" />
-    <meta property="og:image" content="https://res.cloudinary.com/arceprog/image/upload/v1709314398/wsmafjijvcvvoeiok328.png" />
-    <meta property="og:image:alt" content="Curriculum de Felipe Arce - Desarrollador Web" />
+    <meta property="og:image" content="https://www.arceprog.dev/portada.png" />
+    <meta property="og:image:secure_url" content="https://www.arceprog.dev/portada.png" />
+    <meta property="og:image:alt" content="Felipe Arce - Desarrollador FullStack MERN | Portfolio y CV" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="es_AR" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_US" />
 
     <meta http-equiv="content-language" content="es" />
 
-    <!-- Twitter Meta Tags -->
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@arceprog" />
     <meta name="twitter:creator" content="@arceprog" />
     <meta property="twitter:domain" content="arceprog.dev" />
     <meta property="twitter:url" content="https://www.arceprog.dev" />
-    <meta name="twitter:title" content="Portafolio de Felipe Arce - Desarrollador Web" />
-    <meta name="twitter:description" content="Soy desarrollador web y estudiante Técnico Universitario en Programación, con un año de experiencia en desarrollo frontend. Me interesa el trabajo en equipo, el aprendizaje continuo y la generación de soluciones eficaces. He participado en diversos proyectos, donde adquirí experiencia en la coordinación de tareas, la planificación eficiente y la optimización de procesos para mejorar los resultados." />
-    <meta name="twitter:image" content="https://res.cloudinary.com/arceprog/image/upload/v1709314398/wsmafjijvcvvoeiok328.png" />
-    <meta name="twitter:image:alt" content="Curriculum de Felipe Arce - Desarrollador Web" />
+    <meta name="twitter:title" content="Felipe Arce - Desarrollador FullStack MERN" />
+    <meta name="twitter:description" content="Desarrollador web especializado en React, Node.js y MongoDB. Portfolio con proyectos y experiencia en desarrollo frontend y backend." />
+    <meta name="twitter:image" content="https://www.arceprog.dev/portada.png" />
+    <meta name="twitter:image:alt" content="Felipe Arce - Desarrollador FullStack MERN | Portfolio y CV" />
+    
+    <!-- WhatsApp Meta Tags (usa Open Graph) -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    
+    <!-- LinkedIn Meta Tags (usa Open Graph principalmente) -->
+    <meta property="og:site_name" content="Felipe Arce Portfolio" />
+    
+    <!-- Telegram Meta Tags (usa Open Graph) -->
+    <meta property="og:video" content="" />
+    
+    <!-- Discord Meta Tags (usa Open Graph) -->
+    <meta name="theme-color" content="#121a2b" />
 
     <meta
       name="keywords"
-      content="Portfolio , Curriculum , Felipe Arce, desarrollador web , web design , web developer , programador web , programador , web"
+      content="Felipe Arce, desarrollador fullstack, desarrollador MERN, React, Node.js, MongoDB, Express, JavaScript, TypeScript, portfolio developer, programador web, frontend developer, backend developer, Buenos Aires, Argentina"
     />
 
     <meta name="author" content="Felipe Arce" />
@@ -68,10 +84,20 @@ const { image, summary, url } = basics;
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Felipe Arce",
-        "jobTitle": "Desarrollador Web",
+        "jobTitle": "Desarrollador FullStack MERN",
         "url": "https://www.arceprog.dev",
-        "image": "https://res.cloudinary.com/arceprog/image/upload/v1709314398/wsmafjijvcvvoeiok328.png",
-        "description": "Soy desarrollador web y estudiante Técnico Universitario en Programación, con un año de experiencia en desarrollo frontend. Me interesa el trabajo en equipo, el aprendizaje continuo y la generación de soluciones eficaces. He participado en diversos proyectos, donde adquirí experiencia en la coordinación de tareas, la planificación eficiente y la optimización de procesos para mejorar los resultados.",
+        "image": "https://www.arceprog.dev/portada.png",
+        "description": "Desarrollador web y estudiante Técnico Universitario en Programación, con experiencia en React, Node.js, MongoDB y tecnologías modernas. Especializado en desarrollo frontend y backend con un año de experiencia profesional.",
+        "knowsAbout": ["JavaScript", "React", "Node.js", "MongoDB", "Express", "HTML", "CSS", "TypeScript", "Git", "Tailwind CSS"],
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Universidad Tecnológica Nacional",
+          "sameAs": "https://www.utn.edu.ar/"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "America Virtual"
+        },
         "sameAs": [
           "https://www.linkedin.com/in/felipe-arce-programador/",
           "https://github.com/arceprogramando",
