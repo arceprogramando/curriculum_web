@@ -78,10 +78,19 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(' • ');
       </footer>
     </div>
     <figure>
-      <img src={image} alt={name} />
+      <img 
+        src={image} 
+        alt={name} 
+        loading="eager"
+        decoding="async"
+        width="128"
+        height="128"
+      />
     </figure>
   </div>
-  <Skills />
+  <div class="skills-section">
+    <Skills />
+  </div>
 </Section>
 
 <style>
@@ -121,7 +130,14 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(' • ');
     aspect-ratio: 1 / 1;
     object-fit: cover;
     width: 128px;
+    height: 128px;
     border-radius: 16px;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  .skills-section {
+    contain: layout style paint;
   }
 
   span {
