@@ -24,13 +24,17 @@ import { education } from '@cv';
                     <article>
                       <header>
                         <div>
-                          <a
-                            href={url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {area}
-                          </a>
+                          {url ? (
+                            <a
+                              href={url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {area}
+                            </a>
+                          ) : (
+                            <span>{area}</span>
+                          )}
                         </div>
                         <time>{years}</time>
                       </header>
@@ -60,6 +64,11 @@ import { education } from '@cv';
   li a:hover {
     text-decoration: underline;
     cursor: pointer;
+  }
+
+  li span {
+    color: inherit;
+    font-weight: inherit;
   }
 
   article h3 {
