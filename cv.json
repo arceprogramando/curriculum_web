@@ -6,7 +6,7 @@
     "email": "arceprogramando@gmail.com",
     "phone": "+54 91150990913",
     "url": "https://arceprog.vercel.app",
-    "summary": "Soy desarrollador web y estudiante de Técnico Universitario en Programación, con un año de experiencia en desarrollo frontend. Me interesa el trabajo en equipo, el aprendizaje continuo y la generación de soluciones eficaces. He participado en diversos proyectos, donde adquirí experiencia en la coordinación de tareas, la planificación eficiente y la optimización de procesos para mejorar los resultados.",
+    "summary": "Soy desarrollador web y estudiante Técnico Universitario en Programación, con un año de experiencia en desarrollo frontend. Me interesa el trabajo en equipo, el aprendizaje continuo y la generación de soluciones eficaces. He participado en diversos proyectos, donde adquirí experiencia en la coordinación de tareas, la planificación eficiente y la optimización de procesos para mejorar los resultados.",
     "location": {
       "address": "Gonzalez Catan",
       "postalCode": "1759",
@@ -31,10 +31,10 @@
   "work": [
     {
       "name": "America Virtual",
-      "position": "Frontend Developer",
-      "startDate": "2025-05-20",
+      "position": "Desarrollador Frontend",
+      "startDate": "2025-06-01",
       "url": "https://americavirtualsa.com/",
-      "summary": "Desarrollo e integración de interfaces web con AngularJS, jQuery y Bootstrap sobre entornos .NET con vistas en Razor. Implementación visual orientada a requerimientos del cliente, sin lineamientos de diseño.  Participación en equipos ágiles mediante Jira, colaborando en estimaciones, seguimiento de tareas y reuniones diarias bajo marco Scrum."
+      "summary": "Desarrollo e integración de interfaces web utilizando AngularJS, jQuery y Bootstrap sobre entornos .NET con vistas en Razor. Implementación visual basada en requerimientos del cliente, sin lineamientos de diseño definidos. Desarrollo de un dashboard administrativo en ReactJS (Material UI) y una aplicación móvil en React Native, ambos conectados a un backend en Node.js, colaborando en la arquitectura y consumo de APIs REST. Participación activa en equipos ágiles con Jira, colaborando en estimaciones, seguimiento de tareas y reuniones diarias bajo el marco de trabajo Scrum."
     },
     {
       "name": "Microgenesis",
