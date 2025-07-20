@@ -14,16 +14,18 @@ const { image, summary, url } = basics;
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>{title}</title>
-    <meta name="description" content={summary} />
+    <title>Portafolio de Felipe Arce - Desarrollador Web</title>
+    <meta name="description" content="Soy desarrollador web y estudiante Técnico Universitario en Programación, con un año de experiencia en desarrollo frontend. Me interesa el trabajo en equipo, el aprendizaje continuo y la generación de soluciones eficaces. He participado en diversos proyectos, donde adquirí experiencia en la coordinación de tareas, la planificación eficiente y la optimización de procesos para mejorar los resultados." />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preload" as="image" href={image} />
     <meta name="google-site-verification" content="jfdI3O_sVUKVWOWPcViT3dZF-JayDl6N87uwcqGkXXU" />
-    <meta property="og:url" content={url} />
+    
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://www.arceprog.dev" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={summary} />
+    <meta property="og:title" content="Portafolio de Felipe Arce - Desarrollador Web" />
+    <meta property="og:description" content="Soy desarrollador web y estudiante Técnico Universitario en Programación, con un año de experiencia en desarrollo frontend. Me interesa el trabajo en equipo, el aprendizaje continuo y la generación de soluciones eficaces. He participado en diversos proyectos, donde adquirí experiencia en la coordinación de tareas, la planificación eficiente y la optimización de procesos para mejorar los resultados." />
     <meta property="og:site_name" content="Felipe Arce - Desarrollador Web" />
     <meta property="og:image" content="https://res.cloudinary.com/arceprog/image/upload/v1709314398/wsmafjijvcvvoeiok328.png" />
     <meta property="og:image:alt" content="Curriculum de Felipe Arce - Desarrollador Web" />
@@ -34,13 +36,14 @@ const { image, summary, url } = basics;
 
     <meta http-equiv="content-language" content="es" />
 
+    <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@arceprog" />
     <meta name="twitter:creator" content="@arceprog" />
-    <meta property="twitter:domain" content={url.split('//')[1] ?? ''} />
-    <meta property="twitter:url" content={url} />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={summary} />
+    <meta property="twitter:domain" content="arceprog.dev" />
+    <meta property="twitter:url" content="https://www.arceprog.dev" />
+    <meta name="twitter:title" content="Portafolio de Felipe Arce - Desarrollador Web" />
+    <meta name="twitter:description" content="Soy desarrollador web y estudiante Técnico Universitario en Programación, con un año de experiencia en desarrollo frontend. Me interesa el trabajo en equipo, el aprendizaje continuo y la generación de soluciones eficaces. He participado en diversos proyectos, donde adquirí experiencia en la coordinación de tareas, la planificación eficiente y la optimización de procesos para mejorar los resultados." />
     <meta name="twitter:image" content="https://res.cloudinary.com/arceprog/image/upload/v1709314398/wsmafjijvcvvoeiok328.png" />
     <meta name="twitter:image:alt" content="Curriculum de Felipe Arce - Desarrollador Web" />
 
@@ -51,8 +54,6 @@ const { image, summary, url } = basics;
 
     <meta name="author" content="Felipe Arce" />
     <meta name="robots" content="index, follow" />
-    <meta property="og:type" content="curriculum" />
-    <link rel="icon" href="/favicon.svg" />
     <meta name="googlebot" content="index,follow" />
     <meta name="google" content="nositelinkssearchbox" />
     
@@ -63,9 +64,9 @@ const { image, summary, url } = basics;
         "@type": "Person",
         "name": "Felipe Arce",
         "jobTitle": "Desarrollador Web",
-        "url": {url},
+        "url": "https://www.arceprog.dev",
         "image": "https://res.cloudinary.com/arceprog/image/upload/v1709314398/wsmafjijvcvvoeiok328.png",
-        "description": {JSON.stringify(summary)},
+        "description": "Soy desarrollador web y estudiante Técnico Universitario en Programación, con un año de experiencia en desarrollo frontend. Me interesa el trabajo en equipo, el aprendizaje continuo y la generación de soluciones eficaces. He participado en diversos proyectos, donde adquirí experiencia en la coordinación de tareas, la planificación eficiente y la optimización de procesos para mejorar los resultados.",
         "sameAs": [
           "https://www.linkedin.com/in/felipe-arce-programador/",
           "https://github.com/arceprogramando",
