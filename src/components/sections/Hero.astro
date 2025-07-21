@@ -174,7 +174,12 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(' • ');
     border: 1px solid #ddd;
   }
 
+  /* En móviles, subrayado visible para accesibilidad */
   @media (width <= 700px) {
+    footer a {
+      text-decoration: underline;
+    }
+    
     h1 {
       font-size: 1.3rem;
       font-weight: 600;

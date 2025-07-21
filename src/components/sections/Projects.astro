@@ -77,6 +77,13 @@ import { projects } from '@cv';
     text-decoration: underline;
   }
 
+  /* En móviles, siempre mostrar subrayado en enlaces */
+  @media (width <= 700px) {
+    article a {
+      text-decoration: underline;
+    }
+  }
+
   article p {
     font-size: 0.75rem;
     line-height: 1.2rem;

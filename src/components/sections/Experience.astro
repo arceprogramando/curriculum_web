@@ -72,57 +72,12 @@ import { work } from '@cv';
     text-decoration: underline;
   }
 
-  article h4 {
-    color: #222;
-    font-weight: 400;
-    font-size: 0.95rem;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 4px;
-  }
-
-  time {
-    color: #333;
-    font-size: 0.85rem;
-    min-width: 102px;
-    cursor: default;
-  }
-
-  [data-title]:hover:after {
-    opacity: 1;
-    transition: all 0.1s ease-in-out 0.5s;
-    visibility: visible;
-  }
-
-  [data-title]:after {
-    content: attr(data-title);
-    background-color: #333;
-    color: #fff;
-    font-size: 0.75rem;
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      'Courier New',
-      monospace;
-    position: absolute;
-    padding: 0.2rem 0.5rem;
-    bottom: -1.4rem;
-    left: 50%;
-    white-space: nowrap;
-    box-shadow: 1px 1px 1px #222222;
-    opacity: 0;
-    border: 1px solid #111111;
-    z-index: 99999;
-    visibility: hidden;
-    border-radius: 6px;
-  }
-
+  /* En móviles, siempre mostrar subrayado en enlaces */
   @media (width <= 700px) {
+    article a {
+      text-decoration: underline;
+    }
+    
     time {
       text-align: right;
     }
