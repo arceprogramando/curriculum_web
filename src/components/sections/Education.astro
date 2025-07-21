@@ -71,6 +71,13 @@ import { education } from '@cv';
     font-weight: inherit;
   }
 
+  /* En móviles, siempre mostrar subrayado en enlaces */
+  @media (width <= 700px) {
+    li a {
+      text-decoration: underline;
+    }
+  }
+
   article h3 {
     font-weight: 500;
     color: #111;

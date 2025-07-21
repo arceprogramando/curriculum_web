@@ -26,12 +26,12 @@ const { image } = basics;
     
     <meta name="google-site-verification" content="jfdI3O_sVUKVWOWPcViT3dZF-JayDl6N87uwcqGkXXU" />
     
-    <!-- Facebook Meta Tags / Open Graph -->
+    <!-- Facebook Meta Tags / Open Graph (usado por WhatsApp, LinkedIn, etc) -->
     <meta property="og:url" content="https://www.arceprog.dev" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Felipe Arce - Desarrollador FullStack MERN" />
     <meta property="og:description" content="Desarrollador web y estudiante Técnico Universitario en Programación, con experiencia en React, Node.js, MongoDB y tecnologías modernas. Especializado en desarrollo frontend y backend." />
-    <meta property="og:site_name" content="Felipe Arce - Desarrollador Web" />
+    <meta property="og:site_name" content="Felipe Arce Portfolio" />
     <meta property="og:image" content="https://www.arceprog.dev/portada.png" />
     <meta property="og:image:secure_url" content="https://www.arceprog.dev/portada.png" />
     <meta property="og:image:alt" content="Felipe Arce - Desarrollador FullStack MERN | Portfolio y CV" />
@@ -39,8 +39,11 @@ const { image } = basics;
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="es_AR" />
-    <meta property="og:locale:alternate" content="es_ES" />
-    <meta property="og:locale:alternate" content="en_US" />
+    
+    <!-- Meta tags adicionales para WhatsApp -->
+    <meta property="og:updated_time" content="2025-07-20T19:00:00Z" />
+    <meta name="robots" content="index, follow" />
+    <meta name="referrer" content="origin-when-cross-origin" />
 
     <meta http-equiv="content-language" content="es" />
 
@@ -55,15 +58,19 @@ const { image } = basics;
     <meta name="twitter:image" content="https://www.arceprog.dev/portada.png" />
     <meta name="twitter:image:alt" content="Felipe Arce - Desarrollador FullStack MERN | Portfolio y CV" />
     
-    <!-- WhatsApp Meta Tags (usa Open Graph) -->
+    <!-- WhatsApp Meta Tags específicos -->
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:secure_url" content="https://www.arceprog.dev/portada.png" />
+    
+    <!-- Asegurar que WhatsApp pueda acceder -->
+    <meta name="format-detection" content="telephone=no" />
     
     <!-- LinkedIn Meta Tags (usa Open Graph principalmente) -->
-    <meta property="og:site_name" content="Felipe Arce Portfolio" />
+    <!-- Ya están definidas arriba en og: tags -->
     
     <!-- Telegram Meta Tags (usa Open Graph) -->
-    <meta property="og:video" content="" />
+    <!-- Ya están definidas arriba en og: tags -->
     
     <!-- Discord Meta Tags (usa Open Graph) -->
     <meta name="theme-color" content="#121a2b" />
@@ -74,8 +81,6 @@ const { image } = basics;
     />
 
     <meta name="author" content="Felipe Arce" />
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index,follow" />
     <meta name="google" content="nositelinkssearchbox" />
     
     <!-- Structured Data for better social sharing -->
