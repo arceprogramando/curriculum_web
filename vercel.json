@@ -1,7 +1,5 @@
 {
-  "functions": {
-    "src/pages/**/*.astro": {
-      "runtime": "nodejs22.x"
-    }
-  }
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "astro"
 }
