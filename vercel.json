@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "src/pages/**/*.astro": {
+      "runtime": "nodejs22.x"
+    }
+  }
+}
