@@ -52,10 +52,24 @@
         {
           "url": "https://utn-cursoingreso.vercel.app",
           "area": "Tecnicatura Universitaria en Programación",
-          "description": "Estoy en segundo año de la Tecnicatura Universitaria en Programación en la UTN Avellaneda. Durante la carrera, he adquirido conocimientos en bases de datos, matemáticas discretas, programación con C y C#, desarrollo con WPF, SQL, trabajo en equipo e introducción a sistemas.",
+          "description": "Estoy en el último cuatrimestre de la Tecnicatura Universitaria en Programación en la UTN Avellaneda. Durante la carrera, he adquirido conocimientos en bases de datos, matemáticas discretas, programación con C y C#, desarrollo con WPF, SQL, trabajo en equipo e introducción a sistemas y ciencia de datos.",
           "startDate": "2-15-2024",
           "score": "9",
           "courses": ["Programación Backend con Node.js, Express y MongoDB"]
+        }
+      ]
+    },
+    {
+      "institution": "CUI - Centro Universitario de Idiomas",
+      "certificates": [
+        {
+          "url": "https://cui.edu.ar",
+          "area": "Inglés Regular Nivel 02 Básico",
+          "description": "Este curso busca fortalecer las habilidades fundamentales de comprensión lectora y auditiva, con énfasis en la expresión oral y escrita. Se prioriza la práctica conversacional mediante situaciones cotidianas que permitan al estudiante ganar fluidez y confianza al comunicarse en inglés. Al final, en el Nivel 2 se enfoca especialmente en el uso del tiempo presente como base para la comunicación.",
+          "startDate": "8-30-2025",
+          "endDate": null,
+          "score": null,
+          "courses": ["Inglés Básico Nivel 02"]
         }
       ]
     },
