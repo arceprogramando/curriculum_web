@@ -51,7 +51,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(' • ');
         }
         {
           phone && (
-            <a href={`tel:${phone}`} title={`Llamar por teléfono a ${name} al número ${phone}`} target="_blank" rel="noopener noreferrer">
+            <a href={`https://wa.me/${phone.replace(/\D/g, '')}?text=¡Hola! Me interesa contactarte para conversar acerca de tu experiencia profesional.`} title={`Enviar mensaje de WhatsApp a ${name}`} target="_blank" rel="noopener noreferrer">
               <Phone />
             </a>
           )
