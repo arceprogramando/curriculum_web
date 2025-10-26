@@ -9,50 +9,54 @@
  */
 
 :root {
-  /* ========================================
+   /* ========================================
      Brand Colors
      ======================================== */
-  --color-brand-primary: #121a2b;
-  --color-brand-accent: rgb(64, 255, 6);
+   --color-brand-primary: #121a2b;
 
-  /* ========================================
+   /* ========================================
      Background Colors
      ======================================== */
-  --color-bg-primary: #dfded9;
-  --color-bg-secondary: #fff;
-  --color-bg-dark: #121a2b;
-  --color-bg-card: #eee;
-  --color-bg-badge: #222;
+   --color-bg-primary: #dfded9;
+   --color-bg-secondary: #fff;
+   --color-bg-dark: #121a2b;
+   --color-bg-card: #eee;
+   --color-bg-badge: #222;
 
-  /* ========================================
+   /* ========================================
      Text Colors
      ======================================== */
-  --color-text-primary: #444;
-  --color-text-secondary: #333;
-  --color-text-dark: #111;
-  --color-text-black: #000;
-  --color-text-inverted: #d4d3cd;
-  --color-text-white: #fff;
+   --color-text-primary: #444;
+   --color-text-secondary: #333;
+   --color-text-dark: #111;
+   --color-text-black: #000;
+   --color-text-inverted: #d4d3cd;
+   --color-text-white: #fff;
 
-  /* ========================================
+   /* ========================================
+     Status Indicators Active Projects Color
+     ======================================== */
+   --color-status-active: rgb(64, 255, 6);
+
+   /* ========================================
      Border Colors
      ======================================== */
-  --color-border-light: #f2f2f2;
-  --color-border-medium: #ddd;
-  --color-border-dark: #ccc;
-  --color-border-primary: #121a2b4f;
+   --color-border-light: #f2f2f2;
+   --color-border-medium: #ddd;
+   --color-border-dark: #f3f0f0;
+   --color-border-primary: #0000003a;
 
-  /* ========================================
+   /* ========================================
      UI Element Colors
      ======================================== */
-  --color-button-bg: #eee;
-  --color-button-border: #ddd;
-  --color-icon: #777;
+   --color-button-bg: #eee;
+   --color-button-border: #ddd;
+   --color-icon: #777;
 
-  /* ========================================
+   /* ========================================
      Effects
      ======================================== */
-  --shadow-light: rgba(0, 0, 0, 0.1);
+   --shadow-light: rgba(0, 0, 0, 0.1);
 }
 
 /* ========================================
