@@ -1,5 +1,6 @@
 ---
 import { basics } from '@cv';
+import '@/styles/theme.css';
 
 interface Props {
   title: string;
@@ -75,6 +76,8 @@ const { image } = basics;
     <!-- Discord Meta Tags (usa Open Graph) -->
     <meta name="theme-color" content="#121a2b" />
 
+    <!-- Note: theme-color must use hex value, not CSS variable -->
+
     <meta
       name="keywords"
       content="Felipe Arce, desarrollador fullstack, desarrollador MERN, React, Node.js, MongoDB, Express, JavaScript, TypeScript, portfolio developer, programador web, frontend developer, backend developer, Buenos Aires, Argentina"
@@ -125,7 +128,7 @@ const { image } = basics;
       'Courier New',
       Courier,
       monospace;
-    background: #fff;
+    background: var(--color-bg-secondary);
     letter-spacing: -0.025rem;
     scroll-behavior: smooth;
   }
@@ -173,7 +176,7 @@ const { image } = basics;
   }
 
   p {
-    color: #444;
+    color: var(--color-text-primary);
     font-size: 0.9rem;
     line-height: 1.5;
     margin: 0;

@@ -70,7 +70,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
     height="32"
     viewBox="0 0 24 24"
     stroke-width="1.5"
-    stroke="#777"
+    stroke="var(--color-icon)"
     fill="none"
     stroke-linecap="round"
     stroke-linejoin="round"
@@ -196,9 +196,9 @@ const profilesInfo = profiles.map(({ network, url }) => {
     }
 
     #footer-button {
-      background: #fff;
+      background: var(--color-bg-secondary);
       position: sticky;
-      border: 1px solid #eee;
+      border: 1px solid var(--color-button-bg);
       right: 10px;
       bottom: 10px;
       width: 50px;
@@ -209,7 +209,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
       justify-content: center;
       cursor: pointer;
       z-index: 999;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 8px var(--shadow-light);
       margin-left: auto;
       margin-right: 10px;
       margin-bottom: 10px;
@@ -217,9 +217,9 @@ const profilesInfo = profiles.map(({ network, url }) => {
   }
 
   footer {
-    background-color: #d4d3cd;
+    background-color: var(--color-text-inverted);
     opacity: 0.9;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid var(--color-border-dark);
     position: sticky;
     bottom: 0px;
     left: 0;
@@ -229,11 +229,11 @@ const profilesInfo = profiles.map(({ network, url }) => {
     text-align: center;
     font-size: 0.85rem;
     z-index: 1000;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -2px 8px var(--shadow-light);
   }
 
   kbd {
-    background: #eee;
+    background: var(--color-button-bg);
     border-radius: 4px;
     padding: 2px 4px;
     font-size: 12px;

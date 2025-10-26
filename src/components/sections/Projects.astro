@@ -49,14 +49,14 @@ import { projects } from '@cv';
 
   article {
     border-radius: 8px;
-    border: 1px solid #f2f2f2;
+    border: 1px solid var(--color-border-light);
     gap: 16px;
     display: flex;
     flex-direction: column;
     padding: 16px;
     height: 100%;
-    background-color: #121a2b;
-    color: #fff;
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-white);
   }
 
   article header {
@@ -88,11 +88,11 @@ import { projects } from '@cv';
     font-size: 0.75rem;
     line-height: 1.2rem;
     margin-bottom: 4px;
-    color: #d4d3cd;
+    color: var(--color-text-inverted);
   }
 
   article h3 span {
-    color: rgb(64, 255, 6);
+    color: var(--color-brand-accent);
     animation-name: flicker;
     animation-duration: 2s;
     animation-timing-function: ease-in;
@@ -108,8 +108,8 @@ import { projects } from '@cv';
 
   footer span {
     border-radius: 6px;
-    background: #eee;
-    color: #000;
+    background: var(--color-button-bg);
+    color: var(--color-text-black);
     font-size: 0.6rem;
     font-weight: 500;
     padding: 0.2rem 0.6rem;
@@ -141,7 +141,7 @@ import { projects } from '@cv';
 
     article {
       border: none;
-      box-shadow: 0 1px 1px #f2f2f2;
+      box-shadow: 0 1px 1px var(--color-border-light);
       padding: 0.5rem;
       min-height: 8rem;
     }

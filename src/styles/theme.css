@@ -1,0 +1,70 @@
+/**
+ * Theme Variables
+ *
+ * Centralized design tokens for the entire application.
+ * All color values are defined here for easy maintenance and theme switching.
+ *
+ * Usage: Colors are automatically available to all components via CSS variables.
+ * Example: background-color: var(--color-brand-primary);
+ */
+
+:root {
+  /* ========================================
+     Brand Colors
+     ======================================== */
+  --color-brand-primary: #121a2b;
+  --color-brand-accent: rgb(64, 255, 6);
+
+  /* ========================================
+     Background Colors
+     ======================================== */
+  --color-bg-primary: #dfded9;
+  --color-bg-secondary: #fff;
+  --color-bg-dark: #121a2b;
+  --color-bg-card: #eee;
+  --color-bg-badge: #222;
+
+  /* ========================================
+     Text Colors
+     ======================================== */
+  --color-text-primary: #444;
+  --color-text-secondary: #333;
+  --color-text-dark: #111;
+  --color-text-black: #000;
+  --color-text-inverted: #d4d3cd;
+  --color-text-white: #fff;
+
+  /* ========================================
+     Border Colors
+     ======================================== */
+  --color-border-light: #f2f2f2;
+  --color-border-medium: #ddd;
+  --color-border-dark: #ccc;
+  --color-border-primary: #121a2b4f;
+
+  /* ========================================
+     UI Element Colors
+     ======================================== */
+  --color-button-bg: #eee;
+  --color-button-border: #ddd;
+  --color-icon: #777;
+
+  /* ========================================
+     Effects
+     ======================================== */
+  --shadow-light: rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   Dark Mode Support (Optional)
+   ======================================== */
+/*
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-primary: #1a1a1a;
+    --color-bg-secondary: #222;
+    --color-text-primary: #e0e0e0;
+    --color-brand-primary: #3a4a5b;
+  }
+}
+*/
