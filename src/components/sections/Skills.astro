@@ -23,13 +23,27 @@ const SKILLS_ICONS: Record<string, any> = {
   Next,
   Tailwind,
 };
+
+// Separar skills con y sin íconos
+const skillsWithIcons = skills.filter(({ name }) => {
+  const iconName = name === 'Next.js' ? 'Next' : name === 'Node.js' ? 'Node' : name;
+  return SKILLS_ICONS[iconName];
+});
+
+const skillsWithoutIcons = skills.filter(({ name }) => {
+  const iconName = name === 'Next.js' ? 'Next' : name === 'Node.js' ? 'Node' : name;
+  return !SKILLS_ICONS[iconName];
+});
+
+// Combinar: primero con íconos, luego sin íconos
+const orderedSkills = [...skillsWithIcons, ...skillsWithoutIcons];
 ---
 
 <Section>
   <ul>
     {
-      skills.map(({ name }) => {
-        const iconName = name === 'Next.js' ? 'Next' : name;
+      orderedSkills.map(({ name }) => {
+        const iconName = name === 'Next.js' ? 'Next' : name === 'Node.js' ? 'Node' : name;
         const Icon = SKILLS_ICONS[iconName];
 
         return (
