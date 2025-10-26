@@ -14,6 +14,15 @@ import Skills from './Skills.astro';
 const { name, label, image, location, profiles, phone, email } = basics;
 const { city, region } = location;
 
+// Generar nombre del archivo de descarga con el mes actual
+const currentDate = new Date();
+const months = [
+  'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+];
+const currentMonth = months[currentDate.getMonth()];
+const currentYear = currentDate.getFullYear();
+
 const SOCIAL_ICONS: SocialIcon = {
   GitHub,
   LinkedIn,
@@ -69,8 +78,8 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(' • ');
         }
 
         <a 
-          href="/FelipeAlemanArce_CV_WEB_esp_Julio_2025.pdf" 
-          download="Felipe_Arce_CV_Desarrollador_Web.pdf"
+          href="/FelipeAlemanArce_CV_WEB.pdf"
+          download={`Felipe_Arce_CV_Desarrollador_Web_${currentMonth}_${currentYear}.pdf`}
           title="Descargar CV de Felipe Arce en formato PDF"
         >
           <Download />

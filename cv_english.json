@@ -1,12 +1,12 @@
 {
   "basics": {
-    "name": "Felipe Arce",
-    "label": "MERN FullStack Developer",
+    "name": "Felipe Antonio Aleman Arce",
+    "label": "FullStack Developer",
     "image": "https://avatars.githubusercontent.com/u/85712228?v=4",
     "email": "arceprogramando@gmail.com",
     "phone": "+54 91150990913",
-    "url": "https://arceprog.vercel.app",
-    "summary": "I am a web developer who enjoys working on layout projects. I use client-side web technologies (HTML, CSS, JavaScript, ReactJS) and server-side technologies (Node.js, Express, MongoDB).",
+    "url": "https://arceprog.dev",
+    "summary": "Software Developer with 3 years of experience in Full-Stack web development and mobile applications. Expert in user flow optimization, SEO, and client-oriented applications.",
     "location": {
       "address": "Gonzalez Catan",
       "postalCode": "1759",
@@ -29,26 +29,61 @@
   },
   "work": [
     {
+      "name": "America Virtual",
+      "position": "FullStack Developer with Frontend Focus",
+      "startDate": "2025-06-01",
+      "url": "https://americavirtualsa.com/",
+      "summary": "Development and integration of web and mobile interfaces with React Dom and React Native, ensuring visual consistency according to client requirements. Development of administrative dashboards in ReactJS (Material UI) and a mobile application in React Native, collaborating on architecture and REST API consumption. Active participation in agile teams with Jira, collaborating on estimations, task tracking, and daily meetings under the Scrum framework."
+    },
+    {
       "name": "Microgenesis",
       "position": "Frontend Developer",
       "url": "https://www.microgenesis.net/en/",
-      "startDate": "2022-06-22",
-      "endDate": "2022-09-01",
-      "summary": "I participated in a group web development project, where I integrated the frontend with the backend. I used HTML, CSS, and JavaScript in a collaborative environment, applying pair programming methodology.",
-      "highlights": ["I improved my teamwork skills"]
+      "startDate": "2022-12-01",
+      "endDate": "2023-05-01",
+      "summary": "Developed the frontend of a health platform, implementing UI design with HTML and CSS, optimizing code to improve performance, and collaborating with designers and backend to ensure a fluid and attractive user experience."
     }
   ],
   "education": [
+    {
+      "institution": "Red Hat",
+      "certificates": [
+        {
+          "url": "https://www.credly.com/badges/b3bb2779-eefd-4646-813c-e142e5c9d219/linked_in_profile",
+          "area": "RH124 – Red Hat System Administration I (v10.0)",
+          "description": "During the RH124 course I gained experience in user management, permissions, storage, system processes, applying essential bash commands. Additionally, I incorporated task automation with scripts and problem solving, strengthening my foundation as a SysAdmin oriented to enterprise environments.",
+          "startDate": "2025-07-01",
+          "endDate": "2025-10-01",
+          "score": null,
+          "courses": ["Red Hat System Administration"]
+        }
+      ]
+    },
     {
       "institution": "National Technological University - CUDI",
       "certificates": [
         {
           "url": "https://utn-cursoingreso.vercel.app",
           "area": "University Technical Degree in Programming",
-          "description": "University Technical Degree",
-          "startDate": "2-15-2024",
+          "description": "In my second year, I developed a personal project in Agnostic Astro with some components in React.js and Typescript, aimed at tracking my progress, achieving a 40% increase in visits in 2025 compared to the previous year. Also in the course I have worked with C# in .NET using WPF and have deepened in SQL databases, applying good development practices.",
+          "startDate": "2024-01-01",
+          "endDate": null,
           "score": "9",
-          "courses": ["Backend Programming with Node.js, Express, and MongoDB"]
+          "courses": ["C#", ".NET", "WPF", "SQL", "Astro", "React", "TypeScript"]
+        }
+      ]
+    },
+    {
+      "institution": "CUI - University Language Center",
+      "certificates": [
+        {
+          "url": "https://cui.edu.ar",
+          "area": "Regular English Level 02 Basic",
+          "description": "This course seeks to strengthen fundamental reading and listening comprehension skills, with emphasis on oral and written expression. Conversational practice is prioritized through everyday situations that allow the student to gain fluency and confidence when communicating in English. At the end, Level 2 focuses especially on the use of the present tense as a basis for communication.",
+          "startDate": "2025-08-30",
+          "endDate": null,
+          "score": null,
+          "courses": ["Basic English Level 02"]
         }
       ]
     },
@@ -56,40 +91,63 @@
       "institution": "Coderhouse",
       "certificates": [
         {
-          "url": "https://www.coderhouse.com/certificates/6539a9e2f2e5240787425381?lang=es",
-          "area": "Backend Programming",
-          "description": "Course",
-          "startDate": "03-4-2023",
-          "endDate": "03-10-2023",
+          "url": "https://pub.coderhouse.com/legacy-certificates/6539a9e2f2e5240787425381?lang=es",
+          "area": "Backend Web Development",
+          "description": "I developed backend skills with Node.js and Express.js, implementing the MVC pattern and separation of responsibilities. I designed and managed databases in MongoDB, optimizing queries and structures, which resulted in a 25% improvement in performance and a 20% reduction in web application response times.",
+          "startDate": "2023-04-01",
+          "endDate": "2023-11-01",
           "score": "9",
-          "courses": ["Backend Programming with Node.js, Express, and MongoDB"]
+          "courses": ["Backend Programming with Node.js, Express and MongoDB"]
         },
         {
-          "url": "https://www.coderhouse.com/certificates/6422ef2e1553510002cd5b4f",
-          "area": "ReactJS Programming",
-          "description": "Course",
-          "startDate": "2-1-2023",
-          "endDate": "2-3-2023",
+          "url": "https://pub.coderhouse.com/legacy-certificates/6422ef2e1553510002cd5b4f",
+          "area": "Frontend Web Development",
+          "description": "I started my career in web development with HTML and CSS, perfecting my DOM skills with JavaScript. I developed the interface of an e-commerce, improving code reusability by 30%. Then, I deepened in ReactJS, creating reusable components and managing states efficiently.",
+          "startDate": "2022-08-01",
+          "endDate": "2023-03-01",
           "score": "8",
-          "courses": ["ReactJS"]
-        },
+          "courses": ["ReactJS", "JavaScript", "HTML", "CSS"]
+        }
+      ]
+    },
+    {
+      "institution": "Self-taught",
+      "certificates": [
         {
-          "url": "https://www.coderhouse.com/ar/certificates/63f649e3f457ee000ea355d6?lang=es",
-          "area": "JavaScript Programming",
-          "description": "Course",
-          "startDate": "1-2-2022",
-          "endDate": "1-18-2023",
+          "url": "https://cert.efset.org/5DYD2H",
+          "area": "Intermediate English",
+          "description": "EFSET quick certificate that reflects my English level: B1 in reading and listening comprehension, and A2 in speaking.",
+          "startDate": "2022-03-04",
+          "endDate": null,
           "score": "9",
-          "courses": ["Javascript"]
+          "courses": ["English"]
         },
         {
-          "url": "https://www.coderhouse.com/ar/certificates/637579203779c3000ed1cb30?lang=es",
-          "area": "Web Development",
-          "description": "Web Development Course",
-          "startDate": "8-17-2022",
-          "endDate": "10-17-2022",
-          "score": "8",
-          "courses": ["HTML and CSS"]
+          "url": null,
+          "area": "SQL",
+          "description": "SQL Database Design, I'm learning :(",
+          "startDate": "2024-03-04",
+          "endDate": null,
+          "score": "9",
+          "courses": ["SQL"]
+        },
+        {
+          "url": null,
+          "area": "Linux",
+          "description": "Linux enthusiast sometimes I write mkdir, ls, pwd, and rm -rf. I use Fedora as my main distribution since 2022.",
+          "startDate": "2022-03-04",
+          "endDate": null,
+          "score": "9",
+          "courses": ["Linux"]
+        },
+        {
+          "url": null,
+          "area": "Figma",
+          "description": "I have contributed in various job simulations, using Figma as the main tool for UX/UI design. I have created everything necessary to develop a web application and I feel comfortable working with Figma.",
+          "startDate": "2022-03-04",
+          "endDate": null,
+          "score": "9",
+          "courses": ["Figma"]
         }
       ]
     }
@@ -125,9 +183,32 @@
       ]
     },
     {
+      "name": "TypeScript",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Backend",
+        "Fullstack",
+        "NodeJS",
+        "React",
+        "Express"
+      ]
+    },
+    {
       "name": "React",
       "level": "Advanced",
       "keywords": ["Web Development", "Frontend", "JavaScript Library", "UI"]
+    },
+    {
+      "name": "React Native",
+      "level": "Advanced",
+      "keywords": ["Mobile Development", "Frontend", "JavaScript", "iOS", "Android"]
+    },
+    {
+      "name": "Next.js",
+      "level": "Intermediate",
+      "keywords": ["Web Development", "Frontend", "React", "Framework", "SSR"]
     },
     {
       "name": "Tailwind",
@@ -135,19 +216,54 @@
       "keywords": ["Web Development", "Frontend", "CSS Framework"]
     },
     {
-      "name": "Node",
+      "name": "Material UI",
+      "level": "Advanced",
+      "keywords": ["Web Development", "Frontend", "React", "UI Framework"]
+    },
+    {
+      "name": "Node.js",
       "level": "Advanced",
       "keywords": ["Web Development", "Backend", "JavaScript", "Server"]
     },
     {
-      "name": "Git",
+      "name": "Express.js",
+      "level": "Advanced",
+      "keywords": ["Web Development", "Backend", "JavaScript", "REST API"]
+    },
+    {
+      "name": "NestJS",
       "level": "Intermediate",
+      "keywords": ["Web Development", "Backend", "TypeScript", "Framework"]
+    },
+    {
+      "name": "MongoDB",
+      "level": "Advanced",
+      "keywords": ["Database", "NoSQL", "Backend"]
+    },
+    {
+      "name": "PostgreSQL",
+      "level": "Intermediate",
+      "keywords": ["Database", "SQL", "Backend"]
+    },
+    {
+      "name": "Git",
+      "level": "Advanced",
       "keywords": ["Version Control", "Collaboration", "Source Code"]
     },
     {
       "name": "GitHub",
+      "level": "Advanced",
+      "keywords": ["Version Control", "Collaboration", "Git"]
+    },
+    {
+      "name": "Figma",
       "level": "Intermediate",
-      "keywords": ["Version Control", "Collaboration", "Source Code", "Git"]
+      "keywords": ["UX/UI Design", "Prototyping", "Collaboration"]
+    },
+    {
+      "name": "Jira",
+      "level": "Intermediate",
+      "keywords": ["Project Management", "Agile", "Scrum"]
     }
   ],
   "languages": [
@@ -157,7 +273,7 @@
     },
     {
       "language": "English",
-      "fluency": "Advanced"
+      "fluency": "B1"
     }
   ],
   "interests": [
@@ -231,6 +347,30 @@
       "highlights": ["HTML", "CSS", "Responsive Design"],
       "url": "https://primer-proyecto-desarrolloweb-coderhouse.vercel.app",
       "github": "https://arceprog.vercel.app"
+    }
+  ],
+  "jobSimulations": [
+    {
+      "simulationName": "No Country",
+      "isActive": true,
+      "description": "I developed multiple MVPs for the No Country platform, taking on the Frontend role with React, Next.js and Tailwind, in collaborative projects of 4 weeks.",
+      "highlights": ["React.js", "Next.js", "NestJS", "PostgreSQL", "Tailwind"],
+      "projects": [
+        {
+          "name": "Recipe web-blog",
+          "description": "I worked in a multidisciplinary team developing an MVP in React.js for a final project delivery. We implemented a recipe web-blog, allowing users to share, search and rate recipes.",
+          "url": "https://www.youtube.com/watch?v=sGd9I3OyZ-M",
+          "startDate": "2025-01-01",
+          "endDate": "2025-02-01"
+        },
+        {
+          "name": "Book exchange platform",
+          "description": "We implemented a book exchange platform with a backend in NestJS and PostgreSQL, and a frontend in Next.js, ensuring scalability, security and a fluid user experience.",
+          "url": "https://www.linkedin.com/feed/update/urn:li:activity:7305990481996308481/?originalSubdomain=es",
+          "startDate": "2025-02-01",
+          "endDate": null
+        }
+      ]
     }
   ]
 }
