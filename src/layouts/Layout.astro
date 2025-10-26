@@ -1,6 +1,5 @@
 ---
 import { basics } from '@cv';
-import { ViewTransitions } from 'astro:transitions';
 import '@/styles/theme.css';
 
 interface Props {
@@ -22,7 +21,7 @@ const { image } = basics;
     
     <!-- Preload critical resources -->
     <link rel="preload" as="image" href={image} />
-    <link rel="preload" as="image" href="/portada.webp" />
+    <link rel="preload" as="image" href="/portada-og.png" />
     <link rel="preconnect" href="https://res.cloudinary.com" />
     <link rel="preconnect" href="https://avatars.githubusercontent.com" />
     <link rel="dns-prefetch" href="https://res.cloudinary.com" />
@@ -31,13 +30,13 @@ const { image } = basics;
     <meta name="google-site-verification" content="jfdI3O_sVUKVWOWPcViT3dZF-JayDl6N87uwcqGkXXU" />
     
     <!-- Facebook Meta Tags / Open Graph (usado por WhatsApp, LinkedIn, etc) -->
-    <meta property="og:url" content="https://www.arceprog.dev" />
+    <meta property="og:url" content="https://arceprog.dev" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Felipe Arce - Desarrollador FullStack MERN" />
     <meta property="og:description" content="Desarrollador web y estudiante Técnico Universitario en Programación, con experiencia en React, Node.js, MongoDB y tecnologías modernas. Especializado en desarrollo frontend y backend." />
     <meta property="og:site_name" content="Felipe Arce Portfolio" />
-    <meta property="og:image" content="https://www.arceprog.dev/portada.png" />
-    <meta property="og:image:secure_url" content="https://www.arceprog.dev/portada.png" />
+    <meta property="og:image" content="https://arceprog.dev/portada-og.png" />
+    <meta property="og:image:secure_url" content="https://arceprog.dev/portada-og.png" />
     <meta property="og:image:alt" content="Felipe Arce - Desarrollador FullStack MERN | Portfolio y CV" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
@@ -56,16 +55,11 @@ const { image } = basics;
     <meta name="twitter:site" content="@arceprog" />
     <meta name="twitter:creator" content="@arceprog" />
     <meta property="twitter:domain" content="arceprog.dev" />
-    <meta property="twitter:url" content="https://www.arceprog.dev" />
+    <meta property="twitter:url" content="https://arceprog.dev" />
     <meta name="twitter:title" content="Felipe Arce - Desarrollador FullStack MERN" />
     <meta name="twitter:description" content="Desarrollador web especializado en React, Node.js y MongoDB. Portfolio con proyectos y experiencia en desarrollo frontend y backend." />
-    <meta name="twitter:image" content="https://www.arceprog.dev/portada.png" />
+    <meta name="twitter:image" content="https://arceprog.dev/portada-og.png" />
     <meta name="twitter:image:alt" content="Felipe Arce - Desarrollador FullStack MERN | Portfolio y CV" />
-    
-    <!-- WhatsApp Meta Tags específicos -->
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:secure_url" content="https://www.arceprog.dev/portada.png" />
     
     <!-- Asegurar que WhatsApp pueda acceder -->
     <meta name="format-detection" content="telephone=no" />
@@ -89,9 +83,6 @@ const { image } = basics;
     <meta name="author" content="Felipe Arce" />
     <meta name="google" content="nositelinkssearchbox" />
 
-    <!-- View Transitions for smooth page transitions -->
-    <ViewTransitions />
-    
     <!-- Structured Data for better social sharing -->
     <script type="application/ld+json">
       {
@@ -99,8 +90,8 @@ const { image } = basics;
         "@type": "Person",
         "name": "Felipe Arce",
         "jobTitle": "Desarrollador FullStack MERN",
-        "url": "https://www.arceprog.dev",
-        "image": "https://www.arceprog.dev/portada.png",
+        "url": "https://arceprog.dev",
+        "image": "https://arceprog.dev/portada-og.png",
         "description": "Desarrollador web y estudiante Técnico Universitario en Programación, con experiencia en React, Node.js, MongoDB y tecnologías modernas. Especializado en desarrollo frontend y backend con un año de experiencia profesional.",
         "knowsAbout": ["JavaScript", "React", "Node.js", "MongoDB", "Express", "HTML", "CSS", "TypeScript", "Git", "Tailwind CSS"],
         "alumniOf": {
