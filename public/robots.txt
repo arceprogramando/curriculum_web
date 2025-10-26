@@ -1,0 +1,8 @@
+# robots.txt para arceprog.dev
+# Este archivo indica a los motores de búsqueda cómo rastrear el sitio
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.arceprog.dev/sitemap-index.xml

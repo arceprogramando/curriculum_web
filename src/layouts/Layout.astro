@@ -1,5 +1,6 @@
 ---
 import { basics } from '@cv';
+import { ViewTransitions } from 'astro:transitions';
 import '@/styles/theme.css';
 
 interface Props {
@@ -21,9 +22,11 @@ const { image } = basics;
     
     <!-- Preload critical resources -->
     <link rel="preload" as="image" href={image} />
-    <link rel="preload" as="image" href="/portada.png" />
+    <link rel="preload" as="image" href="/portada.webp" />
     <link rel="preconnect" href="https://res.cloudinary.com" />
+    <link rel="preconnect" href="https://avatars.githubusercontent.com" />
     <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+    <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
     
     <meta name="google-site-verification" content="jfdI3O_sVUKVWOWPcViT3dZF-JayDl6N87uwcqGkXXU" />
     
@@ -85,6 +88,9 @@ const { image } = basics;
 
     <meta name="author" content="Felipe Arce" />
     <meta name="google" content="nositelinkssearchbox" />
+
+    <!-- View Transitions for smooth page transitions -->
+    <ViewTransitions />
     
     <!-- Structured Data for better social sharing -->
     <script type="application/ld+json">

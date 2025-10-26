@@ -1,5 +1,6 @@
 ---
 import { basics } from '@cv';
+import { Image } from 'astro:assets';
 import Section from '@/components/Section.astro';
 import Mail from '@/icons/Mail.astro';
 import Phone from '@/icons/Phone.astro';
@@ -87,13 +88,15 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(' • ');
       </footer>
     </div>
     <figure>
-      <img 
-        src={image} 
-        alt={name} 
+      <Image
+        src={image}
+        alt={name}
         loading="eager"
         decoding="async"
-        width="128"
-        height="128"
+        width={128}
+        height={128}
+        format="webp"
+        quality={85}
       />
     </figure>
   </div>
