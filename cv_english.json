@@ -30,18 +30,52 @@
   "work": [
     {
       "name": "America Virtual",
-      "position": "FullStack Developer with Frontend Focus",
-      "startDate": "2025-06-01",
       "url": "https://americavirtualsa.com/",
-      "summary": "Development and integration of web and mobile interfaces with React Dom and React Native, ensuring visual consistency according to client requirements. Development of administrative dashboards in ReactJS (Material UI) and a mobile application in React Native, collaborating on architecture and REST API consumption. Active participation in agile teams with Jira, collaborating on estimations, task tracking, and daily meetings under the Scrum framework."
+      "startDate": "2025-06-01",
+      "positions": [
+        {
+          "title": "React Native Developer",
+          "startDate": "2025-12-01",
+          "endDate": null,
+          "description": "SQLite implementation in event access control app by roster (OurClub), enabling offline storage of attendee data and connectivity-free operation.",
+          "skills": ["React Native", "SQLite", "TypeScript"]
+        },
+        {
+          "title": "React Native Developer",
+          "startDate": "2025-10-01",
+          "endDate": "2025-12-01",
+          "description": "Development of Notifications Notebook application for the Official Bulletin of students from Buenos Aires province schools (DGCYE), managing attendance, grades, and school trajectory.",
+          "skills": ["React Native", "TypeScript"]
+        },
+        {
+          "title": "Frontend Developer",
+          "startDate": "2025-08-01",
+          "endDate": "2025-10-01",
+          "description": "Development of CRM for Gestión Seguros with React and Material UI, recording calls and client tracking.",
+          "skills": ["React", "Material UI", "TypeScript"]
+        },
+        {
+          "title": "FullStack Developer",
+          "startDate": "2025-06-01",
+          "endDate": "2025-08-01",
+          "description": "Maintenance and development on legacy OurClub project with AngularJS and .NET 3.1.",
+          "skills": ["AngularJS", ".NET 3.1"]
+        }
+      ]
     },
     {
       "name": "Microgenesis",
-      "position": "Frontend Developer",
       "url": "https://www.microgenesis.net/en/",
       "startDate": "2022-12-01",
-      "endDate": "2023-05-01",
-      "summary": "Developed the frontend of a health platform, implementing UI design with HTML and CSS, optimizing code to improve performance, and collaborating with designers and backend to ensure a fluid and attractive user experience."
+      "positions": [
+        {
+          "title": "Frontend Developer",
+          "startDate": "2022-12-01",
+          "endDate": "2023-05-01",
+          "description": "Development of the frontend for a health platform, implementing UI design with HTML and CSS, optimizing code to improve performance, and collaborating with designers and backend to ensure a fluid and attractive user experience.",
+          "skills": ["HTML", "CSS", "JavaScript"]
+        }
+      ]
     }
   ],
   "education": [

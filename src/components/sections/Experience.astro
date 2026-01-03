@@ -6,56 +6,113 @@ interface Props {
   locale?: Locale;
 }
 
-interface WorkExperience {
-  name: string;
-  position: string;
-  url: string;
+interface Position {
+  title: string;
   startDate: string;
   endDate: string | null;
-  summary: string;
+  description: string;
+  skills: string[];
+}
+
+interface WorkExperience {
+  name: string;
+  url: string;
+  startDate: string;
+  endDate?: string | null;
+  position?: string;
+  summary?: string;
+  positions?: Position[];
 }
 
 const { locale = 'es' } = Astro.props;
 const cv = getCV(locale);
 const ui = getUI(locale);
 const work = cv.work as WorkExperience[];
+
+const formatDate = (date: string) => {
+  const [year, month] = date.split('-');
+  const months: Record<string, Record<string, string>> = {
+    es: { '01': 'ene', '02': 'feb', '03': 'mar', '04': 'abr', '05': 'may', '06': 'jun', '07': 'jul', '08': 'ago', '09': 'sep', '10': 'oct', '11': 'nov', '12': 'dic' },
+    en: { '01': 'Jan', '02': 'Feb', '03': 'Mar', '04': 'Apr', '05': 'May', '06': 'Jun', '07': 'Jul', '08': 'Aug', '09': 'Sep', '10': 'Oct', '11': 'Nov', '12': 'Dec' }
+  };
+  return `${months[locale][month]} ${year}`;
+};
 ---
 
 <Section title={ui.workExperience}>
-  <ul>
+  <ul class="work-list">
     {
-      work.map(({ name, startDate, endDate, position, summary, url }) => {
-        const startYear = startDate.split('-')[0];
-        const endYear = endDate != null ? endDate.split('-')[0] : ui.current;
+      work.map((job) => {
+        const hasPositions = job.positions && job.positions.length > 0;
 
         return (
-          <li>
-            <article>
-              <header>
-                <div>
+          <li class="work-item">
+            {hasPositions ? (
+              <div class="company-with-positions">
+                <div class="company-header">
                   <h3>
-                    <a href={url} title={`${ui.visit} ${name}`} target="_blank">
-                      {name}
+                    <a href={job.url} title={`${ui.visit} ${job.name}`} target="_blank">
+                      {job.name}
                     </a>
                   </h3>
-                  <h4>{position}</h4>
                 </div>
 
-                <div>
-                  <time datetime={startDate} data-title={startDate}>
-                    {startYear}
-                  </time>
-                  {' - '}
-                  <time datetime={endDate} data-title={endDate}>
-                    {endYear}
-                  </time>
-                </div>
-              </header>
+                <ul class="positions-timeline">
+                  {job.positions!.map((pos, index) => {
+                    const isLast = index === job.positions!.length - 1;
+                    const hasMultiple = job.positions!.length > 1;
+                    const startFormatted = formatDate(pos.startDate);
+                    const endFormatted = pos.endDate ? formatDate(pos.endDate) : ui.current;
 
-              <footer>
-                <p>{summary}</p>
-              </footer>
-            </article>
+                    return (
+                      <li class={`position-item ${isLast ? 'last' : ''} ${!hasMultiple ? 'single' : ''}`}>
+                        <div class="timeline-marker">
+                          <div class="dot"></div>
+                          <div class="line"></div>
+                        </div>
+                        <div class="position-content">
+                          <div class="position-header">
+                            <h4>{pos.title}</h4>
+                            <time>{startFormatted} - {endFormatted}</time>
+                          </div>
+                          <p class="position-description">{pos.description}</p>
+                          <div class="skills-list">
+                            {pos.skills.map((skill) => (
+                              <span class="skill-tag">{skill}</span>
+                            ))}
+                          </div>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ) : (
+              <article>
+                <header>
+                  <div>
+                    <h3>
+                      <a href={job.url} title={`${ui.visit} ${job.name}`} target="_blank">
+                        {job.name}
+                      </a>
+                    </h3>
+                    <h4>{job.position}</h4>
+                  </div>
+                  <div>
+                    <time datetime={job.startDate}>
+                      {job.startDate.split('-')[0]}
+                    </time>
+                    {' - '}
+                    <time datetime={job.endDate}>
+                      {job.endDate ? job.endDate.split('-')[0] : ui.current}
+                    </time>
+                  </div>
+                </header>
+                <footer>
+                  <p>{job.summary}</p>
+                </footer>
+              </article>
+            )}
           </li>
         );
       })
@@ -64,21 +121,160 @@ const work = cv.work as WorkExperience[];
 </Section>
 
 <style>
-  ul {
+  .work-list {
     margin: 16px 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 24px;
   }
 
-  h3 {
-    padding-bottom: 4px;
+  .work-item {
+    list-style: none;
+  }
+
+  /* Company with multiple positions */
+  .company-with-positions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .company-header h3 {
+    font-weight: 600;
+    color: var(--color-text-dark);
+    font-size: 1.1rem;
+  }
+
+  .company-header a {
+    color: var(--color-text-dark);
+  }
+
+  .company-header a:hover {
+    text-decoration: underline;
+  }
+
+  /* Timeline styles */
+  .positions-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 8px;
+    position: relative;
+  }
+
+  .position-item {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    position: relative;
+  }
+
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 12px;
+    position: relative;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-text-secondary);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+    z-index: 1;
+  }
+
+  .line {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: calc(100% + 20px);
+    background-color: var(--color-text-secondary);
+  }
+
+  /* Última posición cuando hay múltiples: línea corta */
+  .position-item.last .line {
+    height: 20px;
+  }
+
+  /* Posición única: línea corta */
+  .position-item.single .line {
+    height: 20px;
+  }
+
+  .position-content {
+    flex: 1;
+    padding-bottom: 20px;
+  }
+
+  .position-item.last .position-content {
+    padding-bottom: 0;
+  }
+
+  .position-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+  }
+
+  .position-header h4 {
+    font-weight: 500;
+    color: var(--color-text-dark);
+    font-size: 0.95rem;
+  }
+
+  .position-header time {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .position-description {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .skill-tag {
+    background-color: var(--color-bg-badge);
+    color: var(--color-text-inverted);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+  }
+
+  /* Legacy single position styles */
+  article header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
   }
 
   article h3 {
     font-weight: 600;
     color: var(--color-text-dark);
     font-size: 1.1rem;
+    padding-bottom: 4px;
+  }
+
+  article h4 {
+    font-weight: 500;
+    color: var(--color-text-dark);
+    font-size: 0.95rem;
   }
 
   article a {
@@ -89,14 +285,26 @@ const work = cv.work as WorkExperience[];
     text-decoration: underline;
   }
 
-  /* En móviles, siempre mostrar subrayado en enlaces */
+  article footer p {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    margin-top: 8px;
+  }
+
+  /* Mobile styles */
   @media (width <= 700px) {
+    .company-header a,
     article a {
       text-decoration: underline;
     }
-    
-    time {
-      text-align: right;
+
+    .position-header {
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .position-header time {
+      font-size: 0.8rem;
     }
   }
 </style>

@@ -31,18 +31,52 @@
   "work": [
     {
       "name": "America Virtual",
-      "position": "Desarrollador FullStack foco Frontend",
-      "startDate": "2025-06-01",
       "url": "https://americavirtualsa.com/",
-      "summary": "Desarrollo e integración de interfaces web y móviles con React Dom y React Native, asegurando consistencia visual según requerimientos del cliente. Desarrollo de dashboards administrativos en ReactJS (Material UI) y una aplicación móvil en React Native, colaborando en la arquitectura y consumo de APIs REST. Participación activa en equipos ágiles con Jira, colaborando en estimaciones, seguimiento de tareas y reuniones diarias bajo el marco de trabajo Scrum."
+      "startDate": "2025-06-01",
+      "positions": [
+        {
+          "title": "Desarrollador React Native",
+          "startDate": "2025-12-01",
+          "endDate": null,
+          "description": "Implementación de SQLite en aplicación de control de accesos por padrón para eventos (OurClub), permitiendo almacenamiento offline de datos de asistentes y funcionamiento sin conectividad.",
+          "skills": ["React Native", "SQLite", "TypeScript"]
+        },
+        {
+          "title": "Desarrollador React Native",
+          "startDate": "2025-10-01",
+          "endDate": "2025-12-01",
+          "description": "Desarrollo de aplicación Cuaderno de Notificaciones para el Boletín Oficial de alumnos de escuelas de provincia de Buenos Aires (DGCYE), gestionando asistencias, notas y trayectoria escolar.",
+          "skills": ["React Native", "TypeScript"]
+        },
+        {
+          "title": "Desarrollador Frontend",
+          "startDate": "2025-08-01",
+          "endDate": "2025-10-01",
+          "description": "Desarrollo de CRM para Gestión Seguros con React y Material UI, registrando llamadas y seguimiento de clientes.",
+          "skills": ["React", "Material UI", "TypeScript"]
+        },
+        {
+          "title": "Desarrollador FullStack",
+          "startDate": "2025-06-01",
+          "endDate": "2025-08-01",
+          "description": "Mantenimiento y desarrollo en proyecto legacy OurClub con AngularJS y .NET 3.1.",
+          "skills": ["AngularJS", ".NET 3.1"]
+        }
+      ]
     },
     {
       "name": "Microgenesis",
-      "position": "Desarrollador Frontend",
       "url": "https://www.microgenesis.net/en/",
       "startDate": "2022-12-01",
-      "endDate": "2023-05-01",
-      "summary": "Desarrollé el frontend de una plataforma de salud, implementando el diseño UI con HTML y CSS, optimizando el código para mejorar rendimiento, y colaborando con diseñadores y backend para garantizar una experiencia de usuario fluida y atractiva."
+      "positions": [
+        {
+          "title": "Desarrollador Frontend",
+          "startDate": "2022-12-01",
+          "endDate": "2023-05-01",
+          "description": "Desarrollo del frontend de una plataforma de salud, implementando el diseño UI con HTML y CSS, optimizando el código para mejorar rendimiento, y colaborando con diseñadores y backend para garantizar una experiencia de usuario fluida y atractiva.",
+          "skills": ["HTML", "CSS", "JavaScript"]
+        }
+      ]
     }
   ],
   "education": [
