@@ -1,5 +1,4 @@
 ---
-import { basics } from '@cv';
 import { Image } from 'astro:assets';
 import Section from '@/components/Section.astro';
 import Mail from '@/icons/Mail.astro';
@@ -11,17 +10,28 @@ import WorldMap from '@/icons/WorldMap.astro';
 import Download from '@/icons/Download.astro';
 import type { SocialIcon } from '@/types';
 import Skills from './Skills.astro';
+import { getCV, getUI, getLocaleConfig, type Locale } from '@/lib/i18n';
 
-const { name, label, image, location, profiles, phone, email } = basics;
+interface Props {
+  locale?: Locale;
+}
+
+interface Profile {
+  network: string;
+  username: string;
+  url: string;
+}
+
+const { locale = 'es' } = Astro.props;
+const cv = getCV(locale);
+const ui = getUI(locale);
+const config = getLocaleConfig(locale);
+
+const { name, label, image, location, phone, email } = cv.basics;
+const profiles = cv.basics.profiles as Profile[];
 const { city, region } = location;
 
-// Generar nombre del archivo de descarga con el mes actual
 const currentDate = new Date();
-const months = [
-  'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-];
-const currentMonth = months[currentDate.getMonth()];
 const currentYear = currentDate.getFullYear();
 
 const SOCIAL_ICONS: SocialIcon = {
@@ -34,6 +44,11 @@ const linkedInfo = profiles.find(({ network }) => network === 'LinkedIn');
 const linkedUrl = linkedInfo?.url;
 
 const printInfo = [email, phone, linkedUrl].filter(Boolean).join(' • ');
+
+// Mensaje de WhatsApp según idioma
+const whatsappMessage = locale === 'es'
+  ? '¡Hola! Me interesa contactarte para conversar acerca de tu experiencia profesional.'
+  : 'Hi! I\'m interested in contacting you to discuss your professional experience.';
 ---
 
 <Section>
@@ -47,21 +62,21 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(' • ');
         <WorldMap />
         {city}, {region}
       </span>
-      
+
       <footer class="print">
         {printInfo}
       </footer>
       <footer class="no-print">
         {
           email && (
-            <a href={`mailto:${email}`} title={`Enviar un correo electrónico a ${name} al correo ${email}`} target="_blank" rel="noopener noreferrer">
+            <a href={`mailto:${email}`} title={`${ui.sendEmail} ${name}`} target="_blank" rel="noopener noreferrer">
               <Mail />
             </a>
           )
         }
         {
           phone && (
-            <a href={`https://wa.me/${phone.replace(/\D/g, '')}?text=¡Hola! Me interesa contactarte para conversar acerca de tu experiencia profesional.`} title={`Enviar mensaje de WhatsApp a ${name}`} target="_blank" rel="noopener noreferrer">
+            <a href={`https://wa.me/${phone.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappMessage)}`} title={`${ui.sendWhatsApp} ${name}`} target="_blank" rel="noopener noreferrer">
               <Phone />
             </a>
           )
@@ -71,17 +86,17 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(' • ');
             const Icon = SOCIAL_ICONS[network];
 
             return (
-              <a href={url} title={`Visitar el perfil de ${name} en ${network}`} target="_blank" rel="noopener noreferrer">
+              <a href={url} title={`${ui.visitProfile} ${network}`} target="_blank" rel="noopener noreferrer">
                 <Icon />
               </a>
             );
           })
         }
 
-        <a 
-          href="/FelipeAlemanArce_CV_WEB.pdf"
-          download={`Felipe_Arce_CV_Desarrollador_Web_${currentMonth}_${currentYear}.pdf`}
-          title="Descargar CV de Felipe Arce en formato PDF"
+        <a
+          href={config.pdfFile}
+          download={`Felipe_Arce_CV_${currentYear}.pdf`}
+          title={ui.downloadCV}
         >
           <Download />
         </a>
@@ -101,7 +116,7 @@ const printInfo = [email, phone, linkedUrl].filter(Boolean).join(' • ');
     </figure>
   </div>
   <div class="skills-section">
-    <Skills />
+    <Skills locale={locale} />
   </div>
 </Section>
 

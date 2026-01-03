@@ -1,8 +1,8 @@
 {
   "basics": {
-    "name": "Felipe Antonio Aleman Arce",
+    "name": "Felipe Arce",
     "label": "FullStack Developer",
-    "image": "https://avatars.githubusercontent.com/u/85712228?v=4",
+    "image": "https://avatars.githubusercontent.com/u/85712228?v=4&s=128",
     "email": "arceprogramando@gmail.com",
     "phone": "+54 91150990913",
     "url": "https://arceprog.dev",
@@ -49,6 +49,15 @@
       "institution": "Red Hat",
       "certificates": [
         {
+          "url": null,
+          "area": "RH134 – Red Hat System Administration II (v10.0)",
+          "description": "Currently studying RH134, deepening in RHEL system administration: shell scripting, regular expressions, task scheduling, storage management with LVM, firewall configuration, SELinux, boot process troubleshooting, system tuning, and container management.",
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "score": null,
+          "courses": ["Red Hat System Administration II"]
+        },
+        {
           "url": "https://www.credly.com/badges/b3bb2779-eefd-4646-813c-e142e5c9d219/linked_in_profile",
           "area": "RH124 – Red Hat System Administration I (v10.0)",
           "description": "During the RH124 course I gained experience in user management, permissions, storage, system processes, applying essential bash commands. Additionally, I incorporated task automation with scripts and problem solving, strengthening my foundation as a SysAdmin oriented to enterprise environments.",
@@ -65,9 +74,9 @@
         {
           "url": "https://utn-cursoingreso.vercel.app",
           "area": "University Technical Degree in Programming",
-          "description": "In my second year, I developed a personal project in Agnostic Astro with some components in React.js and Typescript, aimed at tracking my progress, achieving a 40% increase in visits in 2025 compared to the previous year. Also in the course I have worked with C# in .NET using WPF and have deepened in SQL databases, applying good development practices.",
+          "description": "University Technical Programmer graduated from UTN. During the degree, I developed a personal project in Astro with React.js and TypeScript components for tracking my progress, achieving a 40% increase in visits in 2025. I worked with C# in .NET using WPF and deepened in SQL databases, applying good development practices.",
           "startDate": "2024-01-01",
-          "endDate": null,
+          "endDate": "2025-11-01",
           "score": "9",
           "courses": ["C#", ".NET", "WPF", "SQL", "Astro", "React", "TypeScript"]
         }
@@ -78,11 +87,20 @@
       "certificates": [
         {
           "url": "https://cui.edu.ar",
-          "area": "Regular English Level 02 Basic",
-          "description": "This course seeks to strengthen fundamental reading and listening comprehension skills, with emphasis on oral and written expression. Conversational practice is prioritized through everyday situations that allow the student to gain fluency and confidence when communicating in English. At the end, Level 2 focuses especially on the use of the present tense as a basis for communication.",
-          "startDate": "2025-08-30",
+          "area": "Regular English Level 03 - Basic Cycle",
+          "description": "Currently studying Level 3 of the CUI Extracurricular English Program at the Faculty of Agronomy (UBA). Strengthening the four main skills: speaking, listening, reading, and writing, with a communicative approach in real-life contexts.",
+          "startDate": "2026-01-13",
           "endDate": null,
           "score": null,
+          "courses": ["Basic English Level 03"]
+        },
+        {
+          "url": "https://cui.edu.ar",
+          "area": "Regular English Level 02 - Basic Cycle",
+          "description": "Course from the CUI Extracurricular English Program at the Faculty of Agronomy (UBA). I strengthened reading and listening comprehension skills, with emphasis on oral and written expression, prioritizing conversational practice in everyday situations.",
+          "startDate": "2025-08-01",
+          "endDate": "2025-12-01",
+          "score": "82",
           "courses": ["Basic English Level 02"]
         }
       ]
@@ -117,7 +135,7 @@
           "url": "https://cert.efset.org/5DYD2H",
           "area": "Intermediate English",
           "description": "EFSET quick certificate that reflects my English level: B1 in reading and listening comprehension, and A2 in speaking.",
-          "startDate": "2022-03-04",
+          "startDate": "2022-04-03",
           "endDate": null,
           "score": "9",
           "courses": ["English"]
@@ -126,7 +144,7 @@
           "url": null,
           "area": "SQL",
           "description": "SQL Database Design, I'm learning :(",
-          "startDate": "2024-03-04",
+          "startDate": "2024-04-03",
           "endDate": null,
           "score": "9",
           "courses": ["SQL"]
@@ -135,7 +153,7 @@
           "url": null,
           "area": "Linux",
           "description": "Linux enthusiast sometimes I write mkdir, ls, pwd, and rm -rf. I use Fedora as my main distribution since 2022.",
-          "startDate": "2022-03-04",
+          "startDate": "2022-04-03",
           "endDate": null,
           "score": "9",
           "courses": ["Linux"]
@@ -144,7 +162,7 @@
           "url": null,
           "area": "Figma",
           "description": "I have contributed in various job simulations, using Figma as the main tool for UX/UI design. I have created everything necessary to develop a web application and I feel comfortable working with Figma.",
-          "startDate": "2022-03-04",
+          "startDate": "2022-04-03",
           "endDate": null,
           "score": "9",
           "courses": ["Figma"]
@@ -294,13 +312,6 @@
   ],
   "projects": [
     {
-      "name": "Microgenesis",
-      "isActive": false,
-      "description": "Work project for a health and maternity company",
-      "highlights": ["HTML", "CSS", "JAVASCRIPT"],
-      "url": "https://www.microgenesis.net/en/"
-    },
-    {
       "name": "University Technical Degree in Programming",
       "isActive": true,
       "description": "Website for the university technical degree in programming UTN",
@@ -309,20 +320,35 @@
       "github": "https://github.com/arceprogramando/utn_cursoingreso"
     },
     {
+      "name": "Microgenesis",
+      "isActive": false,
+      "description": "Work project for a health and maternity company",
+      "highlights": ["HTML", "CSS", "JAVASCRIPT"],
+      "url": "https://www.microgenesis.net/en/"
+    },
+    {
+      "name": "First Portfolio",
+      "isActive": true,
+      "description": "First portfolio done",
+      "highlights": ["HTML", "CSS", "Responsive Design"],
+      "url": "https://arceprog.vercel.app",
+      "github": "https://github.com/arceprogramando/arceprog"
+    },
+    {
       "name": "Architecture of a Javascript Server",
       "isActive": true,
       "description": "HTML, CSS, and JavaScript code playground for sharing",
-      "highlights": ["NodeJS", "Express", "MongoDB"],
+      "highlights": ["NodeJS", "Express", "MongoDB", "Handlebars"],
       "url": "https://arquitectura-del-servidor-production.up.railway.app",
       "github": "https://github.com/arceprogramando/arquitectura-del-servidor"
     },
     {
-      "name": "React Project",
+      "name": "React For My Server",
       "isActive": true,
       "description": "React project done for CoderHouse",
       "highlights": ["ReactJs", "Tailwind"],
-      "url": "https://primer-proyecto-react-coderhouse.vercel.app",
-      "github": "https://github.com/arceprogramando/primer_proyecto_react_coderhouse"
+      "url": "https://www.figma.com/proto/W2PsvXJEoywwCVJCjQMSpg/Wine-World?type=design&node-id=4-19824&t=UrJlvKtKGiMBgYue-0&scaling=min-zoom&page-id=1%3A4&starting-point-node-id=4%3A19824",
+      "github": "https://github.com/arceprogramando/react-para-mi-servidor"
     },
     {
       "name": "Javascript Project",
@@ -339,14 +365,6 @@
       "highlights": ["HTML", "CSS", "Responsive Design"],
       "url": "https://primer-proyecto-desarrolloweb-coderhouse.vercel.app",
       "github": "https://github.com/arceprogramando/primer_proyecto_desarrolloweb_coderhouse"
-    },
-    {
-      "name": "First Portfolio",
-      "isActive": true,
-      "description": "First portfolio done",
-      "highlights": ["HTML", "CSS", "Responsive Design"],
-      "url": "https://primer-proyecto-desarrolloweb-coderhouse.vercel.app",
-      "github": "https://arceprog.vercel.app"
     }
   ],
   "jobSimulations": [

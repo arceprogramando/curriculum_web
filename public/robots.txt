@@ -5,4 +5,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://www.arceprog.dev/sitemap-index.xml
+Sitemap: https://arceprog.dev/sitemap-index.xml

@@ -1,11 +1,28 @@
 ---
 import GitHub from '@/icons/GitHub.astro';
 import Section from '../Section.astro';
+import { getCV, getUI, type Locale } from '@/lib/i18n';
 
-import { projects } from '@cv';
+interface Props {
+  locale?: Locale;
+}
+
+interface Project {
+  name: string;
+  url: string;
+  description: string;
+  highlights: string[];
+  isActive: boolean;
+  github?: string;
+}
+
+const { locale = 'es' } = Astro.props;
+const cv = getCV(locale);
+const ui = getUI(locale);
+const projects = cv.projects as Project[];
 ---
 
-<Section title="Proyectos">
+<Section title={ui.projects}>
   <ul>
     {
       projects.map(({ url, description, highlights, name, isActive, github }) => {
@@ -14,12 +31,12 @@ import { projects } from '@cv';
             <article>
               <header>
                 <h3>
-                  <a href={url} target="_blank" title={`Ver el proyecto ${name}`}>
+                  <a href={url} target="_blank" title={`${ui.viewProject} ${name}`}>
                     {name}
                   </a>
                   {isActive && <span>•</span>}
                   {github && (
-                    <a class="github-code-link" href={github} target="_blank" title={`Ver código fuente del proyecto ${name}`}>
+                    <a class="github-code-link" href={github} target="_blank" title={`${ui.viewSourceCode} ${name}`}>
                       <GitHub />
                     </a>
                   )}

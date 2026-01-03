@@ -1,11 +1,18 @@
 ---
 import Section from '../Section.astro';
+import { getCV, getUI, type Locale } from '@/lib/i18n';
 
-import { basics } from '@cv';
-const { summary } = basics;
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'es' } = Astro.props;
+const cv = getCV(locale);
+const ui = getUI(locale);
+const { summary } = cv.basics;
 ---
 
-<Section title="Sobre mí">
+<Section title={ui.aboutMe}>
   <p>
     {summary}
   </p>

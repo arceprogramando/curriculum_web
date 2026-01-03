@@ -1,24 +1,61 @@
 ---
-import { basics } from '@cv';
+import {
+  getCV,
+  getLocaleConfig,
+  getAllLocaleUrls,
+  getOtherLocales,
+  LOCALES,
+  DEFAULT_LOCALE,
+  type Locale
+} from '@/lib/i18n';
 import '@/styles/theme.css';
 
 interface Props {
-  title: string;
+  title?: string;
+  locale?: Locale;
 }
 
+const { locale = DEFAULT_LOCALE } = Astro.props;
+const config = getLocaleConfig(locale);
+const cv = getCV(locale);
+const { image } = cv.basics;
 
-const { image } = basics;
+const currentPath = Astro.url.pathname;
+const canonicalUrl = `https://arceprog.dev${currentPath}`;
+const localeUrls = getAllLocaleUrls();
+const otherLocales = getOtherLocales(locale);
+
+// Fecha de última actualización (se actualiza en cada build)
+const buildDate = new Date().toISOString();
+
+// Breadcrumb para SEO
+const breadcrumbName = locale === 'es' ? 'Inicio' : 'Home';
+
+// Skills expandidos para knowsAbout
+const allSkills = [
+  "JavaScript", "TypeScript", "React", "React Native", "Next.js",
+  "Node.js", "Express.js", "NestJS", "MongoDB", "PostgreSQL", "SQL",
+  "HTML", "CSS", "Tailwind CSS", "Material UI", "Git", "GitHub",
+  "Figma", "Jira", "Scrum", "REST API", "Linux", "Fedora"
+];
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={config.htmlLang}>
   <head>
     <meta charset="UTF-8" />
-    <title>Felipe Arce - Desarrollador FullStack MERN | Portfolio</title>
-    <meta name="description" content="Desarrollador web y estudiante Técnico Universitario en Programación, con experiencia en React, Node.js, MongoDB y tecnologías modernas. Especializado en desarrollo frontend y backend con un año de experiencia profesional." />
+    <title>{config.pageTitle}</title>
+    <meta name="description" content={config.metaDescription} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
+
+    <!-- SEO: Canonical y hreflang (generado dinámicamente para todos los idiomas) -->
+    <link rel="canonical" href={canonicalUrl} />
+    {LOCALES.map(loc => (
+      <link rel="alternate" hreflang={loc} href={localeUrls[loc]} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={localeUrls[DEFAULT_LOCALE]} />
+
     <!-- Preload critical resources -->
     <link rel="preload" as="image" href={image} />
     <link rel="preload" as="image" href="/portada-og.png" />
@@ -26,93 +63,152 @@ const { image } = basics;
     <link rel="preconnect" href="https://avatars.githubusercontent.com" />
     <link rel="dns-prefetch" href="https://res.cloudinary.com" />
     <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
-    
+
     <meta name="google-site-verification" content="jfdI3O_sVUKVWOWPcViT3dZF-JayDl6N87uwcqGkXXU" />
-    
+
     <!-- Facebook Meta Tags / Open Graph (usado por WhatsApp, LinkedIn, etc) -->
-    <meta property="og:url" content="https://arceprog.dev" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Felipe Arce - Desarrollador FullStack MERN" />
-    <meta property="og:description" content="Desarrollador web y estudiante Técnico Universitario en Programación, con experiencia en React, Node.js, MongoDB y tecnologías modernas. Especializado en desarrollo frontend y backend." />
+    <meta property="og:title" content={config.ogTitle} />
+    <meta property="og:description" content={config.ogDescription} />
     <meta property="og:site_name" content="Felipe Arce Portfolio" />
     <meta property="og:image" content="https://arceprog.dev/portada-og.png" />
     <meta property="og:image:secure_url" content="https://arceprog.dev/portada-og.png" />
-    <meta property="og:image:alt" content="Felipe Arce - Desarrollador FullStack MERN | Portfolio y CV" />
+    <meta property="og:image:alt" content={`${config.ogTitle} | Portfolio`} />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="es_AR" />
-    
-    <!-- Meta tags adicionales para WhatsApp -->
-    <meta property="og:updated_time" content="2025-07-20T19:00:00Z" />
+    <meta property="og:locale" content={config.ogLocale} />
+    {otherLocales.map(loc => (
+      <meta property="og:locale:alternate" content={getLocaleConfig(loc).ogLocale} />
+    ))}
+
+    <!-- Meta tags adicionales -->
+    <meta property="og:updated_time" content={buildDate} />
     <meta name="robots" content="index, follow" />
     <meta name="referrer" content="origin-when-cross-origin" />
 
-    <meta http-equiv="content-language" content="es" />
+    <meta http-equiv="content-language" content={locale} />
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@arceprog" />
     <meta name="twitter:creator" content="@arceprog" />
     <meta property="twitter:domain" content="arceprog.dev" />
-    <meta property="twitter:url" content="https://arceprog.dev" />
-    <meta name="twitter:title" content="Felipe Arce - Desarrollador FullStack MERN" />
-    <meta name="twitter:description" content="Desarrollador web especializado en React, Node.js y MongoDB. Portfolio con proyectos y experiencia en desarrollo frontend y backend." />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={config.ogTitle} />
+    <meta name="twitter:description" content={config.ogDescription} />
     <meta name="twitter:image" content="https://arceprog.dev/portada-og.png" />
-    <meta name="twitter:image:alt" content="Felipe Arce - Desarrollador FullStack MERN | Portfolio y CV" />
-    
+    <meta name="twitter:image:alt" content={`${config.ogTitle} | Portfolio`} />
+
     <!-- Asegurar que WhatsApp pueda acceder -->
     <meta name="format-detection" content="telephone=no" />
-    
-    <!-- LinkedIn Meta Tags (usa Open Graph principalmente) -->
-    <!-- Ya están definidas arriba en og: tags -->
-    
-    <!-- Telegram Meta Tags (usa Open Graph) -->
-    <!-- Ya están definidas arriba en og: tags -->
-    
+
     <!-- Discord Meta Tags (usa Open Graph) -->
     <meta name="theme-color" content="#121a2b" />
 
-    <!-- Note: theme-color must use hex value, not CSS variable -->
-
-    <meta
-      name="keywords"
-      content="Felipe Arce, desarrollador fullstack, desarrollador MERN, React, Node.js, MongoDB, Express, JavaScript, TypeScript, portfolio developer, programador web, frontend developer, backend developer, Buenos Aires, Argentina"
-    />
-
+    <meta name="keywords" content={config.keywords} />
     <meta name="author" content="Felipe Arce" />
     <meta name="google" content="nositelinkssearchbox" />
 
-    <!-- Structured Data for better social sharing -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Felipe Arce",
-        "jobTitle": "Desarrollador FullStack MERN",
-        "url": "https://arceprog.dev",
-        "image": "https://arceprog.dev/portada-og.png",
-        "description": "Desarrollador web y estudiante Técnico Universitario en Programación, con experiencia en React, Node.js, MongoDB y tecnologías modernas. Especializado en desarrollo frontend y backend con un año de experiencia profesional.",
-        "knowsAbout": ["JavaScript", "React", "Node.js", "MongoDB", "Express", "HTML", "CSS", "TypeScript", "Git", "Tailwind CSS"],
-        "alumniOf": {
-          "@type": "EducationalOrganization",
-          "name": "Universidad Tecnológica Nacional",
-          "sameAs": "https://www.utn.edu.ar/"
-        },
-        "worksFor": {
-          "@type": "Organization",
-          "name": "America Virtual"
-        },
-        "sameAs": [
-          "https://www.linkedin.com/in/felipe-arce-programador/",
-          "https://github.com/arceprogramando",
-          "https://twitter.com/arceprog"
-        ]
+    <!-- Structured Data: Person Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Felipe Arce",
+      "givenName": "Felipe",
+      "familyName": "Arce",
+      "jobTitle": config.jobTitle,
+      "url": "https://arceprog.dev",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://arceprog.dev/portada-og.png",
+        "width": 1200,
+        "height": 630
+      },
+      "description": config.ogDescription,
+      "knowsAbout": allSkills,
+      "knowsLanguage": [
+        { "@type": "Language", "name": "Spanish", "alternateName": "es" },
+        { "@type": "Language", "name": "English", "alternateName": "en" }
+      ],
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Universidad Tecnológica Nacional",
+        "sameAs": "https://www.utn.edu.ar/"
+      },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Técnico Universitario en Programación",
+        "credentialCategory": "degree"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "America Virtual",
+        "url": "https://americavirtualsa.com/"
+      },
+      "sameAs": [
+        "https://linkedin.com/in/arcefelipe/",
+        "https://github.com/arceprogramando"
+      ],
+      "email": "arceprogramando@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Buenos Aires",
+        "addressCountry": "AR"
       }
-    </script>
+    })} />
+
+    <!-- Structured Data: WebSite Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Felipe Arce Portfolio",
+      "alternateName": "arceprog.dev",
+      "url": "https://arceprog.dev",
+      "inLanguage": [locale === 'es' ? "es-AR" : "en-US"],
+      "author": {
+        "@type": "Person",
+        "name": "Felipe Arce"
+      },
+      "dateModified": buildDate
+    })} />
+
+    <!-- Structured Data: BreadcrumbList Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": breadcrumbName,
+          "item": canonicalUrl
+        }
+      ]
+    })} />
   </head>
   <body>
     <slot />
+
+    <!-- Detección automática de idioma (solo primera visita) -->
+    <script is:inline>
+      (function() {
+        const path = window.location.pathname;
+        const isRoot = path === '/';
+        const hasPreference = localStorage.getItem('locale-preference');
+
+        if (isRoot && !hasPreference) {
+          const lang = navigator.language || navigator.userLanguage || 'es';
+          if (!lang.toLowerCase().startsWith('es')) {
+            localStorage.setItem('locale-preference', 'en');
+            window.location.replace('/en/');
+          } else {
+            localStorage.setItem('locale-preference', 'es');
+          }
+        }
+      })();
+    </script>
   </body>
 </html>
 

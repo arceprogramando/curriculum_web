@@ -1,0 +1,74 @@
+---
+import { getLocaleConfig, getOtherLocales, getLocalePath, type Locale } from '@/lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const otherLocales = getOtherLocales(locale);
+---
+
+<div class="language-selector no-print">
+  {otherLocales.map(otherLocale => {
+    const otherConfig = getLocaleConfig(otherLocale);
+    const url = getLocalePath(otherLocale);
+
+    return (
+      <a
+        href={url}
+        class="language-switch"
+        title={otherConfig.label}
+        aria-label={otherConfig.label}
+        onclick={`localStorage.setItem('locale-preference', '${otherLocale}')`}
+      >
+        {otherLocale.toUpperCase()}
+      </a>
+    );
+  })}
+</div>
+
+<style>
+  .language-selector {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .language-switch {
+    background: var(--color-bg-dark);
+    color: var(--color-text-inverted);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .language-switch:hover {
+    background: var(--color-button-bg);
+    color: var(--color-text-black);
+  }
+
+  @media print {
+    .language-selector {
+      display: none;
+    }
+  }
+
+  @media (width <= 700px) {
+    .language-selector {
+      top: 0.5rem;
+      right: 0.5rem;
+    }
+
+    .language-switch {
+      padding: 0.4rem 0.6rem;
+      font-size: 0.75rem;
+    }
+  }
+</style>

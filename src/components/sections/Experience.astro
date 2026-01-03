@@ -1,15 +1,32 @@
 ---
 import Section from '../Section.astro';
+import { getCV, getUI, type Locale } from '@/lib/i18n';
 
-import { work } from '@cv';
+interface Props {
+  locale?: Locale;
+}
+
+interface WorkExperience {
+  name: string;
+  position: string;
+  url: string;
+  startDate: string;
+  endDate: string | null;
+  summary: string;
+}
+
+const { locale = 'es' } = Astro.props;
+const cv = getCV(locale);
+const ui = getUI(locale);
+const work = cv.work as WorkExperience[];
 ---
 
-<Section title="Experiencia laboral">
+<Section title={ui.workExperience}>
   <ul>
     {
       work.map(({ name, startDate, endDate, position, summary, url }) => {
-        const startYear = new Date(startDate).getFullYear();
-        const endYear = endDate != null ? new Date(endDate).getFullYear() : 'Actual';
+        const startYear = startDate.split('-')[0];
+        const endYear = endDate != null ? endDate.split('-')[0] : ui.current;
 
         return (
           <li>
@@ -17,7 +34,7 @@ import { work } from '@cv';
               <header>
                 <div>
                   <h3>
-                    <a href={url} title={`Ver ${name}`} target="_blank">
+                    <a href={url} title={`${ui.visit} ${name}`} target="_blank">
                       {name}
                     </a>
                   </h3>

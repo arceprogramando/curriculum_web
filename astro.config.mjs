@@ -4,7 +4,24 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://arceprog.dev',
   compressHTML: true,
-  integrations: [sitemap()],
+  i18n: {
+    defaultLocale: 'es',
+    locales: ['es', 'en'],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  },
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: 'es',
+        locales: {
+          es: 'es-AR',
+          en: 'en-US',
+        },
+      },
+    }),
+  ],
   image: {
     domains: ['avatars.githubusercontent.com'],
   },

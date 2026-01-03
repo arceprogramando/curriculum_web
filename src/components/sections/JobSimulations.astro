@@ -1,9 +1,34 @@
 ---
-import { jobSimulations } from '@cv';
 import Section from '../Section.astro';
+import { getCV, getUI, type Locale } from '@/lib/i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+interface SimulationProject {
+  name: string;
+  url: string;
+  description: string;
+  startDate: string;
+  endDate: string | null;
+}
+
+interface JobSimulation {
+  simulationName: string;
+  isActive: boolean;
+  description: string;
+  highlights: string[];
+  projects: SimulationProject[];
+}
+
+const { locale = 'es' } = Astro.props;
+const cv = getCV(locale);
+const ui = getUI(locale);
+const jobSimulations = cv.jobSimulations as JobSimulation[];
 ---
 
-<Section title="Simulaciones Laborales">
+<Section title={ui.jobSimulations}>
   <ul>
     {
       jobSimulations.map(({ simulationName, description, projects }) => (

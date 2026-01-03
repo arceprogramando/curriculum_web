@@ -1,14 +1,14 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
-      "@cv": [
-        "./cv.json"
-      ],
-      "@/*": [
-        "src/*"
-      ]
-    }
-  }
+      "@cv": ["./cv.json"],
+      "@/*": ["./src/*"]
+    },
+    "types": ["astro/client"]
+  },
+  "include": ["src/**/*", "src/**/*.astro"],
+  "exclude": ["node_modules", "dist"]
 }

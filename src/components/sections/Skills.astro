@@ -9,8 +9,21 @@ import Node from '@/icons/node.astro';
 import Git from '@/icons/git.astro';
 import Tailwind from '@/icons/tailwind.astro';
 import Next from '@/icons/next.astro';
+import { getCV, type Locale } from '@/lib/i18n';
 
-import { skills } from '@cv';
+interface Props {
+  locale?: Locale;
+}
+
+interface Skill {
+  name: string;
+  level: string;
+  keywords: string[];
+}
+
+const { locale = 'es' } = Astro.props;
+const cv = getCV(locale);
+const skills = cv.skills as Skill[];
 
 const SKILLS_ICONS: Record<string, any> = {
   HTML,

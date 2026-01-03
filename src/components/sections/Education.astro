@@ -1,9 +1,33 @@
 ---
 import Section from '../Section.astro';
-import { education } from '@cv';
+import { getCV, getUI, type Locale } from '@/lib/i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+interface Certificate {
+  url: string | null;
+  area: string;
+  description: string;
+  startDate: string;
+  endDate: string | null;
+  score: string | null;
+  courses: string[];
+}
+
+interface EducationEntry {
+  institution: string;
+  certificates: Certificate[];
+}
+
+const { locale = 'es' } = Astro.props;
+const cv = getCV(locale);
+const ui = getUI(locale);
+const education = cv.education as EducationEntry[];
 ---
 
-<Section title="Educación">
+<Section title={ui.education}>
   <ul>
     {
       education.map(({ institution, certificates }) => (
@@ -13,9 +37,9 @@ import { education } from '@cv';
           </div>
           <ul>
             {certificates.map(
-              ({ startDate, endDate, area, url, description }: any) => {
+              ({ startDate, endDate, area, url, description }) => {
                 const startYear = startDate.split('-')[0];
-                const endYear = endDate != null ? endDate.split('-')[0] : 'Actual';
+                const endYear = endDate != null ? endDate.split('-')[0] : ui.current;
                 const years = `${startYear} - ${endYear}`;
 
                 return (
