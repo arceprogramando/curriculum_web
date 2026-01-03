@@ -14,9 +14,8 @@ import { education } from '@cv';
           <ul>
             {certificates.map(
               ({ startDate, endDate, area, url, description }: any) => {
-                const startYear = new Date(startDate).getFullYear();
-                const endYear =
-                  endDate != null ? new Date(endDate).getFullYear() : 'Actual';
+                const startYear = startDate.split('-')[0];
+                const endYear = endDate != null ? endDate.split('-')[0] : 'Actual';
                 const years = `${startYear} - ${endYear}`;
 
                 return (

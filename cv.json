@@ -50,6 +50,15 @@
       "institution": "Red Hat",
       "certificates": [
         {
+          "url": null,
+          "area": "RH134 – Red Hat System Administration II (v10.0)",
+          "description": "Cursando RH134, profundizando en administración de sistemas RHEL: shell scripting, expresiones regulares, programación de tareas, gestión de almacenamiento con LVM, configuración de firewall, SELinux, troubleshooting del proceso de arranque, tuning del sistema y gestión de contenedores.",
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "score": null,
+          "courses": ["Red Hat System Administration II"]
+        },
+        {
           "url": "https://www.credly.com/badges/b3bb2779-eefd-4646-813c-e142e5c9d219/linked_in_profile",
           "area": "RH124 – Red Hat System Administration I (v10.0)",
           "description": "Durante la cursada de RH124 adquirí experiencia en gestión de usuarios, permisos, almacenamiento, procesos del sistema, aplicando comandos esenciales de bash. Además, incorporé automatización de tareas con scripts y resolución de problemas, fortaleciendo mi base como SysAdmin orientado a entornos empresariales.",
@@ -66,9 +75,9 @@
         {
           "url": "https://utn-cursoingreso.vercel.app",
           "area": "Tecnicatura Universitaria en Programación",
-          "description": "Cursando el segundo año, desarrollé un proyecto personal en Astro Agnóstico con algunos componentes en React.js y Typescript, destinado al seguimiento de mis avances, logrando un 40% de incremento en visitas en 2025 respecto al año anterior. También en la cursada he trabajado con C# en .NET usando WPF y he profundizado en bases de datos SQL, aplicando buenas prácticas de desarrollo.",
+          "description": "Técnico Universitario en Programación graduado de la UTN. Durante la carrera desarrollé un proyecto personal en Astro con componentes en React.js y TypeScript para el seguimiento de mis avances, logrando un 40% de incremento en visitas en 2025. Trabajé con C# en .NET usando WPF y profundicé en bases de datos SQL, aplicando buenas prácticas de desarrollo.",
           "startDate": "2024-01-01",
-          "endDate": null,
+          "endDate": "2025-11-01",
           "score": "9",
           "courses": ["C#", ".NET", "WPF", "SQL", "Astro", "React", "TypeScript"]
         }
@@ -79,11 +88,20 @@
       "certificates": [
         {
           "url": "https://cui.edu.ar",
-          "area": "Inglés Regular Nivel 02 Básico",
-          "description": "Este curso busca fortalecer las habilidades fundamentales de comprensión lectora y auditiva, con énfasis en la expresión oral y escrita. Se prioriza la práctica conversacional mediante situaciones cotidianas que permitan al estudiante ganar fluidez y confianza al comunicarse en inglés. Al final, en el Nivel 2 se enfoca especialmente en el uso del tiempo presente como base para la comunicación.",
-          "startDate": "2025-08-30",
+          "area": "Inglés Regular Nivel 03 - Ciclo Básico",
+          "description": "Cursando el Nivel 3 del Programa Extracurricular de Inglés del CUI en la Facultad de Agronomía (UBA). Fortaleciendo las cuatro habilidades principales: hablar, escuchar, leer y escribir, con enfoque comunicativo en contextos de la vida real.",
+          "startDate": "2026-01-13",
           "endDate": null,
           "score": null,
+          "courses": ["Inglés Básico Nivel 03"]
+        },
+        {
+          "url": "https://cui.edu.ar",
+          "area": "Inglés Regular Nivel 02 - Ciclo Básico",
+          "description": "Curso del Programa Extracurricular de Inglés del CUI en la Facultad de Agronomía (UBA). Fortalecí habilidades de comprensión lectora y auditiva, con énfasis en expresión oral y escrita, priorizando la práctica conversacional en situaciones cotidianas.",
+          "startDate": "2025-08-01",
+          "endDate": "2025-12-01",
+          "score": "82",
           "courses": ["Inglés Básico Nivel 02"]
         }
       ]
@@ -118,7 +136,7 @@
           "url": "https://cert.efset.org/5DYD2H",
           "area": "Ingles Intermedio",
           "description": "Certificado rápido de EFSET que refleja mi nivel de inglés:  B1 en lectura y comprensión auditiva, y A2 en habla.",
-          "startDate": "03-4-2022",
+          "startDate": "2022-04-03",
           "endDate": null,
           "score": "9",
           "courses": ["Ingles"]
@@ -127,7 +145,7 @@
           "url": null,
           "area": "SQL",
           "description": "Diseño de Base de Datos SQL , Estoy aprendiendo :(",
-          "startDate": "03-4-2024",
+          "startDate": "2024-04-03",
           "endDate": null,
           "score": "9",
           "courses": ["SQL"]
@@ -136,7 +154,7 @@
           "url": null,
           "area": "Linux",
           "description": "Entusiasta de Linux aveces escribo mkdir, ls, pwd, y rm -rf. Utilizo Fedora como mi distribución principal desde 2022.",
-          "startDate": "03-4-2022",
+          "startDate": "2022-04-03",
           "endDate": null,
           "score": "9",
           "courses": ["Linux"]
@@ -145,7 +163,7 @@
           "url": null,
           "area": "Figma",
           "description": "He contribuido en diversas simulaciones laborales, utilizando Figma como herramienta principal para el diseño UX/UI. He creado todo lo necesario para desarrollar una aplicación web y me siento cómodo trabajando con Figma.",
-          "startDate": "03-4-2022",
+          "startDate": "2022-04-03",
           "endDate": null,
           "score": "9",
           "courses": ["Figma"]
