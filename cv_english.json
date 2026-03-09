@@ -120,16 +120,16 @@
       "institution": "CUI - University Language Center",
       "certificates": [
         {
-          "url": "https://cui.edu.ar",
+          "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00477927_01509288_1_0",
           "area": "Regular English Level 03 - Basic Cycle",
-          "description": "Currently studying Level 3 of the CUI Extracurricular English Program at the Faculty of Agronomy (UBA). Strengthening the four main skills: speaking, listening, reading, and writing, with a communicative approach in real-life contexts.",
+          "description": "Completed Level 3 of the CUI Extracurricular English Program at the Faculty of Agronomy (UBA). I strengthened the four main skills: speaking, listening, reading, and writing, with a communicative approach in real-life contexts.",
           "startDate": "2026-01-13",
-          "endDate": null,
+          "endDate": "2026-03-08",
           "score": null,
           "courses": ["Basic English Level 03"]
         },
         {
-          "url": "https://cui.edu.ar",
+          "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00460949_01509288_1_0",
           "area": "Regular English Level 02 - Basic Cycle",
           "description": "Course from the CUI Extracurricular English Program at the Faculty of Agronomy (UBA). I strengthened reading and listening comprehension skills, with emphasis on oral and written expression, prioritizing conversational practice in everyday situations.",
           "startDate": "2025-08-01",

@@ -121,16 +121,16 @@
       "institution": "CUI - Centro Universitario de Idiomas",
       "certificates": [
         {
-          "url": "https://cui.edu.ar",
+          "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00477927_01509288_1_0",
           "area": "Inglés Regular Nivel 03 - Ciclo Básico",
-          "description": "Cursando el Nivel 3 del Programa Extracurricular de Inglés del CUI en la Facultad de Agronomía (UBA). Fortaleciendo las cuatro habilidades principales: hablar, escuchar, leer y escribir, con enfoque comunicativo en contextos de la vida real.",
+          "description": "Completé el Nivel 3 del Programa Extracurricular de Inglés del CUI en la Facultad de Agronomía (UBA). Fortalecí las cuatro habilidades principales: hablar, escuchar, leer y escribir, con enfoque comunicativo en contextos de la vida real.",
           "startDate": "2026-01-13",
-          "endDate": null,
+          "endDate": "2026-03-08",
           "score": null,
           "courses": ["Inglés Básico Nivel 03"]
         },
         {
-          "url": "https://cui.edu.ar",
+          "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00460949_01509288_1_0",
           "area": "Inglés Regular Nivel 02 - Ciclo Básico",
           "description": "Curso del Programa Extracurricular de Inglés del CUI en la Facultad de Agronomía (UBA). Fortalecí habilidades de comprensión lectora y auditiva, con énfasis en expresión oral y escrita, priorizando la práctica conversacional en situaciones cotidianas.",
           "startDate": "2025-08-01",
