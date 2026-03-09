@@ -1,7 +1,7 @@
 {
   "basics": {
     "name": "Felipe Arce",
-    "label": "FullStack Developer",
+    "label": "Desarrollador FullStack SSR",
     "image": "https://avatars.githubusercontent.com/u/85712228?v=4&s=128",
     "email": "arceprogramando@gmail.com",
     "phone": "+54 91150990913",
@@ -34,6 +34,13 @@
       "url": "https://americavirtualsa.com/",
       "startDate": "2025-06-01",
       "positions": [
+        {
+          "title": "Desarrollador FullStack",
+          "startDate": "2025-12-01",
+          "endDate": null,
+          "description": "Desarrollo fullstack del sistema de gestión de RRHH (RRHH Total): alta y administración de empleados, organigrama con supervisores, licencias con aprobación (vacaciones, certificados), objetivos y evaluaciones por ciclos, home office y noticias internas. Backend con NestJS, PostgreSQL y Prisma (JWT, RBAC, auditoría, Swagger); frontend con Next.js 15, React 19 y shadcn/ui; importación y exportación de empleados desde Excel con validaciones y resolución de supervisores.",
+          "skills": ["NestJS", "Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Tailwind", "JWT", "Swagger", "Excel"]
+        },
         {
           "title": "Desarrollador React Native",
           "startDate": "2025-12-01",
@@ -120,6 +127,15 @@
     {
       "institution": "CUI - Centro Universitario de Idiomas",
       "certificates": [
+        {
+          "url": "https://cui.edu.ar/",
+          "area": "Inglés Regular Nivel 04 - Ciclo Básico",
+          "description": "Inicio el 30 de marzo de 2026 el Nivel 4 del Programa Extracurricular de Inglés del CUI en la Facultad de Agronomía (UBA).",
+          "startDate": "2026-03-30",
+          "endDate": null,
+          "score": null,
+          "courses": ["Inglés Básico Nivel 04"]
+        },
         {
           "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00477927_01509288_1_0",
           "area": "Inglés Regular Nivel 03 - Ciclo Básico",
