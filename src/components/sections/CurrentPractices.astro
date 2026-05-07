@@ -1,0 +1,149 @@
+---
+import { getCollection } from 'astro:content';
+import Section from '../Section.astro';
+import { getLocalePath, getUI, type Locale } from '@/lib/i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'es' } = Astro.props;
+const ui = getUI(locale);
+
+const latestPosts = (await getCollection('rhcsa', ({ data }) => data.locale === locale && !data.draft))
+  .sort((a, b) => a.data.moduleNumber - b.data.moduleNumber)
+  .slice(0, 3);
+const latestIeltsPosts = (await getCollection('ielts', ({ data }) => data.locale === locale && !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+---
+
+<Section title={ui.currentPractices}>
+  <span id="practicas-actuales" aria-hidden="true"></span>
+  <div class="practice-group">
+    <h3>
+      <a class="group-link" href={getLocalePath(locale, 'rhcsa-ex200')}>RHCSA EX200</a>
+    </h3>
+    <p class="description">{ui.rhcsaBlogDescription}</p>
+    <ul class="practice-list">
+      {latestPosts.map((post) => (
+        <li>
+          <header>
+            <a class="practice-link" href={getLocalePath(locale, `rhcsa-ex200/${post.id}`)}>
+              {post.data.title}
+            </a>
+            <small>{post.data.date.toLocaleDateString(locale === 'es' ? 'es-AR' : 'en-US')}</small>
+          </header>
+          <p>{post.data.excerpt}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="practice-group">
+    <h3>
+      <a class="group-link" href={getLocalePath(locale, 'ielts-practice')}>{ui.ieltsBlogTitle}</a>
+    </h3>
+    <p class="description">{ui.ieltsBlogDescription}</p>
+    <ul class="practice-list">
+      {latestIeltsPosts.map((post) => (
+        <li>
+          <header>
+            <a class="practice-link" href={getLocalePath(locale, `ielts-practice/${post.id}`)}>
+              {post.data.title}
+            </a>
+            <small>{post.data.date.toLocaleDateString(locale === 'es' ? 'es-AR' : 'en-US')}</small>
+          </header>
+          <p>{post.data.excerpt}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Section>
+
+<style>
+  .practice-group {
+    margin-bottom: 24px;
+  }
+
+  .practice-group:last-child {
+    margin-bottom: 0;
+  }
+
+  h3 {
+    margin: 0 0 8px;
+    font-size: 1.15rem;
+  }
+
+  .group-link {
+    display: inline-block;
+    background-color: var(--color-bg-badge);
+    color: white;
+    text-decoration: none;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .group-link:hover {
+    text-decoration: underline;
+    color: white;
+  }
+
+  .description {
+    margin-bottom: 12px;
+  }
+
+  .practice-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .practice-link {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: inherit;
+    font-family: inherit;
+    color: inherit;
+  }
+
+  .practice-link:visited {
+    color: inherit;
+  }
+
+  .practice-link:hover {
+    text-decoration: underline;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  li p {
+    color: var(--color-text-secondary);
+    margin-top: 4px;
+    font-size: 0.9rem;
+  }
+
+  small {
+    white-space: nowrap;
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    font-weight: 400;
+    font-family: inherit;
+  }
+
+  @media (width <= 700px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+  }
+
+</style>

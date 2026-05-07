@@ -1,0 +1,52 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import LanguageSelector from '@/components/LanguageSelector.astro';
+import { getUI, type Locale } from '@/lib/i18n';
+
+const locale: Locale = 'es';
+const ui = getUI(locale);
+
+export async function getStaticPaths() {
+  const posts = await getCollection('ielts', ({ data }) => data.locale === 'es' && !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const basePath = `ielts-practice/${post.id}`;
+const canonicalUrl = `https://arceprog.dev/${basePath}/`;
+const enPosts = await getCollection('ielts', ({ data }) => data.locale === 'en' && !data.draft);
+const enEquivalent = enPosts.find((candidate) => candidate.data.moduleNumber === post.data.moduleNumber);
+const basePathByLocale = {
+  en: enEquivalent ? `ielts-practice/${enEquivalent.id}` : basePath
+};
+---
+
+<Layout locale={locale} basePath={basePath} title={`${post.data.title} | IELTS`} description={post.data.description} ogTitle={post.data.title} ogDescription={post.data.description}>
+  <LanguageSelector locale={locale} basePathByLocale={basePathByLocale} />
+  <main>
+    <article class="post">
+      <a class="back-link" href="/ielts-practice/">← Volver a IELTS</a>
+      <header>
+        <p class="meta">{ui.publishedOn}: {post.data.date.toLocaleDateString('es-AR')}</p>
+        <h1>{post.data.title}</h1>
+        <p>{post.data.excerpt}</p>
+      </header>
+      <Content />
+    </article>
+  </main>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.data.title, description: post.data.description, datePublished: post.data.date.toISOString(), dateModified: post.data.date.toISOString(), inLanguage: 'es-AR', articleSection: 'IELTS', url: canonicalUrl, author: { '@type': 'Person', name: 'Felipe Arce' } })} />
+</Layout>
+
+<style>
+  main { padding: 4rem; background-color: var(--color-bg-primary); color: var(--color-brand-primary); min-height: 100vh; }
+  .post { max-width: 760px; margin: 0 auto; }
+  .back-link { display: inline-block; margin-bottom: 12px; text-decoration: underline; }
+  .meta { font-size: 0.8rem; margin-bottom: 8px; }
+  h1 { margin-bottom: 10px; }
+  :global(.post h2) { margin-top: 1.2rem; margin-bottom: 0.5rem; }
+  :global(.post ul), :global(.post ol) { list-style: initial; padding-left: 1.2rem; margin: 0.6rem 0; }
+  :global(.post pre) { overflow-x: auto; padding: 0.8rem; border-radius: 8px; background: var(--color-bg-dark); }
+  @media (width <= 700px) { main { padding: 1rem; } }
+</style>

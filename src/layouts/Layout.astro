@@ -3,6 +3,7 @@ import {
   getCV,
   getLocaleConfig,
   getAllLocaleUrls,
+  getLocalePath,
   getOtherLocales,
   LOCALES,
   DEFAULT_LOCALE,
@@ -12,18 +13,42 @@ import '@/styles/theme.css';
 
 interface Props {
   title?: string;
+  description?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  basePath?: string;
+  noIndex?: boolean;
   locale?: Locale;
 }
 
-const { locale = DEFAULT_LOCALE } = Astro.props;
+const {
+  locale = DEFAULT_LOCALE,
+  title,
+  description,
+  ogTitle,
+  ogDescription,
+  ogImage = '/portada-og.png',
+  basePath,
+  noIndex = false
+} = Astro.props;
 const config = getLocaleConfig(locale);
 const cv = getCV(locale);
 const { image } = cv.basics;
 
 const currentPath = Astro.url.pathname;
-const canonicalUrl = `https://arceprog.dev${currentPath}`;
-const localeUrls = getAllLocaleUrls();
+const normalizedBasePath = (basePath ?? (locale === DEFAULT_LOCALE
+  ? currentPath
+  : currentPath.replace(new RegExp(`^/${locale}`), ''))).replace(/^\/|\/$/g, '');
+const canonicalUrl = `https://arceprog.dev${getLocalePath(locale, normalizedBasePath)}`;
+const localeUrls = getAllLocaleUrls(normalizedBasePath);
 const otherLocales = getOtherLocales(locale);
+const resolvedTitle = title ?? config.pageTitle;
+const resolvedDescription = description ?? config.metaDescription;
+const resolvedOgTitle = ogTitle ?? config.ogTitle;
+const resolvedOgDescription = ogDescription ?? config.ogDescription;
+const resolvedOgImage = ogImage.startsWith('http') ? ogImage : `https://arceprog.dev${ogImage}`;
+const robotsContent = noIndex ? 'noindex, nofollow' : 'index, follow';
 
 // Fecha de última actualización (se actualiza en cada build)
 const buildDate = new Date().toISOString();
@@ -45,8 +70,8 @@ const allSkills = [
   <head>
     <meta charset="UTF-8" />
     <meta name="google-site-verification" content="jfdI3O_sVUKVWOWPcViT3dZF-JayDl6N87uwcqGkXXU" />
-    <title>{config.pageTitle}</title>
-    <meta name="description" content={config.metaDescription} />
+    <title>{resolvedTitle}</title>
+    <meta name="description" content={resolvedDescription} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
@@ -68,12 +93,12 @@ const allSkills = [
     <!-- Facebook Meta Tags / Open Graph (usado por WhatsApp, LinkedIn, etc) -->
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={config.ogTitle} />
-    <meta property="og:description" content={config.ogDescription} />
+    <meta property="og:title" content={resolvedOgTitle} />
+    <meta property="og:description" content={resolvedOgDescription} />
     <meta property="og:site_name" content="Felipe Arce Portfolio" />
-    <meta property="og:image" content="https://arceprog.dev/portada-og.png" />
-    <meta property="og:image:secure_url" content="https://arceprog.dev/portada-og.png" />
-    <meta property="og:image:alt" content={`${config.ogTitle} | Portfolio`} />
+    <meta property="og:image" content={resolvedOgImage} />
+    <meta property="og:image:secure_url" content={resolvedOgImage} />
+    <meta property="og:image:alt" content={`${resolvedOgTitle} | Portfolio`} />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -84,7 +109,7 @@ const allSkills = [
 
     <!-- Meta tags adicionales -->
     <meta property="og:updated_time" content={buildDate} />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={robotsContent} />
     <meta name="referrer" content="origin-when-cross-origin" />
 
     <meta http-equiv="content-language" content={locale} />
@@ -95,10 +120,10 @@ const allSkills = [
     <meta name="twitter:creator" content="@arceprog" />
     <meta property="twitter:domain" content="arceprog.dev" />
     <meta property="twitter:url" content={canonicalUrl} />
-    <meta name="twitter:title" content={config.ogTitle} />
-    <meta name="twitter:description" content={config.ogDescription} />
-    <meta name="twitter:image" content="https://arceprog.dev/portada-og.png" />
-    <meta name="twitter:image:alt" content={`${config.ogTitle} | Portfolio`} />
+    <meta name="twitter:title" content={resolvedOgTitle} />
+    <meta name="twitter:description" content={resolvedOgDescription} />
+    <meta name="twitter:image" content={resolvedOgImage} />
+    <meta name="twitter:image:alt" content={`${resolvedOgTitle} | Portfolio`} />
 
     <!-- Asegurar que WhatsApp pueda acceder -->
     <meta name="format-detection" content="telephone=no" />
@@ -111,7 +136,7 @@ const allSkills = [
     <meta name="google" content="nositelinkssearchbox" />
 
     <!-- Structured Data: Person Schema -->
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Felipe Arce",
@@ -159,7 +184,7 @@ const allSkills = [
     })} />
 
     <!-- Structured Data: WebSite Schema -->
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Felipe Arce Portfolio",
@@ -174,7 +199,7 @@ const allSkills = [
     })} />
 
     <!-- Structured Data: BreadcrumbList Schema -->
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [

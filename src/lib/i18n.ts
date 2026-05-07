@@ -54,6 +54,27 @@ export const LOCALE_CONFIG: Record<Locale, {
     social: string;
     actions: string;
     visit: string;
+    currentPractices: string;
+    viewAllPractices: string;
+    readGuide: string;
+    rhcsaBlogTitle: string;
+    rhcsaBlogDescription: string;
+    ieltsPractices: string;
+    ieltsBlogTitle: string;
+    ieltsBlogDescription: string;
+    viewAllIeltsPractices: string;
+    publishedOn: string;
+    rhcsaListClassPrefix: string;
+    rhcsaListModuleLabel: string;
+    rhcsaIndexTrainingTitle: string;
+    rhcsaIndexTrainingLmsLink: string;
+    rhcsaIndexTrainingLmsNote: string;
+    rhcsaIndexTrainingRolLink: string;
+    rhcsaIndexRh134Title: string;
+    rhcsaIndexRh134Link: string;
+    rhcsaIndexTimelineNote: string;
+    rhcsaIndexThanksNote: string;
+    rhcsaIndexPlanNote: string;
   };
 }> = {
   es: {
@@ -89,7 +110,32 @@ export const LOCALE_CONFIG: Record<Locale, {
       searchCommand: 'Buscar comando',
       social: 'Social',
       actions: 'Acciones',
-      visit: 'Visitar'
+      visit: 'Visitar',
+      currentPractices: 'Prácticas actuales',
+      viewAllPractices: 'Ver todas las prácticas',
+      readGuide: 'Leer guía',
+      rhcsaBlogTitle: 'Blog RHCSA EX200',
+      rhcsaBlogDescription: 'Documentación de laboratorios, guías y progreso de estudio para la certificación RHCSA EX200.',
+      ieltsPractices: 'Prácticas IELTS',
+      ieltsBlogTitle: 'Práctica IELTS',
+      ieltsBlogDescription: 'Seguimiento de prácticas para reading, listening, writing y speaking con foco en mejora semanal.',
+      viewAllIeltsPractices: 'Ver todas las prácticas IELTS',
+      publishedOn: 'Publicado',
+      rhcsaListClassPrefix: 'Clase',
+      rhcsaListModuleLabel: 'Módulo',
+      rhcsaIndexTrainingTitle: 'Formación oficial Red Hat (RHCSA)',
+      rhcsaIndexTrainingLmsLink: 'Portal de aprendizaje Red Hat (LMS)',
+      rhcsaIndexTrainingLmsNote:
+        'acceso a cursos y laboratorios con tu cuenta / Learning Subscription (entrá desde tu cuenta activa).',
+      rhcsaIndexTrainingRolLink: 'Catálogo Red Hat Online Learning (ROL)',
+      rhcsaIndexRh134Title: 'Curso RH134 (Red Hat System Administration I)',
+      rhcsaIndexRh134Link: 'RH134 — versión del curso en ROL',
+      rhcsaIndexTimelineNote:
+        'Notas personales sobre plazos: se puede seguir trabajando aunque no alcances el tiempo previsto del curso. La renovación típica va por ventanas de ~90 días y en algunos casos eso puede reiniciar el progreso; en mi caso no me reinició el avance.',
+      rhcsaIndexThanksNote:
+        'Agradecimiento: en América Virtual me facilitaron la entrada gratuita al curso y van a cubrir el costo; les estoy muy agradecido.',
+      rhcsaIndexPlanNote:
+        'Plan: completar las prácticas que provee Red Hat en el curso y seguir repasando lo que ya hice en el laboratorio local.'
     }
   },
   en: {
@@ -125,7 +171,32 @@ export const LOCALE_CONFIG: Record<Locale, {
       searchCommand: 'Search command',
       social: 'Social',
       actions: 'Actions',
-      visit: 'Visit'
+      visit: 'Visit',
+      currentPractices: 'Current practice',
+      viewAllPractices: 'View all practice logs',
+      readGuide: 'Read guide',
+      rhcsaBlogTitle: 'RHCSA EX200 Blog',
+      rhcsaBlogDescription: 'Lab documentation, study guides, and progress updates for RHCSA EX200 certification.',
+      ieltsPractices: 'IELTS Practice',
+      ieltsBlogTitle: 'IELTS Practice',
+      ieltsBlogDescription: 'Practice log for reading, listening, writing, and speaking with weekly progress tracking.',
+      viewAllIeltsPractices: 'View all IELTS practices',
+      publishedOn: 'Published',
+      rhcsaListClassPrefix: 'Class',
+      rhcsaListModuleLabel: 'Module',
+      rhcsaIndexTrainingTitle: 'Official Red Hat training (RHCSA)',
+      rhcsaIndexTrainingLmsLink: 'Red Hat Learning portal (LMS)',
+      rhcsaIndexTrainingLmsNote:
+        'courses and labs through your account / Learning Subscription (sign in with your active account).',
+      rhcsaIndexTrainingRolLink: 'Red Hat Online Learning catalog (ROL)',
+      rhcsaIndexRh134Title: 'Course RH134 (Red Hat System Administration I)',
+      rhcsaIndexRh134Link: 'RH134 — course on ROL',
+      rhcsaIndexTimelineNote:
+        'Personal notes on timelines: you can keep going even if you do not finish within the allotted window. Renewals often run in ~90-day cycles and in some setups that can reset course progress; in my case it did not reset my progress.',
+      rhcsaIndexThanksNote:
+        'Thanks: América Virtual gave me complimentary access to the course and is covering the course cost — very grateful.',
+      rhcsaIndexPlanNote:
+        'Plan: finish Red Hat’s hands-on labs in the course and keep revisiting what I already practiced in my local lab.'
     }
   }
   // Ejemplo de cómo agregar portugués:

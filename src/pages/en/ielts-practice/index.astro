@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import LanguageSelector from '@/components/LanguageSelector.astro';
+import { getUI, type Locale } from '@/lib/i18n';
+
+const locale: Locale = 'en';
+const ui = getUI(locale);
+const posts = (await getCollection('ielts', ({ data }) => data.locale === locale && !data.draft))
+  .sort((a, b) => a.data.moduleNumber - b.data.moduleNumber);
+const completedModules = posts.filter((post) => post.data.completed).length;
+const totalModules = posts.length || 1;
+const completionPercent = Math.round((completedModules / totalModules) * 100);
+---
+
+<Layout
+  locale={locale}
+  basePath="ielts-practice"
+  title={`${ui.ieltsBlogTitle} | Felipe Arce`}
+  description={ui.ieltsBlogDescription}
+  ogTitle={ui.ieltsBlogTitle}
+  ogDescription={ui.ieltsBlogDescription}
+>
+  <LanguageSelector locale={locale} />
+  <main>
+    <section>
+      <a class="back-link" href="/en/#practicas-actuales">← Back to CV</a>
+      <h1>IELTS</h1>
+      <p>{ui.ieltsBlogDescription}</p>
+      <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={completionPercent}>
+        <div class="progress-fill" style={`width: ${completionPercent}%`} />
+      </div>
+      <ul>
+        {posts.map((post) => (
+          <li>
+            <a class="module-link" href={`/en/ielts-practice/${post.id}/`}>
+              <article class={post.data.completed ? 'module completed' : 'module pending'}>
+                <header>
+                  <h2>Class {post.data.moduleNumber}: {post.data.title}</h2>
+                  {post.data.completed && <span class="done-icon" aria-hidden="true">✓</span>}
+                </header>
+                <p>Module {post.data.moduleNumber}</p>
+              </article>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main { padding: 4rem; background-color: var(--color-bg-primary); color: var(--color-brand-primary); min-height: 100vh; }
+  section { max-width: 700px; margin: 0 auto; }
+  .back-link { display: inline-block; margin-bottom: 12px; text-decoration: underline; }
+  ul { display: grid; gap: 14px; margin-top: 20px; }
+  .module-link { display: block; }
+  .module { border: 1px solid var(--color-border-primary); border-radius: 10px; padding: 20px 16px; background: var(--color-bg-secondary); color: var(--color-text-primary); }
+  .module.completed { border-color: var(--color-border-medium); background: var(--color-bg-secondary); }
+  .module.pending { border-color: var(--color-border-primary); background: var(--color-bg-secondary); }
+  .progress-track { margin-top: 12px; width: 100%; height: 9px; border-radius: 999px; background: var(--color-border-medium); overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--color-bg-dark); }
+  header { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  h2 { font-size: 1.1rem; margin-bottom: 6px; }
+  article p { margin: 0; color: var(--color-text-secondary); font-size: 0.88rem; }
+  .done-icon { color: var(--color-status-active); font-size: 1.4rem; font-weight: 700; }
+  @media (width <= 700px) { main { padding: 1rem; } }
+</style>

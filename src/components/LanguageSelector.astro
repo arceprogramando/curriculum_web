@@ -1,18 +1,27 @@
 ---
-import { getLocaleConfig, getOtherLocales, getLocalePath, type Locale } from '@/lib/i18n';
+import { DEFAULT_LOCALE, getLocaleConfig, getOtherLocales, getLocalePath, type Locale } from '@/lib/i18n';
 
 interface Props {
   locale: Locale;
+  basePathByLocale?: Partial<Record<Locale, string>>;
 }
 
-const { locale } = Astro.props;
+const { locale, basePathByLocale = {} } = Astro.props;
 const otherLocales = getOtherLocales(locale);
+const currentPath = Astro.url.pathname;
+
+const localizedPrefix = locale === DEFAULT_LOCALE ? '' : `/${locale}`;
+const pathWithoutLocale = localizedPrefix && currentPath.startsWith(localizedPrefix)
+  ? currentPath.slice(localizedPrefix.length)
+  : currentPath;
+const basePath = pathWithoutLocale.replace(/^\/|\/$/g, '');
 ---
 
 <div class="language-selector no-print">
   {otherLocales.map(otherLocale => {
     const otherConfig = getLocaleConfig(otherLocale);
-    const url = getLocalePath(otherLocale);
+    const translatedPath = basePathByLocale[otherLocale] ?? basePath;
+    const url = getLocalePath(otherLocale, translatedPath);
 
     return (
       <a

@@ -7,6 +7,7 @@ import Hero from '@/components/sections/Hero.astro';
 import Projects from '@/components/sections/Projects.astro';
 import KeyboardManager from '@/components/KeyboardManager.astro';
 import JobSimulations from '@/components/sections/JobSimulations.astro';
+import CurrentPractices from '@/components/sections/CurrentPractices.astro';
 import LanguageSelector from '@/components/LanguageSelector.astro';
 import type { Locale } from '@/lib/i18n';
 
@@ -23,6 +24,7 @@ const locale: Locale = 'en';
       <Projects locale={locale} />
     </div>
     <Education locale={locale} />
+    <CurrentPractices locale={locale} />
     <JobSimulations locale={locale} />
   </main>
 

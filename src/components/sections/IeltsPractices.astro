@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content';
+import Section from '../Section.astro';
+import { getLocalePath, getUI, type Locale } from '@/lib/i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'es' } = Astro.props;
+const ui = getUI(locale);
+
+const latestPosts = (await getCollection('ielts', ({ data }) => data.locale === locale && !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+---
+
+<Section title={ui.ieltsPractices}>
+  <p class="description">{ui.ieltsBlogDescription}</p>
+  <ul class="practice-list">
+    {latestPosts.map((post) => (
+      <li>
+        <header>
+          <a class="practice-link" href={getLocalePath(locale, `ielts-practice/${post.id}`)}>
+            {post.data.title}
+          </a>
+          <small>{post.data.date.toLocaleDateString(locale === 'es' ? 'es-AR' : 'en-US')}</small>
+        </header>
+        <p>{post.data.excerpt}</p>
+      </li>
+    ))}
+  </ul>
+  <a class="cta" href={getLocalePath(locale, 'ielts-practice')}>{ui.viewAllIeltsPractices}</a>
+</Section>
+
+<style>
+  .description {
+    margin-bottom: 12px;
+  }
+
+  .practice-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .practice-link {
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .practice-link:hover {
+    text-decoration: underline;
+    color: blue;
+  }
+
+  li p {
+    color: var(--color-text-secondary);
+    margin-top: 4px;
+    font-size: 0.9rem;
+  }
+
+  small {
+    white-space: nowrap;
+    color: var(--color-text-secondary);
+  }
+
+  @media (width <= 700px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+  }
+
+  .cta {
+    display: inline-block;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+</style>
