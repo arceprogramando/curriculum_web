@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import LanguageSelector from '@/components/LanguageSelector.astro';
+import { getContentEntrySlug } from '@/lib/content-entry';
 import { getUI, type Locale } from '@/lib/i18n';
 
 const locale: Locale = 'es';
@@ -9,17 +10,21 @@ const ui = getUI(locale);
 
 export async function getStaticPaths() {
   const posts = await getCollection('ielts', ({ data }) => data.locale === 'es' && !data.draft);
-  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+  return posts.map((post) => ({
+    params: { slug: getContentEntrySlug(post.id) },
+    props: { post }
+  }));
 }
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const basePath = `ielts-practice/${post.id}`;
+const entrySlug = getContentEntrySlug(post.id);
+const basePath = `ielts-practice/${entrySlug}`;
 const canonicalUrl = `https://arceprog.dev/${basePath}/`;
 const enPosts = await getCollection('ielts', ({ data }) => data.locale === 'en' && !data.draft);
-const enEquivalent = enPosts.find((candidate) => candidate.data.moduleNumber === post.data.moduleNumber);
+const enEquivalent = enPosts.find((candidate) => getContentEntrySlug(candidate.id) === entrySlug);
 const basePathByLocale = {
-  en: enEquivalent ? `ielts-practice/${enEquivalent.id}` : basePath
+  en: enEquivalent ? `ielts-practice/${getContentEntrySlug(enEquivalent.id)}` : basePath
 };
 ---
 

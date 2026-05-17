@@ -1,9 +1,10 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
-import { z } from 'astro:schema';
+import { z } from 'astro/zod';
 
+// Estructura: src/content/{coleccion}/{NN-slug}/{es|en}.md
 const rhcsaCollection = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/rhcsa' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/rhcsa' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -20,7 +21,7 @@ const rhcsaCollection = defineCollection({
 });
 
 const ieltsCollection = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/ielts' }),
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/ielts' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),

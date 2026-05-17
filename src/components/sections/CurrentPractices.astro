@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Section from '../Section.astro';
+import { getContentEntrySlug } from '@/lib/content-entry';
 import { getLocalePath, getUI, type Locale } from '@/lib/i18n';
 
 interface Props {
@@ -29,7 +30,7 @@ const latestIeltsPosts = (await getCollection('ielts', ({ data }) => data.locale
       {latestPosts.map((post) => (
         <li>
           <header>
-            <a class="practice-link" href={getLocalePath(locale, `rhcsa-ex200/${post.id}`)}>
+            <a class="practice-link" href={getLocalePath(locale, `rhcsa-ex200/${getContentEntrySlug(post.id)}`)}>
               {post.data.title}
             </a>
             <small>{post.data.date.toLocaleDateString(locale === 'es' ? 'es-AR' : 'en-US')}</small>
@@ -49,7 +50,7 @@ const latestIeltsPosts = (await getCollection('ielts', ({ data }) => data.locale
       {latestIeltsPosts.map((post) => (
         <li>
           <header>
-            <a class="practice-link" href={getLocalePath(locale, `ielts-practice/${post.id}`)}>
+            <a class="practice-link" href={getLocalePath(locale, `ielts-practice/${getContentEntrySlug(post.id)}`)}>
               {post.data.title}
             </a>
             <small>{post.data.date.toLocaleDateString(locale === 'es' ? 'es-AR' : 'en-US')}</small>

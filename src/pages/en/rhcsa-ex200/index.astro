@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import LanguageSelector from '@/components/LanguageSelector.astro';
+import { getContentEntrySlug } from '@/lib/content-entry';
 import { getUI, type Locale } from '@/lib/i18n';
 
 const locale: Locale = 'en';
@@ -57,7 +58,7 @@ const completionPercent = Math.round((completedModules / totalModules) * 100);
       <ul class="module-list">
         {posts.map((post) => (
           <li>
-            <a class="module-link" href={`/en/rhcsa-ex200/${post.id}/`}>
+            <a class="module-link" href={`/en/rhcsa-ex200/${getContentEntrySlug(post.id)}/`}>
               <article class={post.data.completed ? 'module completed' : 'module pending'}>
                 <header>
                   <h2>

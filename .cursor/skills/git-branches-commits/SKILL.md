@@ -9,7 +9,7 @@ description: >-
 
 # Ramas y commits — curriculum_web
 
-Sitio estático con **Astro 6**, CV bilingüe, blog/guías en **`src/content/`** (colecciones `rhcsa`, `ielts`), rutas en **`src/pages/`**, UI en **`src/components/`**, **`src/layouts/`**, i18n en **`src/lib/i18n.ts`**.
+Sitio estático con **Astro 6**, CV bilingüe, blog/guías en **`src/content/`** (colecciones `rhcsa`, `ielts` con carpetas `NN-slug/es.md` y `en.md`), rutas en **`src/pages/`**, UI en **`src/components/`**, **`src/layouts/`**, i18n en **`src/lib/i18n.ts`**, slugs URL en **`src/lib/content-entry.ts`**.
 
 ## Cuándo usar este skill
 
@@ -41,7 +41,7 @@ No hay backend aparte: todo es SSG. Cuando en **un mismo cambio** tocan **conten
 
 | Etiqueta    | Qué incluye |
 |------------|-------------|
-| **`#content`** | Solo `src/content/**` (posts RHCSA, IELTS, frontmatter). |
+| **`#content`** | Solo `src/content/**` (p. ej. `rhcsa/04-rh134-declarative/es.md`). |
 | **`#site`**    | `src/pages/**`, `src/components/**`, `src/layouts/**`, `src/lib/**`, `astro.config.*`, `src/content.config.ts`, estilos globales del proyecto. |
 
 Ejemplo de salida:
