@@ -1,7 +1,7 @@
 ---
 title: "Writing Task 2: estructura y claridad"
 description: "Practica de introduccion, desarrollo y conclusion para ensayos de IELTS."
-excerpt: "Plantilla de escritura con foco en coherencia, cohesion y gramatica."
+excerpt: "Borrador planificado: plantilla Task 2 (futuro IELTS)."
 date: 2026-05-08
 locale: "es"
 moduleNumber: 3

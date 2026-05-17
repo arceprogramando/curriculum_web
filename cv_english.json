@@ -6,7 +6,7 @@
     "email": "arceprogramando@gmail.com",
     "phone": "+54 91150990913",
     "url": "https://arceprog.dev",
-    "summary": "Software Developer with 3 years of experience in Full-Stack web development and mobile applications. Expert in user flow optimization, SEO, and client-oriented applications.",
+    "summary": "Software Developer with 3 years of experience in Full-Stack web development and mobile applications. University Programming Technician (UTN, 2025). Currently taking the entrance course for Computer Engineering at UNLaM. Expert in user flow optimization, SEO, and client-oriented applications.",
     "location": {
       "address": "Gonzalez Catan",
       "postalCode": "1759",
@@ -37,7 +37,7 @@
           "title": "FullStack Developer",
           "startDate": "2025-12-01",
           "endDate": null,
-          "description": "Fullstack development of HR management system (RRHH Total): employee onboarding and administration, org chart with supervisors, leave management with approval (vacation, certificates), objectives and evaluations by cycle, home office and internal news. Backend with NestJS, PostgreSQL and Prisma (JWT, RBAC, audit, Swagger); frontend with Next.js 15, React 19 and shadcn/ui; Excel import/export of employees with validations and supervisor resolution.",
+          "description": "Fullstack development of the HR management system for Grupo Sabha: employees and org chart, leave and vacation workflows with approval, performance reviews, home office, recognition programs, internal news, and multi-company administration (business units, roles, and permissions). Backend with NestJS, PostgreSQL and Prisma (JWT, RBAC, audit, Swagger); frontend with Next.js 15, React 19 and shadcn/ui; Excel import/export of staff with validations.",
           "skills": ["NestJS", "Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Tailwind", "JWT", "Swagger", "Excel"]
         },
         {
@@ -110,14 +110,28 @@
       ]
     },
     {
+      "institution": "National University of La Matanza - UNLaM",
+      "certificates": [
+        {
+          "url": "https://ingenieria.unlam.edu.ar/",
+          "area": "Entrance course — Computer Engineering",
+          "description": "Taking the 2026 entrance course for the Computer Engineering degree, as the next step after graduating as a University Programming Technician from UTN (2025).",
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "score": null,
+          "courses": ["Computer Engineering", "Entrance course"]
+        }
+      ]
+    },
+    {
       "institution": "National Technological University - CUDI",
       "certificates": [
         {
           "url": "https://utn-cursoingreso.vercel.app",
-          "area": "University Technical Degree in Programming",
-          "description": "University Technical Programmer graduated from UTN. During the degree, I developed a personal project in Astro with React.js and TypeScript components for tracking my progress, achieving a 40% increase in visits in 2025. I worked with C# in .NET using WPF and deepened in SQL databases, applying good development practices.",
+          "area": "University Programming Technician",
+          "description": "Graduated in 2025 as a University Programming Technician (UTN CUDI). During the program I built a personal Astro site with React and TypeScript to track progress (+40% visits in 2025). Worked with C# on .NET (WPF) and SQL databases.",
           "startDate": "2024-01-01",
-          "endDate": "2025-11-01",
+          "endDate": "2025-12-01",
           "score": "9",
           "courses": ["C#", ".NET", "WPF", "SQL", "Astro", "React", "TypeScript"]
         }
@@ -128,21 +142,30 @@
       "certificates": [
         {
           "url": "https://cui.edu.ar/",
-          "area": "Regular English Level 04 - Basic Cycle",
-          "description": "Starting March 30, 2026, Level 4 of the CUI Extracurricular English Program at the Faculty of Agronomy (UBA).",
-          "startDate": "2026-03-30",
+          "area": "Regular English Level 05 - Basic Cycle",
+          "description": "Taking Level 5 (CUI, Faculty of Agronomy UBA) from June 2026. Still an almost fully oral format: the teacher speaks only in English and class interaction is in English, with very few clarifications in Spanish. On the official CUI scale, basic-cycle levels 4–6 map to CEFR A2; starting Level 5 strengthens that band with a spoken-fluency focus.",
+          "startDate": "2026-06-03",
           "endDate": null,
           "score": null,
-          "courses": ["Basic English Level 04"]
+          "courses": ["Basic English Level 05", "CEFR A2 (in progress)"]
+        },
+        {
+          "url": "https://cui.edu.ar/",
+          "area": "Regular English Level 04 - Basic Cycle",
+          "description": "Completed Level 4 (March–May 2026). The course was mostly oral: the teacher spoke only in English and questions and class participation were in English, with very few exceptions in Spanish. Institutional certificate pending (finished on 05/18/2026). CUI/CEFR reference for levels 4–6: A2.",
+          "startDate": "2026-03-30",
+          "endDate": "2026-05-18",
+          "score": null,
+          "courses": ["Basic English Level 04", "CEFR A2"]
         },
         {
           "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00477927_01509288_1_0",
           "area": "Regular English Level 03 - Basic Cycle",
-          "description": "Completed Level 3 of the CUI Extracurricular English Program at the Faculty of Agronomy (UBA). I strengthened the four main skills: speaking, listening, reading, and writing, with a communicative approach in real-life contexts.",
+          "description": "Completed Level 3 of the CUI Extracurricular English Program at the Faculty of Agronomy (UBA). Communicative focus across all skills; on the CUI scale, levels 1–3 map to CEFR A1.",
           "startDate": "2026-01-13",
           "endDate": "2026-03-08",
           "score": null,
-          "courses": ["Basic English Level 03"]
+          "courses": ["Basic English Level 03", "CEFR A1"]
         },
         {
           "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00460949_01509288_1_0",
@@ -184,7 +207,7 @@
         {
           "url": "https://cert.efset.org/5DYD2H",
           "area": "Intermediate English",
-          "description": "EFSET quick certificate that reflects my English level: B1 in reading and listening comprehension, and A2 in speaking.",
+          "description": "EFSET (external reference): B1 in reading and listening; A2 in spoken expression. Complements in-person CUI training (basic cycle, CEFR A2 for levels 4–6).",
           "startDate": "2022-04-03",
           "endDate": null,
           "score": "9",
@@ -341,7 +364,7 @@
     },
     {
       "language": "English",
-      "fluency": "B1"
+      "fluency": "A2 spoken (CUI) · B1 reading/listening (EFSET)"
     }
   ],
   "interests": [
@@ -362,9 +385,9 @@
   ],
   "projects": [
     {
-      "name": "University Technical Degree in Programming",
+      "name": "University Technical Degree in Programming (UTN)",
       "isActive": true,
-      "description": "Website for the university technical degree in programming UTN",
+      "description": "Progress tracking site for the UTN CUDI Programming Technician program. Built during the degree; graduated in 2025.",
       "highlights": ["Astro", "Html", "CSS", "Javascript"],
       "url": "https://utn-cursoingreso.vercel.app",
       "github": "https://github.com/arceprogramando/utn_cursoingreso"

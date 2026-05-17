@@ -1,11 +1,11 @@
 ---
 title: "Reading: strategy for long passages"
 description: "Practice session focused on skimming, scanning, and time control for IELTS Reading."
-excerpt: "A timed approach to increase accuracy on long reading sections."
+excerpt: "Planned draft: timed approach for reading (when formal IELTS prep starts)."
 date: 2026-05-06
 locale: "en"
 moduleNumber: 1
-completed: true
+completed: false
 tags: ["ielts", "reading", "strategy"]
 draft: false
 relatedCert: "IELTS"

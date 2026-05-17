@@ -1,11 +1,11 @@
 ---
 title: "Listening: effective note-taking"
 description: "Practice routine to capture key ideas and avoid missing answers in fast audio sections."
-excerpt: "Abbreviations and prediction techniques to improve listening consistency."
+excerpt: "Planned draft: note-taking and prediction for listening (future IELTS)."
 date: 2026-05-07
 locale: "en"
 moduleNumber: 2
-completed: true
+completed: false
 tags: ["ielts", "listening", "notes"]
 draft: false
 relatedCert: "IELTS"

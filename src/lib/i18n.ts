@@ -62,6 +62,11 @@ export const LOCALE_CONFIG: Record<Locale, {
     ieltsPractices: string;
     ieltsBlogTitle: string;
     ieltsBlogDescription: string;
+    ieltsIndexContextTitle: string;
+    ieltsIndexContextNow: string;
+    ieltsIndexContextCui: string;
+    ieltsIndexContextFuture: string;
+    ieltsIndexModulesNote: string;
     viewAllIeltsPractices: string;
     publishedOn: string;
     rhcsaListClassPrefix: string;
@@ -70,6 +75,8 @@ export const LOCALE_CONFIG: Record<Locale, {
     rhcsaIndexTrainingLmsLink: string;
     rhcsaIndexTrainingLmsNote: string;
     rhcsaIndexTrainingRolLink: string;
+    rhcsaIndexRh124Title: string;
+    rhcsaIndexRh124Link: string;
     rhcsaIndexRh134Title: string;
     rhcsaIndexRh134Link: string;
     rhcsaIndexTimelineNote: string;
@@ -84,10 +91,10 @@ export const LOCALE_CONFIG: Record<Locale, {
     htmlLang: 'es',
     urlPrefix: '',
     pdfFile: '/FelipeAlemanArce_CV_WEB.pdf',
-    metaDescription: 'Desarrollador FullStack SSR con experiencia en React, Node.js y TypeScript. Técnico Universitario en Programación graduado de la UTN. Explora mi portafolio y proyectos.',
+    metaDescription: 'Desarrollador FullStack SSR con experiencia en React, Node.js y TypeScript. Técnico Universitario en Programación (UTN, 2025). Ingreso a Ingeniería Informática en la UNLaM. Explora mi portafolio y proyectos.',
     pageTitle: 'Felipe Arce - Desarrollador FullStack SSR | Portfolio',
     ogTitle: 'Felipe Arce - Desarrollador FullStack SSR',
-    ogDescription: 'Desarrollador web y Técnico Universitario en Programación, con experiencia en React, Node.js, MongoDB y tecnologías modernas. Especializado en desarrollo frontend y backend.',
+    ogDescription: 'Desarrollador web, Técnico Universitario en Programación (UTN, 2025) y estudiante del ingreso a Ingeniería Informática (UNLaM). React, Node.js, MongoDB y tecnologías modernas.',
     keywords: 'Felipe Arce, desarrollador fullstack SSR, desarrollador MERN, React, Node.js, MongoDB, Express, JavaScript, TypeScript, portfolio developer, programador web, frontend developer, backend developer, Buenos Aires, Argentina',
     jobTitle: 'Desarrollador FullStack SSR',
     ui: {
@@ -118,7 +125,17 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaBlogDescription: 'Documentación de laboratorios, guías y progreso de estudio para la certificación RHCSA EX200.',
       ieltsPractices: 'Prácticas IELTS',
       ieltsBlogTitle: 'Práctica IELTS',
-      ieltsBlogDescription: 'Seguimiento de prácticas para reading, listening, writing y speaking con foco en mejora semanal.',
+      ieltsBlogDescription:
+        'Preparación planificada para IELTS. Hoy priorizo inglés presencial en el CUI; el examen lo evaluaré más adelante.',
+      ieltsIndexContextTitle: 'Dónde estoy ahora con el inglés',
+      ieltsIndexContextNow:
+        'Foco actual: CUI (ciclo básico). Terminé el Nivel 4 (oral, clase en inglés) y arranqué el Nivel 5 en junio de 2026. Nivel de referencia: ~A2 oral en aula (CUI); ~B1 lectura/escucha (EFSET).',
+      ieltsIndexContextCui:
+        'En la escala del CUI, los niveles 4 a 6 del ciclo básico equivalen a MCER A2; el ciclo de perfeccionamiento (niveles 11–14) apunta a MCER B2.',
+      ieltsIndexContextFuture:
+        'IELTS no es el foco inmediato: pienso rendir el examen cuando llegue a un nivel alto en el CUI (objetivo orientativo: Nivel 14, MCER B2+), con base oral y académica más sólida.',
+      ieltsIndexModulesNote:
+        'Los módulos de abajo son borradores de práctica para usar cuando empiece la preparación formal al IELTS.',
       viewAllIeltsPractices: 'Ver todas las prácticas IELTS',
       publishedOn: 'Publicado',
       rhcsaListClassPrefix: 'Clase',
@@ -128,14 +145,16 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaIndexTrainingLmsNote:
         'acceso a cursos y laboratorios con tu cuenta / Learning Subscription (entrá desde tu cuenta activa).',
       rhcsaIndexTrainingRolLink: 'Catálogo Red Hat Online Learning (ROL)',
-      rhcsaIndexRh134Title: 'Curso RH134 (Red Hat System Administration I)',
+      rhcsaIndexRh124Title: 'Curso RH124 (Red Hat System Administration I)',
+      rhcsaIndexRh124Link: 'RH124 — versión del curso en ROL',
+      rhcsaIndexRh134Title: 'Curso RH134 (Red Hat System Administration II)',
       rhcsaIndexRh134Link: 'RH134 — versión del curso en ROL',
       rhcsaIndexTimelineNote:
         'Notas personales sobre plazos: se puede seguir trabajando aunque no alcances el tiempo previsto del curso. La renovación típica va por ventanas de ~90 días y en algunos casos eso puede reiniciar el progreso; en mi caso no me reinició el avance.',
       rhcsaIndexThanksNote:
         'Agradecimiento: en América Virtual me facilitaron la entrada gratuita al curso y van a cubrir el costo; les estoy muy agradecido.',
       rhcsaIndexPlanNote:
-        'Plan: completar las prácticas que provee Red Hat en el curso y seguir repasando lo que ya hice en el laboratorio local.'
+        'Plan: completar las prácticas en los labs de RH124 y RH134 (ROL/LMS) y documentar aquí lo hecho en esos entornos.',
     }
   },
   en: {
@@ -145,10 +164,10 @@ export const LOCALE_CONFIG: Record<Locale, {
     htmlLang: 'en',
     urlPrefix: '/en',
     pdfFile: '/FelipeAlemanArce_CV_EN.pdf',
-    metaDescription: 'FullStack Developer SSR with experience in React, Node.js and TypeScript. University Programming Technician graduated from UTN. Explore my portfolio and projects.',
+    metaDescription: 'FullStack Developer SSR with experience in React, Node.js and TypeScript. University Programming Technician (UTN, 2025). UNLaM Computer Engineering entrance course. Explore my portfolio and projects.',
     pageTitle: 'Felipe Arce - FullStack Developer SSR | Portfolio',
     ogTitle: 'Felipe Arce - FullStack Developer SSR',
-    ogDescription: 'Web developer and University Programming Technician, with experience in React, Node.js, MongoDB and modern technologies. Specialized in frontend and backend development.',
+    ogDescription: 'Web developer, University Programming Technician (UTN, 2025), and UNLaM Computer Engineering entrance student. React, Node.js, MongoDB and modern stack.',
     keywords: 'Felipe Arce, fullstack developer SSR, MERN developer, React, Node.js, MongoDB, Express, JavaScript, TypeScript, developer portfolio, web programmer, frontend developer, backend developer, Buenos Aires, Argentina',
     jobTitle: 'FullStack Developer SSR',
     ui: {
@@ -179,7 +198,17 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaBlogDescription: 'Lab documentation, study guides, and progress updates for RHCSA EX200 certification.',
       ieltsPractices: 'IELTS Practice',
       ieltsBlogTitle: 'IELTS Practice',
-      ieltsBlogDescription: 'Practice log for reading, listening, writing, and speaking with weekly progress tracking.',
+      ieltsBlogDescription:
+        'Planned IELTS preparation. Current priority is in-person English at CUI; I expect to sit the exam later.',
+      ieltsIndexContextTitle: 'Where my English stands today',
+      ieltsIndexContextNow:
+        'Current focus: CUI (basic cycle). Completed Level 4 (oral, English-only class) and started Level 5 in June 2026. Reference level: ~A2 spoken in class (CUI); ~B1 reading/listening (EFSET).',
+      ieltsIndexContextCui:
+        'On the official CUI scale, basic-cycle levels 4–6 map to CEFR A2; the improvement cycle (levels 11–14) targets CEFR B2.',
+      ieltsIndexContextFuture:
+        'IELTS is not my immediate focus: I plan to take the exam after reaching a strong CUI level (working target: Level 14, CEFR B2+), with a more solid oral and academic base.',
+      ieltsIndexModulesNote:
+        'The modules below are practice drafts for when I start formal IELTS preparation.',
       viewAllIeltsPractices: 'View all IELTS practices',
       publishedOn: 'Published',
       rhcsaListClassPrefix: 'Class',
@@ -189,14 +218,16 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaIndexTrainingLmsNote:
         'courses and labs through your account / Learning Subscription (sign in with your active account).',
       rhcsaIndexTrainingRolLink: 'Red Hat Online Learning catalog (ROL)',
-      rhcsaIndexRh134Title: 'Course RH134 (Red Hat System Administration I)',
+      rhcsaIndexRh124Title: 'Course RH124 (Red Hat System Administration I)',
+      rhcsaIndexRh124Link: 'RH124 — course on ROL',
+      rhcsaIndexRh134Title: 'Course RH134 (Red Hat System Administration II)',
       rhcsaIndexRh134Link: 'RH134 — course on ROL',
       rhcsaIndexTimelineNote:
         'Personal notes on timelines: you can keep going even if you do not finish within the allotted window. Renewals often run in ~90-day cycles and in some setups that can reset course progress; in my case it did not reset my progress.',
       rhcsaIndexThanksNote:
         'Thanks: América Virtual gave me complimentary access to the course and is covering the course cost — very grateful.',
       rhcsaIndexPlanNote:
-        'Plan: finish Red Hat’s hands-on labs in the course and keep revisiting what I already practiced in my local lab.'
+        'Plan: finish labs in RH124 and RH134 (ROL/LMS) and document here what I complete in those environments.',
     }
   }
   // Ejemplo de cómo agregar portugués:

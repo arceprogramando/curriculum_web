@@ -1,7 +1,7 @@
 ---
 title: "Writing Task 2: structure and clarity"
 description: "Focused practice on introduction, body, and conclusion for IELTS essays."
-excerpt: "A writing template centered on coherence, cohesion, and grammar control."
+excerpt: "Planned draft: Task 2 template (future IELTS)."
 date: 2026-05-08
 locale: "en"
 moduleNumber: 3

@@ -6,7 +6,7 @@
     "email": "arceprogramando@gmail.com",
     "phone": "+54 91150990913",
     "url": "https://arceprog.dev",
-    "summary": "Desarrollador de Software con 3 años de experiencia en desarrollo Full-Stack web y aplicaciones móviles. Experto en optimización de flujos de usuario, SEO y aplicaciones orientadas a clientes.",
+    "summary": "Desarrollador de Software con 3 años de experiencia en desarrollo Full-Stack web y aplicaciones móviles. Técnico Universitario en Programación (UTN, 2025). Cursando el ingreso a Ingeniería Informática en la UNLaM. Experto en optimización de flujos de usuario, SEO y aplicaciones orientadas a clientes.",
     "location": {
       "address": "Gonzalez Catan",
       "postalCode": "1759",
@@ -38,7 +38,7 @@
           "title": "Desarrollador FullStack",
           "startDate": "2025-12-01",
           "endDate": null,
-          "description": "Desarrollo fullstack del sistema de gestión de RRHH (RRHH Total): alta y administración de empleados, organigrama con supervisores, licencias con aprobación (vacaciones, certificados), objetivos y evaluaciones por ciclos, home office y noticias internas. Backend con NestJS, PostgreSQL y Prisma (JWT, RBAC, auditoría, Swagger); frontend con Next.js 15, React 19 y shadcn/ui; importación y exportación de empleados desde Excel con validaciones y resolución de supervisores.",
+          "description": "Desarrollo fullstack del sistema de gestión de RRHH para Grupo Sabha: empleados y organigrama, licencias y vacaciones con flujos de aprobación, desempeño, home office, reconocimientos, noticias y administración multi-empresa (unidades de negocio, roles y permisos). Backend con NestJS, PostgreSQL y Prisma (JWT, RBAC, auditoría, Swagger); frontend con Next.js 15, React 19 y shadcn/ui; importación y exportación de colaboradores desde Excel con validaciones.",
           "skills": ["NestJS", "Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Tailwind", "JWT", "Swagger", "Excel"]
         },
         {
@@ -111,14 +111,28 @@
       ]
     },
     {
+      "institution": "Universidad Nacional de La Matanza - UNLaM",
+      "certificates": [
+        {
+          "url": "https://ingenieria.unlam.edu.ar/",
+          "area": "Curso de ingreso — Ingeniería Informática",
+          "description": "Cursando el curso de ingreso 2026 para la carrera de Ingeniería Informática, como paso hacia la licenciatura tras haberme graduado como Técnico Universitario en Programación en la UTN (2025).",
+          "startDate": "2026-01-01",
+          "endDate": null,
+          "score": null,
+          "courses": ["Ingeniería Informática", "Curso de ingreso"]
+        }
+      ]
+    },
+    {
       "institution": "Universidad Tecnológica Nacional - CUDI",
       "certificates": [
         {
           "url": "https://utn-cursoingreso.vercel.app",
-          "area": "Tecnicatura Universitaria en Programación",
-          "description": "Técnico Universitario en Programación graduado de la UTN. Durante la carrera desarrollé un proyecto personal en Astro con componentes en React.js y TypeScript para el seguimiento de mis avances, logrando un 40% de incremento en visitas en 2025. Trabajé con C# en .NET usando WPF y profundicé en bases de datos SQL, aplicando buenas prácticas de desarrollo.",
+          "area": "Técnico Universitario en Programación",
+          "description": "Graduado en 2025 como Técnico Universitario en Programación (UTN CUDI). Durante la cursada desarrollé un proyecto personal en Astro con React y TypeScript para el seguimiento de avances (+40% visitas en 2025). Trabajé con C# en .NET (WPF) y bases de datos SQL.",
           "startDate": "2024-01-01",
-          "endDate": "2025-11-01",
+          "endDate": "2025-12-01",
           "score": "9",
           "courses": ["C#", ".NET", "WPF", "SQL", "Astro", "React", "TypeScript"]
         }
@@ -129,21 +143,30 @@
       "certificates": [
         {
           "url": "https://cui.edu.ar/",
-          "area": "Inglés Regular Nivel 04 - Ciclo Básico",
-          "description": "Inicio el 30 de marzo de 2026 el Nivel 4 del Programa Extracurricular de Inglés del CUI en la Facultad de Agronomía (UBA).",
-          "startDate": "2026-03-30",
+          "area": "Inglés Regular Nivel 05 - Ciclo Básico",
+          "description": "Cursando el Nivel 5 (CUI, Facultad de Agronomía UBA) desde junio de 2026. Continúa el formato casi íntegramente oral: la profesora imparte en inglés y las interacciones en clase son en inglés, con muy pocas aclaraciones en español. Según la escala oficial del CUI, los niveles 4 a 6 del ciclo básico equivalen a MCER A2; al iniciar el 5 refuerzo esa banda con foco en fluidez hablada.",
+          "startDate": "2026-06-03",
           "endDate": null,
           "score": null,
-          "courses": ["Inglés Básico Nivel 04"]
+          "courses": ["Inglés Básico Nivel 05", "MCER A2 (en curso)"]
+        },
+        {
+          "url": "https://cui.edu.ar/",
+          "area": "Inglés Regular Nivel 04 - Ciclo Básico",
+          "description": "Completé el Nivel 4 (marzo–mayo 2026). El curso fue principalmente oral: la profesora hablaba solo en inglés y las preguntas y participación en clase se hacían en inglés, con muy pocas excepciones en español. Certificado institucional pendiente de emisión (finalizado el 18/05/2026). Nivel de referencia CUI/MCER para niveles 4–6: A2.",
+          "startDate": "2026-03-30",
+          "endDate": "2026-05-18",
+          "score": null,
+          "courses": ["Inglés Básico Nivel 04", "MCER A2"]
         },
         {
           "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00477927_01509288_1_0",
           "area": "Inglés Regular Nivel 03 - Ciclo Básico",
-          "description": "Completé el Nivel 3 del Programa Extracurricular de Inglés del CUI en la Facultad de Agronomía (UBA). Fortalecí las cuatro habilidades principales: hablar, escuchar, leer y escribir, con enfoque comunicativo en contextos de la vida real.",
+          "description": "Completé el Nivel 3 del Programa Extracurricular de Inglés del CUI en la Facultad de Agronomía (UBA). Fortalecí las cuatro habilidades con enfoque comunicativo; en la escala CUI los niveles 1–3 se ubican en MCER A1.",
           "startDate": "2026-01-13",
           "endDate": "2026-03-08",
           "score": null,
-          "courses": ["Inglés Básico Nivel 03"]
+          "courses": ["Inglés Básico Nivel 03", "MCER A1"]
         },
         {
           "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00460949_01509288_1_0",
@@ -185,7 +208,7 @@
         {
           "url": "https://cert.efset.org/5DYD2H",
           "area": "Ingles Intermedio",
-          "description": "Certificado rápido de EFSET que refleja mi nivel de inglés:  B1 en lectura y comprensión auditiva, y A2 en habla.",
+          "description": "EFSET (referencia externa): B1 en lectura y comprensión auditiva; A2 en expresión oral. Complementa la formación presencial del CUI (ciclo básico, MCER A2 en niveles 4–6).",
           "startDate": "2022-04-03",
           "endDate": null,
           "score": "9",
@@ -342,7 +365,7 @@
     },
     {
       "language": "English",
-      "fluency": "B1"
+      "fluency": "A2 oral (CUI) · B1 lectura/escucha (EFSET)"
     }
   ],
   "interests": [
@@ -363,9 +386,9 @@
   ],
   "projects": [
     {
-      "name": "Tecnicatura Universitaria en Programación",
+      "name": "Tecnicatura Universitaria en Programación (UTN)",
       "isActive": true,
-      "description": "Web para la tecnitatura universitaria en programación UTN",
+      "description": "Sitio de seguimiento de la Tecnicatura Universitaria en Programación (UTN CUDI). Proyecto desarrollado durante la cursada; titulación obtenida en 2025.",
       "highlights": ["Astro", "Html", "CSS", "Javascript"],
       "url": "https://utn-cursoingreso.vercel.app",
       "github": "https://github.com/arceprogramando/utn_cursoingreso"

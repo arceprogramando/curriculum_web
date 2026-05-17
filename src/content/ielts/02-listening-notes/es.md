@@ -1,11 +1,11 @@
 ---
 title: "Listening: toma de notas efectiva"
 description: "Rutina de practica para captar ideas clave y evitar perder respuestas en audio rapido."
-excerpt: "Tecnicas de abreviacion y prediccion para mejorar el score de listening."
+excerpt: "Borrador planificado: notas y prediccion para listening (futuro IELTS)."
 date: 2026-05-07
 locale: "es"
 moduleNumber: 2
-completed: true
+completed: false
 tags: ["ielts", "listening", "notas"]
 draft: false
 relatedCert: "IELTS"
