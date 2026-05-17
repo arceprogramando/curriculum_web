@@ -25,6 +25,32 @@ const { locale = 'es' } = Astro.props;
 const cv = getCV(locale);
 const ui = getUI(locale);
 const education = cv.education as EducationEntry[];
+
+/** Último certificado con URL en la misma institución (CUI 3→4/5; Red Hat RH124→RH134). */
+function getLatestCertificateUrl(certificates: Certificate[]): string | null {
+  const sorted = certificates
+    .filter((c): c is Certificate & { url: string } => Boolean(c.url))
+    .map((c) => ({ url: c.url, sortDate: c.endDate ?? c.startDate }))
+    .sort((a, b) => b.sortDate.localeCompare(a.sortDate));
+
+  return sorted[0]?.url ?? null;
+}
+
+function usesLatestCertificateFallback(institution: string): boolean {
+  const key = institution.toLowerCase();
+  return key.includes('cui') || key.includes('red hat');
+}
+
+function resolveCertificateUrl(
+  certificate: Certificate,
+  certificates: Certificate[],
+  institution: string
+): string | null {
+  if (certificate.url) return certificate.url;
+  if (!usesLatestCertificateFallback(institution)) return null;
+
+  return getLatestCertificateUrl(certificates);
+}
 ---
 
 <Section title={ui.education}>
@@ -36,9 +62,10 @@ const education = cv.education as EducationEntry[];
             <h3>{institution}</h3>
           </div>
           <ul>
-            {certificates.map(
-              ({ startDate, endDate, area, url, description }) => {
-                const startYear = startDate.split('-')[0];
+            {certificates.map((certificate) => {
+              const { startDate, endDate, area, description } = certificate;
+              const href = resolveCertificateUrl(certificate, certificates, institution);
+              const startYear = startDate.split('-')[0];
                 const endYear = endDate != null ? endDate.split('-')[0] : ui.current;
                 const years = `${startYear} - ${endYear}`;
 
@@ -47,9 +74,9 @@ const education = cv.education as EducationEntry[];
                     <article>
                       <header>
                         <div>
-                          {url ? (
+                          {href ? (
                             <a
-                              href={url}
+                              href={href}
                               target="_blank"
                               rel="noopener noreferrer"
                             >
@@ -68,8 +95,7 @@ const education = cv.education as EducationEntry[];
                     </article>
                   </li>
                 );
-              }
-            )}
+              })}
           </ul>
         </li>
       ))

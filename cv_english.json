@@ -141,7 +141,7 @@
       "institution": "CUI - University Language Center",
       "certificates": [
         {
-          "url": "https://cui.edu.ar/",
+          "url": null,
           "area": "Regular English Level 05 - Basic Cycle",
           "description": "Taking Level 5 (CUI, Faculty of Agronomy UBA) from June 2026. Still an almost fully oral format: the teacher speaks only in English and class interaction is in English, with very few clarifications in Spanish. On the official CUI scale, basic-cycle levels 4–6 map to CEFR A2; starting Level 5 strengthens that band with a spoken-fluency focus.",
           "startDate": "2026-06-03",
@@ -150,7 +150,7 @@
           "courses": ["Basic English Level 05", "CEFR A2 (in progress)"]
         },
         {
-          "url": "https://cui.edu.ar/",
+          "url": null,
           "area": "Regular English Level 04 - Basic Cycle",
           "description": "Completed Level 4 (March–May 2026). The course was mostly oral: the teacher spoke only in English and questions and class participation were in English, with very few exceptions in Spanish. Institutional certificate pending (finished on 05/18/2026). CUI/CEFR reference for levels 4–6: A2.",
           "startDate": "2026-03-30",

@@ -142,7 +142,7 @@
       "institution": "CUI - Centro Universitario de Idiomas",
       "certificates": [
         {
-          "url": "https://cui.edu.ar/",
+          "url": null,
           "area": "Inglés Regular Nivel 05 - Ciclo Básico",
           "description": "Cursando el Nivel 5 (CUI, Facultad de Agronomía UBA) desde junio de 2026. Continúa el formato casi íntegramente oral: la profesora imparte en inglés y las interacciones en clase son en inglés, con muy pocas aclaraciones en español. Según la escala oficial del CUI, los niveles 4 a 6 del ciclo básico equivalen a MCER A2; al iniciar el 5 refuerzo esa banda con foco en fluidez hablada.",
           "startDate": "2026-06-03",
@@ -151,7 +151,7 @@
           "courses": ["Inglés Básico Nivel 05", "MCER A2 (en curso)"]
         },
         {
-          "url": "https://cui.edu.ar/",
+          "url": null,
           "area": "Inglés Regular Nivel 04 - Ciclo Básico",
           "description": "Completé el Nivel 4 (marzo–mayo 2026). El curso fue principalmente oral: la profesora hablaba solo en inglés y las preguntas y participación en clase se hacían en inglés, con muy pocas excepciones en español. Certificado institucional pendiente de emisión (finalizado el 18/05/2026). Nivel de referencia CUI/MCER para niveles 4–6: A2.",
           "startDate": "2026-03-30",
