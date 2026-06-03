@@ -78,7 +78,7 @@ const allSkills = [
     <!-- SEO: Canonical y hreflang (generado dinámicamente para todos los idiomas) -->
     <link rel="canonical" href={canonicalUrl} />
     {LOCALES.map(loc => (
-      <link rel="alternate" hreflang={loc} href={localeUrls[loc]} />
+      <link rel="alternate" hreflang={getLocaleConfig(loc).ogLocale.replace('_', '-')} href={localeUrls[loc]} />
     ))}
     <link rel="alternate" hreflang="x-default" href={localeUrls[DEFAULT_LOCALE]} />
 
