@@ -33,6 +33,7 @@ const { city, region } = location;
 
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
+const pdfDownloadName = config.pdfFile.split('/').pop() ?? `Felipe_Arce_CV_${currentYear}.pdf`;
 
 const SOCIAL_ICONS: SocialIcon = {
   GitHub,
@@ -95,7 +96,7 @@ const whatsappMessage = locale === 'es'
 
         <a
           href={config.pdfFile}
-          download={`Felipe_Arce_CV_${currentYear}.pdf`}
+          download={pdfDownloadName}
           title={ui.downloadCV}
         >
           <Download />
