@@ -91,11 +91,11 @@
       "institution": "Red Hat",
       "certificates": [
         {
-          "url": null,
+          "url": "https://www.credly.com/badges/a6a4a878-0fec-4a05-9c66-57cc1e6de2f6/linked_in_profile",
           "area": "RH134 – Red Hat System Administration II (v10.0)",
-          "description": "Cursando RH134, profundizando en administración de sistemas RHEL: shell scripting, expresiones regulares, programación de tareas, gestión de almacenamiento con LVM, configuración de firewall, SELinux, troubleshooting del proceso de arranque, tuning del sistema y gestión de contenedores.",
+          "description": "Completé el curso RH134, segunda parte del plan de capacitación RHCSA sobre RHEL 10. Profundicé en instalación e implementación de Red Hat Enterprise Linux, gestión de almacenamiento con LVM, seguridad y SELinux, control del proceso de arranque y troubleshooting, automatización con shell scripting, tuning del sistema y gestión de contenedores, fortaleciendo mis habilidades como administrador de sistemas en entornos empresariales.",
           "startDate": "2026-01-01",
-          "endDate": null,
+          "endDate": "2026-06-01",
           "score": null,
           "courses": ["Red Hat System Administration II"]
         },
@@ -125,7 +125,7 @@
       ]
     },
     {
-      "institution": "Universidad Tecnológica Nacional - CUDI",
+      "institution": "Universidad Tecnologica Nacional, UTN",
       "certificates": [
         {
           "url": "https://utn-cursoingreso.vercel.app",

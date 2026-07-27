@@ -1,10 +1,14 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { rehypeExternalLinks } from './src/lib/rehype-external-links.mjs';
 
 export default defineConfig({
   site: 'https://arceprog.dev',
   output: 'static',
   compressHTML: true,
+  markdown: {
+    rehypePlugins: [rehypeExternalLinks],
+  },
   i18n: {
     defaultLocale: 'es',
     locales: ['es', 'en'],

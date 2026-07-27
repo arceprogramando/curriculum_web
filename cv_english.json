@@ -90,11 +90,11 @@
       "institution": "Red Hat",
       "certificates": [
         {
-          "url": null,
+          "url": "https://www.credly.com/badges/a6a4a878-0fec-4a05-9c66-57cc1e6de2f6/linked_in_profile",
           "area": "RH134 – Red Hat System Administration II (v10.0)",
-          "description": "Currently studying RH134, deepening in RHEL system administration: shell scripting, regular expressions, task scheduling, storage management with LVM, firewall configuration, SELinux, boot process troubleshooting, system tuning, and container management.",
+          "description": "Completed the RH134 course, the second part of the RHCSA training plan on RHEL 10. I deepened skills in Red Hat Enterprise Linux installation and deployment, storage management with LVM, security and SELinux, boot process control and troubleshooting, shell scripting automation, system tuning and container management, strengthening my capabilities as a system administrator in enterprise environments.",
           "startDate": "2026-01-01",
-          "endDate": null,
+          "endDate": "2026-06-01",
           "score": null,
           "courses": ["Red Hat System Administration II"]
         },
@@ -124,7 +124,7 @@
       ]
     },
     {
-      "institution": "National Technological University - CUDI",
+      "institution": "National Technological University, UTN",
       "certificates": [
         {
           "url": "https://utn-cursoingreso.vercel.app",

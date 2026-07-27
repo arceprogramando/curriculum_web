@@ -1,0 +1,134 @@
+# frozen_string_literal: true
+# =============================================================================
+# Lab base permanente RHCSA — Rocky Linux 9 + Vagrant + VirtualBox
+# Ubicación: curriculum_web/labs/rhcsa-base
+# VMs: server | client
+# =============================================================================
+# Uso rápido (desde esta carpeta):
+#   vagrant up
+#   vagrant ssh server
+#   vagrant ssh client
+#   vagrant halt
+#   vagrant destroy -f
+# =============================================================================
+
+Vagrant.configure("2") do |config|
+  # Box base (compatible RHEL 9 / buena para RHCSA).
+  # El registry de Vagrant Cloud (rockylinux/9) apunta a URLs 404 cuando
+  # Rocky mueve versiones viejas al vault. Usamos el box oficial directo:
+  # https://download.rockylinux.org/pub/rocky/9/images/x86_64/
+  # Actual verificado (2026-07-21): Rocky-9-Vagrant-Vbox-9.8-20260525.0
+  BOX_NAME     = "rockylinux/9"
+  BOX_URL      = "https://download.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-Vagrant-Vbox.latest.x86_64.vagrant.virtualbox.box"
+  VM_CPUS      = 1
+  VM_MEMORY_MB = 1024
+  # Disco: el box ya trae un disco virtual (suele ser >= 25 GiB, sparse).
+  # Si necesitás forzar tamaño: vagrant plugin install vagrant-disksize
+  # y descomentá la línea disksize más abajo.
+
+  # Red privada host-only (VirtualBox). IPs fijas a propósito:
+  # - Escenarios RHCSA (SSH, NFS, firewalld, HTTP, cron remotes) son más
+  #   simples y repetibles con IPs conocidas.
+  # - DHCP complica scripts, /etc/hosts y troubleshooting en exámenes.
+  PRIVATE_NET  = "192.168.56"
+  SERVER_IP    = "#{PRIVATE_NET}.10"
+  CLIENT_IP    = "#{PRIVATE_NET}.11"
+
+  # Timezone: America/Montevideo (UTC-3).
+  # Justificación: coincide con tu entorno real y evita confusiones al practicar
+  # logs/cron/journal. Si querés simular lab Red Hat “neutro”, cambiá a "UTC".
+  TIMEZONE     = "America/Montevideo"
+
+  # ---------------------------------------------------------------------------
+  # Defaults comunes a ambas VMs
+  # ---------------------------------------------------------------------------
+  config.vm.box = BOX_NAME
+  config.vm.box_url = BOX_URL
+
+  # SSH: Vagrant inyecta su clave; el usuario por defecto es "vagrant"
+  config.ssh.insert_key = true
+
+  # En Windows el synced folder por defecto puede ser lento; dejalo habilitado
+  # para compartir scripts. Deshabilitalo si molesta:
+  # config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  # Provisioning inicial (idempotente en lo posible)
+  config.vm.provision "shell", inline: <<-SHELL
+    set -euo pipefail
+
+    echo "==> Hostname ya lo fija Vagrant; sincronizando timezone..."
+    timedatectl set-timezone #{TIMEZONE}
+
+    echo "==> Actualizando paquetes (puede tardar la primera vez)..."
+    dnf -y update
+
+    echo "==> Herramientas básicas de administración..."
+    dnf -y install \
+      vim-enhanced \
+      bash-completion \
+      man-pages \
+      man-db \
+      wget \
+      curl \
+      tar \
+      tree \
+      lsof \
+      bind-utils \
+      net-tools \
+      iproute \
+      policycoreutils-python-utils \
+      setools-console \
+      chrony \
+      rsync
+
+    echo "==> /etc/hosts para resolución por nombre en la red privada..."
+    grep -q 'rhcsa-lab-base' /etc/hosts || cat >> /etc/hosts <<'EOF'
+# rhcsa-lab-base
+#{SERVER_IP}  server server.lab.local
+#{CLIENT_IP}  client client.lab.local
+EOF
+
+    echo "==> Provisioning listo."
+  SHELL
+
+  # ---------------------------------------------------------------------------
+  # VM: server
+  # ---------------------------------------------------------------------------
+  config.vm.define "server", primary: true do |server|
+    server.vm.hostname = "server.lab.local"
+
+    # eth0 = NAT (Internet, default de Vagrant)
+    # eth1 = red privada entre VMs
+    server.vm.network "private_network", ip: SERVER_IP
+
+    # server.disksize.size = "25GB"  # requiere plugin vagrant-disksize
+
+    server.vm.provider "virtualbox" do |vb|
+      vb.name   = "rhcsa-server"
+      vb.cpus   = VM_CPUS
+      vb.memory = VM_MEMORY_MB
+      # Mejora DNS/hora dentro del guest
+      vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+    end
+  end
+
+  # ---------------------------------------------------------------------------
+  # VM: client
+  # ---------------------------------------------------------------------------
+  config.vm.define "client" do |client|
+    client.vm.hostname = "client.lab.local"
+
+    client.vm.network "private_network", ip: CLIENT_IP
+
+    # client.disksize.size = "25GB"  # requiere plugin vagrant-disksize
+
+    client.vm.provider "virtualbox" do |vb|
+      vb.name   = "rhcsa-client"
+      vb.cpus   = VM_CPUS
+      vb.memory = VM_MEMORY_MB
+      vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+    end
+  end
+end

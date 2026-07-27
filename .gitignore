@@ -23,3 +23,8 @@ pnpm-debug.log*
 # local folders
 .history
 .vscode
+
+# Vagrant lab local RHCSA (labs/rhcsa-base)
+labs/**/.vagrant/
+labs/**/*.log
+labs/**/*.boxv
