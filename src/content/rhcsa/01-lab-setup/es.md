@@ -1,29 +1,39 @@
 ---
 title: "Entorno de práctica: labs Red Hat + lab local con Vagrant"
-description: "Cómo practico RHCSA combinando los laboratorios oficiales RH124/RH134 en ROL/LMS con un lab local reproducible en Rocky Linux 9 (Vagrant + VirtualBox)."
-excerpt: "Dos entornos: labs oficiales de Red Hat y un lab local con Vagrant (Rocky Linux 9, VMs server y client)."
-date: 2026-07-21
+description: "Cómo practico RHCSA: RH124/RH134 completados, refuerzo con libro Van Vugt y RH199, más lab local Vagrant (Rocky Linux 9)."
+excerpt: "Pipeline RH124 → RH134 → Libro → RH199 → EX200; labs oficiales Red Hat y lab local Vagrant."
+date: 2026-08-31
 locale: "es"
 moduleNumber: 1
 completed: true
-tags: ["rhcsa", "rh124", "rh134", "red-hat", "rol", "vagrant", "rocky-linux"]
+tags: ["rhcsa", "rh124", "rh134", "rh199", "red-hat", "rol", "vagrant", "rocky-linux"]
 draft: false
 relatedCert: "RHCSA EX200"
 ---
 
 ## Objetivo
 
-Dejar claro **dónde** practico. Uso dos entornos complementarios:
+Dejar claro **dónde** practico y **en qué fase** estoy del plan hacia EX200:
 
-1. Los **labs oficiales** de los cursos RH124 y RH134 en ROL/LMS.
-2. Un **lab local reproducible** con Vagrant + VirtualBox para repetir escenarios sin depender de la ventana del curso.
+1. **Cursos base completados:** RH124 y RH134 (badges Credly).
+2. **Refuerzo actual:** libro *Red Hat RHCSA 9 Cert Guide* (Van Vugt) + [RH199 Rapid Track v10.0](https://rol.redhat.com/rol/app/courses/rh199-10.0) en ROL.
+3. **Labs oficiales** de Red Hat en ROL/LMS cuando corresponde.
+4. **Lab local** con Vagrant + VirtualBox para repetir escenarios sin depender de la ventana del curso.
 
-## Cursos que uso
+## Pipeline de estudio
 
-| Curso | Rol en mi camino | Dónde practico |
-|-------|------------------|----------------|
-| [RH124 — Red Hat System Administration I (v10.0)](https://rol.redhat.com/rol/app/courses/rh124-10.0) | Base ya cursada (usuarios, permisos, almacenamiento, bash, scripts) | Labs y máquinas del curso en **ROL** / **LMS** |
-| [RH134 — Red Hat System Administration II (v10.0)](https://rol.redhat.com/rol/app/courses/rh134-10.0) | En curso (LVM, firewall, SELinux, arranque, contenedores, etc.) | Mismos entornos provistos por Red Hat en cada capítulo |
+RH124 → RH134 → Libro → RH199 → **EX200** (objetivo) → EX294 (ruta RHCE)
+
+Meta de práctica pre-examen: **~20 oct 2026** (plan de refuerzo de ~63 días).
+
+## Cursos y recursos
+
+| Recurso | Estado | Rol en mi camino |
+|---------|--------|------------------|
+| [RH124 — Red Hat System Administration I (v10.0)](https://rol.redhat.com/rol/app/courses/rh124-10.0) | Completado | Base: usuarios, permisos, almacenamiento, bash, scripts |
+| [RH134 — Red Hat System Administration II (v10.0)](https://rol.redhat.com/rol/app/courses/rh134-10.0) | Completado | LVM, firewall, SELinux, arranque, contenedores |
+| *Red Hat RHCSA 9 Cert Guide* (Sander van Vugt) | En curso (272/1593 pág.) | Refuerzo teórico/práctico hacia EX200 |
+| [RH199 — RHCSA Rapid Track (v10.0)](https://rol.redhat.com/rol/app/courses/rh199-10.0) | En curso (10/154 pág.) | Repaso acelerado en ROL |
 
 Acceso habitual:
 
@@ -60,7 +70,7 @@ vagrant destroy -f    # borrar el lab para empezar de cero
 
 ## Cómo trabajo cada sesión
 
-1. Abro el capítulo o lab en ROL (por ejemplo `rh134-10.0/pages/...`).
+1. Abro el capítulo en ROL (RH199, `rh134-10.0/pages/...`) o avanzo en el libro Van Vugt.
 2. Uso el **entorno que asigna el curso** o levanto el **lab local** con `vagrant up` según lo que necesite repetir.
 3. Anoto en los módulos siguientes de este blog lo que hice, errores y comandos útiles.
 4. Si el lab oficial expira o se renueva la ventana del curso, sigo practicando en el lab local sin depender de Red Hat.
@@ -72,4 +82,4 @@ vagrant destroy -f    # borrar el lab para empezar de cero
 
 ## Resultado
 
-Práctica alineada con **RHEL y labs oficiales**, más un **lab local reproducible** con Vagrant para repasar escenarios cuando quiera, coherente con la preparación al **RHCSA EX200** y con el resto de entradas de este blog.
+Práctica alineada con **RHEL y labs oficiales**, refuerzo con **libro + RH199** hacia **EX200**, más un **lab local reproducible** con Vagrant para repasar escenarios cuando quiera.

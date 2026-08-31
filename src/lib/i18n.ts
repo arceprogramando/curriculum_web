@@ -59,6 +59,11 @@ export const LOCALE_CONFIG: Record<Locale, {
     readGuide: string;
     rhcsaBlogTitle: string;
     rhcsaBlogDescription: string;
+    rhcsaIndexContextTitle: string;
+    rhcsaIndexContextNow: string;
+    rhcsaIndexContextPipeline: string;
+    rhcsaIndexContextFocus: string;
+    rhcsaIndexModulesNote: string;
     ieltsPractices: string;
     ieltsBlogTitle: string;
     ieltsBlogDescription: string;
@@ -77,8 +82,21 @@ export const LOCALE_CONFIG: Record<Locale, {
     rhcsaIndexTrainingRolLink: string;
     rhcsaIndexRh124Title: string;
     rhcsaIndexRh124Link: string;
+    rhcsaIndexRh124Status: string;
+    rhcsaIndexRh124BadgeLink: string;
     rhcsaIndexRh134Title: string;
     rhcsaIndexRh134Link: string;
+    rhcsaIndexRh134Status: string;
+    rhcsaIndexRh134BadgeLink: string;
+    rhcsaIndexRh199Title: string;
+    rhcsaIndexRh199Link: string;
+    rhcsaIndexRh199Status: string;
+    rhcsaIndexBookTitle: string;
+    rhcsaIndexBookStatus: string;
+    rhcsaIndexEx200Title: string;
+    rhcsaIndexEx200Link: string;
+    rhcsaIndexEx294Title: string;
+    rhcsaIndexEx294Link: string;
     rhcsaIndexTimelineNote: string;
     rhcsaIndexThanksNote: string;
     rhcsaIndexPlanNote: string;
@@ -122,7 +140,17 @@ export const LOCALE_CONFIG: Record<Locale, {
       viewAllPractices: 'Ver todas las prácticas',
       readGuide: 'Leer guía',
       rhcsaBlogTitle: 'Blog RHCSA EX200',
-      rhcsaBlogDescription: 'Documentación de laboratorios, guías y progreso de estudio para la certificación RHCSA EX200.',
+      rhcsaBlogDescription:
+        'Preparación RHCSA EX200: RH124 y RH134 completados; refuerzo con libro Van Vugt y RH199 Rapid Track. Documentación de labs y progreso.',
+      rhcsaIndexContextTitle: 'Dónde estoy ahora con RHCSA',
+      rhcsaIndexContextNow:
+        'RH124 y RH134 acreditados. Refuerzo actual: Red Hat RHCSA 9 Cert Guide (Sander van Vugt), pág. 272/1593 (~17%, Cap. 5 Connecting to RHEL 9), y RH199 Rapid Track v10.0 en ROL (10/154, Cap. 2 — enlaces simbólicos, desde 27 ago). Meta de práctica pre-examen: ~20 oct 2026 (día 14/63 del plan).',
+      rhcsaIndexContextPipeline:
+        'Pipeline: RH124 → RH134 → Libro → RH199 → EX200 (objetivo) → EX294 (ruta RHCE).',
+      rhcsaIndexContextFocus:
+        'Fortaleza: shell y archivos. Refuerzo: permisos, systemd, SSH, red, DNF. Más adelante: storage/LVM, SELinux, firewall y boot.',
+      rhcsaIndexModulesNote:
+        'Los módulos de abajo documentan prácticas y notas en labs oficiales Red Hat y lab local Vagrant.',
       ieltsPractices: 'Prácticas IELTS',
       ieltsBlogTitle: 'Práctica IELTS',
       ieltsBlogDescription:
@@ -147,14 +175,27 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaIndexTrainingRolLink: 'Catálogo Red Hat Online Learning (ROL)',
       rhcsaIndexRh124Title: 'Curso RH124 (Red Hat System Administration I)',
       rhcsaIndexRh124Link: 'RH124 — versión del curso en ROL',
+      rhcsaIndexRh124Status: 'Completado — badge Credly',
+      rhcsaIndexRh124BadgeLink: 'Ver certificado RH124 en Credly',
       rhcsaIndexRh134Title: 'Curso RH134 (Red Hat System Administration II)',
       rhcsaIndexRh134Link: 'RH134 — versión del curso en ROL',
+      rhcsaIndexRh134Status: 'Completado — badge Credly',
+      rhcsaIndexRh134BadgeLink: 'Ver certificado RH134 en Credly',
+      rhcsaIndexRh199Title: 'Curso RH199 (RHCSA Rapid Track v10.0)',
+      rhcsaIndexRh199Link: 'RH199 — versión del curso en ROL',
+      rhcsaIndexRh199Status: 'En curso — 10/154 pág. • Cap. 2 ch02s03 Links (27 ago 2026)',
+      rhcsaIndexBookTitle: 'Libro: Red Hat RHCSA 9 Cert Guide (Sander van Vugt)',
+      rhcsaIndexBookStatus: 'En curso — 272/1593 pág. (~17%) • Cap. 5 Connecting to RHEL 9',
+      rhcsaIndexEx200Title: 'Examen objetivo: RHCSA (EX200)',
+      rhcsaIndexEx200Link: 'EX200 — examen RHCSA oficial',
+      rhcsaIndexEx294Title: 'Ruta posterior: RHCE (EX294)',
+      rhcsaIndexEx294Link: 'EX294 — examen RHCE (requiere RHCSA)',
       rhcsaIndexTimelineNote:
         'Notas personales sobre plazos: se puede seguir trabajando aunque no alcances el tiempo previsto del curso. La renovación típica va por ventanas de ~90 días y en algunos casos eso puede reiniciar el progreso; en mi caso no me reinició el avance.',
       rhcsaIndexThanksNote:
         'Agradecimiento: en América Virtual me facilitaron la entrada gratuita al curso y van a cubrir el costo; les estoy muy agradecido.',
       rhcsaIndexPlanNote:
-        'Plan: completar las prácticas en los labs de RH124 y RH134 (ROL/LMS) y documentar aquí lo hecho en esos entornos.',
+        'Plan de refuerzo (~63 días hasta ~20 oct): cerrar libro + RH199, repaso por bloques (users/permisos, SSH/red, DNF/systemd, storage, SELinux/firewall/boot) y practice exams hacia EX200.',
     }
   },
   en: {
@@ -195,7 +236,17 @@ export const LOCALE_CONFIG: Record<Locale, {
       viewAllPractices: 'View all practice logs',
       readGuide: 'Read guide',
       rhcsaBlogTitle: 'RHCSA EX200 Blog',
-      rhcsaBlogDescription: 'Lab documentation, study guides, and progress updates for RHCSA EX200 certification.',
+      rhcsaBlogDescription:
+        'RHCSA EX200 prep: RH124 and RH134 completed; reinforcement with Van Vugt book and RH199 Rapid Track. Lab docs and progress.',
+      rhcsaIndexContextTitle: 'Where I stand on RHCSA',
+      rhcsaIndexContextNow:
+        'RH124 and RH134 earned. Current reinforcement: Red Hat RHCSA 9 Cert Guide (Sander van Vugt), p. 272/1593 (~17%, Ch. 5 Connecting to RHEL 9), and RH199 Rapid Track v10.0 on ROL (10/154, Ch. 2 — symbolic links, since Aug 27). Pre-exam practice target: ~Oct 20, 2026 (day 14/63 of the plan).',
+      rhcsaIndexContextPipeline:
+        'Pipeline: RH124 → RH134 → Book → RH199 → EX200 (target) → EX294 (RHCE path).',
+      rhcsaIndexContextFocus:
+        'Strength: shell and files. Reinforcement: permissions, systemd, SSH, networking, DNF. Later: storage/LVM, SELinux, firewall and boot.',
+      rhcsaIndexModulesNote:
+        'The modules below document practice notes from official Red Hat labs and the local Vagrant lab.',
       ieltsPractices: 'IELTS Practice',
       ieltsBlogTitle: 'IELTS Practice',
       ieltsBlogDescription:
@@ -220,14 +271,27 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaIndexTrainingRolLink: 'Red Hat Online Learning catalog (ROL)',
       rhcsaIndexRh124Title: 'Course RH124 (Red Hat System Administration I)',
       rhcsaIndexRh124Link: 'RH124 — course on ROL',
+      rhcsaIndexRh124Status: 'Completed — Credly badge',
+      rhcsaIndexRh124BadgeLink: 'View RH124 certificate on Credly',
       rhcsaIndexRh134Title: 'Course RH134 (Red Hat System Administration II)',
       rhcsaIndexRh134Link: 'RH134 — course on ROL',
+      rhcsaIndexRh134Status: 'Completed — Credly badge',
+      rhcsaIndexRh134BadgeLink: 'View RH134 certificate on Credly',
+      rhcsaIndexRh199Title: 'Course RH199 (RHCSA Rapid Track v10.0)',
+      rhcsaIndexRh199Link: 'RH199 — course on ROL',
+      rhcsaIndexRh199Status: 'In progress — 10/154 pages • Ch. 2 ch02s03 Links (Aug 27, 2026)',
+      rhcsaIndexBookTitle: 'Book: Red Hat RHCSA 9 Cert Guide (Sander van Vugt)',
+      rhcsaIndexBookStatus: 'In progress — 272/1593 pages (~17%) • Ch. 5 Connecting to RHEL 9',
+      rhcsaIndexEx200Title: 'Target exam: RHCSA (EX200)',
+      rhcsaIndexEx200Link: 'EX200 — official RHCSA exam',
+      rhcsaIndexEx294Title: 'Next step: RHCE (EX294)',
+      rhcsaIndexEx294Link: 'EX294 — RHCE exam (requires RHCSA)',
       rhcsaIndexTimelineNote:
         'Personal notes on timelines: you can keep going even if you do not finish within the allotted window. Renewals often run in ~90-day cycles and in some setups that can reset course progress; in my case it did not reset my progress.',
       rhcsaIndexThanksNote:
         'Thanks: América Virtual gave me complimentary access to the course and is covering the course cost — very grateful.',
       rhcsaIndexPlanNote:
-        'Plan: finish labs in RH124 and RH134 (ROL/LMS) and document here what I complete in those environments.',
+        'Reinforcement plan (~63 days until ~Oct 20): finish book + RH199, block review (users/permissions, SSH/network, DNF/systemd, storage, SELinux/firewall/boot) and practice exams toward EX200.',
     }
   }
   // Ejemplo de cómo agregar portugués:

@@ -28,6 +28,15 @@ const completionPercent = Math.round((completedModules / totalModules) * 100);
       <a class="back-link" href="/en/#practicas-actuales">← Back to CV</a>
       <h1>RHCSA EX200</h1>
       <p>{ui.rhcsaBlogDescription}</p>
+
+      <section class="index-context" aria-labelledby="rhcsa-context-heading">
+        <h2 id="rhcsa-context-heading">{ui.rhcsaIndexContextTitle}</h2>
+        <p>{ui.rhcsaIndexContextNow}</p>
+        <p>{ui.rhcsaIndexContextPipeline}</p>
+        <p>{ui.rhcsaIndexContextFocus}</p>
+        <p class="modules-note">{ui.rhcsaIndexModulesNote}</p>
+      </section>
+
       <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={completionPercent}>
         <div class="progress-fill" style={`width: ${completionPercent}%`} />
       </div>
@@ -48,12 +57,46 @@ const completionPercent = Math.round((completedModules / totalModules) * 100);
         <ul class="training-list">
           <li>
             <a href="https://rol.redhat.com/rol/app/courses/rh124-10.0" target="_blank" rel="noopener noreferrer">{ui.rhcsaIndexRh124Link}</a>
+            {' — '}
+            {ui.rhcsaIndexRh124Status}
+          </li>
+          <li>
+            <a href="https://www.credly.com/badges/b3bb2779-eefd-4646-813c-e142e5c9d219/linked_in_profile" target="_blank" rel="noopener noreferrer">{ui.rhcsaIndexRh124BadgeLink}</a>
           </li>
         </ul>
         <h3>{ui.rhcsaIndexRh134Title}</h3>
         <ul class="training-list">
           <li>
             <a href="https://rol.redhat.com/rol/app/courses/rh134-10.0" target="_blank" rel="noopener noreferrer">{ui.rhcsaIndexRh134Link}</a>
+            {' — '}
+            {ui.rhcsaIndexRh134Status}
+          </li>
+          <li>
+            <a href="https://www.credly.com/badges/a6a4a878-0fec-4a05-9c66-57cc1e6de2f6/linked_in_profile" target="_blank" rel="noopener noreferrer">{ui.rhcsaIndexRh134BadgeLink}</a>
+          </li>
+        </ul>
+        <h3>{ui.rhcsaIndexRh199Title}</h3>
+        <ul class="training-list">
+          <li>
+            <a href="https://rol.redhat.com/rol/app/courses/rh199-10.0" target="_blank" rel="noopener noreferrer">{ui.rhcsaIndexRh199Link}</a>
+            {' — '}
+            {ui.rhcsaIndexRh199Status}
+          </li>
+        </ul>
+        <h3>{ui.rhcsaIndexBookTitle}</h3>
+        <ul class="training-list">
+          <li>{ui.rhcsaIndexBookStatus}</li>
+        </ul>
+        <h3>{ui.rhcsaIndexEx200Title}</h3>
+        <ul class="training-list">
+          <li>
+            <a href="https://www.redhat.com/en/services/training/ex200-red-hat-certified-system-administrator-rhcsa-exam" target="_blank" rel="noopener noreferrer">{ui.rhcsaIndexEx200Link}</a>
+          </li>
+        </ul>
+        <h3>{ui.rhcsaIndexEx294Title}</h3>
+        <ul class="training-list">
+          <li>
+            <a href="https://www.redhat.com/en/services/training/ex294-red-hat-certified-engineer-rhce-exam-red-hat-enterprise-linux-9" target="_blank" rel="noopener noreferrer">{ui.rhcsaIndexEx294Link}</a>
           </li>
         </ul>
         <p>{ui.rhcsaIndexTimelineNote}</p>
@@ -99,6 +142,28 @@ const completionPercent = Math.round((completedModules / totalModules) * 100);
     display: inline-block;
     margin-bottom: 12px;
     text-decoration: underline;
+  }
+
+  .index-context {
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-border-primary);
+  }
+
+  .index-context h2 {
+    font-size: 1.05rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .index-context p {
+    margin: 0.65rem 0 0;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--color-text-secondary);
+  }
+
+  .modules-note {
+    font-style: italic;
   }
 
   .index-training {

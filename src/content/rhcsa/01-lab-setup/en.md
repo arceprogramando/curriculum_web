@@ -1,29 +1,39 @@
 ---
 title: "Practice environment: Red Hat labs + local Vagrant lab"
-description: "How I practice RHCSA by combining the official RH124/RH134 labs on ROL/LMS with a reproducible local lab on Rocky Linux 9 (Vagrant + VirtualBox)."
-excerpt: "Two environments: official Red Hat labs and a local Vagrant lab (Rocky Linux 9, server and client VMs)."
-date: 2026-07-21
+description: "How I practice RHCSA: RH124/RH134 completed, reinforcement with Van Vugt book and RH199, plus local Vagrant lab (Rocky Linux 9)."
+excerpt: "Pipeline RH124 → RH134 → Book → RH199 → EX200; official Red Hat labs and local Vagrant lab."
+date: 2026-08-31
 locale: "en"
 moduleNumber: 1
 completed: true
-tags: ["rhcsa", "rh124", "rh134", "red-hat", "rol", "vagrant", "rocky-linux"]
+tags: ["rhcsa", "rh124", "rh134", "rh199", "red-hat", "rol", "vagrant", "rocky-linux"]
 draft: false
 relatedCert: "RHCSA EX200"
 ---
 
 ## Goal
 
-Make it clear **where** I practice. I use two complementary environments:
+Make it clear **where** I practice and **which phase** of the EX200 plan I'm in:
 
-1. The **official labs** from the RH124 and RH134 courses on ROL/LMS.
-2. A **reproducible local lab** with Vagrant + VirtualBox to repeat scenarios without depending on the course window.
+1. **Completed base courses:** RH124 and RH134 (Credly badges).
+2. **Current reinforcement:** *Red Hat RHCSA 9 Cert Guide* (Van Vugt) + [RH199 Rapid Track v10.0](https://rol.redhat.com/rol/app/courses/rh199-10.0) on ROL.
+3. **Official Red Hat labs** on ROL/LMS when applicable.
+4. **Local lab** with Vagrant + VirtualBox to repeat scenarios without depending on the course window.
 
-## Courses I use
+## Study pipeline
 
-| Course | Role in my path | Where I practice |
-|--------|-----------------|-------------------|
-| [RH124 — Red Hat System Administration I (v10.0)](https://rol.redhat.com/rol/app/courses/rh124-10.0) | Completed foundation (users, permissions, storage, bash, scripts) | Course **ROL** / **LMS** labs and machines |
-| [RH134 — Red Hat System Administration II (v10.0)](https://rol.redhat.com/rol/app/courses/rh134-10.0) | In progress (LVM, firewall, SELinux, boot, containers, etc.) | Same Red Hat-provided environments per chapter |
+RH124 → RH134 → Book → RH199 → **EX200** (target) → EX294 (RHCE path)
+
+Pre-exam practice target: **~Oct 20, 2026** (~63-day reinforcement plan).
+
+## Courses and resources
+
+| Resource | Status | Role in my path |
+|----------|--------|-----------------|
+| [RH124 — Red Hat System Administration I (v10.0)](https://rol.redhat.com/rol/app/courses/rh124-10.0) | Completed | Foundation: users, permissions, storage, bash, scripts |
+| [RH134 — Red Hat System Administration II (v10.0)](https://rol.redhat.com/rol/app/courses/rh134-10.0) | Completed | LVM, firewall, SELinux, boot, containers |
+| *Red Hat RHCSA 9 Cert Guide* (Sander van Vugt) | In progress (272/1593 p.) | Theory/practice reinforcement toward EX200 |
+| [RH199 — RHCSA Rapid Track (v10.0)](https://rol.redhat.com/rol/app/courses/rh199-10.0) | In progress (10/154 p.) | Accelerated review on ROL |
 
 Usual access:
 
@@ -60,7 +70,7 @@ vagrant destroy -f    # wipe the lab and start fresh
 
 ## How I work each session
 
-1. Open the chapter or lab on ROL (e.g. `rh134-10.0/pages/...`).
+1. Open the chapter on ROL (RH199, `rh134-10.0/pages/...`) or advance in the Van Vugt book.
 2. Use the **environment assigned by the course**, or bring up the **local lab** with `vagrant up`, depending on what I need to repeat.
 3. Capture commands and notes in the following modules on this blog.
 4. If the official lab expires or the course window renews, I keep practicing in the local lab without depending on Red Hat.
@@ -72,4 +82,4 @@ vagrant destroy -f    # wipe the lab and start fresh
 
 ## Outcome
 
-Practice aligned with **official RHEL labs**, plus a **reproducible local Vagrant lab** to review scenarios whenever I want, consistent with **RHCSA EX200** prep and the rest of this blog.
+Practice aligned with **official RHEL labs**, reinforcement with **book + RH199** toward **EX200**, plus a **reproducible local Vagrant lab** to review scenarios whenever I want.

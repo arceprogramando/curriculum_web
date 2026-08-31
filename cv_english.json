@@ -90,6 +90,15 @@
       "institution": "Red Hat",
       "certificates": [
         {
+          "url": "https://rol.redhat.com/rol/app/courses/rh199-10.0",
+          "area": "RH199 – RHCSA Rapid Track (v10.0)",
+          "description": "Currently taking RH199 Rapid Track as reinforcement toward EX200, combined with the Red Hat RHCSA 9 Cert Guide (Van Vugt). Progress: Ch. 2 — symbolic links (Aug 2026).",
+          "startDate": "2026-08-27",
+          "endDate": null,
+          "score": null,
+          "courses": ["RHCSA Rapid Track"]
+        },
+        {
           "url": "https://www.credly.com/badges/a6a4a878-0fec-4a05-9c66-57cc1e6de2f6/linked_in_profile",
           "area": "RH134 – Red Hat System Administration II (v10.0)",
           "description": "Completed the RH134 course, the second part of the RHCSA training plan on RHEL 10. I deepened skills in Red Hat Enterprise Linux installation and deployment, storage management with LVM, security and SELinux, boot process control and troubleshooting, shell scripting automation, system tuning and container management, strengthening my capabilities as a system administrator in enterprise environments.",
