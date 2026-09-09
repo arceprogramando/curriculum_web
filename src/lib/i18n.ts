@@ -80,6 +80,11 @@ export const LOCALE_CONFIG: Record<Locale, {
     rhcsaIndexTrainingLmsLink: string;
     rhcsaIndexTrainingLmsNote: string;
     rhcsaIndexTrainingRolLink: string;
+    rhcsaIndexRh024Title: string;
+    rhcsaIndexRh024Status: string;
+    rhcsaIndexRh104Title: string;
+    rhcsaIndexRh104Link: string;
+    rhcsaIndexRh104Status: string;
     rhcsaIndexRh124Title: string;
     rhcsaIndexRh124Link: string;
     rhcsaIndexRh124Status: string;
@@ -141,14 +146,14 @@ export const LOCALE_CONFIG: Record<Locale, {
       readGuide: 'Leer guía',
       rhcsaBlogTitle: 'Blog RHCSA EX200',
       rhcsaBlogDescription:
-        'Preparación RHCSA EX200: RH124 y RH134 completados; refuerzo con libro Van Vugt y RH199 Rapid Track. Documentación de labs y progreso.',
+        'Preparación RHCSA EX200: RH124/RH134 hechos; RH024 hecho; RH104, libro Van Vugt y RH199 en curso. Labs y progreso.',
       rhcsaIndexContextTitle: 'Dónde estoy ahora con RHCSA',
       rhcsaIndexContextNow:
-        'RH124 y RH134 acreditados. Refuerzo actual: Red Hat RHCSA 9 Cert Guide (Sander van Vugt), pág. 272/1593 (~17%, Cap. 5 Connecting to RHEL 9), y RH199 Rapid Track v10.0 en ROL (10/154, Cap. 2 — enlaces simbólicos, desde 27 ago). Meta de práctica pre-examen: ~20 oct 2026 (día 14/63 del plan).',
+        'RH024 terminado; RH104 Fundamentals v9.1 en curso (10/56, 8 sep). RH124 y RH134 acreditados. Libro Van Vugt pág. 335/1593 (~21%, Cap. 7 Permissions) y RH199 Rapid Track (10/154, Cap. 2 Links). Meta práctica pre-examen: ~30 oct 2026 (día 20/73 del plan; quedan ~53 días).',
       rhcsaIndexContextPipeline:
-        'Pipeline: RH124 → RH134 → Libro → RH199 → EX200 (objetivo) → EX294 (ruta RHCE).',
+        'Pipeline: RH024 → RH104 → RH124 → RH134 → Libro → RH199 → EX200 (objetivo) → EX294 (ruta RHCE).',
       rhcsaIndexContextFocus:
-        'Fortaleza: shell y archivos. Refuerzo: permisos, systemd, SSH, red, DNF. Más adelante: storage/LVM, SELinux, firewall y boot.',
+        'Fortaleza: shell, archivos, SSH y users. Refuerzo: permisos/ACL, nmcli, systemd. Más adelante: storage/LVM, SELinux, firewall y boot.',
       rhcsaIndexModulesNote:
         'Los módulos de abajo documentan prácticas y notas en labs oficiales Red Hat y lab local Vagrant.',
       ieltsPractices: 'Prácticas IELTS',
@@ -173,6 +178,11 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaIndexTrainingLmsNote:
         'acceso a cursos y laboratorios con tu cuenta / Learning Subscription (entrá desde tu cuenta activa).',
       rhcsaIndexTrainingRolLink: 'Catálogo Red Hat Online Learning (ROL)',
+      rhcsaIndexRh024Title: 'RH024 — Getting Started with Linux (video)',
+      rhcsaIndexRh024Status: 'Completado — 8 sep 2026',
+      rhcsaIndexRh104Title: 'RH104 — Getting Started with Linux Fundamentals (v9.1)',
+      rhcsaIndexRh104Link: 'RH104 — curso en ROL',
+      rhcsaIndexRh104Status: 'En curso — 10/56 pág. • path RHCSA (8 sep 2026); labs GNOME vía VNC',
       rhcsaIndexRh124Title: 'Curso RH124 (Red Hat System Administration I)',
       rhcsaIndexRh124Link: 'RH124 — versión del curso en ROL',
       rhcsaIndexRh124Status: 'Completado — badge Credly',
@@ -185,7 +195,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaIndexRh199Link: 'RH199 — versión del curso en ROL',
       rhcsaIndexRh199Status: 'En curso — 10/154 pág. • Cap. 2 ch02s03 Links (27 ago 2026)',
       rhcsaIndexBookTitle: 'Libro: Red Hat RHCSA 9 Cert Guide (Sander van Vugt)',
-      rhcsaIndexBookStatus: 'En curso — 272/1593 pág. (~17%) • Cap. 5 Connecting to RHEL 9',
+      rhcsaIndexBookStatus: 'En curso — 335/1593 pág. (~21%) • Cap. 7 Permissions Management',
       rhcsaIndexEx200Title: 'Examen objetivo: RHCSA (EX200)',
       rhcsaIndexEx200Link: 'EX200 — examen RHCSA oficial',
       rhcsaIndexEx294Title: 'Ruta posterior: RHCE (EX294)',
@@ -195,7 +205,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaIndexThanksNote:
         'Agradecimiento: en América Virtual me facilitaron la entrada gratuita al curso y van a cubrir el costo; les estoy muy agradecido.',
       rhcsaIndexPlanNote:
-        'Plan de refuerzo (~63 días hasta ~20 oct): cerrar libro + RH199, repaso por bloques (users/permisos, SSH/red, DNF/systemd, storage, SELinux/firewall/boot) y practice exams hacia EX200.',
+        'Plan ~73 días hasta ~30 oct: Cap. 7 permisos/ACL ahora; luego nmcli, DNF/systemd, storage/LVM, SELinux/firewall/boot; paralelamente RH104 + RH199 + libro; cierre con practice exams EX200.',
     }
   },
   en: {
@@ -237,14 +247,14 @@ export const LOCALE_CONFIG: Record<Locale, {
       readGuide: 'Read guide',
       rhcsaBlogTitle: 'RHCSA EX200 Blog',
       rhcsaBlogDescription:
-        'RHCSA EX200 prep: RH124 and RH134 completed; reinforcement with Van Vugt book and RH199 Rapid Track. Lab docs and progress.',
+        'RHCSA EX200 prep: RH124/RH134 done; RH024 done; RH104, Van Vugt book and RH199 in progress. Labs and progress.',
       rhcsaIndexContextTitle: 'Where I stand on RHCSA',
       rhcsaIndexContextNow:
-        'RH124 and RH134 earned. Current reinforcement: Red Hat RHCSA 9 Cert Guide (Sander van Vugt), p. 272/1593 (~17%, Ch. 5 Connecting to RHEL 9), and RH199 Rapid Track v10.0 on ROL (10/154, Ch. 2 — symbolic links, since Aug 27). Pre-exam practice target: ~Oct 20, 2026 (day 14/63 of the plan).',
+        'RH024 completed; RH104 Fundamentals v9.1 in progress (10/56, Sep 8). RH124 and RH134 earned. Van Vugt book p. 335/1593 (~21%, Ch. 7 Permissions) and RH199 Rapid Track (10/154, Ch. 2 Links). Pre-exam practice target: ~Oct 30, 2026 (day 20/73 of the plan; ~53 days left).',
       rhcsaIndexContextPipeline:
-        'Pipeline: RH124 → RH134 → Book → RH199 → EX200 (target) → EX294 (RHCE path).',
+        'Pipeline: RH024 → RH104 → RH124 → RH134 → Book → RH199 → EX200 (target) → EX294 (RHCE path).',
       rhcsaIndexContextFocus:
-        'Strength: shell and files. Reinforcement: permissions, systemd, SSH, networking, DNF. Later: storage/LVM, SELinux, firewall and boot.',
+        'Strength: shell, files, SSH and users. Reinforcement: permissions/ACL, nmcli, systemd. Later: storage/LVM, SELinux, firewall and boot.',
       rhcsaIndexModulesNote:
         'The modules below document practice notes from official Red Hat labs and the local Vagrant lab.',
       ieltsPractices: 'IELTS Practice',
@@ -269,6 +279,11 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaIndexTrainingLmsNote:
         'courses and labs through your account / Learning Subscription (sign in with your active account).',
       rhcsaIndexTrainingRolLink: 'Red Hat Online Learning catalog (ROL)',
+      rhcsaIndexRh024Title: 'RH024 — Getting Started with Linux (video)',
+      rhcsaIndexRh024Status: 'Completed — Sep 8, 2026',
+      rhcsaIndexRh104Title: 'RH104 — Getting Started with Linux Fundamentals (v9.1)',
+      rhcsaIndexRh104Link: 'RH104 — course on ROL',
+      rhcsaIndexRh104Status: 'In progress — 10/56 pages • RHCSA path (Sep 8, 2026); GNOME labs via VNC',
       rhcsaIndexRh124Title: 'Course RH124 (Red Hat System Administration I)',
       rhcsaIndexRh124Link: 'RH124 — course on ROL',
       rhcsaIndexRh124Status: 'Completed — Credly badge',
@@ -281,7 +296,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaIndexRh199Link: 'RH199 — course on ROL',
       rhcsaIndexRh199Status: 'In progress — 10/154 pages • Ch. 2 ch02s03 Links (Aug 27, 2026)',
       rhcsaIndexBookTitle: 'Book: Red Hat RHCSA 9 Cert Guide (Sander van Vugt)',
-      rhcsaIndexBookStatus: 'In progress — 272/1593 pages (~17%) • Ch. 5 Connecting to RHEL 9',
+      rhcsaIndexBookStatus: 'In progress — 335/1593 pages (~21%) • Ch. 7 Permissions Management',
       rhcsaIndexEx200Title: 'Target exam: RHCSA (EX200)',
       rhcsaIndexEx200Link: 'EX200 — official RHCSA exam',
       rhcsaIndexEx294Title: 'Next step: RHCE (EX294)',
@@ -291,7 +306,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaIndexThanksNote:
         'Thanks: América Virtual gave me complimentary access to the course and is covering the course cost — very grateful.',
       rhcsaIndexPlanNote:
-        'Reinforcement plan (~63 days until ~Oct 20): finish book + RH199, block review (users/permissions, SSH/network, DNF/systemd, storage, SELinux/firewall/boot) and practice exams toward EX200.',
+        'Plan ~73 days until ~Oct 30: Ch. 7 permissions/ACL now; then nmcli, DNF/systemd, storage/LVM, SELinux/firewall/boot; in parallel RH104 + RH199 + book; close with EX200 practice exams.',
     }
   }
   // Ejemplo de cómo agregar portugués:

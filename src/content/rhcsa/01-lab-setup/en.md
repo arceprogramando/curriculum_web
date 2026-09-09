@@ -1,12 +1,12 @@
 ---
 title: "Practice environment: Red Hat labs + local Vagrant lab"
-description: "How I practice RHCSA: RH124/RH134 completed, reinforcement with Van Vugt book and RH199, plus local Vagrant lab (Rocky Linux 9)."
-excerpt: "Pipeline RH124 → RH134 → Book → RH199 → EX200; official Red Hat labs and local Vagrant lab."
-date: 2026-08-31
+description: "How I practice RHCSA: RH024 done; RH104, Van Vugt book and RH199 in progress; RH124/RH134 earned; local Vagrant lab."
+excerpt: "Pipeline RH024 → RH104 → RH124 → RH134 → Book → RH199 → EX200; official labs and Vagrant."
+date: 2026-09-08
 locale: "en"
 moduleNumber: 1
 completed: true
-tags: ["rhcsa", "rh124", "rh134", "rh199", "red-hat", "rol", "vagrant", "rocky-linux"]
+tags: ["rhcsa", "rh024", "rh104", "rh124", "rh134", "rh199", "red-hat", "rol", "vagrant", "rocky-linux"]
 draft: false
 relatedCert: "RHCSA EX200"
 ---
@@ -15,24 +15,26 @@ relatedCert: "RHCSA EX200"
 
 Make it clear **where** I practice and **which phase** of the EX200 plan I'm in:
 
-1. **Completed base courses:** RH124 and RH134 (Credly badges).
-2. **Current reinforcement:** *Red Hat RHCSA 9 Cert Guide* (Van Vugt) + [RH199 Rapid Track v10.0](https://rol.redhat.com/rol/app/courses/rh199-10.0) on ROL.
-3. **Official Red Hat labs** on ROL/LMS when applicable.
-4. **Local lab** with Vagrant + VirtualBox to repeat scenarios without depending on the course window.
+1. **RHCSA path on ROL:** RH024 (video) completed; RH104 Fundamentals v9.1 in progress.
+2. **Earned base courses:** RH124 and RH134 (Credly badges).
+3. **Current reinforcement:** *Red Hat RHCSA 9 Cert Guide* (Van Vugt, Ch. 7 permissions) + [RH199 Rapid Track v10.0](https://rol.redhat.com/rol/app/courses/rh199-10.0).
+4. **Official labs** on ROL/LMS and **local lab** VirtualBox/Vagrant (2 VMs) for SSH/networking.
 
 ## Study pipeline
 
-RH124 → RH134 → Book → RH199 → **EX200** (target) → EX294 (RHCE path)
+RH024 → RH104 → RH124 → RH134 → Book → RH199 → **EX200** (target) → EX294 (RHCE path)
 
-Pre-exam practice target: **~Oct 20, 2026** (~63-day reinforcement plan).
+Pre-exam practice target: **~Oct 30, 2026** (~73-day plan; day ~20/73).
 
 ## Courses and resources
 
 | Resource | Status | Role in my path |
 |----------|--------|-----------------|
-| [RH124 — Red Hat System Administration I (v10.0)](https://rol.redhat.com/rol/app/courses/rh124-10.0) | Completed | Foundation: users, permissions, storage, bash, scripts |
+| RH024 — Getting Started (video) | Completed (Sep 8) | RHCSA path prerequisite on ROL |
+| [RH104 — Linux Fundamentals (v9.1)](https://rol.redhat.com/rol/app/courses/rh104-9.1) | In progress (10/56) | Fundamentals + GNOME labs via VNC |
+| [RH124 — Red Hat System Administration I (v10.0)](https://rol.redhat.com/rol/app/courses/rh124-10.0) | Completed | Foundation: users, permissions, storage, bash |
 | [RH134 — Red Hat System Administration II (v10.0)](https://rol.redhat.com/rol/app/courses/rh134-10.0) | Completed | LVM, firewall, SELinux, boot, containers |
-| *Red Hat RHCSA 9 Cert Guide* (Sander van Vugt) | In progress (272/1593 p.) | Theory/practice reinforcement toward EX200 |
+| *Red Hat RHCSA 9 Cert Guide* (Sander van Vugt) | In progress (335/1593 p.) | Now Ch. 7 Permissions / ACL |
 | [RH199 — RHCSA Rapid Track (v10.0)](https://rol.redhat.com/rol/app/courses/rh199-10.0) | In progress (10/154 p.) | Accelerated review on ROL |
 
 Usual access:
@@ -82,4 +84,4 @@ vagrant destroy -f    # wipe the lab and start fresh
 
 ## Outcome
 
-Practice aligned with **official RHEL labs**, reinforcement with **book + RH199** toward **EX200**, plus a **reproducible local Vagrant lab** to review scenarios whenever I want.
+Practice aligned with **official RHEL labs**, reinforcement with **RH104 + book + RH199** toward **EX200**, plus a **local lab** (Vagrant/VirtualBox, 2 VMs) for SSH/networking and review.
