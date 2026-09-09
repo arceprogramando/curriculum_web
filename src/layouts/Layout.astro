@@ -222,7 +222,10 @@ const allSkills = [
         const isRoot = path === '/';
         const hasPreference = localStorage.getItem('locale-preference');
 
-        if (isRoot && !hasPreference) {
+        const ua = navigator.userAgent || '';
+        const isBot = /bot|crawler|spider|bing|google|slurp|duckduck/i.test(ua);
+
+        if (isRoot && !hasPreference && !isBot) {
           const lang = navigator.language || navigator.userLanguage || 'es';
           if (!lang.toLowerCase().startsWith('es')) {
             localStorage.setItem('locale-preference', 'en');
