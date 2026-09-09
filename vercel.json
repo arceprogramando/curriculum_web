@@ -1,5 +1,14 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "framework": "astro"
+  "framework": "astro",
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.arceprog.dev" }],
+      "destination": "https://arceprog.dev/:path*",
+      "permanent": true
+    }
+  ]
 }

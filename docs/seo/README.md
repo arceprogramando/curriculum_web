@@ -5,6 +5,7 @@ Documentación del portafolio **curriculum_web** (Astro 6, despliegue en Vercel)
 | Documento | Contenido |
 |-----------|-----------|
 | [gsc-clics-vs-visitas.md](./gsc-clics-vs-visitas.md) | Por qué GSC no muestra tus visitas directas |
+| [auditoria-arceprog-dev-2026-09.md](./auditoria-arceprog-dev-2026-09.md) | **Actual.** Migración `www` → apex: redirect 307, barra final, plan por fases (sept 2026) |
 | [auditoria-arceprog-dev-2026-06.md](./auditoria-arceprog-dev-2026-06.md) | Auditoría técnica + datos GSC (junio 2026) |
 | [plan-accion.md](./plan-accion.md) | Plan priorizado SEO/SEM |
 

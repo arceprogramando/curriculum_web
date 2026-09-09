@@ -348,10 +348,15 @@ export function getLocaleFromPath(path: string): Locale {
   return DEFAULT_LOCALE;
 }
 
+/**
+ * Ruta con prefijo de idioma y barra final SIEMPRE (`/`, `/en/`, `/rhcsa-ex200/01-lab-setup/`).
+ * Debe coincidir con las URLs del sitemap (@astrojs/sitemap genera con barra final)
+ * para que canonical, hreflang, enlaces internos y sitemap apunten a la misma URL.
+ */
 export function getLocalePath(locale: Locale, path: string = ''): string {
   const config = getLocaleConfig(locale);
-  const cleanPath = path.replace(/^\//, '');
-  return config.urlPrefix + (cleanPath ? `/${cleanPath}` : '') || '/';
+  const cleanPath = path.replace(/^\/+|\/+$/g, '');
+  return `${config.urlPrefix}/${cleanPath ? `${cleanPath}/` : ''}`;
 }
 
 export function getAllLocaleUrls(basePath: string = ''): Record<Locale, string> {

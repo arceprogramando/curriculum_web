@@ -14,8 +14,29 @@ Skill **del proyecto** `curriculum_web`. Complementa [astro-seo](../astro-seo/SK
 ## Cuándo usar
 
 - El usuario confunde **visitas propias** con **clics en GSC**.
-- Pide auditar `arceprog.dev`, indexación (5 vs 34 páginas), o plan SEO/SEM.
+- Pide auditar `arceprog.dev`, indexación baja, o plan SEO/SEM.
+- Menciona la **migración `www.arceprog.dev` → `arceprog.dev`** o "se rompió con el tiempo".
 - Hay que actualizar meta, `i18n.ts`, `Layout.astro`, sitemap o documentar en `docs/seo/`.
+
+## Primero: canonicalización (5 min con curl)
+
+Antes de tocar contenido, ejecutar y comparar con lo esperado. Es la causa más probable de "1 indexada / N no indexadas" en este sitio.
+
+```bash
+curl -sI https://www.arceprog.dev/ | head -n 3        # esperado: 308 (307 = temporal, MAL)
+curl -sI https://arceprog.dev/en | head -n 3          # esperado: 308 -> /en/
+curl -s  https://arceprog.dev/en/ | grep -o '<link rel="\(canonical\|alternate\)"[^>]*>'   # todo con barra final
+curl -s  https://arceprog.dev/sitemap-0.xml | grep -o '<loc>[^<]*' | head            # con barra final
+```
+
+| Síntoma | Causa | Dónde se arregla |
+|---------|-------|------------------|
+| `www` responde **307** | Vercel usa 307 por defecto en redirect de dominio | **Dashboard** Vercel → Settings → Domains → Edit → `308`. `vercel.json` no lo puede sobreescribir |
+| `/en` y `/en/` ambos 200 | Sin `trailingSlash` | `astro.config.mjs` (`trailingSlash: 'always'`) + `vercel.json` (`"trailingSlash": true`) |
+| canonical `/en`, sitemap `/en/` | `getLocalePath()` sin barra final | `src/lib/i18n.ts` — debe devolver siempre `/…/` |
+| GSC muestra pocas URLs conocidas | Propiedad nueva sin historial | Crear propiedad de **Dominio** `arceprog.dev`; en la `www` vieja hacer **Cambio de dirección** |
+
+Referencia completa: `docs/seo/auditoria-arceprog-dev-2026-09.md`.
 
 ## Regla de oro (GSC)
 
@@ -40,6 +61,8 @@ Si el usuario dice “entré muchas veces”: explicar que **no suma clics** sal
 - **Meta central:** `src/lib/i18n.ts` + props en `src/layouts/Layout.astro`.
 - **Artículos:** `title` / `description` por entrada en páginas `[slug].astro` + JSON-LD `BlogPosting`.
 - **hreflang en HTML:** debe coincidir con sitemap → `ogLocale` con guión (`es-AR`, `en-US`) en `Layout.astro`.
+- **Una URL por página:** siempre con barra final (`/en/`, `/rhcsa-ex200/01-lab-setup/`). `getLocalePath()` la agrega; los `href` hardcodeados en `src/pages/**` también deben llevarla.
+- **Host canónico:** `https://arceprog.dev` (sin `www`). `www` → apex debe ser **308**.
 
 ## Checklist rápido (antes de deploy)
 
@@ -58,10 +81,11 @@ No hay campañas pagas en el repo. Acciones SEM **orgánicas / gratuitas**:
 3. **Perfiles:** LinkedIn/GitHub con misma URL canónica `https://arceprog.dev`.
 4. **Ads:** si más adelante hay presupuesto, documentar en `docs/seo/` aparte; no implementar sin pedido explícito.
 
-## Indexación: por qué “34 no indexadas”
+## Indexación: por qué hay tantas “no indexadas”
 
-Causas típicas en este sitio:
+Leer siempre el **motivo** en GSC → Páginas → No indexadas. Tabla de decisión por motivo en `docs/seo/auditoria-arceprog-dev-2026-09.md`. Causas típicas en este sitio:
 
+- **Canonicalización rota** (redirect `www` temporal, `/en` vs `/en/`): “Duplicada, Google eligió otra canónica” / “Página alternativa con canónica adecuada”.
 - Muchas URLs nuevas (módulos RHCSA 05–10) aún sin rastreo profundo.
 - Pares **es/en** duplican superficie (Google elige una variante).
 - Páginas **finas** (IELTS borrador, listados cortos).
@@ -73,7 +97,8 @@ Acciones: sitemap en GSC, enlaces internos desde home (`#practicas-actuales`), m
 
 | Archivo | Uso SEO |
 |---------|---------|
-| `astro.config.mjs` | `site`, sitemap i18n |
+| `astro.config.mjs` | `site`, `trailingSlash: 'always'`, sitemap i18n |
+| `vercel.json` | `trailingSlash: true`, redirect `www` → apex 308 (respaldo del dashboard) |
 | `public/robots.txt` | Allow + Sitemap URL |
 | `src/layouts/Layout.astro` | canonical, hreflang, OG, Person/WebSite |
 | `src/lib/i18n.ts` | meta por idioma |
