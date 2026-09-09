@@ -1,6 +1,6 @@
 ---
 title: "Practice environment: Red Hat labs + local Vagrant lab"
-description: "How I practice RHCSA: RH024 done; RH104, Van Vugt book and RH199 in progress; RH124/RH134 earned; local Vagrant lab."
+description: "How I practice RHCSA EX200: RH024 done; RH104, Van Vugt book and RH199 in progress; RH124 and RH134 earned; official Red Hat labs plus a local Vagrant lab."
 excerpt: "Pipeline RH024 → RH104 → RH124 → RH134 → Book → RH199 → EX200; official labs and Vagrant."
 date: 2026-09-08
 locale: "en"

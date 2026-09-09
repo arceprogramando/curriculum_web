@@ -1,6 +1,6 @@
 ---
 title: "RH134 — Gestión declarativa y convergencia del sistema"
-description: "Notas del capítulo 4.4 de RH134: automatización, estado deseado y puente hacia DevOps e IaC."
+description: "Notas RH134 de gestión declarativa en Linux: estado deseado, convergencia del sistema y puente hacia DevOps e infraestructura como código para RHCSA."
 excerpt: "Introducción a administración declarativa, runtime y herramientas que convergen el sistema (ch04s04)."
 date: 2026-05-16
 locale: "es"

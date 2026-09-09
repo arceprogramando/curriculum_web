@@ -146,7 +146,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       readGuide: 'Leer guía',
       rhcsaBlogTitle: 'Blog RHCSA EX200',
       rhcsaBlogDescription:
-        'Preparación RHCSA EX200: RH124/RH134 hechos; RH024 hecho; RH104, libro Van Vugt y RH199 en curso. Labs y progreso.',
+        'Labs y notas de Felipe Arce para RHCSA EX200 en Linux: RH124 y RH134 hechos, RH024 hecho, RH104 y RH199 en curso, libro Van Vugt y prácticas con Vagrant.',
       rhcsaIndexContextTitle: 'Dónde estoy ahora con RHCSA',
       rhcsaIndexContextNow:
         'RH024 terminado; RH104 Fundamentals v9.1 en curso (10/56, 8 sep). RH124 y RH134 acreditados. Libro Van Vugt pág. 335/1593 (~21%, Cap. 7 Permissions) y RH199 Rapid Track (10/154, Cap. 2 Links). Meta práctica pre-examen: ~30 oct 2026 (día 20/73 del plan; quedan ~53 días).',
@@ -247,7 +247,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       readGuide: 'Read guide',
       rhcsaBlogTitle: 'RHCSA EX200 Blog',
       rhcsaBlogDescription:
-        'RHCSA EX200 prep: RH124/RH134 done; RH024 done; RH104, Van Vugt book and RH199 in progress. Labs and progress.',
+        'Felipe Arce study notes and labs for RHCSA EX200 on Linux: RH124 and RH134 done, RH024 done, RH104 and RH199 in progress, Van Vugt book plus Vagrant.',
       rhcsaIndexContextTitle: 'Where I stand on RHCSA',
       rhcsaIndexContextNow:
         'RH024 completed; RH104 Fundamentals v9.1 in progress (10/56, Sep 8). RH124 and RH134 earned. Van Vugt book p. 335/1593 (~21%, Ch. 7 Permissions) and RH199 Rapid Track (10/154, Ch. 2 Links). Pre-exam practice target: ~Oct 30, 2026 (day 20/73 of the plan; ~53 days left).',

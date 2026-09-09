@@ -1,6 +1,6 @@
 ---
 title: "RH134 — Declarative management and system convergence"
-description: "Notes from RH134 chapter 4.4: automation, desired state, and the path toward DevOps and IaC."
+description: "RH134 notes on declarative Linux management: desired state, system convergence, and the path toward DevOps and infrastructure as code for RHCSA EX200."
 excerpt: "Introduction to declarative administration, runtime management, and convergence tools (ch04s04)."
 date: 2026-05-16
 locale: "en"

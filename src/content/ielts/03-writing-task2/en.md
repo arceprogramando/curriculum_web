@@ -1,6 +1,6 @@
 ---
 title: "Writing Task 2: structure and clarity"
-description: "Focused practice on introduction, body, and conclusion for IELTS essays."
+description: "IELTS Writing Task 2 practice: introduction, body paragraphs and conclusion for essays. Planned draft while in-person English at CUI stays the priority."
 excerpt: "Planned draft: Task 2 template (future IELTS)."
 date: 2026-05-08
 locale: "en"

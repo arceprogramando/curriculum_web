@@ -1,6 +1,6 @@
 ---
 title: "RH134 — User task scheduling"
-description: "Notes from RH134 v10.0 chapter 3: one-off and recurring user jobs with at, batch, and crontab."
+description: "RH134 notes on Linux user task scheduling: one-off and recurring jobs with at, batch and crontab, written for RHCSA EX200 practice on Red Hat systems."
 excerpt: "Schedule one-time and recurring user tasks with at, batch, and cron."
 date: 2026-03-22
 locale: "en"

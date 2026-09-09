@@ -1,6 +1,6 @@
 ---
 title: "Listening: toma de notas efectiva"
-description: "Rutina de practica para captar ideas clave y evitar perder respuestas en audio rapido."
+description: "Práctica de IELTS Listening: toma de notas para ideas clave y no perder respuestas en audio rápido. Borrador planificado antes de la preparación formal."
 excerpt: "Borrador planificado: notas y prediccion para listening (futuro IELTS)."
 date: 2026-05-07
 locale: "es"
