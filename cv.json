@@ -6,7 +6,7 @@
     "email": "arceprogramando@gmail.com",
     "phone": "+54 91150990913",
     "url": "https://arceprog.dev",
-    "summary": "Desarrollador de Software con 3 años de experiencia en desarrollo Full-Stack web y aplicaciones móviles. Técnico Universitario en Programación (UTN, 2025). Cursando el ingreso a Ingeniería Informática en la UNLaM. Experto en optimización de flujos de usuario, SEO y aplicaciones orientadas a clientes.",
+    "summary": "Desarrollador de Software con 3 años de experiencia en desarrollo Full-Stack web y aplicaciones móviles. Técnico Universitario en Programación (UTN, 2025). Cursando el ingreso 2027 a Ingeniería Informática en la UNLaM (actualmente Matemática). Experto en optimización de flujos de usuario, SEO y aplicaciones orientadas a clientes.",
     "location": {
       "address": "Gonzalez Catan",
       "postalCode": "1759",
@@ -129,16 +129,16 @@
       ]
     },
     {
-      "institution": "Universidad Nacional de La Matanza - UNLaM",
+      "institution": "Ingeniería Informática — UNLaM",
       "certificates": [
         {
           "url": "https://ingenieria.unlam.edu.ar/",
-          "area": "Curso de ingreso — Ingeniería Informática",
-          "description": "Cursando el curso de ingreso 2026 para la carrera de Ingeniería Informática, como paso hacia la licenciatura tras haberme graduado como Técnico Universitario en Programación en la UTN (2025).",
-          "startDate": "2026-01-01",
+          "area": "Curso de ingreso 2027 — Matemática",
+          "description": "Primera instancia regular del ingreso 2027 (20 jul – 9 dic 2026, calendario UNLaM). Ahora cursando Matemática; el ingreso de Ingeniería también incluye Geometría y Seminario de comprensión y producción de textos. Camino a la licenciatura tras el TUP en UTN (2025).",
+          "startDate": "2026-07-20",
           "endDate": null,
           "score": null,
-          "courses": ["Ingeniería Informática", "Curso de ingreso"]
+          "courses": ["Matemática", "Geometría", "Seminario de comprensión y producción de textos"]
         }
       ]
     },
@@ -146,7 +146,7 @@
       "institution": "Universidad Tecnologica Nacional, UTN",
       "certificates": [
         {
-          "url": "https://utn-cursoingreso.vercel.app",
+          "url": "https://utn.arceprog.dev",
           "area": "Técnico Universitario en Programación",
           "description": "Graduado en 2025 como Técnico Universitario en Programación (UTN CUDI). Durante la cursada desarrollé un proyecto personal en Astro con React y TypeScript para el seguimiento de avances (+40% visitas en 2025). Trabajé con C# en .NET (WPF) y bases de datos SQL.",
           "startDate": "2024-01-01",
@@ -408,7 +408,7 @@
       "isActive": true,
       "description": "Sitio de seguimiento de la Tecnicatura Universitaria en Programación (UTN CUDI). Proyecto desarrollado durante la cursada; titulación obtenida en 2025.",
       "highlights": ["Astro", "Html", "CSS", "Javascript"],
-      "url": "https://utn-cursoingreso.vercel.app",
+      "url": "https://utn.arceprog.dev",
       "github": "https://github.com/arceprogramando/utn_cursoingreso"
     },
     {

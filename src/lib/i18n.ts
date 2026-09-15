@@ -117,7 +117,7 @@ export const LOCALE_CONFIG: Record<Locale, {
     metaDescription: 'Desarrollador Full Stack en Buenos Aires. Técnico en Programación (UTN). React, Node.js y TypeScript. Portfolio y proyectos.',
     pageTitle: 'Felipe Arce - Desarrollador FullStack SSR | Portfolio',
     ogTitle: 'Felipe Arce - Desarrollador FullStack SSR',
-    ogDescription: 'Desarrollador web, Técnico Universitario en Programación (UTN, 2025) y estudiante del ingreso a Ingeniería Informática (UNLaM). React, Node.js, MongoDB y tecnologías modernas.',
+    ogDescription: 'Desarrollador web, Técnico Universitario en Programación (UTN, 2025) y cursando el ingreso 2027 a Ingeniería Informática (UNLaM). React, Node.js, MongoDB y tecnologías modernas.',
     keywords: 'Felipe Arce, desarrollador fullstack SSR, desarrollador MERN, React, Node.js, MongoDB, Express, JavaScript, TypeScript, portfolio developer, programador web, frontend developer, backend developer, Buenos Aires, Argentina',
     jobTitle: 'Desarrollador FullStack SSR',
     ui: {
@@ -218,7 +218,7 @@ export const LOCALE_CONFIG: Record<Locale, {
     metaDescription: 'Full Stack developer in Buenos Aires. Programming technician (UTN). React, Node.js and TypeScript. Portfolio and projects.',
     pageTitle: 'Felipe Arce - Mid-Level Full Stack Developer | Portfolio',
     ogTitle: 'Felipe Arce - Mid-Level Full Stack Developer',
-    ogDescription: 'Web developer, University Programming Technician (UTN, 2025), and UNLaM Computer Engineering entrance student. React, Node.js, MongoDB and modern stack.',
+    ogDescription: 'Web developer, University Programming Technician (UTN, 2025), and 2027 UNLaM Computer Engineering entrance student. React, Node.js, MongoDB and modern stack.',
     keywords: 'Felipe Arce, mid-level full stack developer, MERN developer, React, Node.js, MongoDB, Express, JavaScript, TypeScript, developer portfolio, web programmer, frontend developer, backend developer, Buenos Aires, Argentina',
     jobTitle: 'Mid-Level Full Stack Developer',
     ui: {

@@ -6,7 +6,7 @@
     "email": "arceprogramando@gmail.com",
     "phone": "+54 91150990913",
     "url": "https://arceprog.dev",
-    "summary": "Software Developer with 3 years of experience in Full-Stack web development and mobile applications. University Programming Technician (UTN, 2025). Currently taking the entrance course for Computer Engineering at UNLaM. Expert in user flow optimization, SEO, and client-oriented applications.",
+    "summary": "Software Developer with 3 years of experience in Full-Stack web development and mobile applications. University Programming Technician (UTN, 2025). Taking the 2027 Computer Engineering entrance course at UNLaM (currently Mathematics). Expert in user flow optimization, SEO, and client-oriented applications.",
     "location": {
       "address": "Gonzalez Catan",
       "postalCode": "1759",
@@ -128,16 +128,16 @@
       ]
     },
     {
-      "institution": "National University of La Matanza - UNLaM",
+      "institution": "Computer Engineering — UNLaM",
       "certificates": [
         {
           "url": "https://ingenieria.unlam.edu.ar/",
-          "area": "Entrance course — Computer Engineering",
-          "description": "Taking the 2026 entrance course for the Computer Engineering degree, as the next step after graduating as a University Programming Technician from UTN (2025).",
-          "startDate": "2026-01-01",
+          "area": "2027 entrance course — Mathematics",
+          "description": "Regular first instance of the 2027 intake (20 Jul – 9 Dec 2026, UNLaM calendar). Currently taking Mathematics; the Engineering entrance course also includes Geometry and a reading-and-writing seminar. Path to the degree after the UTN programming technician (2025).",
+          "startDate": "2026-07-20",
           "endDate": null,
           "score": null,
-          "courses": ["Computer Engineering", "Entrance course"]
+          "courses": ["Mathematics", "Geometry", "Reading and writing seminar"]
         }
       ]
     },
@@ -145,7 +145,7 @@
       "institution": "National Technological University, UTN",
       "certificates": [
         {
-          "url": "https://utn-cursoingreso.vercel.app",
+          "url": "https://utn.arceprog.dev",
           "area": "University Programming Technician",
           "description": "Graduated in 2025 as a University Programming Technician (UTN CUDI). During the program I built a personal Astro site with React and TypeScript to track progress (+40% visits in 2025). Worked with C# on .NET (WPF) and SQL databases.",
           "startDate": "2024-01-01",
@@ -407,7 +407,7 @@
       "isActive": true,
       "description": "Progress tracking site for the UTN CUDI Programming Technician program. Built during the degree; graduated in 2025.",
       "highlights": ["Astro", "Html", "CSS", "Javascript"],
-      "url": "https://utn-cursoingreso.vercel.app",
+      "url": "https://utn.arceprog.dev",
       "github": "https://github.com/arceprogramando/utn_cursoingreso"
     },
     {
