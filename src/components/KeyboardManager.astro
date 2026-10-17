@@ -114,6 +114,31 @@ const clientData = {
 </div>
 
 <script>
+  import { downloadDatedPdf } from '@/lib/pdf-download-name';
+
+  const pdfPath = () => {
+    const raw = document.getElementById('hotkeypad')?.getAttribute('data-client') ?? '{}';
+    const data = JSON.parse(raw) as { pdfFile?: string };
+    return data.pdfFile ?? '';
+  };
+
+  window.addEventListener(
+    'keydown',
+    (event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'p' && !event.altKey) {
+        event.preventDefault();
+        const path = pdfPath();
+        if (path) downloadDatedPdf(path);
+      }
+    },
+    true,
+  );
+</script>
+
+<script>
+  import HotKeyPad from 'hotkeypad';
+  import { downloadDatedPdf } from '@/lib/pdf-download-name';
+
   interface Info {
     id: string;
     section: string;
@@ -130,8 +155,6 @@ const clientData = {
     actionsSection: string;
     searchPlaceholder: string;
   }
-
-  import HotKeyPad from 'hotkeypad';
 
   const hotkeypad = new HotKeyPad();
   const info = hotkeypad.instance.getAttribute('data-info') ?? '[]';
@@ -153,12 +176,7 @@ const clientData = {
   });
 
   const downloadPdf = () => {
-    const link = document.createElement('a');
-    link.href = clientData.pdfFile;
-    link.download = clientData.pdfFile.split('/').pop() ?? 'CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    if (clientData.pdfFile) downloadDatedPdf(clientData.pdfFile);
   };
 
   hotkeypad.setCommands([
@@ -174,14 +192,6 @@ const clientData = {
     },
     ...data,
   ]);
-
-  document.addEventListener('keydown', (event) => {
-    if ((event.ctrlKey || event.metaKey) && event.key === 'p') {
-      event.preventDefault();
-      event.stopPropagation();
-      downloadPdf();
-    }
-  });
 
   const footerButton = document.getElementById('footer-button');
   footerButton?.addEventListener('click', () => {

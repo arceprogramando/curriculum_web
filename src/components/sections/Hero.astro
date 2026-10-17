@@ -31,10 +31,6 @@ const { name, label, image, location, phone, email } = cv.basics;
 const profiles = cv.basics.profiles as Profile[];
 const { city, region } = location;
 
-const currentDate = new Date();
-const currentYear = currentDate.getFullYear();
-const pdfDownloadName = config.pdfFile.split('/').pop() ?? `Felipe_Arce_CV_${currentYear}.pdf`;
-
 const SOCIAL_ICONS: SocialIcon = {
   GitHub,
   LinkedIn,
@@ -95,8 +91,9 @@ const whatsappMessage = locale === 'es'
         }
 
         <a
+          id="cv-download"
           href={config.pdfFile}
-          download={pdfDownloadName}
+          data-pdf={config.pdfFile}
           title={ui.downloadCV}
           aria-label={ui.downloadCV}
         >
@@ -122,6 +119,19 @@ const whatsappMessage = locale === 'es'
     <Skills locale={locale} />
   </div>
 </Section>
+
+<script>
+  import { downloadDatedPdf } from '@/lib/pdf-download-name';
+
+  const cvDownload = document.getElementById('cv-download');
+  cvDownload?.addEventListener('click', (event) => {
+    const path = cvDownload.getAttribute('data-pdf');
+    if (!path) return;
+
+    event.preventDefault();
+    downloadDatedPdf(path);
+  });
+</script>
 
 <style>
   .container {
