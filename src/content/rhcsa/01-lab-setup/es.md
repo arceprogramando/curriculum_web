@@ -1,6 +1,6 @@
 ---
 title: "Labs Red Hat y lab local con Vagrant"
-description: "Cómo practico RHCSA EX200 en Linux: RH024 hecho; RH104, Van Vugt y RH199 en curso; RH124 y RH134 acreditados; labs oficiales Red Hat y lab Vagrant."
+description: "Cómo practico RHCSA EX200 en Linux: RH024 y RH104 hechos; Van Vugt y RH199 en curso; RH124 y RH134 acreditados; labs oficiales Red Hat y lab Vagrant."
 excerpt: "Pipeline RH024 → RH104 → RH124 → RH134 → Libro → RH199 → EX200; labs oficiales y Vagrant."
 date: 2026-09-08
 locale: "es"
@@ -15,7 +15,7 @@ relatedCert: "RHCSA EX200"
 
 Dejar claro **dónde** practico y **en qué fase** estoy del plan hacia EX200:
 
-1. **Path RHCSA en ROL:** RH024 (video) completado; RH104 Fundamentals v9.1 en curso.
+1. **Path RHCSA en ROL:** RH024 (video) y RH104 Fundamentals v9.1 completados.
 2. **Cursos base acreditados:** RH124 y RH134 (badges Credly).
 3. **Refuerzo actual:** libro *Red Hat RHCSA 9 Cert Guide* (Van Vugt, Cap. 7 permisos) + [RH199 Rapid Track v10.0](https://rol.redhat.com/rol/app/courses/rh199-10.0).
 4. **Labs oficiales** en ROL/LMS y **lab local** VirtualBox/Vagrant (2 VMs) para SSH/red.
@@ -31,7 +31,7 @@ Meta de práctica pre-examen: **~30 oct 2026** (plan ~73 días; día ~20/73).
 | Recurso | Estado | Rol en mi camino |
 |---------|--------|------------------|
 | RH024 — Getting Started (video) | Completado (8 sep) | Requisito path RHCSA en ROL |
-| [RH104 — Linux Fundamentals (v9.1)](https://rol.redhat.com/rol/app/courses/rh104-9.1) | En curso (10/56) | Fundamentals + labs GNOME vía VNC |
+| [RH104 — Linux Fundamentals (v9.1)](https://rol.redhat.com/rol/app/courses/rh104-9.1) | Completado (17 oct 2026) | Fundamentals + labs GNOME vía VNC |
 | [RH124 — Red Hat System Administration I (v10.0)](https://rol.redhat.com/rol/app/courses/rh124-10.0) | Completado | Base: usuarios, permisos, almacenamiento, bash |
 | [RH134 — Red Hat System Administration II (v10.0)](https://rol.redhat.com/rol/app/courses/rh134-10.0) | Completado | LVM, firewall, SELinux, arranque, contenedores |
 | *Red Hat RHCSA 9 Cert Guide* (Sander van Vugt) | En curso (335/1593 pág.) | Ahora Cap. 7 Permissions / ACL |

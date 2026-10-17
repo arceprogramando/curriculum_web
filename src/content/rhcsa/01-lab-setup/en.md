@@ -1,6 +1,6 @@
 ---
 title: "Practice environment: Red Hat labs + local Vagrant lab"
-description: "How I practice RHCSA EX200: RH024 done; RH104, Van Vugt book and RH199 in progress; RH124 and RH134 earned; official Red Hat labs plus a local Vagrant lab."
+description: "How I practice RHCSA EX200: RH024 and RH104 done; Van Vugt book and RH199 in progress; RH124 and RH134 earned; official Red Hat labs plus a local Vagrant lab."
 excerpt: "Pipeline RH024 → RH104 → RH124 → RH134 → Book → RH199 → EX200; official labs and Vagrant."
 date: 2026-09-08
 locale: "en"
@@ -15,7 +15,7 @@ relatedCert: "RHCSA EX200"
 
 Make it clear **where** I practice and **which phase** of the EX200 plan I'm in:
 
-1. **RHCSA path on ROL:** RH024 (video) completed; RH104 Fundamentals v9.1 in progress.
+1. **RHCSA path on ROL:** RH024 (video) and RH104 Fundamentals v9.1 completed.
 2. **Earned base courses:** RH124 and RH134 (Credly badges).
 3. **Current reinforcement:** *Red Hat RHCSA 9 Cert Guide* (Van Vugt, Ch. 7 permissions) + [RH199 Rapid Track v10.0](https://rol.redhat.com/rol/app/courses/rh199-10.0).
 4. **Official labs** on ROL/LMS and **local lab** VirtualBox/Vagrant (2 VMs) for SSH/networking.
@@ -32,7 +32,7 @@ Pre-exam practice target: **~Oct 30, 2026** (~73-day plan; day ~20/73).
 | Resource                                                                                              | Status                    | Role in my path                               |
 | ----------------------------------------------------------------------------------------------------- | ------------------------- | --------------------------------------------- |
 | RH024 — Getting Started (video)                                                                       | Completed (Sep 8)         | RHCSA path prerequisite on ROL                |
-| [RH104 — Linux Fundamentals (v9.1)](https://rol.redhat.com/rol/app/courses/rh104-9.1)                 | In progress (10/56)       | Fundamentals + GNOME labs via VNC             |
+| [RH104 — Linux Fundamentals (v9.1)](https://rol.redhat.com/rol/app/courses/rh104-9.1)                 | Completed (Oct 17, 2026)  | Fundamentals + GNOME labs via VNC             |
 | [RH124 — Red Hat System Administration I (v10.0)](https://rol.redhat.com/rol/app/courses/rh124-10.0)  | Completed                 | Foundation: users, permissions, storage, bash |
 | [RH134 — Red Hat System Administration II (v10.0)](https://rol.redhat.com/rol/app/courses/rh134-10.0) | Completed                 | LVM, firewall, SELinux, boot, containers      |
 | *Red Hat RHCSA 9 Cert Guide* (Sander van Vugt)                                                        | In progress (335/1593 p.) | Now Ch. 7 Permissions / ACL                   |
