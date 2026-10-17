@@ -162,9 +162,9 @@ export const LOCALE_CONFIG: Record<Locale, {
         'Preparación planificada para IELTS. Hoy priorizo inglés presencial en el CUI; el examen lo evaluaré más adelante.',
       ieltsIndexContextTitle: 'Dónde estoy ahora con el inglés',
       ieltsIndexContextNow:
-        'Foco actual: CUI (ciclo básico). Terminé el Nivel 4 (oral, clase en inglés) y arranqué el Nivel 5 en junio de 2026. Nivel de referencia: ~A2 oral en aula (CUI); ~B1 lectura/escucha (EFSET).',
+        'Foco actual: CUI Nivel 7 (Ciclo Consolidación, MCER B1), desde el 26 de octubre de 2026. Acabo de cerrar el ciclo básico en Nivel 6 (MCER A2+). Referencia externa: ~B1 lectura/escucha (EFSET).',
       ieltsIndexContextCui:
-        'En la escala del CUI, los niveles 4 a 6 del ciclo básico equivalen a MCER A2; el ciclo de perfeccionamiento (niveles 11–14) apunta a MCER B2.',
+        'Escala oficial CUI/MCER: ciclo básico N1–3 = A1, N4–5 = A2, N6 = A2+. Consolidación N7–10 = B1. Perfeccionamiento N11–14 = B2 / B2+.',
       ieltsIndexContextFuture:
         'IELTS no es el foco inmediato: pienso rendir el examen cuando llegue a un nivel alto en el CUI (objetivo orientativo: Nivel 14, MCER B2+), con base oral y académica más sólida.',
       ieltsIndexModulesNote:
@@ -263,9 +263,9 @@ export const LOCALE_CONFIG: Record<Locale, {
         'Planned IELTS preparation. Current priority is in-person English at CUI; I expect to sit the exam later.',
       ieltsIndexContextTitle: 'Where my English stands today',
       ieltsIndexContextNow:
-        'Current focus: CUI (basic cycle). Completed Level 4 (oral, English-only class) and started Level 5 in June 2026. Reference level: ~A2 spoken in class (CUI); ~B1 reading/listening (EFSET).',
+        'Current focus: CUI Level 7 (Consolidation Cycle, CEFR B1), from October 26, 2026. Just completed the basic cycle at Level 6 (CEFR A2+). External reference: ~B1 reading/listening (EFSET).',
       ieltsIndexContextCui:
-        'On the official CUI scale, basic-cycle levels 4–6 map to CEFR A2; the improvement cycle (levels 11–14) targets CEFR B2.',
+        'Official CUI/CEFR scale: basic cycle L1–3 = A1, L4–5 = A2, L6 = A2+. Consolidation L7–10 = B1. Improvement cycle L11–14 = B2 / B2+.',
       ieltsIndexContextFuture:
         'IELTS is not my immediate focus: I plan to take the exam after reaching a strong CUI level (working target: Level 14, CEFR B2+), with a more solid oral and academic base.',
       ieltsIndexModulesNote:

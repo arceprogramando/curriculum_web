@@ -160,17 +160,35 @@
       "certificates": [
         {
           "url": null,
-          "area": "Regular English Level 05 - Basic Cycle",
-          "description": "Starting June 3, 2026, Level 5 of the CUI Extracurricular English Program (Faculty of Agronomy, UBA). Almost fully oral course: the teacher speaks only in English and class interaction is in English, with very few clarifications in Spanish. CUI basic-cycle levels 4–6: CEFR A2.",
-          "startDate": "2026-06-03",
+          "area": "Regular English Level 07 - Consolidation Cycle (CEFR B1)",
+          "description": "Starting October 26, 2026, Level 7 of the Consolidation Cycle (CEFR B1; levels 7–10). Two-month intensive courses, after completing the basic cycle at A2+.",
+          "startDate": "2026-10-26",
           "endDate": null,
           "score": null,
-          "courses": ["Basic English Level 05", "CEFR A2 (in progress)"]
+          "courses": ["English Consolidation Level 07", "CEFR B1", "In progress"]
+        },
+        {
+          "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00505809_01509288_1_0",
+          "area": "Regular English Level 06 - Basic Cycle (CEFR A2+)",
+          "description": "Completed Level 6 of the Basic Cycle (October 2026, CEFR A2+ / DCB). Finished the CUI basic cycle (levels 1–6) in two-month intensive courses, mostly oral.",
+          "startDate": "2026-08-01",
+          "endDate": "2026-10-17",
+          "score": "76",
+          "courses": ["Basic English Level 06", "CEFR A2+"]
+        },
+        {
+          "url": null,
+          "area": "Regular English Level 05 - Basic Cycle (CEFR A2)",
+          "description": "Completed Level 5 of the CUI Extracurricular English Program (Faculty of Agronomy, UBA; CEFR A2). Almost fully oral course: the teacher speaks only in English and class interaction is in English, with very few clarifications in Spanish.",
+          "startDate": "2026-06-03",
+          "endDate": "2026-07-31",
+          "score": null,
+          "courses": ["Basic English Level 05", "CEFR A2"]
         },
         {
           "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00488612_01509288_1_0",
-          "area": "Regular English Level 04 - Basic Cycle",
-          "description": "Completed Level 4 (March–May 2026). The course was mostly oral: the teacher spoke only in English and questions and class participation were in English, with very few exceptions in Spanish. CUI/CEFR reference for levels 4–6: A2.",
+          "area": "Regular English Level 04 - Basic Cycle (CEFR A2)",
+          "description": "Completed Level 4 (March–May 2026, CEFR A2). The course was mostly oral: the teacher spoke only in English and questions and class participation were in English, with very few exceptions in Spanish.",
           "startDate": "2026-03-30",
           "endDate": "2026-05-18",
           "score": null,
@@ -178,8 +196,8 @@
         },
         {
           "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00477927_01509288_1_0",
-          "area": "Regular English Level 03 - Basic Cycle",
-          "description": "Completed Level 3 of the CUI Extracurricular English Program at the Faculty of Agronomy (UBA). Communicative focus across all skills; on the CUI scale, levels 1–3 map to CEFR A1.",
+          "area": "Regular English Level 03 - Basic Cycle (CEFR A1)",
+          "description": "Completed Level 3 of the CUI Extracurricular English Program at the Faculty of Agronomy (UBA; CEFR A1). Communicative focus across all skills.",
           "startDate": "2026-01-13",
           "endDate": "2026-03-08",
           "score": null,
@@ -187,12 +205,12 @@
         },
         {
           "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00460949_01509288_1_0",
-          "area": "Regular English Level 02 - Basic Cycle",
-          "description": "Course from the CUI Extracurricular English Program at the Faculty of Agronomy (UBA). I strengthened reading and listening comprehension skills, with emphasis on oral and written expression, prioritizing conversational practice in everyday situations.",
+          "area": "Regular English Level 02 - Basic Cycle (CEFR A1)",
+          "description": "Course from the CUI Extracurricular English Program at the Faculty of Agronomy (UBA; CEFR A1). I strengthened reading and listening comprehension skills, with emphasis on oral and written expression, prioritizing conversational practice in everyday situations.",
           "startDate": "2025-08-01",
           "endDate": "2025-12-01",
           "score": "82",
-          "courses": ["Basic English Level 02"]
+          "courses": ["Basic English Level 02", "CEFR A1"]
         }
       ]
     },
@@ -225,7 +243,7 @@
         {
           "url": "https://cert.efset.org/5DYD2H",
           "area": "Intermediate English",
-          "description": "EFSET (external reference): B1 in reading and listening; A2 in spoken expression. Complements in-person CUI training (basic cycle, CEFR A2 for levels 4–6).",
+          "description": "EFSET (external reference): B1 in reading and listening; A2 in spoken expression. Complements in-person CUI training (basic cycle completed at A2+; Level 7 Consolidation = CEFR B1).",
           "startDate": "2022-04-03",
           "endDate": null,
           "score": "9",
@@ -382,7 +400,7 @@
     },
     {
       "language": "English",
-      "fluency": "A2 spoken (CUI) · B1 reading/listening (EFSET)"
+      "fluency": "CUI L7 Consolidation · CEFR B1 (in progress) · A2+ basic cycle · B1 reading/listening (EFSET)"
     }
   ],
   "interests": [

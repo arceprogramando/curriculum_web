@@ -161,17 +161,35 @@
       "certificates": [
         {
           "url": null,
-          "area": "Inglés Regular Nivel 05 - Ciclo Básico",
-          "description": "Inicio el 3 de junio de 2026 el Nivel 5 del Programa Extracurricular de Inglés del CUI (Facultad de Agronomía, UBA). Curso casi íntegramente oral: la profesora imparte en inglés y las interacciones en clase son en inglés, con muy pocas aclaraciones en español. Niveles 4–6 del ciclo básico CUI: MCER A2.",
-          "startDate": "2026-06-03",
+          "area": "Inglés Regular Nivel 07 - Ciclo Consolidación (MCER B1)",
+          "description": "Inicio el 26 de octubre de 2026 el Nivel 7 del Ciclo Consolidación (MCER B1; niveles 7–10). Cursos intensivos de dos meses, después de cerrar el ciclo básico en A2+.",
+          "startDate": "2026-10-26",
           "endDate": null,
           "score": null,
-          "courses": ["Inglés Básico Nivel 05", "MCER A2 (en curso)"]
+          "courses": ["Inglés Consolidación Nivel 07", "MCER B1", "En curso"]
+        },
+        {
+          "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00505809_01509288_1_0",
+          "area": "Inglés Regular Nivel 06 - Ciclo Básico (MCER A2+)",
+          "description": "Completé el Nivel 6 del Ciclo Básico (octubre 2026, MCER A2+ / DCB). Cerré el ciclo básico CUI (niveles 1–6) en cursos intensivos de dos meses, con metodología principalmente oral.",
+          "startDate": "2026-08-01",
+          "endDate": "2026-10-17",
+          "score": "76",
+          "courses": ["Inglés Básico Nivel 06", "MCER A2+"]
+        },
+        {
+          "url": null,
+          "area": "Inglés Regular Nivel 05 - Ciclo Básico (MCER A2)",
+          "description": "Completé el Nivel 5 del Programa Extracurricular de Inglés del CUI (Facultad de Agronomía, UBA; MCER A2). Curso casi íntegramente oral: la profesora imparte en inglés y las interacciones en clase son en inglés, con muy pocas aclaraciones en español.",
+          "startDate": "2026-06-03",
+          "endDate": "2026-07-31",
+          "score": null,
+          "courses": ["Inglés Básico Nivel 05", "MCER A2"]
         },
         {
           "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00488612_01509288_1_0",
-          "area": "Inglés Regular Nivel 04 - Ciclo Básico",
-          "description": "Completé el Nivel 4 (marzo–mayo 2026). El curso fue principalmente oral: la profesora hablaba solo en inglés y las preguntas y participación en clase se hacían en inglés, con muy pocas excepciones en español. Nivel de referencia CUI/MCER para niveles 4–6: A2.",
+          "area": "Inglés Regular Nivel 04 - Ciclo Básico (MCER A2)",
+          "description": "Completé el Nivel 4 (marzo–mayo 2026, MCER A2). El curso fue principalmente oral: la profesora hablaba solo en inglés y las preguntas y participación en clase se hacían en inglés, con muy pocas excepciones en español.",
           "startDate": "2026-03-30",
           "endDate": "2026-05-18",
           "score": null,
@@ -179,8 +197,8 @@
         },
         {
           "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00477927_01509288_1_0",
-          "area": "Inglés Regular Nivel 03 - Ciclo Básico",
-          "description": "Completé el Nivel 3 del Programa Extracurricular de Inglés del CUI en la Facultad de Agronomía (UBA). Fortalecí las cuatro habilidades con enfoque comunicativo; en la escala CUI los niveles 1–3 se ubican en MCER A1.",
+          "area": "Inglés Regular Nivel 03 - Ciclo Básico (MCER A1)",
+          "description": "Completé el Nivel 3 del Programa Extracurricular de Inglés del CUI en la Facultad de Agronomía (UBA; MCER A1). Fortalecí las cuatro habilidades con enfoque comunicativo.",
           "startDate": "2026-01-13",
           "endDate": "2026-03-08",
           "score": null,
@@ -188,12 +206,12 @@
         },
         {
           "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00460949_01509288_1_0",
-          "area": "Inglés Regular Nivel 02 - Ciclo Básico",
-          "description": "Curso del Programa Extracurricular de Inglés del CUI en la Facultad de Agronomía (UBA). Fortalecí habilidades de comprensión lectora y auditiva, con énfasis en expresión oral y escrita, priorizando la práctica conversacional en situaciones cotidianas.",
+          "area": "Inglés Regular Nivel 02 - Ciclo Básico (MCER A1)",
+          "description": "Curso del Programa Extracurricular de Inglés del CUI en la Facultad de Agronomía (UBA; MCER A1). Fortalecí habilidades de comprensión lectora y auditiva, con énfasis en expresión oral y escrita, priorizando la práctica conversacional en situaciones cotidianas.",
           "startDate": "2025-08-01",
           "endDate": "2025-12-01",
           "score": "82",
-          "courses": ["Inglés Básico Nivel 02"]
+          "courses": ["Inglés Básico Nivel 02", "MCER A1"]
         }
       ]
     },
@@ -226,7 +244,7 @@
         {
           "url": "https://cert.efset.org/5DYD2H",
           "area": "Ingles Intermedio",
-          "description": "EFSET (referencia externa): B1 en lectura y comprensión auditiva; A2 en expresión oral. Complementa la formación presencial del CUI (ciclo básico, MCER A2 en niveles 4–6).",
+          "description": "EFSET (referencia externa): B1 en lectura y comprensión auditiva; A2 en expresión oral. Complementa la formación presencial del CUI (ciclo básico cerrado en A2+; Nivel 7 Consolidación = MCER B1).",
           "startDate": "2022-04-03",
           "endDate": null,
           "score": "9",
@@ -383,7 +401,7 @@
     },
     {
       "language": "English",
-      "fluency": "A2 oral (CUI) · B1 lectura/escucha (EFSET)"
+      "fluency": "CUI N7 Consolidación · MCER B1 (en curso) · A2+ ciclo básico · B1 lectura/escucha (EFSET)"
     }
   ],
   "interests": [

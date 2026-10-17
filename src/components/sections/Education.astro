@@ -26,7 +26,7 @@ const cv = getCV(locale);
 const ui = getUI(locale);
 const education = cv.education as EducationEntry[];
 
-/** Último certificado con URL en la misma institución (CUI 3→4/5; Red Hat RH124→RH134). */
+/** Último certificado con URL en la misma institución (CUI 3→4/6; Red Hat RH124→RH134). */
 function getLatestCertificateUrl(certificates: Certificate[]): string | null {
   const sorted = certificates
     .filter((c): c is Certificate & { url: string } => Boolean(c.url))
