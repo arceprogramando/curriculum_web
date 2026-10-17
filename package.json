@@ -14,9 +14,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.9",
-    "@astrojs/sitemap": "^3.7.2",
-    "astro": "^6.2.2",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/markdown-remark": "^7.3.3",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.4.0",
     "hotkeypad": "0.1.0",
     "typescript": "5.3.3"
   }

@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { unified } from '@astrojs/markdown-remark';
 import { rehypeExternalLinks } from './src/lib/rehype-external-links.mjs';
 
 export default defineConfig({
@@ -10,7 +11,9 @@ export default defineConfig({
   trailingSlash: 'always',
   compressHTML: true,
   markdown: {
-    rehypePlugins: [rehypeExternalLinks],
+    processor: unified({
+      rehypePlugins: [rehypeExternalLinks],
+    }),
   },
   i18n: {
     defaultLocale: 'es',
