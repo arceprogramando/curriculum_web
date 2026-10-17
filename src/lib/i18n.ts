@@ -164,10 +164,10 @@ export const LOCALE_CONFIG: Record<Locale, {
       readGuide: 'Leer guía',
       rhcsaBlogTitle: 'Blog RHCSA EX200',
       rhcsaBlogDescription:
-        'Labs y notas de Felipe Arce para RHCSA EX200 en Linux: RH124 y RH134 hechos, RH024 hecho, RH104 y RH199 en curso, libro Van Vugt y prácticas con Vagrant.',
+        'Labs y notas de Felipe Arce para RHCSA EX200 en Linux: RH124, RH134, RH024 y RH104 hechos, RH199 en curso, libro Van Vugt y prácticas con Vagrant.',
       rhcsaIndexContextTitle: 'Dónde estoy ahora con RHCSA',
       rhcsaIndexContextNow:
-        'RH024 terminado; RH104 Fundamentals v9.1 en curso (10/56, 8 sep). RH124 y RH134 acreditados. Libro Van Vugt pág. 335/1593 (~21%, Cap. 7 Permissions) y RH199 Rapid Track (10/154, Cap. 2 Links). Meta práctica pre-examen: ~30 oct 2026 (día 20/73 del plan; quedan ~53 días).',
+        'RH024 y RH104 terminados (RH104, 17 oct 2026). RH124 y RH134 acreditados. Libro Van Vugt pág. 335/1593 (~21%, Cap. 7 Permissions) y RH199 Rapid Track (10/154, Cap. 2 Links). Meta práctica pre-examen: ~30 oct 2026 (día 20/73 del plan; quedan ~53 días).',
       rhcsaIndexContextPipeline:
         'Pipeline: RH024 → RH104 → RH124 → RH134 → Libro → RH199 → EX200 (objetivo) → EX294 (ruta RHCE).',
       rhcsaIndexContextFocus:
@@ -200,7 +200,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaIndexRh024Status: 'Completado — 8 sep 2026',
       rhcsaIndexRh104Title: 'RH104 — Getting Started with Linux Fundamentals (v9.1)',
       rhcsaIndexRh104Link: 'RH104 — curso en ROL',
-      rhcsaIndexRh104Status: 'En curso — 10/56 pág. • path RHCSA (8 sep 2026); labs GNOME vía VNC',
+      rhcsaIndexRh104Status: 'Completado — 17 oct 2026',
       rhcsaIndexRh124Title: 'Curso RH124 (Red Hat System Administration I)',
       rhcsaIndexRh124Link: 'RH124 — versión del curso en ROL',
       rhcsaIndexRh124Status: 'Completado — badge Credly',
@@ -223,7 +223,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaIndexThanksNote:
         'Agradecimiento: en América Virtual me facilitaron la entrada gratuita al curso y van a cubrir el costo; les estoy muy agradecido.',
       rhcsaIndexPlanNote:
-        'Plan ~73 días hasta ~30 oct: Cap. 7 permisos/ACL ahora; luego nmcli, DNF/systemd, storage/LVM, SELinux/firewall/boot; paralelamente RH104 + RH199 + libro; cierre con practice exams EX200.',
+        'Plan ~73 días hasta ~30 oct: Cap. 7 permisos/ACL ahora; luego nmcli, DNF/systemd, storage/LVM, SELinux/firewall/boot; paralelamente RH199 + libro; cierre con practice exams EX200.',
     }
   },
   en: {
@@ -274,10 +274,10 @@ export const LOCALE_CONFIG: Record<Locale, {
       readGuide: 'Read guide',
       rhcsaBlogTitle: 'RHCSA EX200 Blog',
       rhcsaBlogDescription:
-        'Felipe Arce study notes and labs for RHCSA EX200 on Linux: RH124 and RH134 done, RH024 done, RH104 and RH199 in progress, Van Vugt book plus Vagrant.',
+        'Felipe Arce study notes and labs for RHCSA EX200 on Linux: RH124, RH134, RH024 and RH104 done, RH199 in progress, Van Vugt book plus Vagrant.',
       rhcsaIndexContextTitle: 'Where I stand on RHCSA',
       rhcsaIndexContextNow:
-        'RH024 completed; RH104 Fundamentals v9.1 in progress (10/56, Sep 8). RH124 and RH134 earned. Van Vugt book p. 335/1593 (~21%, Ch. 7 Permissions) and RH199 Rapid Track (10/154, Ch. 2 Links). Pre-exam practice target: ~Oct 30, 2026 (day 20/73 of the plan; ~53 days left).',
+        'RH024 and RH104 completed (RH104, Oct 17, 2026). RH124 and RH134 earned. Van Vugt book p. 335/1593 (~21%, Ch. 7 Permissions) and RH199 Rapid Track (10/154, Ch. 2 Links). Pre-exam practice target: ~Oct 30, 2026 (day 20/73 of the plan; ~53 days left).',
       rhcsaIndexContextPipeline:
         'Pipeline: RH024 → RH104 → RH124 → RH134 → Book → RH199 → EX200 (target) → EX294 (RHCE path).',
       rhcsaIndexContextFocus:
@@ -310,7 +310,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaIndexRh024Status: 'Completed — Sep 8, 2026',
       rhcsaIndexRh104Title: 'RH104 — Getting Started with Linux Fundamentals (v9.1)',
       rhcsaIndexRh104Link: 'RH104 — course on ROL',
-      rhcsaIndexRh104Status: 'In progress — 10/56 pages • RHCSA path (Sep 8, 2026); GNOME labs via VNC',
+      rhcsaIndexRh104Status: 'Completed — Oct 17, 2026',
       rhcsaIndexRh124Title: 'Course RH124 (Red Hat System Administration I)',
       rhcsaIndexRh124Link: 'RH124 — course on ROL',
       rhcsaIndexRh124Status: 'Completed — Credly badge',
@@ -333,7 +333,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       rhcsaIndexThanksNote:
         'Thanks: América Virtual gave me complimentary access to the course and is covering the course cost — very grateful.',
       rhcsaIndexPlanNote:
-        'Plan ~73 days until ~Oct 30: Ch. 7 permissions/ACL now; then nmcli, DNF/systemd, storage/LVM, SELinux/firewall/boot; in parallel RH104 + RH199 + book; close with EX200 practice exams.',
+        'Plan ~73 days until ~Oct 30: Ch. 7 permissions/ACL now; then nmcli, DNF/systemd, storage/LVM, SELinux/firewall/boot; in parallel RH199 + book; close with EX200 practice exams.',
     }
   }
   // Ejemplo de cómo agregar portugués:
