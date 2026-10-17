@@ -103,9 +103,17 @@ Si el cambio es **solo** contenido o **solo** sitio, **un commit** basta (sin fo
 
 ---
 
-## Antes de abrir PR (opcional)
+## Antes de push (obligatorio)
 
-Conviene **`npm run build`** local si hubo cambios en páginas, colecciones o `content.config.ts`.
+`npm run dev` no typechequea. El chequeo corre solo en el build: `astro check && astro build`.
+
+Antes de **cualquier** `git push` en este repo:
+
+1. Ejecutar `npm run build`.
+2. Si el build falla, **no pushear**. Corregir y volver a buildear.
+3. Pushear solo cuando el build termina en 0.
+
+Eso incluye cambios de páginas, componentes, `src/lib`, colecciones y `astro.config`. Un error de tipos puede no verse en el dev server y sí romper el deploy.
 
 ---
 
@@ -118,3 +126,4 @@ Conviene **`npm run build`** local si hubo cambios en páginas, colecciones o `c
 | Cambio mixto content + sitio | Dos commits etiquetados `#content` y `#site` |
 | Asunto | ≤50 caracteres; más texto en `-m` adicional |
 | Estilo | `tipo: mensaje` sin paréntesis tipo scope |
+| Antes de push | `npm run build` y solo pushear si sale en 0 |
