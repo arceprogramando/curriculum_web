@@ -5,6 +5,7 @@ import {
   getAllLocaleUrls,
   getLocalePath,
   getOtherLocales,
+  getUI,
   LOCALES,
   DEFAULT_LOCALE,
   type Locale
@@ -33,6 +34,7 @@ const {
   noIndex = false
 } = Astro.props;
 const config = getLocaleConfig(locale);
+const ui = getUI(locale);
 const cv = getCV(locale);
 const { image } = cv.basics;
 
@@ -213,6 +215,7 @@ const allSkills = [
     })} />
   </head>
   <body>
+    <a class="skip-link" href="#contenido">{ui.skipToContent}</a>
     <slot />
 
     <!-- Detección automática de idioma (solo primera visita) -->
@@ -293,6 +296,22 @@ const allSkills = [
       'Open Sans',
       'Helvetica Neue',
       sans-serif;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 0.75rem;
+    top: 0.75rem;
+    z-index: 1000;
+    transform: translateY(-200%);
+    background: var(--color-bg-dark);
+    color: var(--color-text-white);
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+  }
+
+  .skip-link:focus {
+    transform: none;
   }
 
   p {

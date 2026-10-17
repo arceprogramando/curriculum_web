@@ -38,6 +38,8 @@ export const LOCALE_CONFIG: Record<Locale, {
     workExperience: string;
     projects: string;
     education: string;
+    educationEarlierShow: string;
+    educationEarlierHide: string;
     skills: string;
     jobSimulations: string;
     current: string;
@@ -50,6 +52,11 @@ export const LOCALE_CONFIG: Record<Locale, {
     viewProject: string;
     viewSourceCode: string;
     commandPalette: string;
+    openCommandPalette: string;
+    skipToContent: string;
+    portraitAlt: string;
+    rhcsaProgressLabel: string;
+    ieltsProgressLabel: string;
     searchCommand: string;
     social: string;
     actions: string;
@@ -125,6 +132,8 @@ export const LOCALE_CONFIG: Record<Locale, {
       workExperience: 'Experiencia laboral',
       projects: 'Proyectos',
       education: 'Educación',
+      educationEarlierShow: 'Ver niveles {levels} · {from} – {to}',
+      educationEarlierHide: 'Ocultar niveles {levels}',
       skills: 'Habilidades',
       jobSimulations: 'Simulaciones laborales',
       current: 'Actual',
@@ -137,6 +146,11 @@ export const LOCALE_CONFIG: Record<Locale, {
       viewProject: 'Ver proyecto',
       viewSourceCode: 'Ver código fuente',
       commandPalette: 'Pulsa <kbd>Cmd</kbd> + <kbd>K</kbd> para abrir la paleta de comandos.',
+      openCommandPalette: 'Abrir la paleta de comandos',
+      skipToContent: 'Saltar al contenido',
+      portraitAlt: 'Retrato de {name}',
+      rhcsaProgressLabel: 'Módulos RHCSA completados',
+      ieltsProgressLabel: 'Prácticas IELTS completadas',
       searchCommand: 'Buscar comando',
       social: 'Social',
       actions: 'Acciones',
@@ -226,6 +240,8 @@ export const LOCALE_CONFIG: Record<Locale, {
       workExperience: 'Work Experience',
       projects: 'Projects',
       education: 'Education',
+      educationEarlierShow: 'Show levels {levels} · {from} – {to}',
+      educationEarlierHide: 'Hide levels {levels}',
       skills: 'Skills',
       jobSimulations: 'Job Simulations',
       current: 'Current',
@@ -238,6 +254,11 @@ export const LOCALE_CONFIG: Record<Locale, {
       viewProject: 'View project',
       viewSourceCode: 'View source code',
       commandPalette: 'Press <kbd>Cmd</kbd> + <kbd>K</kbd> to open command palette.',
+      openCommandPalette: 'Open command palette',
+      skipToContent: 'Skip to content',
+      portraitAlt: 'Portrait of {name}',
+      rhcsaProgressLabel: 'Completed RHCSA modules',
+      ieltsProgressLabel: 'Completed IELTS practices',
       searchCommand: 'Search command',
       social: 'Social',
       actions: 'Actions',

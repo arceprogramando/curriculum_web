@@ -1,5 +1,6 @@
 ---
 import Section from '../Section.astro';
+import EducationCertificate from './EducationCertificate.astro';
 import { getCV, getUI, type Locale } from '@/lib/i18n';
 
 interface Props {
@@ -21,10 +22,22 @@ interface EducationEntry {
   certificates: Certificate[];
 }
 
+interface CertificateView {
+  area: string;
+  description: string;
+  years: string;
+  href: string | null;
+  startDate: string;
+  endDate: string | null;
+}
+
 const { locale = 'es' } = Astro.props;
 const cv = getCV(locale);
 const ui = getUI(locale);
 const education = cv.education as EducationEntry[];
+
+/** CUI: el nivel en curso y el último certificado quedan a la vista. */
+const CUI_VISIBLE = 2;
 
 /** Último certificado con URL en la misma institución (CUI 3→4/6; Red Hat RH124→RH134). */
 function getLatestCertificateUrl(certificates: Certificate[]): string | null {
@@ -51,54 +64,101 @@ function resolveCertificateUrl(
 
   return getLatestCertificateUrl(certificates);
 }
+
+function isCui(institution: string): boolean {
+  return institution.toLowerCase().includes('cui');
+}
+
+function toView(
+  certificate: Certificate,
+  certificates: Certificate[],
+  institution: string
+): CertificateView {
+  const endYear = certificate.endDate != null ? certificate.endDate.split('-')[0] : ui.current;
+  return {
+    area: certificate.area,
+    description: certificate.description,
+    years: `${certificate.startDate.split('-')[0]} - ${endYear}`,
+    href: resolveCertificateUrl(certificate, certificates, institution),
+    startDate: certificate.startDate,
+    endDate: certificate.endDate,
+  };
+}
+
+function monthYear(iso: string): string {
+  const [year, month] = iso.split('-').map(Number);
+  return new Intl.DateTimeFormat(locale === 'es' ? 'es-AR' : 'en-US', {
+    month: 'short',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(new Date(Date.UTC(year, month - 1, 1)));
+}
+
+function earlierSummary(items: CertificateView[]): string {
+  const levels = items
+    .map((item) => item.area.match(/(?:nivel|level)\s*0*(\d+)/i)?.[1])
+    .filter((level): level is string => Boolean(level))
+    .map(Number)
+    .sort((a, b) => a - b);
+  const starts = items.map((item) => item.startDate).sort();
+  const ends = items.map((item) => item.endDate ?? item.startDate).sort();
+  const levelLabel =
+    levels.length > 0 ? `${levels[0]}–${levels[levels.length - 1]}` : String(items.length);
+
+  const from = monthYear(starts[0]);
+  const to = monthYear(ends[ends.length - 1]);
+
+  return {
+    show: ui.educationEarlierShow
+      .replace('{levels}', levelLabel)
+      .replace('{from}', from)
+      .replace('{to}', to),
+    hide: ui.educationEarlierHide.replace('{levels}', levelLabel),
+  };
+}
 ---
 
 <Section title={ui.education}>
-  <ul>
+  <ul class="instituciones">
     {
-      education.map(({ institution, certificates }) => (
-        <li>
-          <div class="institucion">
-            <h3>{institution}</h3>
-          </div>
-          <ul>
-            {certificates.map((certificate) => {
-              const { startDate, endDate, area, description } = certificate;
-              const href = resolveCertificateUrl(certificate, certificates, institution);
-              const startYear = startDate.split('-')[0];
-                const endYear = endDate != null ? endDate.split('-')[0] : ui.current;
-                const years = `${startYear} - ${endYear}`;
+      education.map(({ institution, certificates }) => {
+        const views = certificates.map((certificate) => toView(certificate, certificates, institution));
+        const collapse = isCui(institution) && views.length > CUI_VISIBLE;
+        const visible = collapse ? views.slice(0, CUI_VISIBLE) : views;
+        const earlier = collapse ? views.slice(CUI_VISIBLE) : [];
+        const earlierLabel = earlier.length > 0 ? earlierSummary(earlier) : null;
 
-                return (
-                  <li>
-                    <article>
-                      <header>
-                        <div>
-                          {href ? (
-                            <a
-                              href={href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {area}
-                            </a>
-                          ) : (
-                            <span>{area}</span>
-                          )}
-                        </div>
-                        <time>{years}</time>
-                      </header>
-
-                      <footer>
-                        <p>{description}</p>
-                      </footer>
-                    </article>
-                  </li>
-                );
-              })}
-          </ul>
-        </li>
-      ))
+        return (
+          <li>
+            <div class="institucion">
+              <h3>{institution}</h3>
+            </div>
+            <ul>
+              {visible.map((item) => (
+                <li>
+                  <EducationCertificate {...item} />
+                </li>
+              ))}
+            </ul>
+            {earlierLabel && (
+              <details class="earlier">
+                <summary>
+                  <span class="caret" aria-hidden="true"></span>
+                  <span class="label-closed">{earlierLabel.show}</span>
+                  <span class="label-open">{earlierLabel.hide}</span>
+                </summary>
+                <ul>
+                  {earlier.map((item) => (
+                    <li>
+                      <EducationCertificate {...item} />
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
+          </li>
+        );
+      })
     }
   </ul>
 </Section>
@@ -110,53 +170,6 @@ function resolveCertificateUrl(
     gap: 16px;
   }
 
-  li a:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  li span {
-    color: inherit;
-    font-weight: inherit;
-  }
-
-  @media (width <= 700px) {
-    li a {
-      text-decoration: underline;
-    }
-  }
-
-  article h3 {
-    font-weight: 500;
-    color: var(--color-text-dark);
-    font-size: 1.0rem;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 4px;
-  }
-
-  time {
-    color: var(--color-text-secondary);
-    font-size: 0.85rem;
-    min-width: 102px;
-  }
-
-  footer p {
-    color: var(--color-text-secondary);
-    font-size: 0.85rem;
-    max-width: 600px;
-  }
-
-  @media (width <= 700px) {
-    time {
-      text-align: right;
-    }
-  }
-
   .institucion {
     display: inline-block;
     background-color: var(--color-bg-badge);
@@ -165,9 +178,69 @@ function resolveCertificateUrl(
     padding: 0.4rem 0.7rem;
   }
 
-  .institucion h3,
-  h3 {
+  .institucion h3 {
     display: inline-block;
     font-size: 1.1rem;
+    font-weight: 500;
+  }
+
+  .earlier {
+    margin-top: 8px;
+  }
+
+  .earlier summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    max-width: 100%;
+    padding: 0.15rem 0;
+    background: transparent;
+    border: 0;
+    color: var(--color-text-dark);
+    font-size: 0.95rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .earlier summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .earlier summary::marker {
+    content: '';
+  }
+
+  .earlier summary:hover {
+    text-decoration: underline;
+  }
+
+  .caret {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+    flex-shrink: 0;
+  }
+
+  .earlier[open] .caret {
+    transform: rotate(45deg);
+  }
+
+  .label-open {
+    display: none;
+  }
+
+  .earlier[open] .label-closed {
+    display: none;
+  }
+
+  .earlier[open] .label-open {
+    display: inline;
+  }
+
+  .earlier ul {
+    margin-top: 12px;
   }
 </style>

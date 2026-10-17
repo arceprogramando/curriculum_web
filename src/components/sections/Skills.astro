@@ -61,7 +61,7 @@ const orderedSkills = [...skillsWithIcons, ...skillsWithoutIcons];
 
         return (
           <li>
-            {Icon && <Icon />} <span>{name}</span>
+            {Icon && <span aria-hidden="true"><Icon /></span>} <span>{name}</span>
           </li>
         );
       })

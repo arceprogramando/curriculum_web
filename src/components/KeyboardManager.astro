@@ -84,9 +84,10 @@ const clientData = {
 <footer id="normal-footer" class="no-print" set:html={ui.commandPalette}>
 </footer>
 
-<div id="footer-button" class="no-print">
+<button id="footer-button" class="no-print" type="button" aria-label={ui.openCommandPalette}>
   <svg
     xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
     class="icon icon-tabler icon-tabler-command"
     width="32"
     height="32"
@@ -102,7 +103,7 @@ const clientData = {
       d="M7 9a2 2 0 1 1 2 -2v10a2 2 0 1 1 -2 -2h10a2 2 0 1 1 -2 2v-10a2 2 0 1 1 2 2h-10"
     ></path>
   </svg>
-</div>
+</button>
 
 <div
   id="hotkeypad"
@@ -225,6 +226,8 @@ const clientData = {
     }
 
     #footer-button {
+      padding: 0;
+      color: inherit;
       background: var(--color-bg-secondary);
       position: sticky;
       border: 1px solid var(--color-button-bg);

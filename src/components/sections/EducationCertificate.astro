@@ -1,0 +1,69 @@
+---
+interface Props {
+  area: string;
+  description: string;
+  years: string;
+  href: string | null;
+}
+
+const { area, description, years, href } = Astro.props;
+---
+
+<article>
+  <header>
+    <div>
+      {
+        href ? (
+          <a href={href} target="_blank" rel="noopener noreferrer">
+            {area}
+          </a>
+        ) : (
+          <span>{area}</span>
+        )
+      }
+    </div>
+    <time>{years}</time>
+  </header>
+  <footer>
+    <p>{description}</p>
+  </footer>
+</article>
+
+<style>
+  a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  span {
+    color: inherit;
+    font-weight: inherit;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+    gap: 12px;
+  }
+
+  time {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    min-width: 102px;
+    text-align: right;
+  }
+
+  footer p {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    max-width: 600px;
+  }
+
+  @media (width <= 700px) {
+    a {
+      text-decoration: underline;
+    }
+  }
+</style>

@@ -23,7 +23,7 @@ const completionPercent = Math.round((completedModules / totalModules) * 100);
   ogDescription={ui.ieltsBlogDescription}
 >
   <LanguageSelector locale={locale} />
-  <main>
+  <main id="contenido">
     <section>
       <a class="back-link" href="/en/#practicas-actuales">← Back to CV</a>
       <h1>IELTS</h1>
@@ -37,7 +37,7 @@ const completionPercent = Math.round((completedModules / totalModules) * 100);
         <p class="modules-note">{ui.ieltsIndexModulesNote}</p>
       </section>
 
-      <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={completionPercent}>
+      <div class="progress-track" role="progressbar" aria-label={ui.ieltsProgressLabel} aria-valuemin="0" aria-valuemax="100" aria-valuenow={completionPercent}>
         <div class="progress-fill" style={`width: ${completionPercent}%`} />
       </div>
       <ul>

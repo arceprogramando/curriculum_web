@@ -70,14 +70,14 @@ const whatsappMessage = locale === 'es'
       <footer class="no-print">
         {
           email && (
-            <a href={`mailto:${email}`} title={`${ui.sendEmail} ${name}`} target="_blank" rel="noopener noreferrer">
+            <a href={`mailto:${email}`} title={`${ui.sendEmail} ${name}`} aria-label={`${ui.sendEmail} ${name}`} target="_blank" rel="noopener noreferrer">
               <Mail />
             </a>
           )
         }
         {
           phone && (
-            <a href={`https://wa.me/${phone.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappMessage)}`} title={`${ui.sendWhatsApp} ${name}`} target="_blank" rel="noopener noreferrer">
+            <a href={`https://wa.me/${phone.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappMessage)}`} title={`${ui.sendWhatsApp} ${name}`} aria-label={`${ui.sendWhatsApp} ${name}`} target="_blank" rel="noopener noreferrer">
               <Phone />
             </a>
           )
@@ -87,7 +87,7 @@ const whatsappMessage = locale === 'es'
             const Icon = SOCIAL_ICONS[network];
 
             return (
-              <a href={url} title={`${ui.visitProfile} ${network}`} target="_blank" rel="noopener noreferrer">
+              <a href={url} title={`${ui.visitProfile} ${network}`} aria-label={`${ui.visitProfile} ${network}`} target="_blank" rel="noopener noreferrer">
                 <Icon />
               </a>
             );
@@ -98,6 +98,7 @@ const whatsappMessage = locale === 'es'
           href={config.pdfFile}
           download={pdfDownloadName}
           title={ui.downloadCV}
+          aria-label={ui.downloadCV}
         >
           <Download />
         </a>
@@ -106,7 +107,7 @@ const whatsappMessage = locale === 'es'
     <figure>
       <Image
         src={image}
-        alt={name}
+        alt={ui.portraitAlt.replace('{name}', name)}
         loading="eager"
         decoding="async"
         fetchpriority="high"
