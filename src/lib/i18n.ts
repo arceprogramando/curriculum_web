@@ -40,6 +40,8 @@ export const LOCALE_CONFIG: Record<Locale, {
     education: string;
     educationEarlierShow: string;
     educationEarlierHide: string;
+    educationEarlierCoursesShow: string;
+    educationEarlierCoursesHide: string;
     skills: string;
     jobSimulations: string;
     current: string;
@@ -134,6 +136,8 @@ export const LOCALE_CONFIG: Record<Locale, {
       education: 'Educación',
       educationEarlierShow: 'Ver niveles {levels} · {from} – {to}',
       educationEarlierHide: 'Ocultar niveles {levels}',
+      educationEarlierCoursesShow: 'Ver {courses} · {from} – {to}',
+      educationEarlierCoursesHide: 'Ocultar {courses}',
       skills: 'Habilidades',
       jobSimulations: 'Simulaciones laborales',
       current: 'Actual',
@@ -242,6 +246,8 @@ export const LOCALE_CONFIG: Record<Locale, {
       education: 'Education',
       educationEarlierShow: 'Show levels {levels} · {from} – {to}',
       educationEarlierHide: 'Hide levels {levels}',
+      educationEarlierCoursesShow: 'Show {courses} · {from} – {to}',
+      educationEarlierCoursesHide: 'Hide {courses}',
       skills: 'Skills',
       jobSimulations: 'Job Simulations',
       current: 'Current',

@@ -43,6 +43,9 @@ const education = cv.education as EducationEntry[];
 
 /** CUI: el nivel en curso y el último certificado quedan a la vista. */
 const CUI_VISIBLE = 2;
+/** Red Hat: los dos cursos base del path RHCSA. El resto va al desplegable. */
+const REDHAT_VISIBLE = ['RH134', 'RH124'];
+const REDHAT_EARLIER = ['RH199', 'RH104'];
 
 /** Último certificado con URL en la misma institución (CUI 3→4/6; Red Hat RH124→RH134). */
 function getLatestCertificateUrl(certificates: Certificate[]): string | null {
@@ -74,6 +77,20 @@ function isCui(institution: string): boolean {
   return institution.toLowerCase().includes('cui');
 }
 
+function isRedHat(institution: string): boolean {
+  return institution.toLowerCase().includes('red hat');
+}
+
+function courseCode(area: string): string | null {
+  return area.match(/\bRH\d+\b/i)?.[0]?.toUpperCase() ?? null;
+}
+
+function pickByCodes(views: CertificateView[], codes: string[]): CertificateView[] {
+  return codes
+    .map((code) => views.find((view) => courseCode(view.area) === code))
+    .filter((view): view is CertificateView => Boolean(view));
+}
+
 function toView(
   certificate: Certificate,
   certificates: Certificate[],
@@ -99,19 +116,39 @@ function monthYear(iso: string): string {
   }).format(new Date(Date.UTC(year, month - 1, 1)));
 }
 
-function earlierSummary(items: CertificateView[]): EarlierLabel {
+function joinLabels(labels: string[]): string {
+  if (labels.length <= 1) return labels[0] ?? '';
+  const conjunction = locale === 'es' ? ' y ' : ' and ';
+  if (labels.length === 2) return labels.join(conjunction);
+  return `${labels.slice(0, -1).join(', ')}${conjunction}${labels[labels.length - 1]}`;
+}
+
+function earlierSummary(items: CertificateView[], kind: 'levels' | 'courses'): EarlierLabel {
+  const starts = items.map((item) => item.startDate).sort();
+  const ends = items.map((item) => item.endDate ?? item.startDate).sort();
+  const from = monthYear(starts[0]);
+  const to = monthYear(ends[ends.length - 1]);
+
+  if (kind === 'courses') {
+    const courses = joinLabels(
+      items.map((item) => courseCode(item.area)).filter((code): code is string => Boolean(code))
+    );
+    return {
+      show: ui.educationEarlierCoursesShow
+        .replace('{courses}', courses)
+        .replace('{from}', from)
+        .replace('{to}', to),
+      hide: ui.educationEarlierCoursesHide.replace('{courses}', courses),
+    };
+  }
+
   const levels = items
     .map((item) => item.area.match(/(?:nivel|level)\s*0*(\d+)/i)?.[1])
     .filter((level): level is string => Boolean(level))
     .map(Number)
     .sort((a, b) => a - b);
-  const starts = items.map((item) => item.startDate).sort();
-  const ends = items.map((item) => item.endDate ?? item.startDate).sort();
   const levelLabel =
     levels.length > 0 ? `${levels[0]}–${levels[levels.length - 1]}` : String(items.length);
-
-  const from = monthYear(starts[0]);
-  const to = monthYear(ends[ends.length - 1]);
 
   return {
     show: ui.educationEarlierShow
@@ -121,6 +158,34 @@ function earlierSummary(items: CertificateView[]): EarlierLabel {
     hide: ui.educationEarlierHide.replace('{levels}', levelLabel),
   };
 }
+
+function splitCertificates(
+  institution: string,
+  views: CertificateView[]
+): { visible: CertificateView[]; earlier: CertificateView[]; kind: 'levels' | 'courses' } {
+  if (isCui(institution) && views.length > CUI_VISIBLE) {
+    return {
+      visible: views.slice(0, CUI_VISIBLE),
+      earlier: views.slice(CUI_VISIBLE),
+      kind: 'levels',
+    };
+  }
+
+  if (isRedHat(institution)) {
+    const visible = pickByCodes(views, REDHAT_VISIBLE);
+    const earlier = pickByCodes(views, REDHAT_EARLIER);
+    const picked = new Set([...visible, ...earlier]);
+    const rest = views.filter((view) => !picked.has(view));
+
+    return {
+      visible: visible.length > 0 ? visible : views,
+      earlier: [...earlier, ...rest],
+      kind: 'courses',
+    };
+  }
+
+  return { visible: views, earlier: [], kind: 'levels' };
+}
 ---
 
 <Section title={ui.education}>
@@ -128,10 +193,8 @@ function earlierSummary(items: CertificateView[]): EarlierLabel {
     {
       education.map(({ institution, certificates }) => {
         const views = certificates.map((certificate) => toView(certificate, certificates, institution));
-        const collapse = isCui(institution) && views.length > CUI_VISIBLE;
-        const visible = collapse ? views.slice(0, CUI_VISIBLE) : views;
-        const earlier = collapse ? views.slice(CUI_VISIBLE) : [];
-        const earlierLabel = earlier.length > 0 ? earlierSummary(earlier) : null;
+        const { visible, earlier, kind } = splitCertificates(institution, views);
+        const earlierLabel = earlier.length > 0 ? earlierSummary(earlier, kind) : null;
 
         return (
           <li>
