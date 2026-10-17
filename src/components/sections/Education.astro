@@ -31,6 +31,11 @@ interface CertificateView {
   endDate: string | null;
 }
 
+interface EarlierLabel {
+  show: string;
+  hide: string;
+}
+
 const { locale = 'es' } = Astro.props;
 const cv = getCV(locale);
 const ui = getUI(locale);
@@ -94,7 +99,7 @@ function monthYear(iso: string): string {
   }).format(new Date(Date.UTC(year, month - 1, 1)));
 }
 
-function earlierSummary(items: CertificateView[]): string {
+function earlierSummary(items: CertificateView[]): EarlierLabel {
   const levels = items
     .map((item) => item.area.match(/(?:nivel|level)\s*0*(\d+)/i)?.[1])
     .filter((level): level is string => Boolean(level))
