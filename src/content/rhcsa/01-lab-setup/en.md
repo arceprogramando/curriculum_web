@@ -28,28 +28,34 @@ Pre-exam practice target: **~Oct 30, 2026** (~73-day plan; day ~20/73).
 
 ## Courses and resources
 
-| Resource | Status | Role in my path |
-|----------|--------|-----------------|
-| RH024 — Getting Started (video) | Completed (Sep 8) | RHCSA path prerequisite on ROL |
-| [RH104 — Linux Fundamentals (v9.1)](https://rol.redhat.com/rol/app/courses/rh104-9.1) | In progress (10/56) | Fundamentals + GNOME labs via VNC |
-| [RH124 — Red Hat System Administration I (v10.0)](https://rol.redhat.com/rol/app/courses/rh124-10.0) | Completed | Foundation: users, permissions, storage, bash |
-| [RH134 — Red Hat System Administration II (v10.0)](https://rol.redhat.com/rol/app/courses/rh134-10.0) | Completed | LVM, firewall, SELinux, boot, containers |
-| *Red Hat RHCSA 9 Cert Guide* (Sander van Vugt) | In progress (335/1593 p.) | Now Ch. 7 Permissions / ACL |
-| [RH199 — RHCSA Rapid Track (v10.0)](https://rol.redhat.com/rol/app/courses/rh199-10.0) | In progress (10/154 p.) | Accelerated review on ROL |
+
+| Resource                                                                                              | Status                    | Role in my path                               |
+| ----------------------------------------------------------------------------------------------------- | ------------------------- | --------------------------------------------- |
+| RH024 — Getting Started (video)                                                                       | Completed (Sep 8)         | RHCSA path prerequisite on ROL                |
+| [RH104 — Linux Fundamentals (v9.1)](https://rol.redhat.com/rol/app/courses/rh104-9.1)                 | In progress (10/56)       | Fundamentals + GNOME labs via VNC             |
+| [RH124 — Red Hat System Administration I (v10.0)](https://rol.redhat.com/rol/app/courses/rh124-10.0)  | Completed                 | Foundation: users, permissions, storage, bash |
+| [RH134 — Red Hat System Administration II (v10.0)](https://rol.redhat.com/rol/app/courses/rh134-10.0) | Completed                 | LVM, firewall, SELinux, boot, containers      |
+| *Red Hat RHCSA 9 Cert Guide* (Sander van Vugt)                                                        | In progress (335/1593 p.) | Now Ch. 7 Permissions / ACL                   |
+| [RH199 — RHCSA Rapid Track (v10.0)](https://rol.redhat.com/rol/app/courses/rh199-10.0)                | In progress (10/154 p.)   | Accelerated review on ROL                     |
+
 
 Usual access:
 
 - [LMS portal](https://training-lms.redhat.com/) — sessions and labs with an active account.
 - [ROL catalog](https://rol.redhat.com/rol/app/catalog) — chapter material and labs.
 
+
+
 ## Local Vagrant lab (Rocky Linux 9)
 
 To practice when I don't have the Red Hat lab open, I keep a base lab in the repo: `labs/rhcsa-base/Vagrantfile`. It brings up two **Rocky Linux 9** VMs (RHEL 9 compatible), ideal for networking, SSH, remote cron, firewalld, and similar scenarios.
 
-| VM | Hostname | Private IP | Resources |
-|----|----------|------------|-----------|
+
+| VM       | Hostname           | Private IP      | Resources        |
+| -------- | ------------------ | --------------- | ---------------- |
 | `server` | `server.lab.local` | `192.168.56.10` | 1 vCPU / 1024 MB |
 | `client` | `client.lab.local` | `192.168.56.11` | 1 vCPU / 1024 MB |
+
 
 Environment features:
 
@@ -70,6 +76,8 @@ vagrant destroy -f    # wipe the lab and start fresh
 
 > Local Vagrant artifacts (`.vagrant/`, `*.log`, `*.box`) are in `.gitignore`, so they are not versioned.
 
+
+
 ## How I work each session
 
 1. Open the chapter on ROL (RH199, `rh134-10.0/pages/...`) or advance in the Van Vugt book.
@@ -77,10 +85,14 @@ vagrant destroy -f    # wipe the lab and start fresh
 3. Capture commands and notes in the following modules on this blog.
 4. If the official lab expires or the course window renews, I keep practicing in the local lab without depending on Red Hat.
 
+
+
 ## What I avoid
 
 - I don't mark an exercise as done until I've actually run it in a real lab (official or local).
 - I don't use the local lab to skip the course material: it's a complement for repetition and experimentation.
+
+
 
 ## Outcome
 
