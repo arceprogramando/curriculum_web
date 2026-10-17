@@ -73,14 +73,14 @@
     },
     {
       "name": "Microgenesis",
-      "url": "https://www.microgenesis.net/en/",
+      "url": "https://www.microgenesis.co/",
       "startDate": "2022-12-01",
       "positions": [
         {
           "title": "Desarrollador Frontend",
           "startDate": "2022-12-01",
           "endDate": "2023-05-01",
-          "description": "Desarrollo del frontend de una plataforma de salud, implementando el diseño UI con HTML y CSS, optimizando el código para mejorar rendimiento, y colaborando con diseñadores y backend para garantizar una experiencia de usuario fluida y atractiva.",
+          "description": "Entre diciembre 2022 y mayo 2023 desarrollé el frontend de una plataforma de salud, con el diseño UI en HTML y CSS. El sitio que se ve hoy lo mantienen otras personas; yo ya no estoy a cargo.",
           "skills": ["HTML", "CSS", "JavaScript"]
         }
       ]
@@ -432,9 +432,9 @@
     {
       "name": "Microgenesis",
       "isActive": false,
-      "description": "Proyecto Laboral para una empresa de salud y maternidad",
+      "description": "Frontend que armé entre diciembre 2022 y mayo 2023 para una empresa de salud y maternidad. El sitio actual lo mantienen otras personas.",
       "highlights": ["HTML", "CSS", "JAVASCRIPT"],
-      "url": "https://www.microgenesis.net/en/"
+      "url": "https://www.microgenesis.co/"
     },
     {
       "name": "Primer Portfolio",
