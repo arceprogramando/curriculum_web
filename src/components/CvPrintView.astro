@@ -1,0 +1,199 @@
+---
+import CvPrintShell from '@/layouts/CvPrintShell.astro';
+import CvDocument from '@/components/CvDocument.astro';
+import {
+  buildCvPrintModel,
+  cvPrintDocumentTitle,
+  cvPrintPath,
+  cvRoleLabel,
+  CV_ROLES,
+  type CvRole,
+} from '@/lib/cv-print';
+import type { Locale } from '@/lib/i18n';
+
+interface Props {
+  locale: Locale;
+  role?: CvRole;
+}
+
+const { locale, role = 'general' } = Astro.props;
+const model = buildCvPrintModel(locale, role);
+const printTitle = cvPrintDocumentTitle(locale, role);
+const homeHref = locale === 'en' ? '/en/' : '/';
+const builderHref = locale === 'en' ? '/en/crear-cv/' : '/crear-cv/';
+const builderLabel = locale === 'en' ? 'Build your CV' : 'Armá tu CV';
+const description =
+  locale === 'en'
+    ? `One-page ${model.label} CV for Felipe Arce. Generated from arceprog.dev.`
+    : `CV de una hoja (${model.label}) de Felipe Arce. Generado desde arceprog.dev.`;
+---
+
+<CvPrintShell
+  locale={locale}
+  title={printTitle}
+  description={description}
+  ogTitle={`CV Felipe Arce — ${model.label}`}
+  ogDescription={description}
+  role={role}
+>
+  <div class="cv-screen">
+    <header class="cv-toolbar no-print">
+      <a class="cv-back" href={homeHref}>{model.labels.back}</a>
+      <a class="cv-builder-link" href={builderHref}>{builderLabel}</a>
+      <nav class="cv-roles" aria-label={model.labels.roleNav}>
+        {
+          CV_ROLES.map((item) => (
+            <a
+              href={cvPrintPath(locale, item)}
+              class:list={[{ active: item === role }]}
+              aria-current={item === role ? 'page' : undefined}
+            >
+              {cvRoleLabel(item, locale)}
+            </a>
+          ))
+        }
+      </nav>
+      <button type="button" id="cv-print-btn">{model.labels.savePdf}</button>
+      <p>{model.labels.hint}</p>
+    </header>
+
+    <div class="cv-paper">
+      <CvDocument model={model} />
+    </div>
+  </div>
+</CvPrintShell>
+
+<script is:inline define:vars={{ printTitle }}>
+  document.title = printTitle;
+
+  const triggerPrint = () => {
+    document.title = printTitle;
+    window.print();
+  };
+
+  document.getElementById('cv-print-btn')?.addEventListener('click', triggerPrint);
+
+  if (new URLSearchParams(window.location.search).has('print')) {
+    window.setTimeout(triggerPrint, 280);
+  }
+</script>
+
+<style>
+  .cv-screen {
+    min-height: 100vh;
+    padding: 1.25rem 1rem 2.5rem;
+  }
+
+  .cv-builder-link {
+    color: #0b57d0;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .cv-toolbar {
+    max-width: 8.5in;
+    margin: 0 auto 1rem;
+    padding: 0.85rem 1rem;
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    gap: 0.65rem 0.85rem;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #cfcbc3;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
+    font-family: 'Source Sans 3', Calibri, Arial, Helvetica, sans-serif;
+    font-size: 0.92rem;
+  }
+
+  .cv-back {
+    color: #0b57d0;
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .cv-roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    justify-content: center;
+  }
+
+  .cv-roles a {
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #d0cdc6;
+    border-radius: 999px;
+    padding: 0.28rem 0.7rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .cv-roles a.active {
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+    color: #fff;
+  }
+
+  .cv-toolbar button {
+    appearance: none;
+    border: 0;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 0.5rem 0.95rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .cv-toolbar button:hover {
+    background: #000;
+  }
+
+  .cv-toolbar p {
+    grid-column: 1 / -1;
+    margin: 0;
+    color: #5c5c5c;
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+
+  .cv-paper {
+    max-width: 8.5in;
+    margin: 0 auto;
+    box-shadow:
+      0 1px 2px rgb(0 0 0 / 0.06),
+      0 12px 28px rgb(0 0 0 / 0.12);
+  }
+
+  @media print {
+    .cv-screen {
+      min-height: 0;
+      padding: 0;
+    }
+
+    .cv-paper {
+      max-width: none;
+      box-shadow: none;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .cv-toolbar {
+      grid-template-columns: 1fr;
+    }
+
+    .cv-roles {
+      justify-content: flex-start;
+    }
+
+    .cv-toolbar button {
+      width: 100%;
+    }
+  }
+</style>

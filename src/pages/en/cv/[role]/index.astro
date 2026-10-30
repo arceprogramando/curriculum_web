@@ -1,0 +1,14 @@
+---
+import CvPrintView from '@/components/CvPrintView.astro';
+import { CV_ROLES, type CvRole } from '@/lib/cv-print';
+
+export function getStaticPaths() {
+  return CV_ROLES.filter((role) => role !== 'general').map((role) => ({
+    params: { role },
+  }));
+}
+
+const role = Astro.params.role as Exclude<CvRole, 'general'>;
+---
+
+<CvPrintView locale="en" role={role} />

@@ -1,0 +1,36 @@
+---
+import CvPrintShell from '@/layouts/CvPrintShell.astro';
+import { getCvBuilderUi } from '@/lib/cv-builder-ui';
+import type { Locale } from '@/lib/i18n';
+import '@/styles/cv-document.css';
+import '@/styles/cv-builder.css';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const ui = getCvBuilderUi(locale);
+const path = locale === 'en' ? '/en/crear-cv/' : '/crear-cv/';
+---
+
+<CvPrintShell
+  locale={locale}
+  path={path}
+  title={`${ui.title} | arceprog.dev`}
+  description={ui.subtitle}
+  ogTitle={ui.title}
+  ogDescription={ui.subtitle}
+>
+  <div id="cv-builder" data-locale={locale}></div>
+</CvPrintShell>
+
+<script>
+  import { mountCvBuilder } from '@/scripts/cv-builder-app';
+  import type { Locale } from '@/lib/i18n';
+
+  const root = document.getElementById('cv-builder');
+  if (!root) throw new Error('cv-builder root missing');
+  const locale: Locale = root.dataset.locale === 'en' ? 'en' : 'es';
+  mountCvBuilder(root, locale);
+</script>

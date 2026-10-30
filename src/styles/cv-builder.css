@@ -1,0 +1,261 @@
+.builder {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+  font-family: 'Source Sans 3', Calibri, Arial, Helvetica, sans-serif;
+  color: #1a1a1a;
+}
+
+.builder-top h1 {
+  margin: 0.75rem 0 0.35rem;
+  font-size: 1.75rem;
+}
+
+.builder-top p {
+  margin: 0;
+  color: #555;
+  max-width: 52rem;
+  line-height: 1.45;
+}
+
+.builder-top a {
+  color: #0b57d0;
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 0.85rem;
+}
+
+.builder-top a.secondary {
+  color: #333;
+  font-weight: 500;
+}
+
+.builder-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.builder-actions button,
+.builder-actions .file-btn,
+.builder-actions a.primary,
+.form button,
+.tabs button {
+  appearance: none;
+  border: 1px solid #222;
+  background: #222;
+  color: #fff;
+  padding: 0.45rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.builder-actions .ghost,
+.form .ghost,
+.tabs button {
+  background: #fff;
+  color: #222;
+}
+
+.form .danger {
+  border-color: #a33;
+  color: #a33;
+}
+
+.builder-hint {
+  margin: 0.65rem 0 1rem;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.builder-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.builder-editor,
+.builder-preview-wrap {
+  background: #fff;
+  border: 1px solid #d5d1c8;
+  border-radius: 12px;
+  padding: 0.85rem;
+  min-width: 0;
+}
+
+.builder-preview-wrap h2 {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.tabs button.active {
+  background: #222;
+  color: #fff;
+}
+
+.form,
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card {
+  border: 1px solid #ddd8ce;
+  border-radius: 10px;
+  padding: 0.75rem;
+  margin: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.card legend {
+  font-weight: 700;
+  padding: 0 0.25rem;
+}
+
+.card label,
+.form label {
+  display: grid;
+  gap: 0.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.card input,
+.card textarea,
+.form input,
+.form textarea,
+.builder-editor textarea[data-json] {
+  width: 100%;
+  border: 1px solid #ccc7bc;
+  border-radius: 6px;
+  padding: 0.4rem 0.5rem;
+  font: inherit;
+  font-weight: 400;
+}
+
+.builder-editor textarea[data-json] {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  min-height: 28rem;
+}
+
+.sim-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.4rem;
+}
+
+.builder-preview-scroll {
+  overflow: auto;
+  max-height: 80vh;
+  background: #e8e6e1;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.builder-preview-paper {
+  transform-origin: top center;
+}
+
+.builder-preview-paper .cv-doc {
+  width: 100%;
+  max-width: 8.5in;
+  min-height: 0;
+  padding: 0.55rem 0.7rem;
+  font-size: 9pt;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+}
+
+.print-bar {
+  max-width: 8.5in;
+  margin: 0 auto 1rem;
+  padding: 0.85rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem 1rem;
+  background: #fff;
+  border: 1px solid #cfcbc3;
+  border-radius: 10px;
+  font-family: 'Source Sans 3', Calibri, Arial, Helvetica, sans-serif;
+}
+
+.print-bar a {
+  color: #0b57d0;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.print-bar button {
+  appearance: none;
+  border: 0;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 0.5rem 0.95rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+}
+
+.print-bar p {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #5c5c5c;
+  font-size: 0.8rem;
+}
+
+.print-paper {
+  max-width: 8.5in;
+  margin: 0 auto;
+  box-shadow: 0 12px 28px rgb(0 0 0 / 0.12);
+}
+
+.empty {
+  font-family: 'Source Sans 3', Calibri, Arial, Helvetica, sans-serif;
+  padding: 2rem;
+}
+
+@media (max-width: 980px) {
+  .builder-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .builder-preview-scroll {
+    max-height: none;
+  }
+}
+
+.cv-screen-pad {
+  min-height: 100vh;
+  padding: 1.25rem 1rem 2.5rem;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-paper {
+    box-shadow: none;
+  }
+
+  .cv-screen-pad {
+    padding: 0;
+    min-height: 0;
+  }
+}

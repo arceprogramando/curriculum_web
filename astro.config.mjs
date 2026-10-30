@@ -31,6 +31,7 @@ export default defineConfig({
           en: 'en-US',
         },
       },
+      filter: (page) => !page.includes('/cv/') && !page.includes('/crear-cv'),
     }),
   ],
   image: {

@@ -1,0 +1,109 @@
+---
+import { formatPrintRange, type CvPrintModel } from '@/lib/cv-print';
+import '@/styles/cv-document.css';
+
+interface Props {
+  model: CvPrintModel;
+}
+
+const { model } = Astro.props;
+const { locale } = model;
+---
+
+<article class="cv-doc" lang={locale === 'en' ? 'en' : 'es'}>
+  <header class="cv-header">
+    <div class="cv-identity">
+      <h1>{model.fullName}</h1>
+      <p class="cv-label">{model.label}</p>
+      <p class="cv-location">{model.location}</p>
+    </div>
+    <ul class="cv-contacts">
+      <li>
+        <span>{model.labels.linkedin}:</span>
+        <a href={model.linkedinUrl}>{model.linkedinLabel}</a>
+      </li>
+      <li>
+        <span>{model.labels.portfolio}:</span>
+        <a href={model.portfolioUrl}>{model.portfolioLabel}</a>
+      </li>
+      <li>
+        <span>{model.labels.github}:</span>
+        <a href={model.githubUrl}>{model.githubLabel}</a>
+      </li>
+      <li>
+        <span>{model.labels.email}:</span>
+        <a href={`mailto:${model.email}`}>{model.email}</a>
+      </li>
+    </ul>
+  </header>
+
+  <p class="cv-summary">{model.summary}</p>
+
+  <section class="cv-section">
+    <h2>{model.labels.work}</h2>
+    <ul class="cv-entries">
+      {
+        model.jobs.map((job) => (
+          <li>
+            <div class="cv-entry-head">
+              <h3>
+                {job.company} - {job.title}
+              </h3>
+              <time>
+                {formatPrintRange(job.startDate, job.endDate, locale, model.labels.current)}
+              </time>
+            </div>
+            <p class="cv-entry-body" set:html={job.html} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="cv-section">
+    <h2>{model.labels.education}</h2>
+    <ul class="cv-entries">
+      {
+        model.education.map((item) => (
+          <li>
+            <div class="cv-entry-head">
+              <h3>
+                {item.title}
+                {item.badge ? (
+                  <>
+                    {' '}
+                    <span class="cv-badge">{item.badge}</span>
+                  </>
+                ) : null}
+              </h3>
+              <time>
+                {formatPrintRange(item.startDate, item.endDate, locale, model.labels.current)}
+              </time>
+            </div>
+            <p class="cv-entry-body" set:html={item.html} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="cv-section">
+    <h2>{model.labels.simulations}</h2>
+    <ul class="cv-simulations">
+      {model.simulations.map((line) => <li>{line}</li>)}
+    </ul>
+  </section>
+
+  <footer class="cv-skills">
+    <p>
+      <strong>{model.labels.hardSkills} :</strong>
+      {' '}
+      {model.hardSkills}
+    </p>
+    <p>
+      <strong>{model.labels.softSkills} :</strong>
+      {' '}
+      {model.softSkills}
+    </p>
+  </footer>
+</article>

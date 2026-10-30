@@ -1,0 +1,120 @@
+---
+import type { Locale } from '@/lib/i18n';
+import { getLocaleConfig } from '@/lib/i18n';
+import type { CvRole } from '@/lib/cv-print';
+import { cvPrintPath } from '@/lib/cv-print';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  ogTitle: string;
+  ogDescription: string;
+  role?: CvRole;
+  /** Ruta canónica propia (ej. /crear-cv/). Si no hay, usa cvPrintPath(role). */
+  path?: string;
+}
+
+const {
+  locale,
+  title,
+  description,
+  ogTitle,
+  ogDescription,
+  role = 'general',
+  path,
+} = Astro.props;
+const config = getLocaleConfig(locale);
+const canonicalPath = path ?? cvPrintPath(locale, role);
+const canonicalUrl = `https://arceprog.dev${canonicalPath}`;
+const alternatePath =
+  path != null
+    ? locale === 'es'
+      ? path.replace(/^\/crear-cv/, '/en/crear-cv')
+      : path.replace(/^\/en\/crear-cv/, '/crear-cv')
+    : cvPrintPath(locale === 'es' ? 'en' : 'es', role);
+const ogImage = 'https://arceprog.dev/portada-og.png';
+---
+
+<!doctype html>
+<html lang={config.htmlLang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!--
+      Tipografía CV 2026 (IT / ATS):
+      Source Sans 3 = sans moderna legible a 10–11pt (equivalente “Calibri-like” en web).
+      Fallback: Calibri, Arial, Helvetica — las más citadas para ATS y CVs tech.
+      Evitar decorativas / mono para cuerpo. Una sola familia.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={config.ogLocale} />
+    <link rel="alternate" hreflang={config.ogLocale.replace('_', '-')} href={canonicalUrl} />
+    <link
+      rel="alternate"
+      hreflang={locale === 'es' ? 'en-US' : 'es-AR'}
+      href={`https://arceprog.dev${alternatePath}`}
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content={ogImage} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: #e8e6e1;
+    color: #111;
+    font-family: 'Source Sans 3', Calibri, Arial, Helvetica, sans-serif;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  @media print {
+    @page {
+      size: letter;
+      margin: 0.32in 0.45in;
+    }
+
+    html,
+    body {
+      background: #fff !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .no-print {
+      display: none !important;
+    }
+  }
+</style>

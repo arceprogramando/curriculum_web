@@ -1,0 +1,36 @@
+---
+import CvPrintShell from '@/layouts/CvPrintShell.astro';
+import { getCvBuilderUi } from '@/lib/cv-builder-ui';
+import type { Locale } from '@/lib/i18n';
+import '@/styles/cv-document.css';
+import '@/styles/cv-builder.css';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const ui = getCvBuilderUi(locale);
+const path = locale === 'en' ? '/en/crear-cv/vista/' : '/crear-cv/vista/';
+---
+
+<CvPrintShell
+  locale={locale}
+  path={path}
+  title={ui.printPageTitle}
+  description={ui.printHint}
+  ogTitle={ui.printPageTitle}
+  ogDescription={ui.printHint}
+>
+  <div id="cv-builder-print" class="cv-screen-pad" data-locale={locale}></div>
+</CvPrintShell>
+
+<script>
+  import { mountCvBuilderPrint } from '@/scripts/cv-builder-app';
+  import type { Locale } from '@/lib/i18n';
+
+  const root = document.getElementById('cv-builder-print');
+  if (!root) throw new Error('cv-builder-print root missing');
+  const locale: Locale = root.dataset.locale === 'en' ? 'en' : 'es';
+  mountCvBuilderPrint(root, locale);
+</script>
