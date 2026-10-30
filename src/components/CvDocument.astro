@@ -8,39 +8,60 @@ interface Props {
 
 const { model } = Astro.props;
 const { locale } = model;
+const workId = 'cv-work';
+const eduId = 'cv-education';
+const simsId = 'cv-simulations';
+const skillsId = 'cv-skills';
 ---
 
-<article class="cv-doc" lang={locale === 'en' ? 'en' : 'es'}>
+<article class="cv-doc" lang={locale === 'en' ? 'en' : 'es'} aria-labelledby="cv-name">
   <header class="cv-header">
     <div class="cv-identity">
-      <h1>{model.fullName}</h1>
+      <h1 id="cv-name">{model.fullName}</h1>
       <p class="cv-label">{model.label}</p>
       <p class="cv-location">{model.location}</p>
     </div>
-    <ul class="cv-contacts">
+    <ul class="cv-contacts" aria-label={locale === 'en' ? 'Contact links' : 'Enlaces de contacto'}>
       <li>
         <span>{model.labels.linkedin}:</span>
-        <a href={model.linkedinUrl}>{model.linkedinLabel}</a>
+        <a
+          href={model.linkedinUrl}
+          aria-label={`${model.labels.linkedin}: ${model.linkedinLabel}`}
+        >
+          {model.linkedinLabel}
+        </a>
       </li>
       <li>
         <span>{model.labels.portfolio}:</span>
-        <a href={model.portfolioUrl}>{model.portfolioLabel}</a>
+        <a
+          href={model.portfolioUrl}
+          aria-label={`${model.labels.portfolio}: ${model.portfolioLabel}`}
+        >
+          {model.portfolioLabel}
+        </a>
       </li>
       <li>
         <span>{model.labels.github}:</span>
-        <a href={model.githubUrl}>{model.githubLabel}</a>
+        <a
+          href={model.githubUrl}
+          aria-label={`${model.labels.github}: ${model.githubLabel}`}
+        >
+          {model.githubLabel}
+        </a>
       </li>
       <li>
         <span>{model.labels.email}:</span>
-        <a href={`mailto:${model.email}`}>{model.email}</a>
+        <a href={`mailto:${model.email}`} aria-label={`${model.labels.email}: ${model.email}`}>
+          {model.email}
+        </a>
       </li>
     </ul>
   </header>
 
   <p class="cv-summary">{model.summary}</p>
 
-  <section class="cv-section">
-    <h2>{model.labels.work}</h2>
+  <section class="cv-section" aria-labelledby={workId}>
+    <h2 id={workId}>{model.labels.work}</h2>
     <ul class="cv-entries">
       {
         model.jobs.map((job) => (
@@ -49,7 +70,7 @@ const { locale } = model;
               <h3>
                 {job.company} - {job.title}
               </h3>
-              <time>
+              <time datetime={job.startDate.slice(0, 7)}>
                 {formatPrintRange(job.startDate, job.endDate, locale, model.labels.current)}
               </time>
             </div>
@@ -60,8 +81,8 @@ const { locale } = model;
     </ul>
   </section>
 
-  <section class="cv-section">
-    <h2>{model.labels.education}</h2>
+  <section class="cv-section" aria-labelledby={eduId}>
+    <h2 id={eduId}>{model.labels.education}</h2>
     <ul class="cv-entries">
       {
         model.education.map((item) => (
@@ -76,7 +97,7 @@ const { locale } = model;
                   </>
                 ) : null}
               </h3>
-              <time>
+              <time datetime={item.startDate.slice(0, 7)}>
                 {formatPrintRange(item.startDate, item.endDate, locale, model.labels.current)}
               </time>
             </div>
@@ -87,14 +108,17 @@ const { locale } = model;
     </ul>
   </section>
 
-  <section class="cv-section">
-    <h2>{model.labels.simulations}</h2>
+  <section class="cv-section" aria-labelledby={simsId}>
+    <h2 id={simsId}>{model.labels.simulations}</h2>
     <ul class="cv-simulations">
       {model.simulations.map((line) => <li>{line}</li>)}
     </ul>
   </section>
 
-  <footer class="cv-skills">
+  <footer class="cv-skills" aria-labelledby={skillsId}>
+    <h2 id={skillsId} class="visually-hidden">
+      {model.labels.hardSkills} / {model.labels.softSkills}
+    </h2>
     <p>
       <strong>{model.labels.hardSkills} :</strong>
       {' '}

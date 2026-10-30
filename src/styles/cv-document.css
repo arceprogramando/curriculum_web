@@ -62,6 +62,23 @@
   text-underline-offset: 1px;
 }
 
+.cv-contacts a:focus-visible {
+  outline: 2px solid var(--cv-link);
+  outline-offset: 2px;
+}
+
+.cv-doc .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .cv-summary {
   margin: 0.85rem 0 0.65rem;
   font-size: 10pt;

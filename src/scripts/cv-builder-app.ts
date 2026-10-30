@@ -74,46 +74,71 @@ function buildChrome(
   const myCvs = locale === 'en' ? '/en/cv/' : '/cv/';
   const printPath = locale === 'en' ? '/en/crear-cv/vista/' : '/crear-cv/vista/';
 
+  const statusText = status ? ` · <strong>${escapeHtml(status)}</strong>` : '';
+
   return `
   <div class="builder">
+    <a class="skip-link builder-skip" href="#builder-editor">${ui.skipToEditor}</a>
+    <a class="skip-link builder-skip" href="#builder-preview">${ui.skipToPreview}</a>
+
     <header class="builder-top">
-      <div>
-        <a href="${home}">${ui.back}</a>
-        <a class="secondary" href="${myCvs}">${ui.myCvs}</a>
-      </div>
-      <h1>${ui.title}</h1>
-      <p>${ui.subtitle}</p>
+      <nav class="builder-nav" aria-label="breadcrumb">
+        <a href="${home}" title="${ui.back}">${ui.back}</a>
+        <span class="builder-nav-sep" aria-hidden="true">/</span>
+        <a href="${myCvs}" title="${ui.myCvs}">${ui.myCvs}</a>
+      </nav>
+      <h1 id="builder-title">${ui.title}</h1>
+      <p id="builder-subtitle">${ui.subtitle}</p>
     </header>
 
-    <div class="builder-actions">
-      <button type="button" data-action="example">${ui.loadExample}</button>
-      <button type="button" data-action="reset" class="ghost">${ui.reset}</button>
-      <button type="button" data-action="download">${ui.downloadJson}</button>
-      <label class="file-btn">${ui.importJson}<input type="file" accept="application/json,.json" data-import hidden /></label>
-      <a class="primary" data-action="print" href="${printPath}">${ui.printPdf}</a>
+    <div class="builder-toolbar" role="group" aria-label="${ui.actionsRegion}">
+      <div class="builder-toolbar-secondary">
+        <div class="builder-action-group" role="group" aria-label="${ui.draftActions}">
+          <button type="button" class="btn btn-secondary" data-action="example">${ui.loadExample}</button>
+          <button type="button" class="btn btn-ghost" data-action="reset">${ui.reset}</button>
+        </div>
+        <div class="builder-action-group" role="group" aria-label="${ui.fileActions}">
+          <button type="button" class="btn btn-secondary" data-action="download">${ui.downloadJson}</button>
+          <label class="btn btn-secondary file-btn">${ui.importJson}<input type="file" accept="application/json,.json" data-import hidden /></label>
+        </div>
+      </div>
+      <a class="btn btn-primary builder-cta" data-action="print" href="${printPath}">${ui.printPdf}</a>
     </div>
-    <p class="builder-hint">${ui.saveHint}${status ? ` · <strong>${status}</strong>` : ''}</p>
+
+    <p class="builder-hint" id="builder-status" role="status" aria-live="polite" aria-atomic="true">
+      <span class="visually-hidden">${ui.statusLabel}: </span>${ui.saveHint}${statusText}
+    </p>
 
     <div class="builder-grid">
-      <section class="builder-editor">
-        <div class="tabs">
-          <button type="button" data-mode="form" class="${mode === 'form' ? 'active' : ''}">${ui.tabForm}</button>
-          <button type="button" data-mode="json" class="${mode === 'json' ? 'active' : ''}">${ui.tabJson}</button>
+      <section class="builder-editor" id="builder-editor" aria-label="${ui.editorRegion}" tabindex="-1">
+        <div class="tabs" role="tablist" aria-label="${ui.tabsLabel}">
+          <button type="button" role="tab" id="tab-form" data-mode="form" aria-selected="${mode === 'form'}" aria-controls="builder-panel" class="${mode === 'form' ? 'active' : ''}">${ui.tabForm}</button>
+          <button type="button" role="tab" id="tab-json" data-mode="json" aria-selected="${mode === 'json'}" aria-controls="builder-panel" class="${mode === 'json' ? 'active' : ''}">${ui.tabJson}</button>
         </div>
-        ${mode === 'json' ? renderJsonEditor(draft) : renderForm(ui, draft)}
+        <div role="tabpanel" id="builder-panel" aria-labelledby="${mode === 'form' ? 'tab-form' : 'tab-json'}">
+          ${mode === 'json' ? renderJsonEditor(ui, draft) : renderForm(ui, draft)}
+        </div>
       </section>
-      <section class="builder-preview-wrap">
-        <h2>${ui.previewTitle}</h2>
+      <section class="builder-preview-wrap" id="builder-preview" aria-label="${ui.previewRegion}" tabindex="-1">
+        <div class="builder-preview-head">
+          <h2 id="preview-heading">${ui.previewTitle}</h2>
+          <a class="btn btn-primary btn-compact builder-preview-print" data-action="print" href="${printPath}">${ui.printPdf}</a>
+        </div>
         <div class="builder-preview-scroll">
-          <div class="builder-preview-paper" data-preview></div>
+          <div class="builder-preview-paper" data-preview aria-labelledby="preview-heading"></div>
         </div>
       </section>
+    </div>
+
+    <div class="builder-mobile-cta no-print">
+      <a class="btn btn-primary" data-action="print" href="${printPath}">${ui.printPdf}</a>
     </div>
   </div>`;
 }
 
-function renderJsonEditor(draft: UserCvDraft): string {
-  return `<textarea data-json rows="28" spellcheck="false">${escapeHtml(JSON.stringify(draft, null, 2))}</textarea>`;
+function renderJsonEditor(ui: CvBuilderUi, draft: UserCvDraft): string {
+  return `<label class="json-label" for="cv-json-editor">${ui.jsonLabel}</label>
+  <textarea id="cv-json-editor" data-json rows="28" spellcheck="false" aria-label="${ui.jsonLabel}">${escapeHtml(JSON.stringify(draft, null, 2))}</textarea>`;
 }
 
 function renderForm(ui: CvBuilderUi, draft: UserCvDraft): string {
@@ -124,10 +149,12 @@ function renderForm(ui: CvBuilderUi, draft: UserCvDraft): string {
       <legend>${ui.experience} #${index + 1}</legend>
       <label>${ui.company}<input name="jobs.${index}.company" value="${escapeHtml(job.company)}" /></label>
       <label>${ui.jobTitle}<input name="jobs.${index}.title" value="${escapeHtml(job.title)}" /></label>
-      <label>${ui.startDate}<input name="jobs.${index}.startDate" value="${escapeHtml(job.startDate)}" /></label>
-      <label>${ui.endDate}<input name="jobs.${index}.endDate" value="${escapeHtml(job.endDate)}" /></label>
+      <div class="field-row">
+        <label>${ui.startDate}<input name="jobs.${index}.startDate" value="${escapeHtml(job.startDate)}" autocomplete="off" inputmode="numeric" /></label>
+        <label>${ui.endDate}<input name="jobs.${index}.endDate" value="${escapeHtml(job.endDate)}" autocomplete="off" inputmode="numeric" /></label>
+      </div>
       <label>${ui.description}<textarea name="jobs.${index}.description" rows="3">${escapeHtml(job.description)}</textarea></label>
-      <button type="button" class="ghost danger" data-remove-job="${index}">${ui.remove}</button>
+      <button type="button" class="btn btn-danger" data-remove-job="${index}" aria-label="${ui.removeJob} #${index + 1}">${ui.remove}</button>
     </fieldset>`,
     )
     .join('');
@@ -139,10 +166,12 @@ function renderForm(ui: CvBuilderUi, draft: UserCvDraft): string {
       <legend>${ui.education} #${index + 1}</legend>
       <label>${ui.eduTitle}<input name="education.${index}.title" value="${escapeHtml(item.title)}" /></label>
       <label>${ui.badge}<input name="education.${index}.badge" value="${escapeHtml(item.badge)}" /></label>
-      <label>${ui.startDate}<input name="education.${index}.startDate" value="${escapeHtml(item.startDate)}" /></label>
-      <label>${ui.endDate}<input name="education.${index}.endDate" value="${escapeHtml(item.endDate)}" /></label>
+      <div class="field-row">
+        <label>${ui.startDate}<input name="education.${index}.startDate" value="${escapeHtml(item.startDate)}" autocomplete="off" inputmode="numeric" /></label>
+        <label>${ui.endDate}<input name="education.${index}.endDate" value="${escapeHtml(item.endDate)}" autocomplete="off" inputmode="numeric" /></label>
+      </div>
       <label>${ui.description}<textarea name="education.${index}.description" rows="2">${escapeHtml(item.description)}</textarea></label>
-      <button type="button" class="ghost danger" data-remove-edu="${index}">${ui.remove}</button>
+      <button type="button" class="btn btn-danger" data-remove-edu="${index}" aria-label="${ui.removeEdu} #${index + 1}">${ui.remove}</button>
     </fieldset>`,
     )
     .join('');
@@ -151,8 +180,11 @@ function renderForm(ui: CvBuilderUi, draft: UserCvDraft): string {
     .map(
       (line, index) => `
       <div class="sim-row">
-        <input name="simulations.${index}" value="${escapeHtml(line)}" />
-        <button type="button" class="ghost danger" data-remove-sim="${index}">${ui.remove}</button>
+        <label class="sim-label">
+          <span class="visually-hidden">${ui.simLine} ${index + 1}</span>
+          <input name="simulations.${index}" value="${escapeHtml(line)}" aria-label="${ui.simLine} ${index + 1}" />
+        </label>
+        <button type="button" class="btn btn-danger" data-remove-sim="${index}" aria-label="${ui.removeSim} ${index + 1}">${ui.remove}</button>
       </div>`,
     )
     .join('');
@@ -180,18 +212,18 @@ function renderForm(ui: CvBuilderUi, draft: UserCvDraft): string {
 
     <div class="stack">
       ${jobs}
-      <button type="button" data-add-job>${ui.addJob}</button>
+      <button type="button" class="btn btn-secondary" data-add-job>${ui.addJob}</button>
     </div>
 
     <div class="stack">
       ${education}
-      <button type="button" data-add-edu>${ui.addEdu}</button>
+      <button type="button" class="btn btn-secondary" data-add-edu>${ui.addEdu}</button>
     </div>
 
     <fieldset class="card">
       <legend>${ui.simulations}</legend>
       ${sims}
-      <button type="button" data-add-sim>${ui.addSim}</button>
+      <button type="button" class="btn btn-secondary" data-add-sim>${ui.addSim}</button>
     </fieldset>
 
     <fieldset class="card">
@@ -245,9 +277,11 @@ function bind(
     downloadJsonFile(draft, draftFileStem(draft));
   });
 
-  root.querySelector('[data-action="print"]')?.addEventListener('click', () => {
-    syncFromDom(root, api);
-    sessionStorage.setItem(CV_BUILDER_PREVIEW_KEY, JSON.stringify(api.getDraft()));
+  root.querySelectorAll('[data-action="print"]').forEach((el) => {
+    el.addEventListener('click', () => {
+      syncFromDom(root, api);
+      sessionStorage.setItem(CV_BUILDER_PREVIEW_KEY, JSON.stringify(api.getDraft()));
+    });
   });
 
   const fileInput = root.querySelector<HTMLInputElement>('[data-import]');
@@ -433,25 +467,30 @@ export function mountCvBuilderPrint(root: HTMLElement, locale: Locale): void {
   }
 
   if (!draft) {
-    root.innerHTML = `<p class="empty">${ui.noDraft}</p><p><a href="${editorPath}">${ui.backEditor}</a></p>`;
+    root.innerHTML = `<p class="empty" role="alert">${ui.noDraft}</p><p><a href="${editorPath}" title="${ui.backEditor}">${ui.backEditor}</a></p>`;
     return;
   }
 
-  const printTitle = `${draftFileStem(draft)}-${new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-')}`;
-  document.title = printTitle;
+  const pageTitle = document.title;
+  const printFileTitle = `${draftFileStem(draft)}-${new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-')}`;
 
   root.innerHTML = `
-    <header class="print-bar no-print">
-      <a href="${editorPath}">${ui.backEditor}</a>
-      <button type="button" id="cv-print-btn">${ui.printPdf}</button>
-      <p>${ui.printHint}</p>
+    <header class="print-bar no-print" aria-label="${ui.printToolbar}">
+      <a href="${editorPath}" title="${ui.backEditor}">${ui.backEditor}</a>
+      <button type="button" id="cv-print-btn" title="${ui.printPdf}" aria-describedby="cv-builder-print-hint">${ui.printPdf}</button>
+      <p id="cv-builder-print-hint">${ui.printHint}</p>
     </header>
     <div class="print-paper">${renderUserCvHtml(draft, ui.current)}</div>
   `;
 
   const trigger = () => {
-    document.title = printTitle;
+    document.title = printFileTitle;
+    const restore = () => {
+      document.title = pageTitle;
+    };
+    window.addEventListener('afterprint', restore, { once: true });
     window.print();
+    window.setTimeout(restore, 1000);
   };
   root.querySelector('#cv-print-btn')?.addEventListener('click', trigger);
   if (new URLSearchParams(location.search).has('print')) {

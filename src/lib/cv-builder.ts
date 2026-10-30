@@ -287,20 +287,22 @@ export function renderUserCvHtml(draft: UserCvDraft, currentLabel: string): stri
 
   const contacts = [
     draft.linkedinLabel
-      ? `<li><span>Linkedin:</span> <a href="${escapeHtml(draft.linkedinUrl)}">${escapeHtml(draft.linkedinLabel)}</a></li>`
+      ? `<li><span>Linkedin:</span> <a href="${escapeHtml(draft.linkedinUrl)}" aria-label="Linkedin: ${escapeHtml(draft.linkedinLabel)}">${escapeHtml(draft.linkedinLabel)}</a></li>`
       : '',
     draft.portfolioLabel
-      ? `<li><span>Portfolio:</span> <a href="${escapeHtml(draft.portfolioUrl)}">${escapeHtml(draft.portfolioLabel)}</a></li>`
+      ? `<li><span>Portfolio:</span> <a href="${escapeHtml(draft.portfolioUrl)}" aria-label="Portfolio: ${escapeHtml(draft.portfolioLabel)}">${escapeHtml(draft.portfolioLabel)}</a></li>`
       : '',
     draft.githubLabel
-      ? `<li><span>Github:</span> <a href="${escapeHtml(draft.githubUrl)}">${escapeHtml(draft.githubLabel)}</a></li>`
+      ? `<li><span>Github:</span> <a href="${escapeHtml(draft.githubUrl)}" aria-label="Github: ${escapeHtml(draft.githubLabel)}">${escapeHtml(draft.githubLabel)}</a></li>`
       : '',
     draft.email
-      ? `<li><span>Email:</span> <a href="mailto:${escapeHtml(draft.email)}">${escapeHtml(draft.email)}</a></li>`
+      ? `<li><span>Email:</span> <a href="mailto:${escapeHtml(draft.email)}" aria-label="Email: ${escapeHtml(draft.email)}">${escapeHtml(draft.email)}</a></li>`
       : '',
   ]
     .filter(Boolean)
     .join('');
+
+  const monthDate = (iso: string) => escapeHtml((iso || '').slice(0, 7) || iso);
 
   const jobs = draft.jobs
     .filter((job) => job.company || job.title || job.description)
@@ -310,7 +312,7 @@ export function renderUserCvHtml(draft: UserCvDraft, currentLabel: string): stri
       );
       const range = escapeHtml(formatDraftRange(job.startDate, job.endDate, currentLabel));
       return `<li>
-        <div class="cv-entry-head"><h3>${head}</h3><time>${range}</time></div>
+        <div class="cv-entry-head"><h3>${head}</h3><time datetime="${monthDate(job.startDate)}">${range}</time></div>
         <p class="cv-entry-body">${richTextToHtml(job.description)}</p>
       </li>`;
     })
@@ -324,7 +326,7 @@ export function renderUserCvHtml(draft: UserCvDraft, currentLabel: string): stri
         : '';
       const range = escapeHtml(formatDraftRange(item.startDate, item.endDate, currentLabel));
       return `<li>
-        <div class="cv-entry-head"><h3>${escapeHtml(item.title || 'Formación')}${badge}</h3><time>${range}</time></div>
+        <div class="cv-entry-head"><h3>${escapeHtml(item.title || 'Formación')}${badge}</h3><time datetime="${monthDate(item.startDate)}">${range}</time></div>
         <p class="cv-entry-body">${richTextToHtml(item.description)}</p>
       </li>`;
     })
@@ -335,29 +337,35 @@ export function renderUserCvHtml(draft: UserCvDraft, currentLabel: string): stri
     .map((line) => `<li>${escapeHtml(line)}</li>`)
     .join('');
 
-  return `<article class="cv-doc">
+  const workId = 'user-cv-work';
+  const eduId = 'user-cv-education';
+  const simsId = 'user-cv-simulations';
+  const skillsId = 'user-cv-skills';
+
+  return `<article class="cv-doc" aria-labelledby="user-cv-name">
   <header class="cv-header">
     <div class="cv-identity">
-      <h1>${name}</h1>
+      <h1 id="user-cv-name">${name}</h1>
       <p class="cv-label">${label}</p>
       <p class="cv-location">${location}</p>
     </div>
-    <ul class="cv-contacts">${contacts}</ul>
+    <ul class="cv-contacts" aria-label="Contact">${contacts}</ul>
   </header>
   <p class="cv-summary">${summary}</p>
-  <section class="cv-section">
-    <h2>${escapeHtml(draft.labels.work)}</h2>
+  <section class="cv-section" aria-labelledby="${workId}">
+    <h2 id="${workId}">${escapeHtml(draft.labels.work)}</h2>
     <ul class="cv-entries">${jobs}</ul>
   </section>
-  <section class="cv-section">
-    <h2>${escapeHtml(draft.labels.education)}</h2>
+  <section class="cv-section" aria-labelledby="${eduId}">
+    <h2 id="${eduId}">${escapeHtml(draft.labels.education)}</h2>
     <ul class="cv-entries">${education}</ul>
   </section>
-  <section class="cv-section">
-    <h2>${escapeHtml(draft.labels.simulations)}</h2>
+  <section class="cv-section" aria-labelledby="${simsId}">
+    <h2 id="${simsId}">${escapeHtml(draft.labels.simulations)}</h2>
     <ul class="cv-simulations">${sims}</ul>
   </section>
-  <footer class="cv-skills">
+  <footer class="cv-skills" aria-labelledby="${skillsId}">
+    <h2 id="${skillsId}" class="visually-hidden">${escapeHtml(draft.labels.hardSkills)} / ${escapeHtml(draft.labels.softSkills)}</h2>
     <p><strong>${escapeHtml(draft.labels.hardSkills)} :</strong> ${escapeHtml(draft.hardSkills)}</p>
     <p><strong>${escapeHtml(draft.labels.softSkills)} :</strong> ${escapeHtml(draft.softSkills)}</p>
   </footer>

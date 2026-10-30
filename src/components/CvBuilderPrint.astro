@@ -12,17 +12,25 @@ interface Props {
 const { locale } = Astro.props;
 const ui = getCvBuilderUi(locale);
 const path = locale === 'en' ? '/en/crear-cv/vista/' : '/crear-cv/vista/';
+const pageTitle = `${ui.printPageTitle} | arceprog.dev`;
+const ogImageAlt =
+  locale === 'en'
+    ? 'Open Graph cover for the CV print preview on arceprog.dev'
+    : 'Portada Open Graph de la vista de impresión de CV en arceprog.dev';
 ---
 
 <CvPrintShell
   locale={locale}
   path={path}
-  title={ui.printPageTitle}
+  title={pageTitle}
   description={ui.printHint}
   ogTitle={ui.printPageTitle}
   ogDescription={ui.printHint}
+  ogImageAlt={ogImageAlt}
 >
-  <div id="cv-builder-print" class="cv-screen-pad" data-locale={locale}></div>
+  <main id="main-content" class="cv-screen-pad" tabindex="-1">
+    <div id="cv-builder-print" data-locale={locale}></div>
+  </main>
 </CvPrintShell>
 
 <script>

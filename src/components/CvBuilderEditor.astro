@@ -12,17 +12,25 @@ interface Props {
 const { locale } = Astro.props;
 const ui = getCvBuilderUi(locale);
 const path = locale === 'en' ? '/en/crear-cv/' : '/crear-cv/';
+const pageTitle = `${ui.title} | arceprog.dev`;
+const ogImageAlt =
+  locale === 'en'
+    ? 'Open Graph cover for the public CV builder on arceprog.dev'
+    : 'Portada Open Graph del constructor público de CV en arceprog.dev';
 ---
 
 <CvPrintShell
   locale={locale}
   path={path}
-  title={`${ui.title} | arceprog.dev`}
+  title={pageTitle}
   description={ui.subtitle}
   ogTitle={ui.title}
   ogDescription={ui.subtitle}
+  ogImageAlt={ogImageAlt}
 >
-  <div id="cv-builder" data-locale={locale}></div>
+  <main id="main-content" tabindex="-1">
+    <div id="cv-builder" data-locale={locale}></div>
+  </main>
 </CvPrintShell>
 
 <script>

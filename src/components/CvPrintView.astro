@@ -18,7 +18,15 @@ interface Props {
 
 const { locale, role = 'general' } = Astro.props;
 const model = buildCvPrintModel(locale, role);
-const printTitle = cvPrintDocumentTitle(locale, role);
+const printFileTitle = cvPrintDocumentTitle(locale, role);
+const pageTitle =
+  locale === 'en'
+    ? `${model.label} CV — Felipe Arce | arceprog.dev`
+    : `CV ${model.label} — Felipe Arce | arceprog.dev`;
+const ogTitle =
+  locale === 'en'
+    ? `CV Felipe Arce — ${model.label}`
+    : `CV Felipe Arce — ${model.label}`;
 const homeHref = locale === 'en' ? '/en/' : '/';
 const builderHref = locale === 'en' ? '/en/crear-cv/' : '/crear-cv/';
 const builderLabel = locale === 'en' ? 'Build your CV' : 'Armá tu CV';
@@ -26,52 +34,89 @@ const description =
   locale === 'en'
     ? `One-page ${model.label} CV for Felipe Arce. Generated from arceprog.dev.`
     : `CV de una hoja (${model.label}) de Felipe Arce. Generado desde arceprog.dev.`;
+const ogImageAlt =
+  locale === 'en'
+    ? `Open Graph cover for Felipe Arce portfolio and ${model.label} CV`
+    : `Portada Open Graph del portfolio y CV ${model.label} de Felipe Arce`;
+const hintId = 'cv-print-hint';
 ---
 
 <CvPrintShell
   locale={locale}
-  title={printTitle}
+  title={pageTitle}
   description={description}
-  ogTitle={`CV Felipe Arce — ${model.label}`}
+  ogTitle={ogTitle}
   ogDescription={description}
+  ogImageAlt={ogImageAlt}
   role={role}
 >
   <div class="cv-screen">
     <header class="cv-toolbar no-print">
-      <a class="cv-back" href={homeHref}>{model.labels.back}</a>
-      <a class="cv-builder-link" href={builderHref}>{builderLabel}</a>
+      <div class="cv-toolbar-nav">
+        <a class="cv-back" href={homeHref} title={model.labels.back}>{model.labels.back}</a>
+        <a class="cv-builder-link" href={builderHref} title={builderLabel}>{builderLabel}</a>
+      </div>
+
       <nav class="cv-roles" aria-label={model.labels.roleNav}>
         {
-          CV_ROLES.map((item) => (
-            <a
-              href={cvPrintPath(locale, item)}
-              class:list={[{ active: item === role }]}
-              aria-current={item === role ? 'page' : undefined}
-            >
-              {cvRoleLabel(item, locale)}
-            </a>
-          ))
+          CV_ROLES.map((item) => {
+            const label = cvRoleLabel(item, locale);
+            const isCurrent = item === role;
+            return (
+              <a
+                href={cvPrintPath(locale, item)}
+                class:list={[{ active: isCurrent }]}
+                aria-current={isCurrent ? 'page' : undefined}
+                aria-label={`${model.labels.roleNav}: ${label}`}
+                title={label}
+              >
+                {label}
+              </a>
+            );
+          })
         }
       </nav>
-      <button type="button" id="cv-print-btn">{model.labels.savePdf}</button>
-      <p>{model.labels.hint}</p>
+
+      <button
+        type="button"
+        id="cv-print-btn"
+        class="cv-print-cta"
+        aria-describedby={hintId}
+        title={model.labels.savePdf}
+      >
+        {model.labels.savePdf}
+      </button>
+      <p id={hintId} class="cv-toolbar-hint">{model.labels.hint}</p>
     </header>
 
-    <div class="cv-paper">
+    <main id="main-content" class="cv-paper" tabindex="-1">
       <CvDocument model={model} />
+    </main>
+
+    <div class="cv-mobile-cta no-print">
+      <button type="button" id="cv-print-btn-mobile" class="cv-print-cta">
+        {model.labels.savePdf}
+      </button>
     </div>
   </div>
 </CvPrintShell>
 
-<script is:inline define:vars={{ printTitle }}>
-  document.title = printTitle;
-
+<script is:inline define:vars={{ printFileTitle, pageTitle }}>
   const triggerPrint = () => {
-    document.title = printTitle;
+    document.title = printFileTitle;
+    const restore = () => {
+      document.title = pageTitle;
+    };
+    window.addEventListener('afterprint', restore, { once: true });
     window.print();
+    window.setTimeout(restore, 1000);
   };
 
-  document.getElementById('cv-print-btn')?.addEventListener('click', triggerPrint);
+  const bindPrint = (id) => {
+    document.getElementById(id)?.addEventListener('click', triggerPrint);
+  };
+  bindPrint('cv-print-btn');
+  bindPrint('cv-print-btn-mobile');
 
   if (new URLSearchParams(window.location.search).has('print')) {
     window.setTimeout(triggerPrint, 280);
@@ -80,87 +125,104 @@ const description =
 
 <style>
   .cv-screen {
+    --ui-ink: #161616;
+    --ui-line: #cfcbc3;
+    --ui-accent: #0b57d0;
+    --sticky-h: 4.25rem;
     min-height: 100vh;
-    padding: 1.25rem 1rem 2.5rem;
-  }
-
-  .cv-builder-link {
-    color: #0b57d0;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.85rem;
-    white-space: nowrap;
+    padding: 1rem 1rem calc(var(--sticky-h) + 1.25rem);
   }
 
   .cv-toolbar {
     max-width: 8.5in;
     margin: 0 auto 1rem;
-    padding: 0.85rem 1rem;
-    display: grid;
-    grid-template-columns: auto auto 1fr auto;
-    gap: 0.65rem 0.85rem;
-    align-items: center;
+    padding: 0.9rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
     background: #fff;
-    border: 1px solid #cfcbc3;
-    border-radius: 10px;
+    border: 1px solid var(--ui-line);
+    border-radius: 12px;
     box-shadow: 0 1px 2px rgb(0 0 0 / 0.04);
     font-family: 'Source Sans 3', Calibri, Arial, Helvetica, sans-serif;
-    font-size: 0.92rem;
   }
 
-  .cv-back {
-    color: #0b57d0;
+  .cv-toolbar-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    align-items: center;
+  }
+
+  .cv-back,
+  .cv-builder-link {
+    color: var(--ui-accent);
     text-decoration: none;
     font-weight: 600;
-    white-space: nowrap;
+    font-size: 0.9rem;
+  }
+
+  .cv-back:hover,
+  .cv-builder-link:hover {
+    text-decoration: underline;
   }
 
   .cv-roles {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.15rem;
+    scrollbar-width: thin;
   }
 
   .cv-roles a {
+    flex: 0 0 auto;
     text-decoration: none;
-    color: #333;
-    border: 1px solid #d0cdc6;
+    color: #222;
+    border: 1px solid #c4c0b6;
     border-radius: 999px;
-    padding: 0.28rem 0.7rem;
-    font-size: 0.82rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.84rem;
     font-weight: 600;
+    background: #fff;
   }
 
   .cv-roles a.active {
-    background: #1a1a1a;
-    border-color: #1a1a1a;
+    background: var(--ui-ink);
+    border-color: var(--ui-ink);
     color: #fff;
   }
 
-  .cv-toolbar button {
+  .cv-toolbar > .cv-print-cta {
+    display: none;
+  }
+
+  .cv-print-cta {
     appearance: none;
     border: 0;
-    background: #1a1a1a;
+    background: var(--ui-ink);
     color: #fff;
-    padding: 0.5rem 0.95rem;
+    padding: 0.7rem 1rem;
     border-radius: 8px;
     cursor: pointer;
     font: inherit;
     font-weight: 600;
-    white-space: nowrap;
+    width: 100%;
+    min-height: 2.75rem;
   }
 
-  .cv-toolbar button:hover {
+  .cv-print-cta:hover {
     background: #000;
   }
 
-  .cv-toolbar p {
-    grid-column: 1 / -1;
+  .cv-toolbar-hint {
     margin: 0;
-    color: #5c5c5c;
-    font-size: 0.78rem;
-    line-height: 1.35;
+    color: #4a4a4a;
+    font-size: 0.85rem;
+    line-height: 1.4;
   }
 
   .cv-paper {
@@ -169,6 +231,72 @@ const description =
     box-shadow:
       0 1px 2px rgb(0 0 0 / 0.06),
       0 12px 28px rgb(0 0 0 / 0.12);
+  }
+
+  .cv-paper:focus {
+    outline: none;
+  }
+
+  .cv-paper:focus-visible {
+    outline: 2px solid var(--ui-accent);
+    outline-offset: 3px;
+  }
+
+  .cv-mobile-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    padding: 0.65rem 1rem calc(0.65rem + env(safe-area-inset-bottom, 0px));
+    background: rgb(232 230 225 / 0.94);
+    border-top: 1px solid var(--ui-line);
+    backdrop-filter: blur(8px);
+  }
+
+  @media (min-width: 800px) {
+    .cv-screen {
+      padding: 1.25rem 1rem 2.5rem;
+    }
+
+    .cv-toolbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+        'nav cta'
+        'roles roles'
+        'hint hint';
+      align-items: center;
+      gap: 0.75rem 1rem;
+    }
+
+    .cv-toolbar-nav {
+      grid-area: nav;
+      justify-content: flex-start;
+      gap: 1rem;
+    }
+
+    .cv-roles {
+      grid-area: roles;
+      flex-wrap: wrap;
+      overflow: visible;
+    }
+
+    .cv-toolbar > .cv-print-cta {
+      display: inline-flex;
+      grid-area: cta;
+      width: auto;
+      justify-self: end;
+      white-space: nowrap;
+    }
+
+    .cv-toolbar-hint {
+      grid-area: hint;
+    }
+
+    .cv-mobile-cta {
+      display: none;
+    }
   }
 
   @media print {
@@ -181,19 +309,9 @@ const description =
       max-width: none;
       box-shadow: none;
     }
-  }
 
-  @media (max-width: 800px) {
-    .cv-toolbar {
-      grid-template-columns: 1fr;
-    }
-
-    .cv-roles {
-      justify-content: flex-start;
-    }
-
-    .cv-toolbar button {
-      width: 100%;
+    .cv-mobile-cta {
+      display: none !important;
     }
   }
 </style>
