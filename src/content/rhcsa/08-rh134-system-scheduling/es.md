@@ -1,6 +1,6 @@
 ---
 title: "RH134 — Programación de tareas del sistema"
-description: "Notas del capítulo 4 de RH134 v10.0: timers de systemd, archivos temporales y cron del sistema."
+description: "Notas RH134 de programación del sistema en Linux para RHCSA EX200: timers de systemd, archivos temporales y cron del sistema en labs oficiales Red Hat."
 excerpt: "Timers de systemd, tmpfiles y tareas recurrentes del sistema con cron."
 date: 2026-03-25
 locale: "es"

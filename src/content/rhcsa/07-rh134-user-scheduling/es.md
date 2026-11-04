@@ -1,6 +1,6 @@
 ---
 title: "RH134 — Programación de tareas de usuario"
-description: "Notas del capítulo 3 de RH134 v10.0: trabajos futuros y recurrentes con at, batch y crontab."
+description: "Notas RH134 de programación de tareas de usuario en Linux para RHCSA EX200: trabajos únicos y recurrentes con at, batch y crontab en sistemas Red Hat."
 excerpt: "Programar tareas de usuario puntuales y periódicas con at, batch y cron."
 date: 2026-03-22
 locale: "es"

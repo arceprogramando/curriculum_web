@@ -1,6 +1,6 @@
 ---
 title: "RH134 — Expresiones regulares"
-description: "Notas del capítulo 2 de RH134 v10.0: coincidencias de texto con expresiones regulares en la línea de comandos."
+description: "Notas RH134 de expresiones regulares en Linux para RHCSA EX200: coincidencias de texto en la línea de comandos con grep y herramientas afines en labs Red Hat."
 excerpt: "Regex para búsqueda y filtrado de texto con grep y herramientas de la shell."
 date: 2026-03-18
 locale: "es"

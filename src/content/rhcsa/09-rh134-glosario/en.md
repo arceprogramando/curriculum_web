@@ -1,6 +1,6 @@
 ---
 title: "RHCSA / RH134 Glossary"
-description: "Short definitions of commands, services, paths, and key concepts for RH124, RH134, and the EX200 exam."
+description: "RHCSA EX200 glossary for Linux study: short definitions of commands, services, paths and key RH124/RH134 concepts for Red Hat certification exam practice."
 excerpt: "Quick reference: system paths, systemd, cron, grep, logs, and course terminology."
 date: 2026-03-26
 locale: "en"

@@ -1,6 +1,6 @@
 ---
 title: "Systemd and services study routine"
-description: "RHCSA systemd study routine: enable, start, restart, journalctl and targets for EX200 drills, using official Red Hat labs and a local Vagrant lab setup."
+description: "RHCSA systemd study routine on Linux: enable, start, restart, journalctl and targets for EX200 drills, using official Red Hat labs and a local Vagrant lab."
 excerpt: "A repeatable process to enable, debug, and recover services quickly."
 date: 2026-05-08
 locale: "en"

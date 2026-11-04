@@ -1,6 +1,6 @@
 ---
 title: "Reading: estrategia para textos largos"
-description: "Practica enfocada en skimming, scanning y control de tiempo para IELTS Reading."
+description: "Práctica enfocada en skimming, scanning y control de tiempo para IELTS Reading. Borrador planificado mientras estudio inglés presencial en el CUI, Buenos Aires."
 excerpt: "Borrador planificado: metodo en bloques de tiempo para reading (cuando empiece IELTS)."
 date: 2026-05-06
 locale: "es"

@@ -1,6 +1,6 @@
 ---
 title: "RH134 — Regular expressions"
-description: "Notes from RH134 v10.0 chapter 2: text matching with regular expressions on the command line."
+description: "RH134 notes on Linux regular expressions for RHCSA EX200: text matching on the command line with grep and related tools in official Red Hat practice labs."
 excerpt: "Regex for searching and filtering text with grep and shell tools."
 date: 2026-03-18
 locale: "en"

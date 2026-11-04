@@ -1,6 +1,6 @@
 ---
 title: "Glosario RHCSA / RH134"
-description: "Definiciones breves de comandos, servicios, rutas y conceptos clave para RH124, RH134 y el examen EX200."
+description: "Glosario RHCSA EX200 para estudiar Linux: definiciones breves de comandos, servicios, rutas y conceptos clave de RH124 y RH134 para el examen Red Hat."
 excerpt: "Referencia rápida: rutas del sistema, systemd, cron, grep, logs y términos del curso."
 date: 2026-03-26
 locale: "es"

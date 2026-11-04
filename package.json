@@ -10,6 +10,8 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
+    "postbuild": "node scripts/submit-indexnow.mjs",
+    "indexnow": "node scripts/submit-indexnow.mjs --force",
     "preview": "astro preview",
     "astro": "astro"
   },

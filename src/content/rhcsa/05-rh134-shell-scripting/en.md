@@ -1,6 +1,6 @@
 ---
 title: "RH134 — Shell scripts and command line"
-description: "Notes from RH134 v10.0 chapter 1: shell environment, Bash scripts, loops, and conditional commands."
+description: "RH134 notes on Linux shell scripting for RHCSA EX200: Bash environment, scripts, loops and conditionals, practiced in Red Hat labs and a local Vagrant setup."
 excerpt: "Shell environment, simple Bash scripts, loops, conditionals, and chapter 1 lab."
 date: 2026-03-15
 locale: "en"

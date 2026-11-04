@@ -1,6 +1,6 @@
 ---
 title: "RH134 — Análisis y almacenamiento de registros"
-description: "Notas del capítulo 5 de RH134 v10.0: arquitectura de logging, syslog, journal persistente y sincronización horaria."
+description: "Notas RH134 de análisis de logs en Linux para RHCSA EX200: arquitectura de logging, syslog, journald persistente y sincronización horaria en labs Red Hat."
 excerpt: "Arquitectura de logs, rsyslog, journalctl, journal persistente y chrony."
 date: 2026-05-24
 locale: "es"

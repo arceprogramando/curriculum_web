@@ -1,6 +1,6 @@
 ---
 title: "RH134 — System task scheduling"
-description: "RH134 notes on Linux system scheduling: systemd timers, temporary files and system cron, written for RHCSA EX200 study on Red Hat Enterprise Linux."
+description: "RH134 notes on Linux system scheduling for RHCSA EX200: systemd timers, temporary files and system cron practiced on Red Hat Enterprise Linux lab setups."
 excerpt: "Systemd timers, tmpfiles, and recurring system tasks with cron."
 date: 2026-03-25
 locale: "en"

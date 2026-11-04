@@ -1,6 +1,6 @@
 ---
 title: "Systemd y servicios: rutina de estudio"
-description: "Rutina RHCSA de systemd en Linux: enable, start, restart, journalctl y targets en simulacros EX200, con labs oficiales Red Hat y lab local Vagrant."
+description: "Rutina RHCSA de systemd en Linux: enable, start, restart, journalctl y targets en simulacros EX200, con labs oficiales Red Hat y un lab local con Vagrant."
 excerpt: "Como practicar enable/start/restart, analisis de fallos y persistencia de servicios."
 date: 2026-05-08
 locale: "es"

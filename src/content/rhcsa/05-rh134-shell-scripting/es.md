@@ -1,6 +1,6 @@
 ---
 title: "RH134 — Scripts de shell y línea de comandos"
-description: "Notas del capítulo 1 de RH134 v10.0: entorno de shell, scripts Bash, bucles y comandos condicionales."
+description: "Notas RH134 de shell scripting en Linux para RHCSA EX200: entorno Bash, scripts, bucles y condicionales, con labs oficiales Red Hat y lab local Vagrant."
 excerpt: "Entorno de shell, scripts Bash simples, bucles, condicionales y laboratorio del capítulo 1."
 date: 2026-03-15
 locale: "es"

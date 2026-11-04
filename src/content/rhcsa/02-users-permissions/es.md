@@ -1,6 +1,6 @@
 ---
 title: "Practica de usuarios, grupos y permisos"
-description: "Práctica RHCSA de usuarios, grupos y permisos en Linux: useradd, passwd, chown, chmod, ACL y sudoers en labs Red Hat y Vagrant para el examen EX200."
+description: "Práctica RHCSA de usuarios, grupos y permisos en Linux: useradd, passwd, chown, chmod, ACL y sudoers en labs Red Hat y Vagrant, orientada al examen EX200."
 excerpt: "Rutina de practica para dominar useradd, passwd, chown, chmod, ACLs y sudoers."
 date: 2026-05-07
 locale: "es"

@@ -123,10 +123,10 @@ export const LOCALE_CONFIG: Record<Locale, {
     htmlLang: 'es',
     urlPrefix: '',
     pdfFile: '/FelipeAlemanArce_CV_esp_Junio_2026.pdf',
-    metaDescription: 'Desarrollador Full Stack en Buenos Aires. Técnico en Programación (UTN). React, Node.js y TypeScript. Portfolio y proyectos.',
+    metaDescription: 'Desarrollador Full Stack en Buenos Aires. Técnico Universitario en Programación (UTN). React, Node.js y TypeScript. Portfolio, proyectos y notas RHCSA.',
     pageTitle: 'Felipe Arce - Desarrollador FullStack SSR | Portfolio',
     ogTitle: 'Felipe Arce - Desarrollador FullStack SSR',
-    ogDescription: 'Desarrollador web, Técnico Universitario en Programación (UTN, 2025) y cursando el ingreso 2027 a Ingeniería Informática (UNLaM). React, Node.js, MongoDB y tecnologías modernas.',
+    ogDescription: 'Desarrollador web, Técnico Universitario en Programación (UTN, 2025) e ingreso 2027 a Ingeniería Informática (UNLaM). React, Node.js, MongoDB y stack moderno.',
     keywords: 'Felipe Arce, desarrollador fullstack SSR, desarrollador MERN, React, Node.js, MongoDB, Express, JavaScript, TypeScript, portfolio developer, programador web, frontend developer, backend developer, Buenos Aires, Argentina',
     jobTitle: 'Desarrollador FullStack SSR',
     ui: {
@@ -164,7 +164,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       readGuide: 'Leer guía',
       rhcsaBlogTitle: 'Blog RHCSA EX200',
       rhcsaBlogDescription:
-        'Labs y notas de Felipe Arce para RHCSA EX200 en Linux: RH124, RH134, RH024 y RH104 hechos, RH199 en curso, libro Van Vugt y prácticas con Vagrant.',
+        'Labs y notas de Felipe Arce para RHCSA EX200 en Linux: RH124, RH134, RH024 y RH104 hechos; RH199 en curso; libro Van Vugt y prácticas con lab Vagrant.',
       rhcsaIndexContextTitle: 'Dónde estoy ahora con RHCSA',
       rhcsaIndexContextNow:
         'RH024 y RH104 terminados (RH104, 17 oct 2026). RH124 y RH134 acreditados. Libro Van Vugt pág. 335/1593 (~21%, Cap. 7 Permissions) y RH199 Rapid Track (10/154, Cap. 2 Links). Meta práctica pre-examen: ~30 oct 2026 (día 20/73 del plan; quedan ~53 días).',
@@ -177,7 +177,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       ieltsPractices: 'Prácticas IELTS',
       ieltsBlogTitle: 'Práctica IELTS',
       ieltsBlogDescription:
-        'Preparación planificada para IELTS. Hoy priorizo inglés presencial en el CUI; el examen lo evaluaré más adelante.',
+        'Preparación planificada para IELTS Academic. Hoy priorizo inglés presencial en el CUI de Buenos Aires; el examen oficial lo evaluaré más adelante en el año.',
       ieltsIndexContextTitle: 'Dónde estoy ahora con el inglés',
       ieltsIndexContextNow:
         'Foco actual: CUI Nivel 7 (Ciclo Consolidación, MCER B1), desde el 26 de octubre de 2026. Acabo de cerrar el ciclo básico en Nivel 6 (MCER A2+). Referencia externa: ~B1 lectura/escucha (EFSET).',
@@ -233,7 +233,7 @@ export const LOCALE_CONFIG: Record<Locale, {
     htmlLang: 'en',
     urlPrefix: '/en',
     pdfFile: '/FelipeAlemanArce_CV_eng_June_2026.pdf',
-    metaDescription: 'Full Stack developer in Buenos Aires. Programming technician (UTN). React, Node.js and TypeScript. Portfolio and projects.',
+    metaDescription: 'Full Stack developer in Buenos Aires. University Programming Technician (UTN). React, Node.js and TypeScript. Portfolio, projects and RHCSA study notes.',
     pageTitle: 'Felipe Arce - Mid-Level Full Stack Developer | Portfolio',
     ogTitle: 'Felipe Arce - Mid-Level Full Stack Developer',
     ogDescription: 'Web developer, University Programming Technician (UTN, 2025), and 2027 UNLaM Computer Engineering entrance student. React, Node.js, MongoDB and modern stack.',
@@ -274,7 +274,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       readGuide: 'Read guide',
       rhcsaBlogTitle: 'RHCSA EX200 Blog',
       rhcsaBlogDescription:
-        'Felipe Arce study notes and labs for RHCSA EX200 on Linux: RH124, RH134, RH024 and RH104 done, RH199 in progress, Van Vugt book plus Vagrant.',
+        'Felipe Arce study notes and labs for RHCSA EX200 on Linux: RH124, RH134, RH024 and RH104 completed; RH199 in progress; Van Vugt book and Vagrant labs.',
       rhcsaIndexContextTitle: 'Where I stand on RHCSA',
       rhcsaIndexContextNow:
         'RH024 and RH104 completed (RH104, Oct 17, 2026). RH124 and RH134 earned. Van Vugt book p. 335/1593 (~21%, Ch. 7 Permissions) and RH199 Rapid Track (10/154, Ch. 2 Links). Pre-exam practice target: ~Oct 30, 2026 (day 20/73 of the plan; ~53 days left).',
@@ -287,7 +287,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       ieltsPractices: 'IELTS Practice',
       ieltsBlogTitle: 'IELTS Practice',
       ieltsBlogDescription:
-        'Planned IELTS preparation. Current priority is in-person English at CUI; I expect to sit the exam later.',
+        'Planned IELTS Academic preparation notes. My current priority is in-person English at CUI in Buenos Aires; I expect to sit the official exam later on.',
       ieltsIndexContextTitle: 'Where my English stands today',
       ieltsIndexContextNow:
         'Current focus: CUI Level 7 (Consolidation Cycle, CEFR B1), from October 26, 2026. Just completed the basic cycle at Level 6 (CEFR A2+). External reference: ~B1 reading/listening (EFSET).',
