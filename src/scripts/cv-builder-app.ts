@@ -1,11 +1,14 @@
 import {
   CV_BUILDER_PREVIEW_KEY,
   CV_BUILDER_STORAGE_KEY,
+  CV_DRAFT_LIMITS,
   downloadJsonFile,
   draftFileStem,
   emptyUserCv,
   escapeHtml,
   exampleUserCv,
+  coerceUserCvDraft,
+  normalizeUserCvDraft,
   parseUserCvJson,
   renderUserCvHtml,
   type UserCvDraft,
@@ -28,7 +31,8 @@ function readStored(locale: Locale): UserCvDraft {
 }
 
 function persist(draft: UserCvDraft): void {
-  localStorage.setItem(CV_BUILDER_STORAGE_KEY, JSON.stringify(draft));
+  const safe = coerceUserCvDraft(draft);
+  localStorage.setItem(CV_BUILDER_STORAGE_KEY, JSON.stringify(safe));
 }
 
 export function mountCvBuilder(root: HTMLElement, locale: Locale): void {
@@ -280,7 +284,9 @@ function bind(
   root.querySelectorAll('[data-action="print"]').forEach((el) => {
     el.addEventListener('click', () => {
       syncFromDom(root, api);
-      sessionStorage.setItem(CV_BUILDER_PREVIEW_KEY, JSON.stringify(api.getDraft()));
+      const safe = normalizeUserCvDraft(api.getDraft());
+      api.setDraft(safe);
+      sessionStorage.setItem(CV_BUILDER_PREVIEW_KEY, JSON.stringify(safe));
     });
   });
 
@@ -288,6 +294,11 @@ function bind(
   fileInput?.addEventListener('change', async () => {
     const file = fileInput.files?.[0];
     if (!file) return;
+    if (file.size > CV_DRAFT_LIMITS.jsonChars) {
+      api.setStatus(ui.jsonError);
+      api.rerender();
+      return;
+    }
     try {
       const text = await file.text();
       api.setDraft(parseUserCvJson(text));
@@ -296,6 +307,8 @@ function bind(
     } catch {
       api.setStatus(ui.jsonError);
       api.rerender();
+    } finally {
+      fileInput.value = '';
     }
   });
 
@@ -451,8 +464,9 @@ function syncFromDom(root: HTMLElement, api: BuilderApi): void {
 
   draft.simulations = draft.simulations.map((_, index) => str(`simulations.${index}`));
 
-  api.setDraft(draft);
-  persist(draft);
+  const safe = coerceUserCvDraft(draft);
+  api.setDraft(safe);
+  persist(safe);
 }
 
 export function mountCvBuilderPrint(root: HTMLElement, locale: Locale): void {

@@ -218,6 +218,19 @@ export function exampleUserCv(locale: Locale): UserCvDraft {
   };
 }
 
+/** Límites para import JSON / render: mitigan DoS y payload abusivo. */
+export const CV_DRAFT_LIMITS = {
+  jsonChars: 400_000,
+  short: 160,
+  medium: 400,
+  long: 4_000,
+  url: 2_000,
+  email: 254,
+  jobs: 25,
+  education: 25,
+  simulations: 40,
+} as const;
+
 export function escapeHtml(value: string): string {
   return value
     .replace(/&/g, '&amp;')
@@ -225,6 +238,45 @@ export function escapeHtml(value: string): string {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+function clampString(value: unknown, max: number): string {
+  if (typeof value === 'string') return value.slice(0, max);
+  if (value == null) return '';
+  return String(value).slice(0, max);
+}
+
+/**
+ * Solo http/https absolutos. Rechaza javascript:, data:, vbscript:,
+ * esquemas con espacios/control y URLs relativas.
+ */
+export function sanitizeHttpUrl(raw: unknown): string {
+  const input = clampString(raw, CV_DRAFT_LIMITS.url).trim().replace(/[\u0000-\u001F\u007F]/g, '');
+  if (!input) return '';
+  let parsed: URL;
+  try {
+    parsed = new URL(input);
+  } catch {
+    return '';
+  }
+  const protocol = parsed.protocol.toLowerCase();
+  if (protocol !== 'http:' && protocol !== 'https:') return '';
+  if (parsed.username || parsed.password) return '';
+  return parsed.toString();
+}
+
+/** Email simple sin query/fragment que puedan abusarse en mailto. */
+export function sanitizeEmail(raw: unknown): string {
+  const email = clampString(raw, CV_DRAFT_LIMITS.email).trim();
+  if (!/^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)+$/.test(email)) {
+    return '';
+  }
+  return email;
+}
+
+export function mailtoHref(email: string): string {
+  const safe = sanitizeEmail(email);
+  return safe ? `mailto:${safe}` : '';
 }
 
 /** Convierte **texto** a <strong> después de escapar HTML. */
@@ -244,60 +296,142 @@ export function formatDraftRange(
 }
 
 function formatDraftDate(iso: string): string {
-  const [year, month] = iso.split('-');
-  if (!year) return iso;
+  const safe = clampString(iso, 32);
+  const [year, month] = safe.split('-');
+  if (!year) return safe;
   if (!month) return year;
   return `${month}/${year}`;
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null;
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function normalizeJob(value: unknown): UserCvJob {
+  const job = isRecord(value) ? value : {};
+  return {
+    company: clampString(job.company, CV_DRAFT_LIMITS.medium),
+    title: clampString(job.title, CV_DRAFT_LIMITS.medium),
+    startDate: clampString(job.startDate, 32),
+    endDate: clampString(job.endDate, 32),
+    description: clampString(job.description, CV_DRAFT_LIMITS.long),
+  };
+}
+
+function normalizeEdu(value: unknown): UserCvEdu {
+  const item = isRecord(value) ? value : {};
+  return {
+    title: clampString(item.title, CV_DRAFT_LIMITS.medium),
+    badge: clampString(item.badge, CV_DRAFT_LIMITS.short),
+    startDate: clampString(item.startDate, 32),
+    endDate: clampString(item.endDate, 32),
+    description: clampString(item.description, CV_DRAFT_LIMITS.long),
+  };
+}
+
+/**
+ * Coerción tipada + límites de tamaño.
+ * Las URLs se dejan como texto (para poder tipearlas); se filtran en sanitize/render.
+ */
+export function coerceUserCvDraft(value: unknown): UserCvDraft {
+  if (!isRecord(value) || value.version !== CV_DRAFT_VERSION) {
+    throw new Error('JSON inválido: falta version=1 o campos requeridos.');
+  }
+  if (!Array.isArray(value.jobs) || !Array.isArray(value.education) || !Array.isArray(value.simulations)) {
+    throw new Error('JSON inválido: falta version=1 o campos requeridos.');
+  }
+
+  const labelsRaw = isRecord(value.labels) ? value.labels : {};
+  const jobs = value.jobs.slice(0, CV_DRAFT_LIMITS.jobs).map(normalizeJob);
+  const education = value.education.slice(0, CV_DRAFT_LIMITS.education).map(normalizeEdu);
+  const simulations = value.simulations
+    .slice(0, CV_DRAFT_LIMITS.simulations)
+    .map((line) => clampString(line, CV_DRAFT_LIMITS.medium));
+
+  return {
+    version: CV_DRAFT_VERSION,
+    fullName: clampString(value.fullName, CV_DRAFT_LIMITS.medium),
+    label: clampString(value.label, CV_DRAFT_LIMITS.medium),
+    location: clampString(value.location, CV_DRAFT_LIMITS.medium),
+    summary: clampString(value.summary, CV_DRAFT_LIMITS.long),
+    linkedinUrl: clampString(value.linkedinUrl, CV_DRAFT_LIMITS.url),
+    linkedinLabel: clampString(value.linkedinLabel, CV_DRAFT_LIMITS.short),
+    portfolioUrl: clampString(value.portfolioUrl, CV_DRAFT_LIMITS.url),
+    portfolioLabel: clampString(value.portfolioLabel, CV_DRAFT_LIMITS.short),
+    githubUrl: clampString(value.githubUrl, CV_DRAFT_LIMITS.url),
+    githubLabel: clampString(value.githubLabel, CV_DRAFT_LIMITS.short),
+    email: clampString(value.email, CV_DRAFT_LIMITS.email),
+    jobs: jobs.length > 0 ? jobs : [normalizeJob({})],
+    education: education.length > 0 ? education : [normalizeEdu({})],
+    simulations: simulations.length > 0 ? simulations : [''],
+    hardSkills: clampString(value.hardSkills, CV_DRAFT_LIMITS.long),
+    softSkills: clampString(value.softSkills, CV_DRAFT_LIMITS.long),
+    labels: {
+      work: clampString(labelsRaw.work, CV_DRAFT_LIMITS.medium) || 'Work History',
+      education: clampString(labelsRaw.education, CV_DRAFT_LIMITS.medium) || 'Education',
+      simulations: clampString(labelsRaw.simulations, CV_DRAFT_LIMITS.medium) || 'Simulations',
+      hardSkills: clampString(labelsRaw.hardSkills, CV_DRAFT_LIMITS.short) || 'Hard Skills',
+      softSkills: clampString(labelsRaw.softSkills, CV_DRAFT_LIMITS.short) || 'Soft Skills',
+    },
+  };
+}
+
+/** Coerción + allowlist de http(s)/email. Usar al importar e imprimir. */
+export function normalizeUserCvDraft(value: unknown): UserCvDraft {
+  const draft = coerceUserCvDraft(value);
+  return {
+    ...draft,
+    linkedinUrl: sanitizeHttpUrl(draft.linkedinUrl),
+    portfolioUrl: sanitizeHttpUrl(draft.portfolioUrl),
+    githubUrl: sanitizeHttpUrl(draft.githubUrl),
+    email: sanitizeEmail(draft.email),
+  };
 }
 
 export function isUserCvDraft(value: unknown): value is UserCvDraft {
-  if (!isRecord(value)) return false;
-  if (value.version !== CV_DRAFT_VERSION) return false;
-  if (typeof value.fullName !== 'string') return false;
-  if (!Array.isArray(value.jobs) || !Array.isArray(value.education)) return false;
-  if (!Array.isArray(value.simulations)) return false;
-  if (!isRecord(value.labels)) return false;
-  const { labels } = value;
-  return (
-    typeof labels.work === 'string' &&
-    typeof labels.education === 'string' &&
-    typeof labels.simulations === 'string' &&
-    typeof labels.hardSkills === 'string' &&
-    typeof labels.softSkills === 'string'
-  );
+  try {
+    coerceUserCvDraft(value);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 export function parseUserCvJson(raw: string): UserCvDraft {
-  const parsed = JSON.parse(raw) as unknown;
-  if (!isUserCvDraft(parsed)) {
-    throw new Error('JSON inválido: falta version=1 o campos requeridos.');
+  if (raw.length > CV_DRAFT_LIMITS.jsonChars) {
+    throw new Error('JSON demasiado grande.');
   }
-  return parsed;
+  const parsed = JSON.parse(raw) as unknown;
+  return normalizeUserCvDraft(parsed);
 }
 
-export function renderUserCvHtml(draft: UserCvDraft, currentLabel: string): string {
+function contactLink(
+  kind: string,
+  href: string,
+  label: string,
+): string {
+  if (!href || !label) return '';
+  return `<li><span>${escapeHtml(kind)}:</span> <a href="${escapeHtml(href)}" aria-label="${escapeHtml(kind)}: ${escapeHtml(label)}" rel="noopener noreferrer">${escapeHtml(label)}</a></li>`;
+}
+
+export function renderUserCvHtml(draftInput: UserCvDraft, currentLabel: string): string {
+  // Defensa en profundidad: coerce + allowlist solo al armar hrefs.
+  const draft = coerceUserCvDraft(draftInput);
   const name = escapeHtml(draft.fullName || 'Tu nombre');
   const label = escapeHtml(draft.label || '');
   const location = escapeHtml(draft.location || '');
   const summary = escapeHtml(draft.summary || '');
+  const safeCurrent = clampString(currentLabel, CV_DRAFT_LIMITS.short);
+  const linkedinHref = sanitizeHttpUrl(draft.linkedinUrl);
+  const portfolioHref = sanitizeHttpUrl(draft.portfolioUrl);
+  const githubHref = sanitizeHttpUrl(draft.githubUrl);
+  const emailSafe = sanitizeEmail(draft.email);
 
   const contacts = [
-    draft.linkedinLabel
-      ? `<li><span>Linkedin:</span> <a href="${escapeHtml(draft.linkedinUrl)}" aria-label="Linkedin: ${escapeHtml(draft.linkedinLabel)}">${escapeHtml(draft.linkedinLabel)}</a></li>`
-      : '',
-    draft.portfolioLabel
-      ? `<li><span>Portfolio:</span> <a href="${escapeHtml(draft.portfolioUrl)}" aria-label="Portfolio: ${escapeHtml(draft.portfolioLabel)}">${escapeHtml(draft.portfolioLabel)}</a></li>`
-      : '',
-    draft.githubLabel
-      ? `<li><span>Github:</span> <a href="${escapeHtml(draft.githubUrl)}" aria-label="Github: ${escapeHtml(draft.githubLabel)}">${escapeHtml(draft.githubLabel)}</a></li>`
-      : '',
-    draft.email
-      ? `<li><span>Email:</span> <a href="mailto:${escapeHtml(draft.email)}" aria-label="Email: ${escapeHtml(draft.email)}">${escapeHtml(draft.email)}</a></li>`
-      : '',
+    contactLink('Linkedin', linkedinHref, draft.linkedinLabel),
+    contactLink('Portfolio', portfolioHref, draft.portfolioLabel),
+    contactLink('Github', githubHref, draft.githubLabel),
+    contactLink('Email', mailtoHref(emailSafe), emailSafe),
   ]
     .filter(Boolean)
     .join('');
@@ -310,7 +444,7 @@ export function renderUserCvHtml(draft: UserCvDraft, currentLabel: string): stri
       const head = escapeHtml(
         [job.company, job.title].filter(Boolean).join(' - ') || 'Experiencia',
       );
-      const range = escapeHtml(formatDraftRange(job.startDate, job.endDate, currentLabel));
+      const range = escapeHtml(formatDraftRange(job.startDate, job.endDate, safeCurrent));
       return `<li>
         <div class="cv-entry-head"><h3>${head}</h3><time datetime="${monthDate(job.startDate)}">${range}</time></div>
         <p class="cv-entry-body">${richTextToHtml(job.description)}</p>
@@ -324,7 +458,7 @@ export function renderUserCvHtml(draft: UserCvDraft, currentLabel: string): stri
       const badge = item.badge
         ? ` <span class="cv-badge">${escapeHtml(item.badge)}</span>`
         : '';
-      const range = escapeHtml(formatDraftRange(item.startDate, item.endDate, currentLabel));
+      const range = escapeHtml(formatDraftRange(item.startDate, item.endDate, safeCurrent));
       return `<li>
         <div class="cv-entry-head"><h3>${escapeHtml(item.title || 'Formación')}${badge}</h3><time datetime="${monthDate(item.startDate)}">${range}</time></div>
         <p class="cv-entry-body">${richTextToHtml(item.description)}</p>
