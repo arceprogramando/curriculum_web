@@ -734,6 +734,7 @@ export function mountCvBuilderPrint(root: HTMLElement, locale: Locale): void {
     return;
   }
 
+  const printDraft = draft;
   const pageTitle = document.title;
 
   root.innerHTML = `
@@ -742,12 +743,12 @@ export function mountCvBuilderPrint(root: HTMLElement, locale: Locale): void {
       <button type="button" id="cv-print-btn" title="${ui.printPdf}" aria-describedby="cv-builder-print-hint">${ui.printPdf}</button>
       <p id="cv-builder-print-hint">${ui.printHint}</p>
     </header>
-    <div class="print-paper">${renderUserCvHtml(draft, ui.current, readStoredPhoto())}</div>
+    <div class="print-paper">${renderUserCvHtml(printDraft, ui.current, readStoredPhoto())}</div>
   `;
 
   const trigger = () => {
     // Los navegadores usan document.title como nombre sugerido al Guardar como PDF.
-    document.title = draftPdfPrintTitle(draft);
+    document.title = draftPdfPrintTitle(printDraft);
     const restore = () => {
       document.title = pageTitle;
     };
