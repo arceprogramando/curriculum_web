@@ -13,7 +13,10 @@
     "postbuild": "node scripts/submit-indexnow.mjs",
     "indexnow": "node scripts/submit-indexnow.mjs --force",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "demo:crear-cv": "playwright test e2e/crear-cv-demo.spec.ts --project=chromium",
+    "demo:crear-cv:headed": "playwright test e2e/crear-cv-demo.spec.ts --project=chromium --headed",
+    "test:security": "node --experimental-strip-types --test src/lib/cv-builder.security.test.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
@@ -22,5 +25,8 @@
     "astro": "^7.4.0",
     "hotkeypad": "0.1.0",
     "typescript": "5.3.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0"
   }
 }

@@ -24,6 +24,15 @@ pnpm-debug.log*
 .history
 .vscode
 
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/demo-output/*.pdf
+/demo-output/*.webm
+/demo-output/*.mp4
+
 # Vagrant lab local RHCSA (labs/rhcsa-base)
 labs/**/.vagrant/
 labs/**/*.log

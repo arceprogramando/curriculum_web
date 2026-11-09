@@ -8,6 +8,7 @@ import {
 } from '@/lib/i18n';
 import type { CvRole } from '@/lib/cv-print';
 import { cvPrintPath } from '@/lib/cv-print';
+import LanguageSelector from '@/components/LanguageSelector.astro';
 
 interface Props {
   locale: Locale;
@@ -127,6 +128,7 @@ const buildDate = new Date().toISOString();
   </head>
   <body>
     <a class="skip-link no-print" href="#main-content">{ui.skipToContent}</a>
+    <LanguageSelector locale={locale} />
     <slot />
   </body>
 </html>

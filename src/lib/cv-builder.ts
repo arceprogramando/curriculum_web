@@ -53,6 +53,57 @@ export interface UserCvDraft {
   };
 }
 
+/** Títulos de sección por idioma (un solo idioma; sin “ES - EN”). */
+export function defaultSectionLabels(locale: Locale): UserCvDraft['labels'] {
+  const es = locale === 'es';
+  return {
+    work: es ? 'Historial Laboral' : 'Work History',
+    education: es ? 'Formación Académica' : 'Education',
+    simulations: es ? 'Simulaciones Laborales' : 'Job Simulations',
+    hardSkills: 'Hard Skills',
+    softSkills: 'Soft Skills',
+  };
+}
+
+const STOCK_SECTION_LABELS = new Set([
+  'Historial Laboral',
+  'Work History',
+  'Historial Laboral - Work History',
+  'Work History - Historial Laboral',
+  'Formación Académica',
+  'Education',
+  'Formación Académica - Education',
+  'Education - Formación Académica',
+  'Simulaciones Laborales',
+  'Job Simulations',
+  'Simulaciones Laborales -',
+  'Job Simulations -',
+  'Simulations',
+]);
+
+/**
+ * Si el título es el default (o el bilingüe viejo), lo alinea al locale actual.
+ * Si el usuario lo personalizó (p. ej. “Proyectos personales”), no lo toca.
+ */
+export function alignSectionLabelsToLocale(draft: UserCvDraft, locale: Locale): UserCvDraft {
+  const defaults = defaultSectionLabels(locale);
+  const next = (value: string, key: keyof UserCvDraft['labels']) => {
+    const trimmed = value.trim();
+    if (!trimmed || STOCK_SECTION_LABELS.has(trimmed)) return defaults[key];
+    return value;
+  };
+  return {
+    ...draft,
+    labels: {
+      work: next(draft.labels.work, 'work'),
+      education: next(draft.labels.education, 'education'),
+      simulations: next(draft.labels.simulations, 'simulations'),
+      hardSkills: next(draft.labels.hardSkills, 'hardSkills'),
+      softSkills: next(draft.labels.softSkills, 'softSkills'),
+    },
+  };
+}
+
 export function emptyUserCv(locale: Locale): UserCvDraft {
   const es = locale === 'es';
   return {
@@ -93,132 +144,175 @@ export function emptyUserCv(locale: Locale): UserCvDraft {
     softSkills: es
       ? 'Trabajo en equipo, Adaptabilidad, Resolución de problemas'
       : 'Teamwork, Adaptability, Problem solving',
-    labels: {
-      work: es ? 'Historial Laboral - Work History' : 'Work History - Historial Laboral',
-      education: es ? 'Formación Académica - Education' : 'Education - Formación Académica',
-      simulations: es ? 'Simulaciones Laborales -' : 'Job Simulations -',
-      hardSkills: 'Hard Skills',
-      softSkills: 'Soft Skills',
-    },
+    labels: defaultSectionLabels(locale),
   };
 }
 
-/** Ejemplo anónimo para probar la vista (no es el CV de Felipe). */
+/**
+ * Persona de ejemplo 100% ficticia (densidad junior completa).
+ * Perfil tech/UX — sin solaparse con demos de marketing u otros CVs reales.
+ */
 export function exampleUserCv(locale: Locale): UserCvDraft {
   if (locale === 'en') {
     return {
       version: CV_DRAFT_VERSION,
-      fullName: 'Alex Rivera',
-      label: 'Frontend Developer',
-      location: 'Remote - LatAm',
+      fullName: 'Nora Vidal',
+      label: 'Junior UX/UI Designer',
+      location: 'Córdoba - Argentina',
       summary:
-        'Frontend developer with 4 years building web apps with React and TypeScript. Focused on accessible UI, performance and clean component design.',
-      linkedinUrl: 'https://linkedin.com/in/example',
-      linkedinLabel: 'alexrivera',
-      portfolioUrl: 'https://example.dev',
-      portfolioLabel: 'example.dev',
-      githubUrl: 'https://github.com/example',
-      githubLabel: 'example',
-      email: 'alex@example.dev',
+        'Junior UX/UI designer focused on clear flows, accessible interfaces and lightweight front-end handoff. Comfortable in **Figma**, user interviews and turning wireframes into HTML/CSS prototypes. Looking for a product team where research and UI craft meet.',
+      linkedinUrl: 'https://linkedin.com/in/nora-vidal-demo',
+      linkedinLabel: 'nora-vidal-demo',
+      portfolioUrl: 'https://noravidal.demo',
+      portfolioLabel: 'noravidal.demo',
+      githubUrl: 'https://github.com/nora-vidal-demo',
+      githubLabel: 'nora-vidal-demo',
+      email: 'nora.vidal.demo@example.com',
       jobs: [
         {
-          company: 'Northwind Apps',
-          title: 'Frontend Developer',
-          startDate: '2023-03-01',
+          company: 'Pulseboard Labs',
+          title: 'UX/UI Intern',
+          startDate: '2025-08-01',
           endDate: '',
           description:
-            'Shipped dashboards with **React**, **TypeScript** and **Tailwind**. Improved LCP and built a design-system of reusable components.',
+            'Redesigned onboarding for an analytics SaaS: user flows, high-fidelity **Figma** screens and usability checks with 6 participants. Handed off specs to frontend.',
         },
         {
-          company: 'Studio Pixel',
-          title: 'Web Developer',
-          startDate: '2021-01-01',
-          endDate: '2023-02-01',
+          company: 'Taller Nube',
+          title: 'Freelance UI Designer',
+          startDate: '2024-02-01',
+          endDate: '2025-07-01',
           description:
-            'Marketing sites and landing pages with **HTML**, **CSS** and **JavaScript**, collaborating with designers in Figma.',
+            'Landing pages and component libraries for two local SMEs. Built clickable prototypes and a small **HTML/CSS** styleguide for developers.',
+        },
+        {
+          company: 'Biblioteca del Parque',
+          title: 'Library Desk Assistant',
+          startDate: '2022-04-01',
+          endDate: '2024-01-01',
+          description:
+            'Front desk, catalog lookup help and workshop sign-ups. Practiced clear verbal explanations with diverse visitors.',
         },
       ],
       education: [
         {
-          title: 'Software Development Diploma',
+          title: 'Graphic Design — UNC (FAUD)',
+          badge: 'In progress',
+          startDate: '2022-03-01',
+          endDate: '',
+          description: 'Third year. Emphasis on visual systems, typography and digital interfaces.',
+        },
+        {
+          title: 'UX Research Fundamentals — Interaction Design Foundation',
           badge: 'Certificate',
-          startDate: '2019-03-01',
-          endDate: '2021-11-01',
-          description: 'Web development track: JavaScript, databases and agile teamwork.',
+          startDate: '2025-04-01',
+          endDate: '2025-05-01',
+          description: 'Interviews, affinity mapping and usability test planning.',
+        },
+        {
+          title: 'Accessible Web Design — freeCodeCamp',
+          badge: 'Certificate',
+          startDate: '2024-09-01',
+          endDate: '2024-11-01',
+          description: 'WCAG basics, semantic HTML and keyboard-friendly patterns.',
+        },
+        {
+          title: 'Frontend for Designers — CodigoFacilito',
+          badge: 'Course',
+          startDate: '2024-06-01',
+          endDate: '2024-08-01',
+          description: 'HTML, CSS layout, responsive breakpoints and handing files to engineering.',
         },
       ],
       simulations: [
-        '2024: Recipe app MVP in React (team of 4).',
-        '2025: Book-exchange UI with Next.js.',
+        'Case study: redesign of a campus meal-plan app — research plan, 3 iterations and final UI kit.',
+        'Open project: design system starter (colors, type scale, 12 components) documented in Figma.',
       ],
       hardSkills:
-        'React, TypeScript, Next.js, HTML, CSS, Tailwind, Git, Figma, Scrum, English B2',
-      softSkills: 'Teamwork, Communication, Adaptability, Problem solving',
-      labels: {
-        work: 'Work History - Historial Laboral',
-        education: 'Education - Formación Académica',
-        simulations: 'Job Simulations -',
-        hardSkills: 'Hard Skills',
-        softSkills: 'Soft Skills',
-      },
+        'Figma, FigJam, Wireframing, Prototyping, HTML, CSS, Accessibility (WCAG), Design systems, Notion, English B1',
+      softSkills: 'Listening, Visual storytelling, Collaboration with developers, Curiosity, Timeboxing, Feedback loops',
+      labels: defaultSectionLabels('en'),
     };
   }
 
   return {
     version: CV_DRAFT_VERSION,
-    fullName: 'Alex Rivera',
-    label: 'Desarrollador Frontend',
-    location: 'Remoto - LatAm',
+    fullName: 'Nora Vidal',
+    label: 'Diseñadora UX/UI Junior',
+    location: 'Córdoba - Argentina',
     summary:
-      'Desarrollador Frontend con 4 años armando apps web con React y TypeScript. Enfocado en UI accesible, rendimiento y componentes reutilizables.',
-    linkedinUrl: 'https://linkedin.com/in/example',
-    linkedinLabel: 'alexrivera',
-    portfolioUrl: 'https://example.dev',
-    portfolioLabel: 'example.dev',
-    githubUrl: 'https://github.com/example',
-    githubLabel: 'example',
-    email: 'alex@example.dev',
+      'Diseñadora UX/UI junior enfocada en flujos claros, interfaces accesibles y handoff liviano a front. Cómoda con **Figma**, entrevistas a usuarias y prototipos HTML/CSS. Busco un equipo de producto donde se junten research y oficio visual.',
+    linkedinUrl: 'https://linkedin.com/in/nora-vidal-demo',
+    linkedinLabel: 'nora-vidal-demo',
+    portfolioUrl: 'https://noravidal.demo',
+    portfolioLabel: 'noravidal.demo',
+    githubUrl: 'https://github.com/nora-vidal-demo',
+    githubLabel: 'nora-vidal-demo',
+    email: 'nora.vidal.demo@example.com',
     jobs: [
       {
-        company: 'Northwind Apps',
-        title: 'Desarrollador Frontend',
-        startDate: '2023-03-01',
+        company: 'Pulseboard Labs',
+        title: 'Pasante UX/UI',
+        startDate: '2025-08-01',
         endDate: '',
         description:
-          'Dashboards con **React**, **TypeScript** y **Tailwind**. Mejoré LCP y armé un design system de componentes.',
+          'Rediseño del onboarding de un SaaS de analítica: flujos, pantallas en **Figma** y pruebas con 6 personas. Entregué specs al equipo front.',
       },
       {
-        company: 'Studio Pixel',
-        title: 'Desarrollador Web',
-        startDate: '2021-01-01',
-        endDate: '2023-02-01',
+        company: 'Taller Nube',
+        title: 'Diseñadora UI freelance',
+        startDate: '2024-02-01',
+        endDate: '2025-07-01',
         description:
-          'Sitios y landings con **HTML**, **CSS** y **JavaScript**, colaborando con diseño en Figma.',
+          'Landings y librerías de componentes para dos PyMEs. Prototipos clickeables y una guía **HTML/CSS** chica para desarrollo.',
+      },
+      {
+        company: 'Biblioteca del Parque',
+        title: 'Asistente de mostrador',
+        startDate: '2022-04-01',
+        endDate: '2024-01-01',
+        description:
+          'Mostrador, ayuda con catálogo e inscripciones a talleres. Practiqué explicaciones claras con públicos muy distintos.',
       },
     ],
     education: [
       {
-        title: 'Diplomatura en Desarrollo de Software',
+        title: 'Diseño Gráfico — UNC (FAUD)',
+        badge: 'En curso',
+        startDate: '2022-03-01',
+        endDate: '',
+        description: 'Tercer año. Énfasis en sistemas visuales, tipografía e interfaces digitales.',
+      },
+      {
+        title: 'UX Research Fundamentals — Interaction Design Foundation',
         badge: 'Certificado',
-        startDate: '2019-03-01',
-        endDate: '2021-11-01',
-        description: 'Track web: JavaScript, bases de datos y trabajo ágil en equipo.',
+        startDate: '2025-04-01',
+        endDate: '2025-05-01',
+        description: 'Entrevistas, affinity mapping y planificación de tests de usabilidad.',
+      },
+      {
+        title: 'Accessible Web Design — freeCodeCamp',
+        badge: 'Certificado',
+        startDate: '2024-09-01',
+        endDate: '2024-11-01',
+        description: 'Bases WCAG, HTML semántico y patrones usables con teclado.',
+      },
+      {
+        title: 'Frontend para diseñadores — CodigoFacilito',
+        badge: 'Curso',
+        startDate: '2024-06-01',
+        endDate: '2024-08-01',
+        description: 'HTML, layout CSS, breakpoints responsive y entrega de archivos a engineering.',
       },
     ],
     simulations: [
-      '2024: MVP de recetas en React (equipo de 4).',
-      '2025: UI de intercambio de libros con Next.js.',
+      'Case study: rediseño de app de viandas universitarias — plan de research, 3 iteraciones y UI kit final.',
+      'Proyecto abierto: design system base (color, tipo, 12 componentes) documentado en Figma.',
     ],
     hardSkills:
-      'React, TypeScript, Next.js, HTML, CSS, Tailwind, Git, Figma, Scrum, Inglés B2',
-    softSkills: 'Trabajo en equipo, Comunicación, Adaptabilidad, Resolución de problemas',
-    labels: {
-      work: 'Historial Laboral - Work History',
-      education: 'Formación Académica - Education',
-      simulations: 'Simulaciones Laborales -',
-      hardSkills: 'Hard Skills',
-      softSkills: 'Soft Skills',
-    },
+      'Figma, FigJam, Wireframes, Prototipos, HTML, CSS, Accesibilidad (WCAG), Design systems, Notion, Inglés B1',
+    softSkills: 'Escucha, Narrativa visual, Colaboración con developers, Curiosidad, Timeboxing, Feedback',
+    labels: defaultSectionLabels('es'),
   };
 }
 
@@ -454,13 +548,35 @@ export function coerceUserCvDraft(value: unknown): UserCvDraft {
     hardSkills: clampString(value.hardSkills, CV_DRAFT_LIMITS.long),
     softSkills: clampString(value.softSkills, CV_DRAFT_LIMITS.long),
     labels: {
-      work: clampString(labelsRaw.work, CV_DRAFT_LIMITS.medium) || 'Work History',
-      education: clampString(labelsRaw.education, CV_DRAFT_LIMITS.medium) || 'Education',
-      simulations: clampString(labelsRaw.simulations, CV_DRAFT_LIMITS.medium) || 'Simulations',
+      work: migrateSectionLabel(labelsRaw.work, 'work'),
+      education: migrateSectionLabel(labelsRaw.education, 'education'),
+      simulations: migrateSectionLabel(labelsRaw.simulations, 'simulations'),
       hardSkills: clampString(labelsRaw.hardSkills, CV_DRAFT_LIMITS.short) || 'Hard Skills',
       softSkills: clampString(labelsRaw.softSkills, CV_DRAFT_LIMITS.short) || 'Soft Skills',
     },
   };
+}
+
+/** Quita el patrón bilingüe legado ("Historial - Work History") de borradores viejos. */
+function migrateSectionLabel(
+  raw: unknown,
+  key: 'work' | 'education' | 'simulations',
+): string {
+  const value = clampString(raw, CV_DRAFT_LIMITS.medium).trim();
+  const legacy: Record<string, string> = {
+    'Historial Laboral - Work History': 'Historial Laboral',
+    'Work History - Historial Laboral': 'Work History',
+    'Formación Académica - Education': 'Formación Académica',
+    'Education - Formación Académica': 'Education',
+    'Simulaciones Laborales -': 'Simulaciones Laborales',
+    'Simulaciones Laborales': 'Simulaciones Laborales',
+    'Job Simulations -': 'Job Simulations',
+  };
+  if (value && legacy[value]) return legacy[value];
+  if (value) return value;
+  if (key === 'work') return 'Work History';
+  if (key === 'education') return 'Education';
+  return 'Job Simulations';
 }
 
 /** Coerción + allowlist de http(s)/email. Usar al importar e imprimir. */

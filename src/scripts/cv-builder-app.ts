@@ -2,6 +2,7 @@ import {
   CV_BUILDER_PREVIEW_KEY,
   CV_BUILDER_STORAGE_KEY,
   CV_DRAFT_LIMITS,
+  alignSectionLabelsToLocale,
   clearStoredPhoto,
   contactInputValue,
   downloadJsonFile,
@@ -18,6 +19,7 @@ import {
   readStoredPhoto,
   renderUserCvHtml,
   resolveContactInput,
+  sanitizePhotoDataUrl,
   type CvContactKind,
   type UserCvDraft,
   type UserCvEdu,
@@ -32,7 +34,7 @@ function readStored(locale: Locale): UserCvDraft {
   try {
     const raw = localStorage.getItem(CV_BUILDER_STORAGE_KEY);
     if (!raw) return emptyUserCv(locale);
-    return parseUserCvJson(raw);
+    return alignSectionLabelsToLocale(parseUserCvJson(raw), locale);
   } catch {
     return emptyUserCv(locale);
   }
@@ -71,8 +73,8 @@ export function mountCvBuilder(root: HTMLElement, locale: Locale): void {
       getPendingContacts: () => pendingContacts,
       getPhoto: () => photoDataUrl,
       setPhoto: (next) => {
-        photoDataUrl = next;
-        if (next) persistPhoto(next);
+        photoDataUrl = sanitizePhotoDataUrl(next);
+        if (photoDataUrl) persistPhoto(photoDataUrl);
         else clearStoredPhoto();
       },
       rerender: render,
@@ -167,14 +169,15 @@ function renderJsonEditor(ui: CvBuilderUi, draft: UserCvDraft): string {
 }
 
 function renderPhotoField(ui: CvBuilderUi, photoDataUrl: string): string {
-  const hasPhoto = Boolean(photoDataUrl);
+  const safePhoto = sanitizePhotoDataUrl(photoDataUrl);
+  const hasPhoto = Boolean(safePhoto);
   return `<div class="photo-field">
       <p class="photo-label">${ui.photo}</p>
       <p class="contact-hint">${ui.photoHint}</p>
       <div class="photo-row">
         ${
           hasPhoto
-            ? `<img class="photo-thumb" src="${photoDataUrl}" alt="" width="72" height="72" />`
+            ? `<img class="photo-thumb" src="${safePhoto}" alt="" width="72" height="72" />`
             : `<div class="photo-thumb photo-thumb--empty" aria-hidden="true"></div>`
         }
         <div class="photo-actions">
@@ -720,7 +723,7 @@ export function mountCvBuilderPrint(root: HTMLElement, locale: Locale): void {
   let draft: UserCvDraft | null = null;
   try {
     const raw = sessionStorage.getItem(CV_BUILDER_PREVIEW_KEY) ?? localStorage.getItem(CV_BUILDER_STORAGE_KEY);
-    if (raw) draft = parseUserCvJson(raw);
+    if (raw) draft = alignSectionLabelsToLocale(parseUserCvJson(raw), locale);
   } catch {
     draft = null;
   }

@@ -152,9 +152,9 @@ function sharedContacts(locale: Locale): Pick<
 
 function labelsEs(): CvPrintLabels {
   return {
-    work: 'Historial Laboral - Work History',
-    education: 'Formación Académica - Education',
-    simulations: 'Simulaciones Laborales -',
+    work: 'Historial Laboral',
+    education: 'Formación Académica',
+    simulations: 'Simulaciones Laborales',
     hardSkills: 'Hard Skills',
     softSkills: 'Soft Skills',
     current: 'Actualidad',
@@ -175,9 +175,9 @@ function labelsEs(): CvPrintLabels {
 
 function labelsEn(): CvPrintLabels {
   return {
-    work: 'Work History - Historial Laboral',
-    education: 'Education - Formación Académica',
-    simulations: 'Job Simulations -',
+    work: 'Work History',
+    education: 'Education',
+    simulations: 'Job Simulations',
     hardSkills: 'Hard Skills',
     softSkills: 'Soft Skills',
     current: 'Present',
