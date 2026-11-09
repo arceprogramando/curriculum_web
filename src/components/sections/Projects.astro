@@ -25,7 +25,9 @@ const projects = cv.projects as Project[];
   <h2>{ui.projects}</h2>
   <ul class="projects-grid">
     {
-      projects.map(({ url, description, highlights, name, isActive, github }) => (
+      projects.map(({ url, description, highlights, name, isActive, github }) => {
+        const external = /^https?:\/\//i.test(url);
+        return (
         <li>
           <article class:list={['project-card', { 'is-active': isActive }]}>
             <header class="project-card__header">
@@ -33,8 +35,8 @@ const projects = cv.projects as Project[];
                 <h3>
                   <a
                     href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={external ? '_blank' : undefined}
+                    rel={external ? 'noopener noreferrer' : undefined}
                     title={`${ui.viewProject} ${name}`}
                   >
                     {name}
@@ -69,7 +71,8 @@ const projects = cv.projects as Project[];
             </footer>
           </article>
         </li>
-      ))
+        );
+      })
     }
   </ul>
 </section>

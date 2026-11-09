@@ -422,6 +422,14 @@
   ],
   "projects": [
     {
+      "name": "Creador de CV",
+      "isActive": true,
+      "description": "Armá tu currículum en el navegador, previsualizalo al instante e imprimí un PDF listo para enviar. Los datos quedan solo en tu dispositivo.",
+      "highlights": ["Astro", "TypeScript", "HTML", "CSS"],
+      "url": "/crear-cv/",
+      "github": "https://github.com/arceprogramando/curriculum_web"
+    },
+    {
       "name": "Tecnicatura Universitaria en Programación (UTN)",
       "isActive": true,
       "description": "Sitio de seguimiento de la Tecnicatura Universitaria en Programación (UTN CUDI). Proyecto desarrollado durante la cursada; titulación obtenida en 2025.",

@@ -2,8 +2,7 @@
 import 'hotkeypad/reset.css';
 import 'hotkeypad/index.css';
 import { type SocialIcon } from '@/types';
-import { getCV, getUI, type Locale } from '@/lib/i18n';
-import { cvPrintPath } from '@/lib/cv-print';
+import { getCV, getUI, getLocaleConfig, type Locale } from '@/lib/i18n';
 
 interface Props {
   locale?: Locale;
@@ -18,6 +17,7 @@ interface Profile {
 const { locale = 'es' } = Astro.props;
 const cv = getCV(locale);
 const ui = getUI(locale);
+const config = getLocaleConfig(locale);
 
 const profiles = cv.basics.profiles as Profile[];
 
@@ -74,7 +74,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
 
 // Pasar datos de idioma al script del cliente
 const clientData = {
-  cvPrintPath: `${cvPrintPath(locale)}?print=1`,
+  pdfFile: config.pdfFile,
   downloadTitle: ui.downloadCV,
   actionsSection: ui.actions,
   searchPlaceholder: ui.searchCommand,
@@ -114,15 +114,12 @@ const clientData = {
 </div>
 
 <script>
-  const printCvPath = () => {
-    const raw = document.getElementById('hotkeypad')?.getAttribute('data-client') ?? '{}';
-    const data = JSON.parse(raw) as { cvPrintPath?: string };
-    return data.cvPrintPath ?? '';
-  };
+  import { downloadDatedPdf } from '@/lib/pdf-download-name';
 
-  const openCvPrint = () => {
-    const path = printCvPath();
-    if (path) window.location.assign(path);
+  const pdfPath = () => {
+    const raw = document.getElementById('hotkeypad')?.getAttribute('data-client') ?? '{}';
+    const data = JSON.parse(raw) as { pdfFile?: string };
+    return data.pdfFile ?? '';
   };
 
   window.addEventListener(
@@ -130,7 +127,8 @@ const clientData = {
     (event) => {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'p' && !event.altKey) {
         event.preventDefault();
-        openCvPrint();
+        const path = pdfPath();
+        if (path) downloadDatedPdf(path);
       }
     },
     true,
@@ -139,6 +137,7 @@ const clientData = {
 
 <script>
   import HotKeyPad from 'hotkeypad';
+  import { downloadDatedPdf } from '@/lib/pdf-download-name';
 
   interface Info {
     id: string;
@@ -151,7 +150,7 @@ const clientData = {
   }
 
   interface ClientData {
-    cvPrintPath: string;
+    pdfFile: string;
     downloadTitle: string;
     actionsSection: string;
     searchPlaceholder: string;
@@ -177,7 +176,7 @@ const clientData = {
   });
 
   const downloadPdf = () => {
-    if (clientData.cvPrintPath) window.location.assign(clientData.cvPrintPath);
+    if (clientData.pdfFile) downloadDatedPdf(clientData.pdfFile);
   };
 
   hotkeypad.setCommands([

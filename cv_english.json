@@ -421,6 +421,14 @@
   ],
   "projects": [
     {
+      "name": "CV Builder",
+      "isActive": true,
+      "description": "Build your resume in the browser, preview it live, and print a ready-to-send PDF. Your data stays only on your device.",
+      "highlights": ["Astro", "TypeScript", "HTML", "CSS"],
+      "url": "/en/crear-cv/",
+      "github": "https://github.com/arceprogramando/curriculum_web"
+    },
+    {
       "name": "University Technical Degree in Programming (UTN)",
       "isActive": true,
       "description": "Progress tracking site for the UTN CUDI Programming Technician program. Built during the degree; graduated in 2025.",
