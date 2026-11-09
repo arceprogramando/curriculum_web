@@ -25,8 +25,26 @@
 .cv-header {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.85rem 1rem;
   align-items: flex-start;
+}
+
+.cv-photo-wrap {
+  flex: 0 0 auto;
+}
+
+.cv-photo {
+  display: block;
+  width: 96px;
+  height: 96px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #f0eeea;
+}
+
+.cv-identity {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .cv-identity h1 {
@@ -173,6 +191,12 @@
     line-height: 1.15;
   }
 
+  .cv-photo {
+    width: 78px;
+    height: 78px;
+    border-radius: 10px;
+  }
+
   .cv-identity h1 {
     font-size: 17.5pt;
   }
@@ -256,11 +280,12 @@
   }
 
   .cv-header {
-    flex-direction: column;
+    flex-wrap: wrap;
   }
 
   .cv-contacts {
     text-align: left;
+    width: 100%;
   }
 
   .cv-entry-head {

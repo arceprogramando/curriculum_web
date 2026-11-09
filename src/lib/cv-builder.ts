@@ -2,7 +2,11 @@ import type { Locale } from '@/lib/i18n';
 
 export const CV_BUILDER_STORAGE_KEY = 'arceprog.cv-builder.v1';
 export const CV_BUILDER_PREVIEW_KEY = 'arceprog.cv-builder.preview.v1';
+/** Foto aparte del JSON: solo en este navegador, no se sube a ningún servidor. */
+export const CV_BUILDER_PHOTO_KEY = 'arceprog.cv-builder.photo.v1';
 export const CV_DRAFT_VERSION = 1 as const;
+export const CV_PHOTO_SIZE_PX = 256;
+export const CV_PHOTO_MAX_CHARS = 280_000;
 
 export interface UserCvJob {
   company: string;
@@ -57,11 +61,11 @@ export function emptyUserCv(locale: Locale): UserCvDraft {
     label: es ? 'Desarrollador FullStack' : 'FullStack Developer',
     location: 'Buenos Aires - Argentina',
     summary: '',
-    linkedinUrl: 'https://linkedin.com/in/',
+    linkedinUrl: '',
     linkedinLabel: '',
-    portfolioUrl: 'https://',
+    portfolioUrl: '',
     portfolioLabel: '',
-    githubUrl: 'https://github.com/',
+    githubUrl: '',
     githubLabel: '',
     email: '',
     jobs: [
@@ -240,6 +244,88 @@ export function escapeHtml(value: string): string {
     .replace(/'/g, '&#39;');
 }
 
+/** Solo data:image jpeg/png/webp locales (nunca http remoto en el CV del builder). */
+export function sanitizePhotoDataUrl(raw: unknown): string {
+  if (typeof raw !== 'string') return '';
+  const value = raw.trim();
+  if (value.length > CV_PHOTO_MAX_CHARS) return '';
+  if (!/^data:image\/(jpeg|jpg|png|webp);base64,[A-Za-z0-9+/=]+$/i.test(value)) return '';
+  return value;
+}
+
+export function readStoredPhoto(): string {
+  try {
+    return sanitizePhotoDataUrl(localStorage.getItem(CV_BUILDER_PHOTO_KEY) ?? '');
+  } catch {
+    return '';
+  }
+}
+
+export function persistPhoto(dataUrl: string): void {
+  try {
+    const safe = sanitizePhotoDataUrl(dataUrl);
+    if (!safe) {
+      localStorage.removeItem(CV_BUILDER_PHOTO_KEY);
+      return;
+    }
+    localStorage.setItem(CV_BUILDER_PHOTO_KEY, safe);
+  } catch {
+    /* quota / private mode */
+  }
+}
+
+export function clearStoredPhoto(): void {
+  try {
+    localStorage.removeItem(CV_BUILDER_PHOTO_KEY);
+  } catch {
+    /* ignore */
+  }
+}
+
+/**
+ * Recorta al centro (cover) a cuadrado y comprime a JPEG.
+ * La foto no viaja al servidor: queda en memoria / localStorage del navegador.
+ */
+export async function fileToCvPhotoDataUrl(file: File): Promise<string> {
+  if (!/^image\/(jpeg|jpg|png|webp)$/i.test(file.type)) {
+    throw new Error('unsupported-image');
+  }
+  if (file.size > 8_000_000) {
+    throw new Error('image-too-large');
+  }
+
+  const bitmap = await createImageBitmap(file);
+  try {
+    const size = CV_PHOTO_SIZE_PX;
+    const scale = Math.max(size / bitmap.width, size / bitmap.height);
+    const drawW = bitmap.width * scale;
+    const drawH = bitmap.height * scale;
+    const dx = (size - drawW) / 2;
+    const dy = (size - drawH) / 2;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) throw new Error('canvas');
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, size, size);
+    ctx.drawImage(bitmap, dx, dy, drawW, drawH);
+
+    let quality = 0.85;
+    let dataUrl = canvas.toDataURL('image/jpeg', quality);
+    while (dataUrl.length > CV_PHOTO_MAX_CHARS && quality > 0.45) {
+      quality -= 0.1;
+      dataUrl = canvas.toDataURL('image/jpeg', quality);
+    }
+    const safe = sanitizePhotoDataUrl(dataUrl);
+    if (!safe) throw new Error('image-too-large');
+    return safe;
+  } finally {
+    bitmap.close();
+  }
+}
+
 function clampString(value: unknown, max: number): string {
   if (typeof value === 'string') return value.slice(0, max);
   if (value == null) return '';
@@ -363,7 +449,8 @@ export function coerceUserCvDraft(value: unknown): UserCvDraft {
     email: clampString(value.email, CV_DRAFT_LIMITS.email),
     jobs: jobs.length > 0 ? jobs : [normalizeJob({})],
     education: education.length > 0 ? education : [normalizeEdu({})],
-    simulations: simulations.length > 0 ? simulations : [''],
+    // [] = sección omitida del CV (p. ej. sin simulaciones laborales).
+    simulations,
     hardSkills: clampString(value.hardSkills, CV_DRAFT_LIMITS.long),
     softSkills: clampString(value.softSkills, CV_DRAFT_LIMITS.long),
     labels: {
@@ -405,32 +492,127 @@ export function parseUserCvJson(raw: string): UserCvDraft {
   return normalizeUserCvDraft(parsed);
 }
 
-function contactLink(
-  kind: string,
-  href: string,
-  label: string,
-): string {
-  if (!href || !label) return '';
-  return `<li><span>${escapeHtml(kind)}:</span> <a href="${escapeHtml(href)}" aria-label="${escapeHtml(kind)}: ${escapeHtml(label)}" rel="noopener noreferrer">${escapeHtml(label)}</a></li>`;
+export type CvContactKind = 'linkedin' | 'portfolio' | 'github' | 'email';
+
+/** Contacto activo si tiene valor usable (no placeholders vacíos tipo https://github.com/). */
+export function isContactActive(draft: UserCvDraft, kind: CvContactKind): boolean {
+  if (kind === 'email') return Boolean(sanitizeEmail(draft.email));
+  const raw =
+    kind === 'linkedin'
+      ? draft.linkedinUrl || draft.linkedinLabel
+      : kind === 'portfolio'
+        ? draft.portfolioUrl || draft.portfolioLabel
+        : draft.githubUrl || draft.githubLabel;
+  const resolved = resolveContactInput(kind, raw);
+  if (!resolved.url) return false;
+  if (kind === 'portfolio') return true;
+  // LinkedIn/GitHub necesitan un slug/usuario, no solo el host.
+  return Boolean(resolved.label && resolved.label !== resolved.url);
 }
 
-export function renderUserCvHtml(draftInput: UserCvDraft, currentLabel: string): string {
+/**
+ * Un solo campo en el form → URL + label para el JSON/PDF.
+ * Acepta handle (`arceprog`), host/path o URL completa.
+ */
+export function resolveContactInput(
+  kind: Exclude<CvContactKind, 'email'>,
+  raw: string,
+): { url: string; label: string } {
+  const input = clampString(raw, CV_DRAFT_LIMITS.url).trim();
+  if (!input) return { url: '', label: '' };
+
+  const withProto = /^https?:\/\//i.test(input) ? input : `https://${input}`;
+
+  if (kind === 'github') {
+    if (!input.includes('.') && !input.includes('/') && !input.includes(':')) {
+      const user = input.replace(/^@/, '');
+      return { url: `https://github.com/${user}`, label: user };
+    }
+    const url = sanitizeHttpUrl(withProto);
+    if (!url) return { url: '', label: '' };
+    try {
+      const path = new URL(url).pathname.split('/').filter(Boolean)[0] ?? '';
+      return { url, label: path || url };
+    } catch {
+      return { url: '', label: '' };
+    }
+  }
+
+  if (kind === 'linkedin') {
+    if (!input.includes('.') && !input.includes('/') && !input.includes(':')) {
+      const slug = input.replace(/^@/, '');
+      return { url: `https://www.linkedin.com/in/${slug}`, label: slug };
+    }
+    const url = sanitizeHttpUrl(withProto);
+    if (!url) return { url: '', label: '' };
+    try {
+      const parts = new URL(url).pathname.split('/').filter(Boolean);
+      const slug = parts[0] === 'in' || parts[0] === 'company' ? parts[1] ?? parts[0] : parts[0] ?? '';
+      return { url, label: slug || url };
+    } catch {
+      return { url: '', label: '' };
+    }
+  }
+
+  // portfolio / site
+  const url = sanitizeHttpUrl(withProto);
+  if (!url) return { url: '', label: '' };
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, '');
+    return { url, label: host || url };
+  } catch {
+    return { url: '', label: '' };
+  }
+}
+
+/** Valor a mostrar en el input único del form. */
+export function contactInputValue(draft: UserCvDraft, kind: Exclude<CvContactKind, 'email'>): string {
+  if (kind === 'linkedin') return draft.linkedinUrl.trim() || draft.linkedinLabel.trim();
+  if (kind === 'portfolio') return draft.portfolioUrl.trim() || draft.portfolioLabel.trim();
+  return draft.githubUrl.trim() || draft.githubLabel.trim();
+}
+
+function contactLink(kind: string, href: string, label: string): string {
+  if (!href) return '';
+  const text = label.trim() || href.replace(/^https?:\/\//i, '');
+  if (!text) return '';
+  return `<li><span>${escapeHtml(kind)}:</span> <a href="${escapeHtml(href)}" aria-label="${escapeHtml(kind)}: ${escapeHtml(text)}" rel="noopener noreferrer">${escapeHtml(text)}</a></li>`;
+}
+
+export function renderUserCvHtml(
+  draftInput: UserCvDraft,
+  currentLabel: string,
+  photoDataUrl = '',
+): string {
   // Defensa en profundidad: coerce + allowlist solo al armar hrefs.
   const draft = coerceUserCvDraft(draftInput);
+  const photoSafe = sanitizePhotoDataUrl(photoDataUrl);
   const name = escapeHtml(draft.fullName || 'Tu nombre');
   const label = escapeHtml(draft.label || '');
   const location = escapeHtml(draft.location || '');
   const summary = escapeHtml(draft.summary || '');
   const safeCurrent = clampString(currentLabel, CV_DRAFT_LIMITS.short);
-  const linkedinHref = sanitizeHttpUrl(draft.linkedinUrl);
-  const portfolioHref = sanitizeHttpUrl(draft.portfolioUrl);
-  const githubHref = sanitizeHttpUrl(draft.githubUrl);
+  const linkedin = resolveContactInput('linkedin', draft.linkedinUrl || draft.linkedinLabel);
+  const portfolio = resolveContactInput('portfolio', draft.portfolioUrl || draft.portfolioLabel);
+  const github = resolveContactInput('github', draft.githubUrl || draft.githubLabel);
   const emailSafe = sanitizeEmail(draft.email);
 
   const contacts = [
-    contactLink('Linkedin', linkedinHref, draft.linkedinLabel),
-    contactLink('Portfolio', portfolioHref, draft.portfolioLabel),
-    contactLink('Github', githubHref, draft.githubLabel),
+    contactLink(
+      'Linkedin',
+      sanitizeHttpUrl(draft.linkedinUrl) || linkedin.url,
+      draft.linkedinLabel || linkedin.label,
+    ),
+    contactLink(
+      'Portfolio',
+      sanitizeHttpUrl(draft.portfolioUrl) || portfolio.url,
+      draft.portfolioLabel || portfolio.label,
+    ),
+    contactLink(
+      'Github',
+      sanitizeHttpUrl(draft.githubUrl) || github.url,
+      draft.githubLabel || github.label,
+    ),
     contactLink('Email', mailtoHref(emailSafe), emailSafe),
   ]
     .filter(Boolean)
@@ -475,9 +657,44 @@ export function renderUserCvHtml(draftInput: UserCvDraft, currentLabel: string):
   const eduId = 'user-cv-education';
   const simsId = 'user-cv-simulations';
   const skillsId = 'user-cv-skills';
+  const hasSkills = Boolean(draft.hardSkills.trim() || draft.softSkills.trim());
+
+  const workSection = jobs
+    ? `<section class="cv-section" aria-labelledby="${workId}">
+    <h2 id="${workId}">${escapeHtml(draft.labels.work)}</h2>
+    <ul class="cv-entries">${jobs}</ul>
+  </section>`
+    : '';
+
+  const eduSection = education
+    ? `<section class="cv-section" aria-labelledby="${eduId}">
+    <h2 id="${eduId}">${escapeHtml(draft.labels.education)}</h2>
+    <ul class="cv-entries">${education}</ul>
+  </section>`
+    : '';
+
+  const simsSection = sims
+    ? `<section class="cv-section" aria-labelledby="${simsId}">
+    <h2 id="${simsId}">${escapeHtml(draft.labels.simulations)}</h2>
+    <ul class="cv-simulations">${sims}</ul>
+  </section>`
+    : '';
+
+  const skillsFooter = hasSkills
+    ? `<footer class="cv-skills" aria-labelledby="${skillsId}">
+    <h2 id="${skillsId}" class="visually-hidden">${escapeHtml(draft.labels.hardSkills)} / ${escapeHtml(draft.labels.softSkills)}</h2>
+    ${draft.hardSkills.trim() ? `<p><strong>${escapeHtml(draft.labels.hardSkills)} :</strong> ${escapeHtml(draft.hardSkills)}</p>` : ''}
+    ${draft.softSkills.trim() ? `<p><strong>${escapeHtml(draft.labels.softSkills)} :</strong> ${escapeHtml(draft.softSkills)}</p>` : ''}
+  </footer>`
+    : '';
+
+  const photoBlock = photoSafe
+    ? `<div class="cv-photo-wrap"><img class="cv-photo" src="${photoSafe}" alt="" width="96" height="96" decoding="async" /></div>`
+    : '';
 
   return `<article class="cv-doc" aria-labelledby="user-cv-name">
   <header class="cv-header">
+    ${photoBlock}
     <div class="cv-identity">
       <h1 id="user-cv-name">${name}</h1>
       <p class="cv-label">${label}</p>
@@ -485,24 +702,11 @@ export function renderUserCvHtml(draftInput: UserCvDraft, currentLabel: string):
     </div>
     <ul class="cv-contacts" aria-label="Contact">${contacts}</ul>
   </header>
-  <p class="cv-summary">${summary}</p>
-  <section class="cv-section" aria-labelledby="${workId}">
-    <h2 id="${workId}">${escapeHtml(draft.labels.work)}</h2>
-    <ul class="cv-entries">${jobs}</ul>
-  </section>
-  <section class="cv-section" aria-labelledby="${eduId}">
-    <h2 id="${eduId}">${escapeHtml(draft.labels.education)}</h2>
-    <ul class="cv-entries">${education}</ul>
-  </section>
-  <section class="cv-section" aria-labelledby="${simsId}">
-    <h2 id="${simsId}">${escapeHtml(draft.labels.simulations)}</h2>
-    <ul class="cv-simulations">${sims}</ul>
-  </section>
-  <footer class="cv-skills" aria-labelledby="${skillsId}">
-    <h2 id="${skillsId}" class="visually-hidden">${escapeHtml(draft.labels.hardSkills)} / ${escapeHtml(draft.labels.softSkills)}</h2>
-    <p><strong>${escapeHtml(draft.labels.hardSkills)} :</strong> ${escapeHtml(draft.hardSkills)}</p>
-    <p><strong>${escapeHtml(draft.labels.softSkills)} :</strong> ${escapeHtml(draft.softSkills)}</p>
-  </footer>
+  ${summary ? `<p class="cv-summary">${summary}</p>` : ''}
+  ${workSection}
+  ${eduSection}
+  ${simsSection}
+  ${skillsFooter}
 </article>`;
 }
 

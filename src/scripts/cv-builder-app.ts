@@ -2,15 +2,23 @@ import {
   CV_BUILDER_PREVIEW_KEY,
   CV_BUILDER_STORAGE_KEY,
   CV_DRAFT_LIMITS,
+  clearStoredPhoto,
+  contactInputValue,
   downloadJsonFile,
   draftFileStem,
   emptyUserCv,
   escapeHtml,
   exampleUserCv,
   coerceUserCvDraft,
+  fileToCvPhotoDataUrl,
+  isContactActive,
   normalizeUserCvDraft,
   parseUserCvJson,
+  persistPhoto,
+  readStoredPhoto,
   renderUserCvHtml,
+  resolveContactInput,
+  type CvContactKind,
   type UserCvDraft,
   type UserCvEdu,
   type UserCvJob,
@@ -40,10 +48,14 @@ export function mountCvBuilder(root: HTMLElement, locale: Locale): void {
   let draft = readStored(locale);
   let mode: Mode = 'form';
   let status = '';
+  let photoDataUrl = readStoredPhoto();
+  /** Slots de contacto abiertos aunque aún estén vacíos. */
+  const pendingContacts = new Set<CvContactKind>();
 
   const render = () => {
     persist(draft);
-    root.innerHTML = buildChrome(ui, locale, mode, draft, status);
+    persistPhoto(photoDataUrl);
+    root.innerHTML = buildChrome(ui, locale, mode, draft, status, pendingContacts, photoDataUrl);
     bind(root, locale, ui, {
       getDraft: () => draft,
       setDraft: (next) => {
@@ -56,11 +68,18 @@ export function mountCvBuilder(root: HTMLElement, locale: Locale): void {
       setStatus: (next) => {
         status = next;
       },
+      getPendingContacts: () => pendingContacts,
+      getPhoto: () => photoDataUrl,
+      setPhoto: (next) => {
+        photoDataUrl = next;
+        if (next) persistPhoto(next);
+        else clearStoredPhoto();
+      },
       rerender: render,
     });
     const preview = root.querySelector<HTMLElement>('[data-preview]');
     if (preview) {
-      preview.innerHTML = renderUserCvHtml(draft, ui.current);
+      preview.innerHTML = renderUserCvHtml(draft, ui.current, photoDataUrl);
     }
   };
 
@@ -73,6 +92,8 @@ function buildChrome(
   mode: Mode,
   draft: UserCvDraft,
   status: string,
+  pendingContacts: Set<CvContactKind>,
+  photoDataUrl: string,
 ): string {
   const home = locale === 'en' ? '/en/' : '/';
   const myCvs = locale === 'en' ? '/en/cv/' : '/cv/';
@@ -120,7 +141,7 @@ function buildChrome(
           <button type="button" role="tab" id="tab-json" data-mode="json" aria-selected="${mode === 'json'}" aria-controls="builder-panel" class="${mode === 'json' ? 'active' : ''}">${ui.tabJson}</button>
         </div>
         <div role="tabpanel" id="builder-panel" aria-labelledby="${mode === 'form' ? 'tab-form' : 'tab-json'}">
-          ${mode === 'json' ? renderJsonEditor(ui, draft) : renderForm(ui, draft)}
+          ${mode === 'json' ? renderJsonEditor(ui, draft) : renderForm(ui, draft, pendingContacts, photoDataUrl)}
         </div>
       </section>
       <section class="builder-preview-wrap" id="builder-preview" aria-label="${ui.previewRegion}" tabindex="-1">
@@ -145,7 +166,31 @@ function renderJsonEditor(ui: CvBuilderUi, draft: UserCvDraft): string {
   <textarea id="cv-json-editor" data-json rows="28" spellcheck="false" aria-label="${ui.jsonLabel}">${escapeHtml(JSON.stringify(draft, null, 2))}</textarea>`;
 }
 
-function renderForm(ui: CvBuilderUi, draft: UserCvDraft): string {
+function renderPhotoField(ui: CvBuilderUi, photoDataUrl: string): string {
+  const hasPhoto = Boolean(photoDataUrl);
+  return `<div class="photo-field">
+      <p class="photo-label">${ui.photo}</p>
+      <p class="contact-hint">${ui.photoHint}</p>
+      <div class="photo-row">
+        ${
+          hasPhoto
+            ? `<img class="photo-thumb" src="${photoDataUrl}" alt="" width="72" height="72" />`
+            : `<div class="photo-thumb photo-thumb--empty" aria-hidden="true"></div>`
+        }
+        <div class="photo-actions">
+          <label class="btn btn-secondary file-btn">${hasPhoto ? ui.photoChange : ui.photoAdd}<input type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" data-photo-input hidden /></label>
+          ${hasPhoto ? `<button type="button" class="btn btn-danger" data-remove-photo>${ui.photoRemove}</button>` : ''}
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderForm(
+  ui: CvBuilderUi,
+  draft: UserCvDraft,
+  pendingContacts: Set<CvContactKind>,
+  photoDataUrl: string,
+): string {
   const jobs = draft.jobs
     .map(
       (job, index) => `
@@ -197,6 +242,7 @@ function renderForm(ui: CvBuilderUi, draft: UserCvDraft): string {
   <form data-form class="form">
     <fieldset class="card">
       <legend>${ui.identity}</legend>
+      ${renderPhotoField(ui, photoDataUrl)}
       <label>${ui.fullName}<input name="fullName" value="${escapeHtml(draft.fullName)}" /></label>
       <label>${ui.label}<input name="label" value="${escapeHtml(draft.label)}" /></label>
       <label>${ui.location}<input name="location" value="${escapeHtml(draft.location)}" /></label>
@@ -205,37 +251,129 @@ function renderForm(ui: CvBuilderUi, draft: UserCvDraft): string {
 
     <fieldset class="card">
       <legend>${ui.contacts}</legend>
-      <label>LinkedIn URL<input name="linkedinUrl" value="${escapeHtml(draft.linkedinUrl)}" /></label>
-      <label>LinkedIn label<input name="linkedinLabel" value="${escapeHtml(draft.linkedinLabel)}" /></label>
-      <label>Portfolio URL<input name="portfolioUrl" value="${escapeHtml(draft.portfolioUrl)}" /></label>
-      <label>Portfolio label<input name="portfolioLabel" value="${escapeHtml(draft.portfolioLabel)}" /></label>
-      <label>GitHub URL<input name="githubUrl" value="${escapeHtml(draft.githubUrl)}" /></label>
-      <label>GitHub label<input name="githubLabel" value="${escapeHtml(draft.githubLabel)}" /></label>
-      <label>Email<input name="email" value="${escapeHtml(draft.email)}" /></label>
+      <p class="contact-hint">${ui.contactHint}</p>
+      ${renderContactRows(ui, draft, pendingContacts)}
+      ${renderAddContactButtons(ui, draft, pendingContacts)}
     </fieldset>
 
     <div class="stack">
+      <fieldset class="card">
+        <legend>${ui.experience}</legend>
+        <label>${ui.sectionTitle}<input name="labels.work" value="${escapeHtml(draft.labels.work)}" /></label>
+      </fieldset>
       ${jobs}
       <button type="button" class="btn btn-secondary" data-add-job>${ui.addJob}</button>
     </div>
 
     <div class="stack">
+      <fieldset class="card">
+        <legend>${ui.education}</legend>
+        <label>${ui.sectionTitle}<input name="labels.education" value="${escapeHtml(draft.labels.education)}" /></label>
+      </fieldset>
       ${education}
       <button type="button" class="btn btn-secondary" data-add-edu>${ui.addEdu}</button>
     </div>
 
-    <fieldset class="card">
+    ${
+      draft.simulations.length > 0
+        ? `<fieldset class="card" data-sim-section>
       <legend>${ui.simulations}</legend>
+      <div class="section-head">
+        <label>${ui.sectionTitle}<input name="labels.simulations" value="${escapeHtml(draft.labels.simulations)}" /></label>
+        <button type="button" class="btn btn-danger" data-remove-sim-section>${ui.removeSection}</button>
+      </div>
       ${sims}
       <button type="button" class="btn btn-secondary" data-add-sim>${ui.addSim}</button>
-    </fieldset>
+    </fieldset>`
+        : `<div class="stack">
+      <button type="button" class="btn btn-secondary" data-add-sim-section>${ui.addSimSection}</button>
+    </div>`
+    }
 
     <fieldset class="card">
       <legend>${ui.skills}</legend>
+      <label>${ui.sectionTitle} (${ui.hardSkills})<input name="labels.hardSkills" value="${escapeHtml(draft.labels.hardSkills)}" /></label>
       <label>${ui.hardSkills}<textarea name="hardSkills" rows="2">${escapeHtml(draft.hardSkills)}</textarea></label>
+      <label>${ui.sectionTitle} (${ui.softSkills})<input name="labels.softSkills" value="${escapeHtml(draft.labels.softSkills)}" /></label>
       <label>${ui.softSkills}<textarea name="softSkills" rows="2">${escapeHtml(draft.softSkills)}</textarea></label>
     </fieldset>
   </form>`;
+}
+
+const CONTACT_KINDS: CvContactKind[] = ['linkedin', 'portfolio', 'github', 'email'];
+
+function contactKindLabel(ui: CvBuilderUi, kind: CvContactKind): string {
+  if (kind === 'linkedin') return ui.contactLinkedin;
+  if (kind === 'portfolio') return ui.contactPortfolio;
+  if (kind === 'github') return ui.contactGithub;
+  return ui.contactEmail;
+}
+
+function contactVisible(
+  draft: UserCvDraft,
+  kind: CvContactKind,
+  pending: Set<CvContactKind>,
+): boolean {
+  return isContactActive(draft, kind) || pending.has(kind);
+}
+
+function renderContactRows(
+  ui: CvBuilderUi,
+  draft: UserCvDraft,
+  pending: Set<CvContactKind>,
+): string {
+  return CONTACT_KINDS.filter((kind) => contactVisible(draft, kind, pending))
+    .map((kind) => {
+      if (kind === 'email') {
+        return `<div class="contact-row" data-contact="email">
+        <label>${ui.contactEmail}<input name="email" type="email" value="${escapeHtml(draft.email)}" autocomplete="email" /></label>
+        <button type="button" class="btn btn-danger" data-remove-contact="email">${ui.removeContact}</button>
+      </div>`;
+      }
+      const name = kind === 'linkedin' ? 'linkedin' : kind === 'portfolio' ? 'portfolio' : 'github';
+      return `<div class="contact-row" data-contact="${kind}">
+        <label>${contactKindLabel(ui, kind)}<input name="${name}" value="${escapeHtml(contactInputValue(draft, kind))}" autocomplete="url" /></label>
+        <button type="button" class="btn btn-danger" data-remove-contact="${kind}">${ui.removeContact}</button>
+      </div>`;
+    })
+    .join('');
+}
+
+function renderAddContactButtons(
+  ui: CvBuilderUi,
+  draft: UserCvDraft,
+  pending: Set<CvContactKind>,
+): string {
+  const missing = CONTACT_KINDS.filter((kind) => !contactVisible(draft, kind, pending));
+  if (missing.length === 0) return '';
+  return `<div class="contact-add">
+    <span class="contact-add-label">${ui.addContact}</span>
+    ${missing
+      .map(
+        (kind) =>
+          `<button type="button" class="btn btn-secondary" data-add-contact="${kind}">${contactKindLabel(ui, kind)}</button>`,
+      )
+      .join('')}
+  </div>`;
+}
+
+function clearContact(draft: UserCvDraft, kind: CvContactKind): void {
+  if (kind === 'email') {
+    draft.email = '';
+    return;
+  }
+  if (kind === 'linkedin') {
+    draft.linkedinUrl = '';
+    draft.linkedinLabel = '';
+    return;
+  }
+  if (kind === 'portfolio') {
+    draft.portfolioUrl = '';
+    draft.portfolioLabel = '';
+    return;
+  }
+  draft.githubUrl = '';
+  draft.githubLabel = '';
 }
 
 interface BuilderApi {
@@ -244,6 +382,9 @@ interface BuilderApi {
   getMode: () => Mode;
   setMode: (mode: Mode) => void;
   setStatus: (status: string) => void;
+  getPendingContacts: () => Set<CvContactKind>;
+  getPhoto: () => string;
+  setPhoto: (dataUrl: string) => void;
   rerender: () => void;
 }
 
@@ -264,14 +405,38 @@ function bind(
   });
 
   root.querySelector('[data-action="example"]')?.addEventListener('click', () => {
+    api.getPendingContacts().clear();
     api.setDraft(exampleUserCv(locale));
     api.setStatus(ui.importOk);
     api.rerender();
   });
 
   root.querySelector('[data-action="reset"]')?.addEventListener('click', () => {
+    api.getPendingContacts().clear();
+    api.setPhoto('');
     api.setDraft(emptyUserCv(locale));
     api.setStatus('');
+    api.rerender();
+  });
+
+  const photoInput = root.querySelector<HTMLInputElement>('[data-photo-input]');
+  photoInput?.addEventListener('change', async () => {
+    const file = photoInput.files?.[0];
+    photoInput.value = '';
+    if (!file) return;
+    try {
+      const dataUrl = await fileToCvPhotoDataUrl(file);
+      api.setPhoto(dataUrl);
+      api.setStatus('');
+      api.rerender();
+    } catch {
+      api.setStatus(ui.photoError);
+      api.rerender();
+    }
+  });
+
+  root.querySelector('[data-remove-photo]')?.addEventListener('click', () => {
+    api.setPhoto('');
     api.rerender();
   });
 
@@ -301,6 +466,7 @@ function bind(
     }
     try {
       const text = await file.text();
+      api.getPendingContacts().clear();
       api.setDraft(parseUserCvJson(text));
       api.setStatus(ui.importOk);
       api.rerender();
@@ -316,7 +482,7 @@ function bind(
   form?.addEventListener('input', () => {
     syncFromDom(root, api);
     const preview = root.querySelector<HTMLElement>('[data-preview]');
-    if (preview) preview.innerHTML = renderUserCvHtml(api.getDraft(), ui.current);
+    if (preview) preview.innerHTML = renderUserCvHtml(api.getDraft(), ui.current, api.getPhoto());
   });
 
   const jsonArea = root.querySelector<HTMLTextAreaElement>('[data-json]');
@@ -325,7 +491,7 @@ function bind(
       api.setDraft(parseUserCvJson(jsonArea.value));
       api.setStatus('');
       const preview = root.querySelector<HTMLElement>('[data-preview]');
-      if (preview) preview.innerHTML = renderUserCvHtml(api.getDraft(), ui.current);
+      if (preview) preview.innerHTML = renderUserCvHtml(api.getDraft(), ui.current, api.getPhoto());
       persist(api.getDraft());
     } catch {
       api.setStatus(ui.jsonError);
@@ -348,10 +514,49 @@ function bind(
     api.rerender();
   });
 
+  root.querySelectorAll<HTMLButtonElement>('[data-add-contact]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      syncFromDom(root, api);
+      const kind = btn.dataset.addContact as CvContactKind | undefined;
+      if (!kind || !CONTACT_KINDS.includes(kind)) return;
+      api.getPendingContacts().add(kind);
+      api.rerender();
+    });
+  });
+
+  root.querySelectorAll<HTMLButtonElement>('[data-remove-contact]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      syncFromDom(root, api);
+      const kind = btn.dataset.removeContact as CvContactKind | undefined;
+      if (!kind || !CONTACT_KINDS.includes(kind)) return;
+      const draft = structuredClone(api.getDraft());
+      clearContact(draft, kind);
+      api.getPendingContacts().delete(kind);
+      api.setDraft(draft);
+      api.rerender();
+    });
+  });
+
   root.querySelector('[data-add-sim]')?.addEventListener('click', () => {
     syncFromDom(root, api);
     const draft = structuredClone(api.getDraft());
     draft.simulations.push('');
+    api.setDraft(draft);
+    api.rerender();
+  });
+
+  root.querySelector('[data-add-sim-section]')?.addEventListener('click', () => {
+    syncFromDom(root, api);
+    const draft = structuredClone(api.getDraft());
+    if (draft.simulations.length === 0) draft.simulations.push('');
+    api.setDraft(draft);
+    api.rerender();
+  });
+
+  root.querySelector('[data-remove-sim-section]')?.addEventListener('click', () => {
+    syncFromDom(root, api);
+    const draft = structuredClone(api.getDraft());
+    draft.simulations = [];
     api.setDraft(draft);
     api.rerender();
   });
@@ -386,7 +591,6 @@ function bind(
       const index = Number(btn.dataset.removeSim);
       const draft = structuredClone(api.getDraft());
       draft.simulations.splice(index, 1);
-      if (draft.simulations.length === 0) draft.simulations.push('');
       api.setDraft(draft);
       api.rerender();
     });
@@ -436,15 +640,53 @@ function syncFromDom(root: HTMLElement, api: BuilderApi): void {
   draft.label = str('label');
   draft.location = str('location');
   draft.summary = str('summary');
-  draft.linkedinUrl = str('linkedinUrl');
-  draft.linkedinLabel = str('linkedinLabel');
-  draft.portfolioUrl = str('portfolioUrl');
-  draft.portfolioLabel = str('portfolioLabel');
-  draft.githubUrl = str('githubUrl');
-  draft.githubLabel = str('githubLabel');
-  draft.email = str('email');
   draft.hardSkills = str('hardSkills');
   draft.softSkills = str('softSkills');
+
+  if (root.querySelector('[data-contact="linkedin"]')) {
+    const linkedin = resolveContactInput('linkedin', str('linkedin'));
+    draft.linkedinUrl = linkedin.url;
+    draft.linkedinLabel = linkedin.label;
+  } else {
+    draft.linkedinUrl = '';
+    draft.linkedinLabel = '';
+  }
+
+  if (root.querySelector('[data-contact="portfolio"]')) {
+    const portfolio = resolveContactInput('portfolio', str('portfolio'));
+    draft.portfolioUrl = portfolio.url;
+    draft.portfolioLabel = portfolio.label;
+  } else {
+    draft.portfolioUrl = '';
+    draft.portfolioLabel = '';
+  }
+
+  if (root.querySelector('[data-contact="github"]')) {
+    const github = resolveContactInput('github', str('github'));
+    draft.githubUrl = github.url;
+    draft.githubLabel = github.label;
+  } else {
+    draft.githubUrl = '';
+    draft.githubLabel = '';
+  }
+
+  if (root.querySelector('[data-contact="email"]')) {
+    draft.email = str('email');
+  } else {
+    draft.email = '';
+  }
+
+  const labelOr = (key: keyof UserCvDraft['labels'], fallback: string) => {
+    const next = str(`labels.${key}`).trim();
+    return next || fallback;
+  };
+  draft.labels = {
+    work: labelOr('work', draft.labels.work),
+    education: labelOr('education', draft.labels.education),
+    simulations: labelOr('simulations', draft.labels.simulations),
+    hardSkills: labelOr('hardSkills', draft.labels.hardSkills),
+    softSkills: labelOr('softSkills', draft.labels.softSkills),
+  };
 
   draft.jobs = draft.jobs.map((_, index) => ({
     company: str(`jobs.${index}.company`),
@@ -462,7 +704,10 @@ function syncFromDom(root: HTMLElement, api: BuilderApi): void {
     description: str(`education.${index}.description`),
   }));
 
-  draft.simulations = draft.simulations.map((_, index) => str(`simulations.${index}`));
+  const simSectionPresent = Boolean(root.querySelector('[data-sim-section]'));
+  draft.simulations = simSectionPresent
+    ? draft.simulations.map((_, index) => str(`simulations.${index}`))
+    : [];
 
   const safe = coerceUserCvDraft(draft);
   api.setDraft(safe);
@@ -494,7 +739,7 @@ export function mountCvBuilderPrint(root: HTMLElement, locale: Locale): void {
       <button type="button" id="cv-print-btn" title="${ui.printPdf}" aria-describedby="cv-builder-print-hint">${ui.printPdf}</button>
       <p id="cv-builder-print-hint">${ui.printHint}</p>
     </header>
-    <div class="print-paper">${renderUserCvHtml(draft, ui.current)}</div>
+    <div class="print-paper">${renderUserCvHtml(draft, ui.current, readStoredPhoto())}</div>
   `;
 
   const trigger = () => {

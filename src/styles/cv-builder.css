@@ -325,6 +325,88 @@
   min-height: 22rem;
 }
 
+.contact-hint {
+  margin: 0;
+  color: var(--ui-muted);
+  font-size: 0.82rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.photo-field {
+  display: grid;
+  gap: 0.4rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--ui-line);
+  margin-bottom: 0.15rem;
+}
+
+.photo-label {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.photo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.photo-thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #e8e6e1;
+  flex: 0 0 auto;
+}
+
+.photo-thumb--empty {
+  border: 1px dashed #b8b3a6;
+}
+
+.photo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.4rem;
+  align-items: end;
+}
+
+.contact-add {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.15rem;
+}
+
+.contact-add-label {
+  width: 100%;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.section-head {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+
+.section-head .btn {
+  justify-self: start;
+}
+
 .sim-row {
   display: grid;
   grid-template-columns: 1fr auto;
