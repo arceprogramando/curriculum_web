@@ -3,7 +3,7 @@ import type { Locale } from '@/lib/i18n';
 export function getCvBuilderUi(locale: Locale) {
   if (locale === 'en') {
     return {
-      title: 'Build your one-page CV',
+      title: 'Build your CV',
       subtitle: 'Edit, preview live, then print a letter PDF. Data stays only in this browser.',
       back: '← Portfolio',
       myCvs: 'My role CVs',
@@ -81,7 +81,7 @@ export function getCvBuilderUi(locale: Locale) {
   }
 
   return {
-    title: 'Armá tu CV de una hoja',
+    title: 'Armá tu CV',
     subtitle: 'Editá, mirá la vista previa e imprimí un PDF letter. Los datos quedan solo en este navegador.',
     back: '← Portfolio',
     myCvs: 'Mis CV por rol',
