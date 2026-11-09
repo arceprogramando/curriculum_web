@@ -7,6 +7,7 @@ import {
   contactInputValue,
   downloadJsonFile,
   draftFileStem,
+  draftPdfPrintTitle,
   emptyUserCv,
   escapeHtml,
   exampleUserCv,
@@ -734,7 +735,6 @@ export function mountCvBuilderPrint(root: HTMLElement, locale: Locale): void {
   }
 
   const pageTitle = document.title;
-  const printFileTitle = `${draftFileStem(draft)}-${new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-')}`;
 
   root.innerHTML = `
     <header class="print-bar no-print" aria-label="${ui.printToolbar}">
@@ -746,7 +746,8 @@ export function mountCvBuilderPrint(root: HTMLElement, locale: Locale): void {
   `;
 
   const trigger = () => {
-    document.title = printFileTitle;
+    // Los navegadores usan document.title como nombre sugerido al Guardar como PDF.
+    document.title = draftPdfPrintTitle(draft);
     const restore = () => {
       document.title = pageTitle;
     };

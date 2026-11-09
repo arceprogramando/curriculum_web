@@ -846,6 +846,16 @@ export function downloadJsonFile(draft: UserCvDraft, filenameStem: string): void
   URL.revokeObjectURL(url);
 }
 
+function slugifyNamePart(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-zA-Z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .toLowerCase();
+}
+
+/** Stem para JSON: Nora_Vidal_CV */
 export function draftFileStem(draft: UserCvDraft): string {
   const slug =
     draft.fullName
@@ -854,4 +864,29 @@ export function draftFileStem(draft: UserCvDraft): string {
       .replace(/[^a-zA-Z0-9]+/g, '_')
       .replace(/^_|_$/g, '') || 'mi_cv';
   return `${slug}_CV`;
+}
+
+/**
+ * Nombre sugerido al “Guardar como PDF” (via document.title):
+ * apellido-nombre-2026-11-09-20-15-30
+ * Última palabra = apellido; el resto = nombre.
+ */
+export function draftPdfPrintTitle(draft: UserCvDraft, now = new Date()): string {
+  const parts = draft.fullName
+    .trim()
+    .split(/\s+/)
+    .map(slugifyNamePart)
+    .filter(Boolean);
+  let nameStem = 'cv';
+  if (parts.length === 1) {
+    nameStem = parts[0]!;
+  } else if (parts.length > 1) {
+    const apellido = parts[parts.length - 1]!;
+    const nombre = parts.slice(0, -1).join('-');
+    nameStem = `${apellido}-${nombre}`;
+  }
+  const pad = (value: number) => String(value).padStart(2, '0');
+  const date = [now.getFullYear(), pad(now.getMonth() + 1), pad(now.getDate())].join('-');
+  const time = [pad(now.getHours()), pad(now.getMinutes()), pad(now.getSeconds())].join('-');
+  return `${nameStem}-${date}-${time}`;
 }
