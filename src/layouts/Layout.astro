@@ -98,6 +98,7 @@ const allSkills = [
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={`${resolvedOgTitle} | arceprog.dev`} />
+    <link rel="image_src" href={resolvedOgImage} />
     <meta property="og:site_name" content="arceprog.dev" />
     <meta property="og:locale" content={config.ogLocale} />
     {otherLocales.map(loc => (
@@ -140,8 +141,12 @@ const allSkills = [
     <meta name="keywords" content={config.keywords} />
     <meta name="author" content="Felipe Arce" />
     <meta name="google" content="nositelinkssearchbox" />
+  </head>
+  <body>
+    <a class="skip-link no-print" href="#contenido">{ui.skipToContent}</a>
+    <slot />
 
-    <!-- Structured Data: Person Schema -->
+    <!-- JSON-LD al final: head liviano para crawlers frágiles (WhatsApp). Google lo lee igual. -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Person",
@@ -188,8 +193,6 @@ const allSkills = [
         "addressCountry": "AR"
       }
     })} />
-
-    <!-- Structured Data: WebSite Schema -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
@@ -203,8 +206,6 @@ const allSkills = [
       },
       "dateModified": buildDate
     })} />
-
-    <!-- Structured Data: BreadcrumbList Schema -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -217,10 +218,6 @@ const allSkills = [
         }
       ]
     })} />
-  </head>
-  <body>
-    <a class="skip-link no-print" href="#contenido">{ui.skipToContent}</a>
-    <slot />
 
     <!-- Detección automática de idioma (solo primera visita) -->
     <script is:inline>
@@ -230,7 +227,7 @@ const allSkills = [
         const hasPreference = localStorage.getItem('locale-preference');
 
         const ua = navigator.userAgent || '';
-        const isBot = /bot|crawler|spider|bing|google|slurp|duckduck/i.test(ua);
+        const isBot = /bot|crawler|spider|bing|google|slurp|duckduck|whatsapp|facebookexternalhit|facebot/i.test(ua);
 
         if (isRoot && !hasPreference && !isBot) {
           const lang = navigator.language || navigator.userLanguage || 'es';
