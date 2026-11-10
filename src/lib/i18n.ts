@@ -126,10 +126,11 @@ export const LOCALE_CONFIG: Record<Locale, {
     htmlLang: 'es',
     urlPrefix: '',
     pdfFile: '/FelipeAlemanArce_CV_esp_Junio_2026.pdf',
+    // metaDescription ~150–160 (Google). ogTitle/ogDescription más cortos (WA/FB/X truncan distinto).
     metaDescription: 'Desarrollador Full Stack en Buenos Aires. Técnico Universitario en Programación (UTN). React, Node.js y TypeScript. Portfolio, proyectos y notas RHCSA.',
-    pageTitle: 'Felipe Arce - Desarrollador FullStack SSR | Portfolio',
-    ogTitle: 'Felipe Arce - Desarrollador FullStack SSR',
-    ogDescription: 'Desarrollador web, Técnico Universitario en Programación (UTN, 2025) e ingreso 2027 a Ingeniería Informática (UNLaM). React, Node.js, MongoDB y stack moderno.',
+    pageTitle: 'Felipe Arce | Desarrollador Full Stack',
+    ogTitle: 'Felipe Arce | Full Stack SSR',
+    ogDescription: 'Full Stack en Buenos Aires. Técnico UTN (2025). React, Node.js y TypeScript.',
     keywords: 'Felipe Arce, desarrollador fullstack SSR, desarrollador MERN, React, Node.js, MongoDB, Express, JavaScript, TypeScript, portfolio developer, programador web, frontend developer, backend developer, Buenos Aires, Argentina',
     jobTitle: 'Desarrollador FullStack SSR',
     ui: {
@@ -240,9 +241,9 @@ export const LOCALE_CONFIG: Record<Locale, {
     urlPrefix: '/en',
     pdfFile: '/FelipeAlemanArce_CV_eng_June_2026.pdf',
     metaDescription: 'Full Stack developer in Buenos Aires. University Programming Technician (UTN). React, Node.js and TypeScript. Portfolio, projects and RHCSA study notes.',
-    pageTitle: 'Felipe Arce - Mid-Level Full Stack Developer | Portfolio',
-    ogTitle: 'Felipe Arce - Mid-Level Full Stack Developer',
-    ogDescription: 'Web developer, University Programming Technician (UTN, 2025), and 2027 UNLaM Computer Engineering entrance student. React, Node.js, MongoDB and modern stack.',
+    pageTitle: 'Felipe Arce | Full Stack Developer',
+    ogTitle: 'Felipe Arce | Full Stack Developer',
+    ogDescription: 'Full Stack in Buenos Aires. UTN Technician (2025). React, Node.js and TypeScript.',
     keywords: 'Felipe Arce, mid-level full stack developer, MERN developer, React, Node.js, MongoDB, Express, JavaScript, TypeScript, developer portfolio, web programmer, frontend developer, backend developer, Buenos Aires, Argentina',
     jobTitle: 'Mid-Level Full Stack Developer',
     ui: {

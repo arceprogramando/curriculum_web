@@ -9,6 +9,7 @@ Documentación del portafolio **curriculum_web** (Astro 6, despliegue en Vercel)
 | [auditoria-arceprog-dev-2026-06.md](./auditoria-arceprog-dev-2026-06.md) | Auditoría técnica + datos GSC (junio 2026) |
 | [plan-accion.md](./plan-accion.md) | Plan priorizado SEO/SEM |
 | [bing-alertas-2026-11.md](./bing-alertas-2026-11.md) | IndexNow, metas cortas y noindex intencional (Bing nov 2026) |
+| [meta-sharing-debugger.md](./meta-sharing-debugger.md) | Meta Sharing Debugger: fb:app_id, www, OG truncado |
 
 **Skill en Cursor:** `.cursor/skills/seo-sem-arceprog/SKILL.md` (este proyecto).  
 **Skill técnica Astro:** `.cursor/skills/astro-seo/SKILL.md`.

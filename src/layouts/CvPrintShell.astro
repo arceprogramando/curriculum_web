@@ -12,7 +12,7 @@ import LanguageSelector from '@/components/LanguageSelector.astro';
 import SiteHeadIcons from '@/components/SiteHeadIcons.astro';
 
 /** Cache-bust para scrapers de LinkedIn/WhatsApp tras regenerar la imagen OG. */
-const OG_IMAGE_VERSION = '20261109';
+const OG_IMAGE_VERSION = '20261110';
 
 interface Props {
   locale: Locale;
@@ -63,6 +63,7 @@ const resolvedOgImageBase = ogImage.startsWith('http') ? ogImage : `https://arce
 const resolvedOgImage = `${resolvedOgImageBase}${resolvedOgImageBase.includes('?') ? '&' : '?'}v=${OG_IMAGE_VERSION}`;
 const resolvedOgImageAlt = ogImageAlt ?? `${ogTitle} | arceprog.dev`;
 const buildDate = new Date().toISOString();
+const fbAppId = import.meta.env.PUBLIC_FB_APP_ID as string | undefined;
 ---
 
 <!doctype html>
@@ -93,11 +94,12 @@ const buildDate = new Date().toISOString();
       rel="stylesheet"
     />
 
+    {fbAppId ? <meta property="fb:app_id" content={fbAppId} /> : null}
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
-    <meta property="og:site_name" content="Felipe Arce Portfolio" />
+    <meta property="og:site_name" content="arceprog.dev" />
     <meta property="og:image" content={resolvedOgImage} />
     <meta property="og:image:secure_url" content={resolvedOgImage} />
     <meta property="og:image:alt" content={resolvedOgImageAlt} />

@@ -14,7 +14,7 @@ import SiteHeadIcons from '@/components/SiteHeadIcons.astro';
 import '@/styles/theme.css';
 
 /** Cache-bust para scrapers de LinkedIn/WhatsApp tras regenerar la imagen OG. */
-const OG_IMAGE_VERSION = '20261109';
+const OG_IMAGE_VERSION = '20261110';
 
 interface Props {
   title?: string;
@@ -60,6 +60,9 @@ const robotsContent = noIndex ? 'noindex, nofollow' : 'index, follow';
 // Fecha de última actualización (se actualiza en cada build)
 const buildDate = new Date().toISOString();
 
+/** Meta Sharing Debugger pide fb:app_id. Setear PUBLIC_FB_APP_ID en Vercel. */
+const fbAppId = import.meta.env.PUBLIC_FB_APP_ID as string | undefined;
+
 // Breadcrumb para SEO
 const breadcrumbName = locale === 'es' ? 'Inicio' : 'Home';
 
@@ -97,15 +100,16 @@ const allSkills = [
     <link rel="dns-prefetch" href="https://res.cloudinary.com" />
     <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
 
-    <!-- Facebook Meta Tags / Open Graph (usado por WhatsApp, LinkedIn, etc) -->
+    <!-- Open Graph (WhatsApp/Facebook/LinkedIn). og:url siempre apex sin www. -->
+    {fbAppId ? <meta property="fb:app_id" content={fbAppId} /> : null}
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={resolvedOgTitle} />
     <meta property="og:description" content={resolvedOgDescription} />
-    <meta property="og:site_name" content="Felipe Arce Portfolio" />
+    <meta property="og:site_name" content="arceprog.dev" />
     <meta property="og:image" content={resolvedOgImage} />
     <meta property="og:image:secure_url" content={resolvedOgImage} />
-    <meta property="og:image:alt" content={`${resolvedOgTitle} | Portfolio`} />
+    <meta property="og:image:alt" content={`${resolvedOgTitle} | arceprog.dev`} />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -130,7 +134,7 @@ const allSkills = [
     <meta name="twitter:title" content={resolvedOgTitle} />
     <meta name="twitter:description" content={resolvedOgDescription} />
     <meta name="twitter:image" content={resolvedOgImage} />
-    <meta name="twitter:image:alt" content={`${resolvedOgTitle} | Portfolio`} />
+    <meta name="twitter:image:alt" content={`${resolvedOgTitle} | arceprog.dev`} />
 
     <!-- Asegurar que WhatsApp pueda acceder -->
     <meta name="format-detection" content="telephone=no" />
