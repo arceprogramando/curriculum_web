@@ -9,6 +9,10 @@ import {
 import type { CvRole } from '@/lib/cv-print';
 import { cvPrintPath } from '@/lib/cv-print';
 import LanguageSelector from '@/components/LanguageSelector.astro';
+import SiteHeadIcons from '@/components/SiteHeadIcons.astro';
+
+/** Cache-bust para scrapers de LinkedIn/WhatsApp tras regenerar la imagen OG. */
+const OG_IMAGE_VERSION = '20261109';
 
 interface Props {
   locale: Locale;
@@ -55,7 +59,8 @@ const defaultAlternatePath =
   path != null
     ? path.replace(/^\/en\/crear-cv/, '/crear-cv').replace(/^\/crear-cv/, '/crear-cv')
     : cvPrintPath(DEFAULT_LOCALE, role);
-const resolvedOgImage = ogImage.startsWith('http') ? ogImage : `https://arceprog.dev${ogImage}`;
+const resolvedOgImageBase = ogImage.startsWith('http') ? ogImage : `https://arceprog.dev${ogImage}`;
+const resolvedOgImage = `${resolvedOgImageBase}${resolvedOgImageBase.includes('?') ? '&' : '?'}v=${OG_IMAGE_VERSION}`;
 const resolvedOgImageAlt = ogImageAlt ?? `${ogTitle} | arceprog.dev`;
 const buildDate = new Date().toISOString();
 ---
@@ -75,7 +80,7 @@ const buildDate = new Date().toISOString();
     <meta name="format-detection" content="telephone=no" />
     <meta name="theme-color" content="#e8e6e1" />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <SiteHeadIcons />
     <!--
       Tipografía CV 2026 (IT / ATS):
       Source Sans 3 = sans moderna legible a 10–11pt (equivalente “Calibri-like” en web).

@@ -1,0 +1,28 @@
+{
+  "name": "Felipe Arce — arceprog.dev",
+  "short_name": "arceprog",
+  "description": "Portfolio de Felipe Arce y constructor gratis de CV online.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#e8e6e1",
+  "theme_color": "#121a2b",
+  "lang": "es-AR",
+  "icons": [
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/portada-og.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

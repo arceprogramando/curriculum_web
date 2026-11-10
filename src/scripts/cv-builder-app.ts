@@ -129,7 +129,6 @@ function buildChrome(
           <label class="btn btn-secondary file-btn">${ui.importJson}<input type="file" accept="application/json,.json" data-import hidden /></label>
         </div>
       </div>
-      <a class="btn btn-primary builder-cta" data-action="print" href="${printPath}">${ui.printPdf}</a>
     </div>
 
     <p class="builder-hint" id="builder-status" role="status" aria-live="polite" aria-atomic="true">

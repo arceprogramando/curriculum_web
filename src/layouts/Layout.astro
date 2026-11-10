@@ -10,7 +10,11 @@ import {
   DEFAULT_LOCALE,
   type Locale
 } from '@/lib/i18n';
+import SiteHeadIcons from '@/components/SiteHeadIcons.astro';
 import '@/styles/theme.css';
+
+/** Cache-bust para scrapers de LinkedIn/WhatsApp tras regenerar la imagen OG. */
+const OG_IMAGE_VERSION = '20261109';
 
 interface Props {
   title?: string;
@@ -49,7 +53,8 @@ const resolvedTitle = title ?? config.pageTitle;
 const resolvedDescription = description ?? config.metaDescription;
 const resolvedOgTitle = ogTitle ?? config.ogTitle;
 const resolvedOgDescription = ogDescription ?? config.ogDescription;
-const resolvedOgImage = ogImage.startsWith('http') ? ogImage : `https://arceprog.dev${ogImage}`;
+const resolvedOgImageBase = ogImage.startsWith('http') ? ogImage : `https://arceprog.dev${ogImage}`;
+const resolvedOgImage = `${resolvedOgImageBase}${resolvedOgImageBase.includes('?') ? '&' : '?'}v=${OG_IMAGE_VERSION}`;
 const robotsContent = noIndex ? 'noindex, nofollow' : 'index, follow';
 
 // Fecha de última actualización (se actualiza en cada build)
@@ -75,7 +80,7 @@ const allSkills = [
     <title>{resolvedTitle}</title>
     <meta name="description" content={resolvedDescription} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <SiteHeadIcons />
 
     <!-- SEO: Canonical y hreflang (generado dinámicamente para todos los idiomas) -->
     <link rel="canonical" href={canonicalUrl} />

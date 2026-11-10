@@ -258,10 +258,6 @@
   align-items: center;
 }
 
-.builder-cta {
-  display: none;
-}
-
 .builder-hint {
   margin: 0.75rem 0 1rem;
   color: var(--ui-muted);
@@ -668,11 +664,6 @@
 
   .builder-mobile-cta {
     display: none;
-  }
-
-  .builder-cta {
-    display: inline-flex;
-    width: auto;
   }
 
   .builder-toolbar {
