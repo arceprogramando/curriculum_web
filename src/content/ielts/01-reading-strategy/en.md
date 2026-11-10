@@ -7,7 +7,7 @@ locale: "en"
 moduleNumber: 1
 completed: false
 tags: ["ielts", "reading", "strategy"]
-draft: false
+draft: true
 relatedCert: "IELTS"
 ---
 
