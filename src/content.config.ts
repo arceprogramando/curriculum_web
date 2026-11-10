@@ -37,7 +37,23 @@ const ieltsCollection = defineCollection({
   })
 });
 
+const postmortemsCollection = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/postmortems' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    excerpt: z.string(),
+    date: z.coerce.date(),
+    locale: z.enum(['es', 'en']),
+    tags: z.array(z.string()).default([]),
+    draft: z.boolean().default(false),
+    severity: z.enum(['low', 'medium', 'high']).optional(),
+    cover: z.string().optional()
+  })
+});
+
 export const collections = {
   rhcsa: rhcsaCollection,
-  ielts: ieltsCollection
+  ielts: ieltsCollection,
+  postmortems: postmortemsCollection
 };

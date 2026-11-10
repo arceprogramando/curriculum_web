@@ -85,6 +85,10 @@ export const LOCALE_CONFIG: Record<Locale, {
     ieltsIndexContextFuture: string;
     ieltsIndexModulesNote: string;
     viewAllIeltsPractices: string;
+    problematicasBlogTitle: string;
+    problematicasBlogDescription: string;
+    problematicasIndexIntro: string;
+    viewAllProblematicas: string;
     publishedOn: string;
     rhcsaListClassPrefix: string;
     rhcsaListModuleLabel: string;
@@ -126,13 +130,13 @@ export const LOCALE_CONFIG: Record<Locale, {
     htmlLang: 'es',
     urlPrefix: '',
     pdfFile: '/FelipeAlemanArce_CV_esp_Junio_2026.pdf',
-    // metaDescription ~150–160 (Google). ogTitle/ogDescription más cortos (WA/FB/X truncan distinto).
+    // metaDescription ~150–160 (Google). OG un poco más rico (LinkedIn); WA igual puede truncar.
     metaDescription: 'Desarrollador Full Stack en Buenos Aires. Técnico Universitario en Programación (UTN). React, Node.js y TypeScript. Portfolio, proyectos y notas RHCSA.',
     pageTitle: 'Felipe Arce | Desarrollador Full Stack',
-    ogTitle: 'Felipe Arce | Full Stack SSR',
-    ogDescription: 'Full Stack en Buenos Aires. Técnico UTN (2025). React, Node.js y TypeScript.',
-    keywords: 'Felipe Arce, desarrollador fullstack SSR, desarrollador MERN, React, Node.js, MongoDB, Express, JavaScript, TypeScript, portfolio developer, programador web, frontend developer, backend developer, Buenos Aires, Argentina',
-    jobTitle: 'Desarrollador FullStack SSR',
+    ogTitle: 'Felipe Arce | Full Stack MERN · SR',
+    ogDescription: 'Full Stack MERN (SR) en Buenos Aires: React, Node.js y TypeScript. Técnico Universitario en Programación (UTN) y práctica sysadmin Linux.',
+    keywords: 'Felipe Arce, desarrollador fullstack SR, desarrollador MERN, React, Node.js, MongoDB, Express, JavaScript, TypeScript, portfolio developer, programador web, frontend developer, backend developer, Buenos Aires, Argentina',
+    jobTitle: 'Desarrollador FullStack SR',
     ui: {
       aboutMe: 'Sobre mí',
       workExperience: 'Experiencia laboral',
@@ -195,6 +199,12 @@ export const LOCALE_CONFIG: Record<Locale, {
       ieltsIndexModulesNote:
         'Los módulos de abajo son borradores de práctica para usar cuando empiece la preparación formal al IELTS.',
       viewAllIeltsPractices: 'Ver todas las prácticas IELTS',
+      problematicasBlogTitle: 'Problemáticas encontradas',
+      problematicasBlogDescription:
+        'Postmortems técnicos: síntomas, pistas falsas y causa raíz de problemas reales en el portfolio y en el día a día.',
+      problematicasIndexIntro:
+        'Notas en formato postmortem. No son tutoriales: documentan qué falló, qué se investigó y qué resultó ser la causa.',
+      viewAllProblematicas: 'Ver todas las problemáticas',
       publishedOn: 'Publicado',
       rhcsaListClassPrefix: 'Clase',
       rhcsaListModuleLabel: 'Módulo',
@@ -242,10 +252,10 @@ export const LOCALE_CONFIG: Record<Locale, {
     pdfFile: '/FelipeAlemanArce_CV_eng_June_2026.pdf',
     metaDescription: 'Full Stack developer in Buenos Aires. University Programming Technician (UTN). React, Node.js and TypeScript. Portfolio, projects and RHCSA study notes.',
     pageTitle: 'Felipe Arce | Full Stack Developer',
-    ogTitle: 'Felipe Arce | Full Stack Developer',
-    ogDescription: 'Full Stack in Buenos Aires. UTN Technician (2025). React, Node.js and TypeScript.',
-    keywords: 'Felipe Arce, mid-level full stack developer, MERN developer, React, Node.js, MongoDB, Express, JavaScript, TypeScript, developer portfolio, web programmer, frontend developer, backend developer, Buenos Aires, Argentina',
-    jobTitle: 'Mid-Level Full Stack Developer',
+    ogTitle: 'Felipe Arce | Full Stack MERN · SR',
+    ogDescription: 'Full Stack MERN (SR) in Buenos Aires: React, Node.js and TypeScript. University Programming Technician (UTN) and Linux sysadmin practice.',
+    keywords: 'Felipe Arce, full stack developer SR, MERN developer, React, Node.js, MongoDB, Express, JavaScript, TypeScript, developer portfolio, web programmer, frontend developer, backend developer, Buenos Aires, Argentina',
+    jobTitle: 'Full Stack Developer · SR',
     ui: {
       aboutMe: 'About me',
       workExperience: 'Work Experience',
@@ -308,6 +318,12 @@ export const LOCALE_CONFIG: Record<Locale, {
       ieltsIndexModulesNote:
         'The modules below are practice drafts for when I start formal IELTS preparation.',
       viewAllIeltsPractices: 'View all IELTS practices',
+      problematicasBlogTitle: 'Problems found',
+      problematicasBlogDescription:
+        'Technical postmortems: symptoms, false leads, and root causes from real issues on this portfolio and day-to-day work.',
+      problematicasIndexIntro:
+        'Notes in postmortem form. Not tutorials: they document what failed, what was investigated, and what the root cause turned out to be.',
+      viewAllProblematicas: 'View all problems found',
       publishedOn: 'Published',
       rhcsaListClassPrefix: 'Class',
       rhcsaListModuleLabel: 'Module',

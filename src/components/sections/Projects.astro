@@ -61,7 +61,7 @@ const showLessLabel = ui.projectsShowLess;
     projects.length > INITIAL_VISIBLE && (
       <div class="projects-more">
         <button type="button" class="projects-more__btn" data-projects-toggle>
-          {showMoreLabel.replace('{count}', String(Math.min(STEP, projects.length - INITIAL_VISIBLE)))}
+          {showMoreLabel.replace('{count}', String(projects.length - INITIAL_VISIBLE))}
         </button>
       </div>
     )
@@ -200,8 +200,9 @@ const showLessLabel = ui.projectsShowLess;
         toggle.setAttribute('aria-expanded', 'true');
         toggle.dataset.mode = 'less';
       } else {
-        const next = Math.min(step, items.length - visible);
-        toggle.textContent = labelMore.replace('{count}', String(next));
+        // {count} = cuántos faltan (no el STEP). Cada clic igual suma `step`.
+        const remaining = items.length - visible;
+        toggle.textContent = labelMore.replace('{count}', String(remaining));
         toggle.setAttribute('aria-expanded', 'false');
         toggle.dataset.mode = 'more';
       }

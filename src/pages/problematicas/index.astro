@@ -1,0 +1,139 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import LanguageSelector from '@/components/LanguageSelector.astro';
+import { getContentEntrySlug } from '@/lib/content-entry';
+import { getUI, type Locale } from '@/lib/i18n';
+
+const locale: Locale = 'es';
+const ui = getUI(locale);
+const posts = (await getCollection('postmortems', ({ data }) => data.locale === locale && !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Layout
+  locale={locale}
+  basePath="problematicas"
+  title={`${ui.problematicasBlogTitle} | Felipe Arce`}
+  description={ui.problematicasBlogDescription}
+  ogTitle={ui.problematicasBlogTitle}
+  ogDescription={ui.problematicasBlogDescription}
+>
+  <LanguageSelector locale={locale} />
+  <main id="contenido">
+    <section>
+      <a class="back-link" href="/#practicas-actuales">← Volver al CV</a>
+      <h1>{ui.problematicasBlogTitle}</h1>
+      <p>{ui.problematicasBlogDescription}</p>
+      <p class="intro">{ui.problematicasIndexIntro}</p>
+
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li>
+            <a class="post-link" href={`/problematicas/${getContentEntrySlug(post.id)}/`}>
+              <article class="post-card">
+                <header>
+                  <h2>{post.data.title}</h2>
+                  <small>{post.data.date.toLocaleDateString('es-AR')}</small>
+                </header>
+                <p>{post.data.excerpt}</p>
+              </article>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    padding: 4rem;
+    background-color: var(--color-bg-primary);
+    color: var(--color-brand-primary);
+    min-height: 100vh;
+  }
+
+  section {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-bottom: 12px;
+    text-decoration: underline;
+  }
+
+  .intro {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    color: var(--color-text-secondary);
+  }
+
+  .post-list {
+    display: grid;
+    gap: 14px;
+    margin-top: 1.5rem;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .post-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .post-card {
+    border: 1px solid var(--color-border-primary);
+    border-radius: 10px;
+    padding: 20px 16px;
+    background: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+    transition: transform 120ms ease;
+  }
+
+  .post-card:hover {
+    transform: translateY(-1px);
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+
+  small {
+    white-space: nowrap;
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+  }
+
+  .post-card p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  @media (width <= 700px) {
+    main {
+      padding: 1rem;
+    }
+
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+  }
+</style>

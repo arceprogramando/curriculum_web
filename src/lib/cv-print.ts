@@ -316,7 +316,7 @@ function buildEsRole(role: CvRole): CvRoleContent {
       return {
         label: 'Frontend Developer',
         summary:
-          'Desarrollador Frontend con 3 años de experiencia en React, React Native, Next.js y TypeScript. Interfaces accesibles, dashboards y apps móviles offline-first. Técnico Universitario en Programación (UTN, 2025); inglés CUI en Consolidación B1.',
+          'Desarrollador Frontend con 5 años de experiencia en React, React Native, Next.js y TypeScript. Interfaces accesibles, dashboards y apps móviles offline-first. Técnico Universitario en Programación (UTN, 2025); inglés CUI en Consolidación B1.',
         jobs: [jobAvFe, jobAvFull, jobMicro],
         education: [eduFe, eduUtn, eduCui, eduBe],
         simulations: simsFe,
@@ -349,7 +349,7 @@ function buildEsRole(role: CvRole): CvRoleContent {
       return {
         label: 'FullStack Developer',
         summary:
-          'Técnico Universitario en Programación y Desarrollador de Software con 3 años de experiencia Full-Stack web y móvil. Especializado en flujos de usuario, SEO y soluciones orientadas al cliente. Ingreso 2027 Ingeniería Informática (UNLaM) y path RHCSA hacia EX200.',
+          'Técnico Universitario en Programación y Desarrollador de Software con 5 años de experiencia Full-Stack web y móvil. Especializado en flujos de usuario, SEO y soluciones orientadas al cliente. Ingreso 2027 Ingeniería Informática (UNLaM) y path RHCSA hacia EX200.',
         jobs: [jobAvFull, jobAvFe, jobMicro],
         education: [eduCui, eduRh134, eduUtn, eduBe],
         simulations: simsGen,
@@ -443,7 +443,7 @@ function buildEnRole(role: CvRole): CvRoleContent {
       return {
         label: 'Frontend Developer',
         summary:
-          'Frontend developer with 3 years of experience in React, React Native, Next.js and TypeScript. Accessible UIs, dashboards and offline-first mobile apps. University Programming Technician (UTN, 2025); CUI English on Consolidation B1.',
+          'Frontend developer with 5 years of experience in React, React Native, Next.js and TypeScript. Accessible UIs, dashboards and offline-first mobile apps. University Programming Technician (UTN, 2025); CUI English on Consolidation B1.',
         jobs: [jobAvFe, jobAvFull, jobMicro],
         education: [eduFe, eduUtn, eduCui, eduBe],
         simulations: [
@@ -485,7 +485,7 @@ function buildEnRole(role: CvRole): CvRoleContent {
       return {
         label: 'FullStack Developer',
         summary:
-          'University Programming Technician and Software Developer with 3 years of experience in full-stack web and mobile apps. Specialized in user-flow optimization, SEO and client-oriented solutions. UNLaM Computer Engineering entrance 2027 and RHCSA path toward EX200.',
+          'University Programming Technician and Software Developer with 5 years of experience in full-stack web and mobile apps. Specialized in user-flow optimization, SEO and client-oriented solutions. UNLaM Computer Engineering entrance 2027 and RHCSA path toward EX200.',
         jobs: [jobAvFull, jobAvFe, jobMicro],
         education: [eduCui, eduRh134, eduUtn, eduBe],
         simulations: [

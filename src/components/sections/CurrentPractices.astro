@@ -17,6 +17,9 @@ const latestPosts = (await getCollection('rhcsa', ({ data }) => data.locale === 
 const latestIeltsPosts = (await getCollection('ielts', ({ data }) => data.locale === locale && !data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3);
+const latestPostmortems = (await getCollection('postmortems', ({ data }) => data.locale === locale && !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
 ---
 
 <Section title={ui.currentPractices}>
@@ -51,6 +54,26 @@ const latestIeltsPosts = (await getCollection('ielts', ({ data }) => data.locale
         <li>
           <header>
             <a class="practice-link" href={getLocalePath(locale, `ielts-practice/${getContentEntrySlug(post.id)}`)}>
+              {post.data.title}
+            </a>
+            <small>{post.data.date.toLocaleDateString(locale === 'es' ? 'es-AR' : 'en-US')}</small>
+          </header>
+          <p>{post.data.excerpt}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div class="practice-group">
+    <h3>
+      <a class="group-link" href={getLocalePath(locale, 'problematicas')}>{ui.problematicasBlogTitle}</a>
+    </h3>
+    <p class="description">{ui.problematicasBlogDescription}</p>
+    <ul class="practice-list">
+      {latestPostmortems.map((post) => (
+        <li>
+          <header>
+            <a class="practice-link" href={getLocalePath(locale, `problematicas/${getContentEntrySlug(post.id)}`)}>
               {post.data.title}
             </a>
             <small>{post.data.date.toLocaleDateString(locale === 'es' ? 'es-AR' : 'en-US')}</small>
