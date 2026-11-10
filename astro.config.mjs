@@ -38,17 +38,13 @@ export default defineConfig({
   image: {
     domains: ['avatars.githubusercontent.com'],
   },
+  // 'auto' (no 'always'): head liviano para WhatsApp/Meta; CSS en /_astro/*.css
   build: {
-    inlineStylesheets: 'always',
-    rollupOptions: {
-      output: {
-        manualChunks: undefined
-      }
-    }
+    inlineStylesheets: 'auto',
   },
   vite: {
     build: {
-      cssCodeSplit: false,
+      cssCodeSplit: true,
       rollupOptions: {
         output: {
           assetFileNames: 'assets/[name].[hash][extname]'
