@@ -37,55 +37,134 @@ const formatDate = (date: string) => {
   };
   return `${months[locale][month]} ${year}`;
 };
+
+const companyRange = (positions: Position[]) => {
+  const starts = positions.map((p) => p.startDate).sort();
+  const ends = positions.map((p) => p.endDate).filter(Boolean).sort() as string[];
+  const hasCurrent = positions.some((p) => !p.endDate);
+  const from = formatDate(starts[0]);
+  const to = hasCurrent ? ui.current : formatDate(ends[ends.length - 1]);
+  return `${from} – ${to}`;
+};
+
+const uniqueSkills = (positions: Position[], limit = 8) => {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const pos of positions) {
+    for (const skill of pos.skills) {
+      if (seen.has(skill)) continue;
+      seen.add(skill);
+      out.push(skill);
+      if (out.length >= limit) return out;
+    }
+  }
+  return out;
+};
 ---
 
 <Section title={ui.workExperience}>
   <ul class="work-list">
     {
       work.map((job) => {
-        const hasPositions = job.positions && job.positions.length > 0;
+        const positions = job.positions ?? [];
+        const hasPositions = positions.length > 0;
+        const hasPath = hasPositions && positions.length > 1 && Boolean(job.summary);
+        const summarySkills = hasPath ? uniqueSkills(positions) : [];
 
         return (
           <li class="work-item">
             {hasPositions ? (
-              <div class="company-with-positions">
+              <div
+                class:list={['company-with-positions', { 'has-path': hasPath }]}
+                data-timeline-root={hasPath ? '' : undefined}
+                data-label-more={hasPath ? ui.experienceShowMore : undefined}
+                data-label-less={hasPath ? ui.experienceShowLess : undefined}
+                data-path-label={hasPath ? ui.experiencePathLabel : undefined}
+              >
                 <div class="company-header">
-                  <h3>
-                    <a href={job.url} title={`${ui.visit} ${job.name}`} target="_blank" rel="noopener noreferrer">
-                      {job.name}
-                    </a>
-                  </h3>
+                  <div class="company-header__row">
+                    <h3>
+                      <a href={job.url} title={`${ui.visit} ${job.name}`} target="_blank" rel="noopener noreferrer">
+                        {job.name}
+                      </a>
+                    </h3>
+                    {hasPath && (
+                      <time class="company-range">{companyRange(positions)}</time>
+                    )}
+                  </div>
                 </div>
 
-                <ul class="positions-timeline">
-                  {job.positions!.map((pos, index) => {
-                    const isLast = index === job.positions!.length - 1;
-                    const hasMultiple = job.positions!.length > 1;
-                    const startFormatted = formatDate(pos.startDate);
-                    const endFormatted = pos.endDate ? formatDate(pos.endDate) : ui.current;
+                {
+                  hasPath && (
+                    <div class="company-summary-card" data-company-summary>
+                      <p class="company-summary">{job.summary}</p>
+                      <div class="skills-list">
+                        {summarySkills.map((skill) => (
+                          <span class="skill-tag">{skill}</span>
+                        ))}
+                      </div>
+                    </div>
+                  )
+                }
 
-                    return (
-                      <li class={`position-item ${isLast ? 'last' : ''} ${!hasMultiple ? 'single' : ''}`}>
-                        <div class="timeline-marker">
-                          <div class="dot"></div>
-                          <div class="line"></div>
-                        </div>
-                        <div class="position-content">
-                          <div class="position-header">
-                            <h4>{pos.title}</h4>
-                            <time>{startFormatted} - {endFormatted}</time>
+                <div
+                  class="timeline-panel"
+                  data-timeline-panel
+                  hidden={hasPath}
+                >
+                  {hasPath && (
+                    <p class="path-label" data-path-label-el>{ui.experiencePathLabel}</p>
+                  )}
+                  <ul class="positions-timeline" data-timeline>
+                    {positions.map((pos, index) => {
+                      const hasMultiple = positions.length > 1;
+                      const startFormatted = formatDate(pos.startDate);
+                      const endFormatted = pos.endDate ? formatDate(pos.endDate) : ui.current;
+                      const isLast = index === positions.length - 1;
+
+                      return (
+                        <li
+                          class:list={[
+                            'position-item',
+                            { last: isLast, single: !hasMultiple },
+                          ]}
+                          data-position-item
+                          hidden={hasPath}
+                        >
+                          <div class="timeline-marker">
+                            <div class="dot"></div>
+                            <div class="line"></div>
                           </div>
-                          <p class="position-description">{pos.description}</p>
-                          <div class="skills-list">
-                            {pos.skills.map((skill) => (
-                              <span class="skill-tag">{skill}</span>
-                            ))}
+                          <div class="position-content">
+                            <div class="position-header">
+                              <h4>{pos.title}</h4>
+                              <time>{startFormatted} - {endFormatted}</time>
+                            </div>
+                            <p class="position-description">{pos.description}</p>
+                            <div class="skills-list">
+                              {pos.skills.map((skill) => (
+                                <span class="skill-tag">{skill}</span>
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ul>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+
+                {
+                  hasPath && (
+                    <div class="timeline-more no-print">
+                      <button type="button" class="timeline-more__btn" data-timeline-toggle aria-expanded="false">
+                        <span class="caret" aria-hidden="true"></span>
+                        <span data-timeline-label>
+                          {ui.experienceShowMore.replace('{count}', String(positions.length))}
+                        </span>
+                      </button>
+                    </div>
+                  )
+                }
               </div>
             ) : (
               <article>
@@ -120,6 +199,146 @@ const formatDate = (date: string) => {
   </ul>
 </Section>
 
+<script>
+  const roots = [...document.querySelectorAll<HTMLElement>('[data-timeline-root]')];
+
+  for (const root of roots) {
+    const toggle = root.querySelector<HTMLButtonElement>('[data-timeline-toggle]');
+    const labelEl = root.querySelector<HTMLElement>('[data-timeline-label]');
+    const summary = root.querySelector<HTMLElement>('[data-company-summary]');
+    const panel = root.querySelector<HTMLElement>('[data-timeline-panel]');
+    const items = [...root.querySelectorAll<HTMLElement>('[data-position-item]')];
+    if (!toggle || !labelEl || !summary || !panel || items.length === 0) continue;
+
+    const labelMore = root.dataset.labelMore ?? 'Ver recorrido ({count})';
+    const labelLess = root.dataset.labelLess ?? 'Ver resumen';
+    let visible = 0;
+    let expanded = false;
+    let revealing = false;
+
+    const syncLast = () => {
+      items.forEach((el, index) => {
+        el.classList.toggle('last', index === Math.max(visible - 1, 0));
+        el.classList.toggle('single', visible <= 1);
+      });
+    };
+
+    const syncButton = () => {
+      if (!expanded) {
+        labelEl.textContent = labelMore.replace('{count}', String(items.length));
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('is-expanded');
+        toggle.dataset.mode = 'more';
+        return;
+      }
+
+      if (visible >= items.length) {
+        labelEl.textContent = labelLess;
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.classList.add('is-expanded');
+        toggle.dataset.mode = 'less';
+      } else {
+        const remaining = items.length - visible;
+        labelEl.textContent = labelMore.replace('{count}', String(remaining));
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.classList.add('is-expanded');
+        toggle.dataset.mode = 'more';
+      }
+    };
+
+    const showSummary = () => {
+      expanded = false;
+      visible = 0;
+      summary.hidden = false;
+      summary.classList.remove('is-leaving');
+      panel.hidden = true;
+      items.forEach((el) => {
+        el.hidden = true;
+        el.classList.remove('is-revealing', 'is-extending');
+      });
+      syncButton();
+    };
+
+    const revealNext = async () => {
+      if (revealing) return;
+
+      if (!expanded) {
+        expanded = true;
+        summary.classList.add('is-leaving');
+        await new Promise((r) => window.setTimeout(r, 180));
+        summary.hidden = true;
+        summary.classList.remove('is-leaving');
+        panel.hidden = false;
+        panel.classList.add('is-open');
+      }
+
+      if (visible >= items.length) {
+        syncButton();
+        return;
+      }
+
+      revealing = true;
+      const prev = visible > 0 ? items[visible - 1] : null;
+      prev?.classList.remove('last');
+      prev?.classList.add('is-extending');
+
+      const next = items[visible];
+      next.hidden = false;
+      next.classList.add('is-revealing');
+      visible += 1;
+      syncLast();
+      syncButton();
+
+      await new Promise<void>((resolve) => {
+        const done = () => {
+          next.classList.remove('is-revealing');
+          prev?.classList.remove('is-extending');
+          next.removeEventListener('animationend', done);
+          resolve();
+        };
+        next.addEventListener('animationend', done);
+        window.setTimeout(done, 520);
+      });
+
+      revealing = false;
+    };
+
+    toggle.addEventListener('click', () => {
+      if (toggle.dataset.mode === 'less') {
+        showSummary();
+        root.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        void revealNext();
+      }
+    });
+
+    window.addEventListener('beforeprint', () => {
+      summary.hidden = false;
+      panel.hidden = false;
+      items.forEach((el) => {
+        el.hidden = false;
+        el.classList.remove('is-revealing', 'is-extending');
+      });
+    });
+
+    window.addEventListener('afterprint', () => {
+      if (expanded) {
+        summary.hidden = true;
+        panel.hidden = false;
+        items.forEach((el, index) => {
+          el.hidden = index >= visible;
+        });
+        syncLast();
+      } else {
+        showSummary();
+      }
+      syncButton();
+    });
+
+    showSummary();
+  }
+</script>
+
 <style>
   .work-list {
     margin: 16px 0;
@@ -132,10 +351,16 @@ const formatDate = (date: string) => {
     list-style: none;
   }
 
-  /* Company with multiple positions */
   .company-with-positions {
     display: flex;
     flex-direction: column;
+    gap: 12px;
+  }
+
+  .company-header__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
     gap: 12px;
   }
 
@@ -153,7 +378,50 @@ const formatDate = (date: string) => {
     text-decoration: underline;
   }
 
-  /* Timeline styles */
+  .company-range {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .company-summary-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .company-summary-card.is-leaving {
+    opacity: 0;
+    transform: translateY(-6px);
+    transition:
+      opacity 0.18s ease,
+      transform 0.18s ease;
+  }
+
+  .company-summary {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .path-label {
+    margin: 0 0 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+  }
+
+  .timeline-panel[hidden] {
+    display: none;
+  }
+
+  .timeline-panel.is-open {
+    animation: panel-in 0.25s ease-out both;
+  }
+
   .positions-timeline {
     display: flex;
     flex-direction: column;
@@ -167,6 +435,10 @@ const formatDate = (date: string) => {
     gap: 16px;
     list-style: none;
     position: relative;
+  }
+
+  .position-item[hidden] {
+    display: none;
   }
 
   .timeline-marker {
@@ -192,17 +464,16 @@ const formatDate = (date: string) => {
     top: 16px;
     left: 50%;
     transform: translateX(-50%);
+    transform-origin: top center;
     width: 2px;
     height: calc(100% + 20px);
     background-color: var(--color-text-secondary);
   }
 
-  /* Última posición cuando hay múltiples: línea corta */
   .position-item.last .line {
     height: 20px;
   }
 
-  /* Posición única: línea corta */
   .position-item.single .line {
     height: 20px;
   }
@@ -257,7 +528,132 @@ const formatDate = (date: string) => {
     font-size: 0.75rem;
   }
 
-  /* Legacy single position styles */
+  .timeline-more {
+    margin-top: 4px;
+  }
+
+  .timeline-more__btn {
+    appearance: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+    padding: 0.15rem 0;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    background: transparent;
+    border: 0;
+  }
+
+  .timeline-more__btn:hover {
+    text-decoration: underline;
+  }
+
+  .timeline-more__btn:focus-visible {
+    outline: 2px solid var(--color-text-dark);
+    outline-offset: 2px;
+  }
+
+  .timeline-more__btn .caret {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  .timeline-more__btn.is-expanded .caret {
+    transform: rotate(45deg);
+  }
+
+  .position-item.is-extending .line {
+    animation: line-extend 0.4s ease-out both;
+  }
+
+  .position-item.is-revealing {
+    animation: position-flow-in 0.45s ease-out both;
+  }
+
+  .position-item.is-revealing .dot {
+    animation: dot-pop 0.35s ease-out both;
+  }
+
+  .position-item.is-revealing .line {
+    animation: line-grow 0.45s ease-out both;
+  }
+
+  .position-item.is-revealing .position-content {
+    animation: content-fade 0.4s ease-out 0.08s both;
+  }
+
+  @keyframes panel-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes line-extend {
+    from {
+      height: 20px;
+    }
+    to {
+      height: calc(100% + 20px);
+    }
+  }
+
+  @keyframes line-grow {
+    from {
+      transform: translateX(-50%) scaleY(0);
+      opacity: 0.35;
+    }
+    to {
+      transform: translateX(-50%) scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes position-flow-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes dot-pop {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes content-fade {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   article header {
     display: flex;
     justify-content: space-between;
@@ -291,11 +687,16 @@ const formatDate = (date: string) => {
     margin-top: 8px;
   }
 
-  /* Mobile styles */
   @media (width <= 700px) {
     .company-header a,
     article a {
       text-decoration: underline;
+    }
+
+    .company-header__row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
     }
 
     .position-header {
@@ -305,6 +706,39 @@ const formatDate = (date: string) => {
 
     .position-header time {
       font-size: 0.8rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .company-summary-card.is-leaving,
+    .timeline-panel.is-open,
+    .position-item.is-revealing,
+    .position-item.is-revealing .dot,
+    .position-item.is-revealing .line,
+    .position-item.is-revealing .position-content,
+    .position-item.is-extending .line {
+      animation: none;
+      transition: none;
+    }
+
+    .timeline-more__btn .caret {
+      transition: none;
+    }
+  }
+
+  @media print {
+    .company-summary-card,
+    .timeline-panel,
+    .position-item {
+      display: block !important;
+    }
+
+    .position-item {
+      display: flex !important;
+    }
+
+    .timeline-more {
+      display: none;
     }
   }
 </style>

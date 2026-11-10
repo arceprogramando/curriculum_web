@@ -36,6 +36,9 @@ export const LOCALE_CONFIG: Record<Locale, {
   ui: {
     aboutMe: string;
     workExperience: string;
+    experienceShowMore: string;
+    experienceShowLess: string;
+    experiencePathLabel: string;
     projects: string;
     projectsShowMore: string;
     projectsShowLess: string;
@@ -142,6 +145,9 @@ export const LOCALE_CONFIG: Record<Locale, {
     ui: {
       aboutMe: 'Sobre mí',
       workExperience: 'Experiencia laboral',
+      experienceShowMore: 'Ver recorrido ({count})',
+      experienceShowLess: 'Ver resumen',
+      experiencePathLabel: 'Camino en la empresa',
       projects: 'Proyectos',
       projectsShowMore: 'Ver más proyectos ({count})',
       projectsShowLess: 'Ver menos proyectos',
@@ -263,6 +269,9 @@ export const LOCALE_CONFIG: Record<Locale, {
     ui: {
       aboutMe: 'About me',
       workExperience: 'Work Experience',
+      experienceShowMore: 'Show path ({count})',
+      experienceShowLess: 'Show summary',
+      experiencePathLabel: 'Path at the company',
       projects: 'Projects',
       projectsShowMore: 'Show more projects ({count})',
       projectsShowLess: 'Show fewer projects',
