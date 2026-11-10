@@ -12,12 +12,22 @@
 | `og:image:alt` mezclado con crear-cv | Caché del scraper | Alt unificado: `{ogTitle} \| arceprog.dev` |
 | Response 206 | Range request del scraper de Meta | Normal en estáticos; no bloquea preview |
 
+## WhatsApp sin preview (FB sí / WA no)
+
+Causas frecuentes en foros y docs Meta:
+
+- Caché de WhatsApp **sin** API de refresh (probar `https://arceprog.dev/?wa=1`).
+- `og:image` con `?v=` o PNG problemático → usamos **`/og-card.jpg`** limpio (&lt;300 KB).
+- Previews desactivadas en el cliente (Ajustes → Privacidad → Avanzado).
+- Pegar y enviar antes de ~10 s (WA necesita crawlear antes del send).
+
 ## Qué hacer tras deploy
 
 1. En Vercel → Environment Variables: `PUBLIC_FB_APP_ID` = ID de tu app en [developers.facebook.com](https://developers.facebook.com/) (crear app tipo “Negocios” / sitio web si no tenés una).
 2. Redeploy para que Astro inyecte `<meta property="fb:app_id" …>`.
 3. Abrir [Sharing Debugger](https://developers.facebook.com/tools/debug/) con **`https://arceprog.dev/`** (sin `www`).
-4. Pulsar **Volver a extraer** hasta ver títulos cortos, `og:url` apex y `fb:app_id` si está configurado.
+4. Pulsar **Volver a extraer** hasta ver títulos cortos, `og:url` apex, `og:image` = `/og-card.jpg` y `fb:app_id` si está configurado.
+5. En WhatsApp probar **`https://arceprog.dev/?wa=1`** (URL nueva fuerza crawl).
 
 ## Límites prácticos (WA / FB / X)
 

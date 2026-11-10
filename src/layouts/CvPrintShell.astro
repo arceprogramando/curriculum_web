@@ -11,8 +11,8 @@ import { cvPrintPath } from '@/lib/cv-print';
 import LanguageSelector from '@/components/LanguageSelector.astro';
 import SiteHeadIcons from '@/components/SiteHeadIcons.astro';
 
-/** Cache-bust para scrapers de LinkedIn/WhatsApp tras regenerar la imagen OG. */
-const OG_IMAGE_VERSION = '20261110';
+/** Cache-bust WA/FB: cambiar el path del archivo (evitar ?v= en og:image). */
+const DEFAULT_OG_IMAGE = 'https://arceprog.dev/og-card.jpg';
 
 interface Props {
   locale: Locale;
@@ -38,7 +38,7 @@ const {
   ogDescription,
   role = 'general',
   path,
-  ogImage = 'https://arceprog.dev/portada-og.png',
+  ogImage = DEFAULT_OG_IMAGE,
   ogImageAlt,
   noIndex = true,
   keywords,
@@ -59,8 +59,8 @@ const defaultAlternatePath =
   path != null
     ? path.replace(/^\/en\/crear-cv/, '/crear-cv').replace(/^\/crear-cv/, '/crear-cv')
     : cvPrintPath(DEFAULT_LOCALE, role);
-const resolvedOgImageBase = ogImage.startsWith('http') ? ogImage : `https://arceprog.dev${ogImage}`;
-const resolvedOgImage = `${resolvedOgImageBase}${resolvedOgImageBase.includes('?') ? '&' : '?'}v=${OG_IMAGE_VERSION}`;
+const resolvedOgImage = ogImage.startsWith('http') ? ogImage : `https://arceprog.dev${ogImage}`;
+const ogImageIsJpeg = /\.jpe?g(\?|$)/i.test(resolvedOgImage);
 const resolvedOgImageAlt = ogImageAlt ?? `${ogTitle} | arceprog.dev`;
 const buildDate = new Date().toISOString();
 const fbAppId = import.meta.env.PUBLIC_FB_APP_ID as string | undefined;
@@ -100,10 +100,10 @@ const fbAppId = import.meta.env.PUBLIC_FB_APP_ID as string | undefined;
     <meta property="og:title" content={ogTitle} />
     <meta property="og:description" content={ogDescription} />
     <meta property="og:site_name" content="arceprog.dev" />
-    <meta property="og:image" content={resolvedOgImage} />
+    <meta property="og:image" content={resolvedOgImage} itemprop="image" />
     <meta property="og:image:secure_url" content={resolvedOgImage} />
     <meta property="og:image:alt" content={resolvedOgImageAlt} />
-    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:type" content={ogImageIsJpeg ? 'image/jpeg' : 'image/png'} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content={config.ogLocale} />

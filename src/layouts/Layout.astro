@@ -13,8 +13,11 @@ import {
 import SiteHeadIcons from '@/components/SiteHeadIcons.astro';
 import '@/styles/theme.css';
 
-/** Cache-bust para scrapers de LinkedIn/WhatsApp tras regenerar la imagen OG. */
-const OG_IMAGE_VERSION = '20261110';
+/**
+ * WhatsApp es más estricto que FB: JPEG bajo 300KB, URL absoluta sin ?v=,
+ * OG al inicio del head. Cache-bust = cambiar el path del archivo.
+ */
+const DEFAULT_OG_IMAGE = '/og-card.jpg';
 
 interface Props {
   title?: string;
@@ -33,7 +36,7 @@ const {
   description,
   ogTitle,
   ogDescription,
-  ogImage = '/portada-og.png',
+  ogImage = DEFAULT_OG_IMAGE,
   basePath,
   noIndex = false
 } = Astro.props;
@@ -53,8 +56,8 @@ const resolvedTitle = title ?? config.pageTitle;
 const resolvedDescription = description ?? config.metaDescription;
 const resolvedOgTitle = ogTitle ?? config.ogTitle;
 const resolvedOgDescription = ogDescription ?? config.ogDescription;
-const resolvedOgImageBase = ogImage.startsWith('http') ? ogImage : `https://arceprog.dev${ogImage}`;
-const resolvedOgImage = `${resolvedOgImageBase}${resolvedOgImageBase.includes('?') ? '&' : '?'}v=${OG_IMAGE_VERSION}`;
+const resolvedOgImage = ogImage.startsWith('http') ? ogImage : `https://arceprog.dev${ogImage}`;
+const ogImageIsJpeg = /\.jpe?g(\?|$)/i.test(resolvedOgImage);
 const robotsContent = noIndex ? 'noindex, nofollow' : 'index, follow';
 
 // Fecha de última actualización (se actualiza en cada build)
@@ -79,10 +82,34 @@ const allSkills = [
 <html lang={config.htmlLang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="google-site-verification" content="jfdI3O_sVUKVWOWPcViT3dZF-JayDl6N87uwcqGkXXU" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{resolvedTitle}</title>
     <meta name="description" content={resolvedDescription} />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- OG primero: WhatsApp/Meta leen el head temprano y fallan con imagen ?v= o parsers frágiles. -->
+    {fbAppId ? <meta property="fb:app_id" content={fbAppId} /> : null}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={resolvedOgTitle} />
+    <meta property="og:description" content={resolvedOgDescription} />
+    <meta property="og:image" content={resolvedOgImage} itemprop="image" />
+    <meta property="og:image:secure_url" content={resolvedOgImage} />
+    <meta property="og:image:type" content={ogImageIsJpeg ? 'image/jpeg' : 'image/png'} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${resolvedOgTitle} | arceprog.dev`} />
+    <meta property="og:site_name" content="arceprog.dev" />
+    <meta property="og:locale" content={config.ogLocale} />
+    {otherLocales.map(loc => (
+      <meta property="og:locale:alternate" content={getLocaleConfig(loc).ogLocale} />
+    ))}
+    <meta property="og:updated_time" content={buildDate} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={resolvedOgTitle} />
+    <meta name="twitter:description" content={resolvedOgDescription} />
+    <meta name="twitter:image" content={resolvedOgImage} />
+
+    <meta name="google-site-verification" content="jfdI3O_sVUKVWOWPcViT3dZF-JayDl6N87uwcqGkXXU" />
     <SiteHeadIcons />
 
     <!-- SEO: Canonical y hreflang (generado dinámicamente para todos los idiomas) -->
@@ -94,52 +121,20 @@ const allSkills = [
 
     <!-- Preload critical resources -->
     <link rel="preload" as="image" href={image} />
-    <link rel="preload" as="image" href="/portada-og.png" />
     <link rel="preconnect" href="https://res.cloudinary.com" />
     <link rel="preconnect" href="https://avatars.githubusercontent.com" />
     <link rel="dns-prefetch" href="https://res.cloudinary.com" />
     <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
 
-    <!-- Open Graph (WhatsApp/Facebook/LinkedIn). og:url siempre apex sin www. -->
-    {fbAppId ? <meta property="fb:app_id" content={fbAppId} /> : null}
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={resolvedOgTitle} />
-    <meta property="og:description" content={resolvedOgDescription} />
-    <meta property="og:site_name" content="arceprog.dev" />
-    <meta property="og:image" content={resolvedOgImage} />
-    <meta property="og:image:secure_url" content={resolvedOgImage} />
-    <meta property="og:image:alt" content={`${resolvedOgTitle} | arceprog.dev`} />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content={config.ogLocale} />
-    {otherLocales.map(loc => (
-      <meta property="og:locale:alternate" content={getLocaleConfig(loc).ogLocale} />
-    ))}
-
-    <!-- Meta tags adicionales -->
-    <meta property="og:updated_time" content={buildDate} />
     <meta name="robots" content={robotsContent} />
     <meta name="referrer" content="origin-when-cross-origin" />
-
     <meta http-equiv="content-language" content={locale} />
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@arceprog" />
     <meta name="twitter:creator" content="@arceprog" />
     <meta property="twitter:domain" content="arceprog.dev" />
     <meta property="twitter:url" content={canonicalUrl} />
-    <meta name="twitter:title" content={resolvedOgTitle} />
-    <meta name="twitter:description" content={resolvedOgDescription} />
-    <meta name="twitter:image" content={resolvedOgImage} />
     <meta name="twitter:image:alt" content={`${resolvedOgTitle} | arceprog.dev`} />
-
-    <!-- Asegurar que WhatsApp pueda acceder -->
     <meta name="format-detection" content="telephone=no" />
-
-    <!-- Discord Meta Tags (usa Open Graph) -->
     <meta name="theme-color" content="#121a2b" />
 
     <meta name="keywords" content={config.keywords} />
@@ -157,7 +152,7 @@ const allSkills = [
       "url": "https://arceprog.dev",
       "image": {
         "@type": "ImageObject",
-        "url": "https://arceprog.dev/portada-og.png",
+        "url": "https://arceprog.dev/og-card.jpg",
         "width": 1200,
         "height": 630
       },
