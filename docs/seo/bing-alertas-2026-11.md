@@ -8,7 +8,7 @@ Respuesta a las alertas de Bing para `arceprog.dev` tras revisar AI Performance 
 |--------|--------|
 | **IndexNow no configurado** | Clave en `public/RosTqGG9WFFJNd-9mi4YzPJwClJqYFqt.txt`. Tras el build, `postbuild` llama a `scripts/submit-indexnow.mjs` solo si `VERCEL_ENV=production` (o `INDEXNOW_SUBMIT=1` / `npm run indexnow -- --force`). |
 | **Meta descriptions demasiado cortas** | Home, índices RHCSA/IELTS e i18n, y frontmatter de módulos RHCSA 01–10 + IELTS, ajustados a **150–160** caracteres. |
-| **Páginas con noindex** | **Intencional.** `/cv/` y `/crear-cv/` usan `noindex, nofollow` (`CvPrintShell`) y están fuera del sitemap (`astro.config.mjs` filter). No indexar borradores ni vistas de impresión. |
+| **Páginas con noindex** | **Parcial.** `/crear-cv/` y `/en/crear-cv/` son **indexables** (sitemap + `index, follow`). Siguen en `noindex`: `/cv/*` y `/crear-cv/vista/` (impresión / borrador vacío). |
 | **Backlinks / citas AI** | Fuera del código: outreach, perfiles LinkedIn/GitHub y contenido citado. No hay cambio de repo. |
 
 ## Verificación post-deploy

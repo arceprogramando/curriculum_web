@@ -1,4 +1,101 @@
 /* UI del constructor — mobile-first; el CV (.cv-doc) sigue ATS-safe */
+.builder-page {
+  --ui-ink: #161616;
+  --ui-muted: #4a4a4a;
+  --ui-line: #d2cec4;
+  --ui-accent: #0b57d0;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1rem 1rem 0.25rem;
+  font-family: 'Source Sans 3', Calibri, Arial, Helvetica, sans-serif;
+  color: var(--ui-ink);
+}
+
+.builder-seo-intro {
+  margin: 0 0 0.35rem;
+}
+
+.builder-seo-kicker {
+  margin: 0 0 0.45rem;
+  color: var(--ui-muted);
+  font-size: 0.88rem;
+}
+
+.builder-seo-kicker a {
+  color: var(--ui-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.builder-seo-kicker a:hover {
+  text-decoration: underline;
+}
+
+.builder-seo-intro h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.55rem, 5vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.builder-seo-lead {
+  margin: 0 0 0.75rem;
+  max-width: 42rem;
+  color: var(--ui-muted);
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+.builder-seo-body {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+  color: var(--ui-ink);
+}
+
+.builder-seo-body h2 {
+  margin: 1.75rem 0 0.65rem;
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.builder-seo-body ul,
+.builder-seo-body ol {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--ui-muted);
+  line-height: 1.55;
+}
+
+.builder-seo-body li + li {
+  margin-top: 0.35rem;
+}
+
+.builder-seo-faq {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.builder-seo-faq details {
+  background: #fff;
+  border: 1px solid var(--ui-line);
+  border-radius: 10px;
+  padding: 0.65rem 0.85rem;
+}
+
+.builder-seo-faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.builder-seo-faq p {
+  margin: 0.55rem 0 0.15rem;
+  color: var(--ui-muted);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
 .builder {
   --ui-ink: #161616;
   --ui-muted: #4a4a4a;
@@ -13,7 +110,7 @@
 
   max-width: 1180px;
   margin: 0 auto;
-  padding: 1rem var(--ui-pad) calc(var(--sticky-cta-h) + 1.5rem);
+  padding: 0.35rem var(--ui-pad) calc(var(--sticky-cta-h) + 1.5rem);
   font-family: 'Source Sans 3', Calibri, Arial, Helvetica, sans-serif;
   color: var(--ui-ink);
 }
@@ -54,15 +151,8 @@
   color: #8a867c;
 }
 
-.builder-top h1 {
-  margin: 0.85rem 0 0.4rem;
-  font-size: clamp(1.45rem, 5vw, 1.85rem);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-}
-
-.builder-top p {
-  margin: 0;
+.builder-tool-lead {
+  margin: 0.65rem 0 0;
   color: var(--ui-muted);
   max-width: 36rem;
   line-height: 1.45;

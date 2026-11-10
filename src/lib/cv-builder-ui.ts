@@ -1,10 +1,59 @@
 import type { Locale } from '@/lib/i18n';
 
+export type CvBuilderFaq = { question: string; answer: string };
+
 export function getCvBuilderUi(locale: Locale) {
   if (locale === 'en') {
     return {
       title: 'Build your CV',
+      seoH1: 'Build your CV online for free',
+      pageTitle: 'Free Online CV Builder — Print PDF Resume | arceprog.dev',
+      ogTitle: 'Free Online CV Builder | Make a Resume PDF',
       subtitle: 'Edit, preview live, then print a letter PDF. Data stays only in this browser.',
+      seoDescription:
+        'Free online CV builder: edit in the browser, live preview, then print a letter-size PDF. Your data stays only on your device. A free tool by arceprog.dev.',
+      seoKeywords:
+        'free online CV builder, make resume PDF, create CV online, resume maker, curriculum vitae builder',
+      seoLead:
+        'Create a professional curriculum vitae in your browser, preview it live, and print a letter-size PDF ready to send. No account and no upload: everything stays on your device.',
+      seoFeaturesTitle: 'What you get',
+      seoFeatures: [
+        'Form and live preview side by side',
+        'Optional photo stored only in this browser',
+        'Experience, education, projects and skills',
+        'Print to PDF with a clear suggested filename',
+        'Import or export your draft as JSON',
+      ],
+      seoHowTitle: 'How to build your resume',
+      seoHowSteps: [
+        'Fill in your identity, contacts and summary',
+        'Add experience, education and skills',
+        'Check the live preview on the right',
+        'Tap Print PDF and choose Save as PDF',
+      ],
+      seoFaqTitle: 'Frequently asked questions',
+      seoFaq: [
+        {
+          question: 'Is this CV builder free?',
+          answer:
+            'Yes. It is a free tool on arceprog.dev. You can edit, preview and print your resume as PDF without creating an account.',
+        },
+        {
+          question: 'Do you store my personal data?',
+          answer:
+            'No. Your draft is saved in this browser only (local storage). Photos are not uploaded to a server and are not included in the JSON file.',
+        },
+        {
+          question: 'Can I download a PDF resume?',
+          answer:
+            'Yes. Open Print PDF, choose Save as PDF in the print dialog, and use letter size with default margins for a clean one-page look.',
+        },
+        {
+          question: 'Is it available in Spanish?',
+          answer:
+            'Yes. Switch language in the page header, or open https://arceprog.dev/crear-cv/ for the Spanish version.',
+        },
+      ] satisfies CvBuilderFaq[],
       back: '← Portfolio',
       myCvs: 'My role CVs',
       tabForm: 'Form',
@@ -59,7 +108,7 @@ export function getCvBuilderUi(locale: Locale) {
       badge: 'Badge',
       jsonError: 'Could not parse JSON.',
       importOk: 'JSON imported.',
-      previewTitle: 'Live preview',
+      previewTitle: 'Your CV',
       printPageTitle: 'Your CV preview',
       printHint: 'Choose “Save as PDF” in the dialog. Default margins.',
       backEditor: '← Back to editor',
@@ -82,7 +131,54 @@ export function getCvBuilderUi(locale: Locale) {
 
   return {
     title: 'Armá tu CV',
+    seoH1: 'Armá tu CV online gratis',
+    pageTitle: 'Crear CV online gratis — PDF para enviar | arceprog.dev',
+    ogTitle: 'Crear CV online gratis | Armá tu currículum en PDF',
     subtitle: 'Editá, mirá la vista previa e imprimí un PDF letter. Los datos quedan solo en este navegador.',
+    seoDescription:
+      'Constructor gratis de CV online: editá en el navegador, mirá la vista previa e imprimí un PDF letter. Tus datos quedan solo en tu dispositivo. arceprog.dev.',
+    seoKeywords:
+      'crear cv online, armar curriculum vitae, cv pdf gratis, constructor de cv, currículum online argentina',
+    seoLead:
+      'Creá un currículum vitae profesional en el navegador, miralo en vivo e imprimí un PDF tamaño letter listo para enviar. Sin registro y sin subir datos: todo queda en tu dispositivo.',
+    seoFeaturesTitle: 'Qué incluye',
+    seoFeatures: [
+      'Formulario y vista previa al mismo tiempo',
+      'Foto opcional solo en este navegador',
+      'Experiencia, formación, proyectos y skills',
+      'Imprimir a PDF con nombre sugerido claro',
+      'Importar o exportar tu borrador en JSON',
+    ],
+    seoHowTitle: 'Cómo armar tu CV',
+    seoHowSteps: [
+      'Completá identidad, contactos y resumen',
+      'Sumá experiencia, formación y skills',
+      'Revisá la vista previa en vivo',
+      'Tocá Imprimir PDF y elegí Guardar como PDF',
+    ],
+    seoFaqTitle: 'Preguntas frecuentes',
+    seoFaq: [
+      {
+        question: '¿Es gratis crear un CV acá?',
+        answer:
+          'Sí. Es una herramienta gratuita de arceprog.dev. Podés editar, previsualizar e imprimir tu currículum en PDF sin crear una cuenta.',
+      },
+      {
+        question: '¿Guardan mis datos personales?',
+        answer:
+          'No. El borrador queda solo en este navegador (almacenamiento local). La foto no se sube a ningún servidor y no se incluye en el archivo JSON.',
+      },
+      {
+        question: '¿Puedo descargar el CV en PDF?',
+        answer:
+          'Sí. Abrí Imprimir PDF, elegí Guardar como PDF en el diálogo de impresión y usá tamaño letter con márgenes predeterminados para un CV limpio.',
+      },
+      {
+        question: '¿Hay versión en inglés?',
+        answer:
+          'Sí. Cambiá el idioma en el encabezado de la página, o entrá a https://arceprog.dev/en/crear-cv/.',
+      },
+    ] satisfies CvBuilderFaq[],
     back: '← Portfolio',
     myCvs: 'Mis CV por rol',
     tabForm: 'Formulario',
@@ -137,7 +233,7 @@ export function getCvBuilderUi(locale: Locale) {
     badge: 'Badge',
     jsonError: 'No se pudo leer el JSON.',
     importOk: 'JSON importado.',
-    previewTitle: 'Vista previa',
+    previewTitle: 'Tu CV',
     printPageTitle: 'Vista previa de tu CV',
     printHint: 'Elegí “Guardar como PDF”. Márgenes predeterminados.',
     backEditor: '← Volver al editor',

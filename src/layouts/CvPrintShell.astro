@@ -21,6 +21,9 @@ interface Props {
   path?: string;
   ogImage?: string;
   ogImageAlt?: string;
+  /** Por defecto noindex (vistas /cv/ y /crear-cv/vista/). El editor público lo apaga. */
+  noIndex?: boolean;
+  keywords?: string;
 }
 
 const {
@@ -33,7 +36,10 @@ const {
   path,
   ogImage = 'https://arceprog.dev/portada-og.png',
   ogImageAlt,
+  noIndex = true,
+  keywords,
 } = Astro.props;
+const robotsContent = noIndex ? 'noindex, nofollow' : 'index, follow';
 const config = getLocaleConfig(locale);
 const ui = getUI(locale);
 const otherLocales = getOtherLocales(locale);
@@ -61,7 +67,8 @@ const buildDate = new Date().toISOString();
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="noindex, nofollow" />
+    <meta name="robots" content={robotsContent} />
+    {keywords ? <meta name="keywords" content={keywords} /> : null}
     <meta name="author" content="Felipe Arce" />
     <meta name="referrer" content="origin-when-cross-origin" />
     <meta http-equiv="content-language" content={locale} />

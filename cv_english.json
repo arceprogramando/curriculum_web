@@ -423,7 +423,7 @@
     {
       "name": "CV Builder",
       "isActive": true,
-      "description": "Build your resume in the browser, preview it live, and print a ready-to-send PDF. Your data stays only on your device.",
+      "description": "Free online CV builder: edit in the browser, live preview, and print a ready-to-send PDF. No signup; your data stays on your device.",
       "highlights": ["Astro", "TypeScript", "HTML", "CSS"],
       "url": "/en/crear-cv/",
       "github": "https://github.com/arceprogramando/curriculum_web"

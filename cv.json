@@ -424,7 +424,7 @@
     {
       "name": "Creador de CV",
       "isActive": true,
-      "description": "Armá tu currículum en el navegador, previsualizalo al instante e imprimí un PDF listo para enviar. Los datos quedan solo en tu dispositivo.",
+      "description": "Creá tu CV online gratis: editá en el navegador, mirá la vista previa e imprimí un PDF listo para enviar. Sin registro; los datos quedan en tu dispositivo.",
       "highlights": ["Astro", "TypeScript", "HTML", "CSS"],
       "url": "/crear-cv/",
       "github": "https://github.com/arceprogramando/curriculum_web"

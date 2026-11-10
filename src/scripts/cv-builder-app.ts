@@ -115,8 +115,7 @@ function buildChrome(
         <span class="builder-nav-sep" aria-hidden="true">/</span>
         <a href="${myCvs}" title="${ui.myCvs}">${ui.myCvs}</a>
       </nav>
-      <h1 id="builder-title">${ui.title}</h1>
-      <p id="builder-subtitle">${ui.subtitle}</p>
+      <p id="builder-subtitle" class="builder-tool-lead">${ui.subtitle}</p>
     </header>
 
     <div class="builder-toolbar" role="group" aria-label="${ui.actionsRegion}">

@@ -142,7 +142,7 @@ test.describe('Demo crear-cv', () => {
     await installDemoCursor(page);
 
     await page.goto('/crear-cv/');
-    await expect(page.getByRole('heading', { name: 'Armá tu CV' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Armá tu CV online gratis' })).toBeVisible();
     await ensureDemoCursor(page);
     await page.getByRole('button', { name: 'Empezar vacío' }).click();
     await pause(page, 700);

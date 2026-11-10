@@ -31,7 +31,8 @@ export default defineConfig({
           en: 'en-US',
         },
       },
-      filter: (page) => !page.includes('/cv/') && !page.includes('/crear-cv'),
+      // Indexar /crear-cv/; excluir vistas de impresión y CV por rol.
+      filter: (page) => !page.includes('/cv/') && !page.includes('/crear-cv/vista'),
     }),
   ],
   image: {

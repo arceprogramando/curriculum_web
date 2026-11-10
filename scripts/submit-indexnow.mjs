@@ -40,7 +40,11 @@ function collectUrls() {
     const xml = readFileSync(path, 'utf8');
     for (const match of xml.matchAll(/<loc>([^<]+)<\/loc>/g)) {
       const loc = match[1].trim();
-      if (loc.startsWith(`https://${HOST}/`) && !loc.includes('/cv/') && !loc.includes('/crear-cv')) {
+      if (
+        loc.startsWith(`https://${HOST}/`) &&
+        !loc.includes('/cv/') &&
+        !loc.includes('/crear-cv/vista')
+      ) {
         urls.add(loc);
       }
     }

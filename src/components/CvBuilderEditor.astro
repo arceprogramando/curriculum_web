@@ -12,24 +12,121 @@ interface Props {
 const { locale } = Astro.props;
 const ui = getCvBuilderUi(locale);
 const path = locale === 'en' ? '/en/crear-cv/' : '/crear-cv/';
-const pageTitle = `${ui.title} | arceprog.dev`;
+const homePath = locale === 'en' ? '/en/' : '/';
+const canonicalUrl = `https://arceprog.dev${path}`;
 const ogImageAlt =
   locale === 'en'
-    ? 'Open Graph cover for the public CV builder on arceprog.dev'
-    : 'Portada Open Graph del constructor público de CV en arceprog.dev';
+    ? 'Open Graph cover for the free online CV builder on arceprog.dev'
+    : 'Portada Open Graph del constructor gratis de CV online en arceprog.dev';
+
+const webAppLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: ui.seoH1,
+  alternateName: ui.title,
+  url: canonicalUrl,
+  description: ui.seoDescription,
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Any',
+  browserRequirements: 'Requires JavaScript',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  inLanguage: locale === 'en' ? 'en-US' : 'es-AR',
+  creator: {
+    '@type': 'Person',
+    name: 'Felipe Arce',
+    url: 'https://arceprog.dev/',
+  },
+  isAccessibleForFree: true,
+};
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: ui.seoFaq.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: locale === 'en' ? 'Home' : 'Inicio',
+      item: `https://arceprog.dev${homePath}`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: ui.seoH1,
+      item: canonicalUrl,
+    },
+  ],
+};
 ---
 
 <CvPrintShell
   locale={locale}
   path={path}
-  title={pageTitle}
-  description={ui.subtitle}
-  ogTitle={ui.title}
-  ogDescription={ui.subtitle}
+  title={ui.pageTitle}
+  description={ui.seoDescription}
+  ogTitle={ui.ogTitle}
+  ogDescription={ui.seoDescription}
   ogImageAlt={ogImageAlt}
+  keywords={ui.seoKeywords}
+  noIndex={false}
 >
-  <main id="main-content" tabindex="-1">
-    <div id="cv-builder" data-locale={locale}></div>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(webAppLd)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+
+  <main id="main-content" class="builder-page" tabindex="-1">
+    <header class="builder-seo-intro">
+      <p class="builder-seo-kicker">
+        <a href={homePath}>{locale === 'en' ? 'arceprog.dev' : 'arceprog.dev'}</a>
+        <span aria-hidden="true"> · </span>
+        {locale === 'en' ? 'Free tool' : 'Herramienta gratis'}
+      </p>
+      <h1 id="builder-seo-h1">{ui.seoH1}</h1>
+      <p class="builder-seo-lead">{ui.seoLead}</p>
+    </header>
+
+    <div id="cv-builder" data-locale={locale} aria-label={ui.title}></div>
+
+    <section class="builder-seo-body" aria-labelledby="builder-seo-features">
+      <h2 id="builder-seo-features">{ui.seoFeaturesTitle}</h2>
+      <ul>
+        {ui.seoFeatures.map((feature) => <li>{feature}</li>)}
+      </ul>
+
+      <h2 id="builder-seo-how">{ui.seoHowTitle}</h2>
+      <ol>
+        {ui.seoHowSteps.map((step) => <li>{step}</li>)}
+      </ol>
+
+      <h2 id="builder-seo-faq">{ui.seoFaqTitle}</h2>
+      <div class="builder-seo-faq">
+        {
+          ui.seoFaq.map((item) => (
+            <details>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))
+        }
+      </div>
+    </section>
   </main>
 </CvPrintShell>
 
