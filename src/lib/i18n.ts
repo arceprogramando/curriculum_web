@@ -71,6 +71,8 @@ export const LOCALE_CONFIG: Record<Locale, {
     readGuide: string;
     rhcsaBlogTitle: string;
     rhcsaBlogDescription: string;
+    rhcsaPracticeSiteUrl: string;
+    rhcsaPracticeNotesLabel: string;
     rhcsaIndexContextTitle: string;
     rhcsaIndexContextNow: string;
     rhcsaIndexContextPipeline: string;
@@ -136,7 +138,7 @@ export const LOCALE_CONFIG: Record<Locale, {
     ogTitle: 'Felipe Arce | Full Stack SR · MERN · Next.js & NestJS',
     ogDescription: 'Desarrollador Full Stack MERN SR en Buenos Aires. Técnico Universitario en Programación (UTN). React, Node.js, TypeScript y Red Hat sysadmin.',
     keywords: 'Felipe Arce, desarrollador fullstack SR, desarrollador MERN, React, Node.js, MongoDB, Express, JavaScript, TypeScript, portfolio developer, programador web, frontend developer, backend developer, Buenos Aires, Argentina',
-    jobTitle: 'Desarrollador FullStack SR',
+    jobTitle: 'Desarrollador FullStack mid/SR',
     ui: {
       aboutMe: 'Sobre mí',
       workExperience: 'Experiencia laboral',
@@ -173,9 +175,11 @@ export const LOCALE_CONFIG: Record<Locale, {
       currentPractices: 'Prácticas actuales',
       viewAllPractices: 'Ver todas las prácticas',
       readGuide: 'Leer guía',
-      rhcsaBlogTitle: 'Blog RHCSA EX200',
+      rhcsaBlogTitle: 'Práctica RHCSA / sysadmin',
       rhcsaBlogDescription:
-        'Labs y notas de Felipe Arce para RHCSA EX200 en Linux: RH124, RH134, RH024 y RH104 hechos; RH199 en curso; libro Van Vugt y prácticas con lab Vagrant.',
+        'Sitio de práctica interactiva (tiempos, modos Flatpak/Podman, glosario) mientras preparo el path RHCSA. Abajo, notas recientes del blog en este portfolio.',
+      rhcsaPracticeSiteUrl: 'https://exam-sysadmin-practice.arceprog.dev/',
+      rhcsaPracticeNotesLabel: 'Notas RHCSA en este sitio',
       rhcsaIndexContextTitle: 'Dónde estoy ahora con RHCSA',
       rhcsaIndexContextNow:
         'RH024 y RH104 terminados (RH104, 17 oct 2026). RH124 y RH134 acreditados. Libro Van Vugt pág. 335/1593 (~21%, Cap. 7 Permissions) y RH199 Rapid Track (10/154, Cap. 2 Links). Meta práctica pre-examen: ~30 oct 2026 (día 20/73 del plan; quedan ~53 días).',
@@ -255,7 +259,7 @@ export const LOCALE_CONFIG: Record<Locale, {
     ogTitle: 'Felipe Arce | Full Stack SR · MERN · Next.js & NestJS',
     ogDescription: 'Full Stack MERN SR developer in Buenos Aires. University Programming Technician (UTN). React, Node.js, TypeScript, and Red Hat sysadmin.',
     keywords: 'Felipe Arce, full stack developer SR, MERN developer, React, Node.js, MongoDB, Express, JavaScript, TypeScript, developer portfolio, web programmer, frontend developer, backend developer, Buenos Aires, Argentina',
-    jobTitle: 'Full Stack Developer · SR',
+    jobTitle: 'Full Stack Developer · mid/SR',
     ui: {
       aboutMe: 'About me',
       workExperience: 'Work Experience',
@@ -292,9 +296,11 @@ export const LOCALE_CONFIG: Record<Locale, {
       currentPractices: 'Current practice',
       viewAllPractices: 'View all practice logs',
       readGuide: 'Read guide',
-      rhcsaBlogTitle: 'RHCSA EX200 Blog',
+      rhcsaBlogTitle: 'RHCSA / sysadmin practice',
       rhcsaBlogDescription:
-        'Felipe Arce study notes and labs for RHCSA EX200 on Linux: RH124, RH134, RH024 and RH104 completed; RH199 in progress; Van Vugt book and Vagrant labs.',
+        'Interactive practice site (timers, Flatpak/Podman modes, glossary) while I prepare the RHCSA path. Below, recent study notes on this portfolio.',
+      rhcsaPracticeSiteUrl: 'https://exam-sysadmin-practice.arceprog.dev/',
+      rhcsaPracticeNotesLabel: 'RHCSA notes on this site',
       rhcsaIndexContextTitle: 'Where I stand on RHCSA',
       rhcsaIndexContextNow:
         'RH024 and RH104 completed (RH104, Oct 17, 2026). RH124 and RH134 earned. Van Vugt book p. 335/1593 (~21%, Ch. 7 Permissions) and RH199 Rapid Track (10/154, Ch. 2 Links). Pre-exam practice target: ~Oct 30, 2026 (day 20/73 of the plan; ~53 days left).',

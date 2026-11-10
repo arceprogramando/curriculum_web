@@ -1,0 +1,105 @@
+---
+import { getCollection } from 'astro:content';
+import Section from '../Section.astro';
+import { getContentEntrySlug } from '@/lib/content-entry';
+import { getLocalePath, getUI, type Locale } from '@/lib/i18n';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = 'es' } = Astro.props;
+const ui = getUI(locale);
+
+const latestPostmortems = (await getCollection('postmortems', ({ data }) => data.locale === locale && !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+---
+
+{
+  latestPostmortems.length > 0 && (
+    <Section title={ui.problematicasBlogTitle}>
+      <span id="problematicas" aria-hidden="true"></span>
+      <p class="description">{ui.problematicasBlogDescription}</p>
+      <ul class="postmortem-list">
+        {latestPostmortems.map((post) => (
+          <li>
+            <header>
+              <a class="post-link" href={getLocalePath(locale, `problematicas/${getContentEntrySlug(post.id)}`)}>
+                {post.data.title}
+              </a>
+              <small>{post.data.date.toLocaleDateString(locale === 'es' ? 'es-AR' : 'en-US')}</small>
+            </header>
+            <p>{post.data.excerpt}</p>
+          </li>
+        ))}
+      </ul>
+      <a class="cta" href={getLocalePath(locale, 'problematicas')}>{ui.viewAllProblematicas}</a>
+    </Section>
+  )
+}
+
+<style>
+  .description {
+    margin-bottom: 12px;
+  }
+
+  .postmortem-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .post-link {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: inherit;
+    font-family: inherit;
+    color: inherit;
+  }
+
+  .post-link:hover {
+    text-decoration: underline;
+  }
+
+  li p {
+    color: var(--color-text-secondary);
+    margin-top: 4px;
+    font-size: 0.9rem;
+  }
+
+  small {
+    white-space: nowrap;
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+  }
+
+  .cta {
+    display: inline-block;
+    background-color: var(--color-bg-badge);
+    color: white;
+    text-decoration: none;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .cta:hover {
+    text-decoration: underline;
+    color: white;
+  }
+
+  @media (width <= 700px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+  }
+</style>

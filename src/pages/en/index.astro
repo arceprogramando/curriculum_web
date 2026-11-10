@@ -8,6 +8,7 @@ import Projects from '@/components/sections/Projects.astro';
 import KeyboardManager from '@/components/KeyboardManager.astro';
 import JobSimulations from '@/components/sections/JobSimulations.astro';
 import CurrentPractices from '@/components/sections/CurrentPractices.astro';
+import Postmortems from '@/components/sections/Postmortems.astro';
 import LanguageSelector from '@/components/LanguageSelector.astro';
 import type { Locale } from '@/lib/i18n';
 
@@ -25,6 +26,9 @@ const locale: Locale = 'en';
     </div>
     <Education locale={locale} />
     <CurrentPractices locale={locale} />
+    <div class="no-print">
+      <Postmortems locale={locale} />
+    </div>
     <JobSimulations locale={locale} />
   </main>
 

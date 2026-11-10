@@ -1,12 +1,12 @@
 {
   "basics": {
     "name": "Felipe Arce",
-    "label": "Desarrollador FullStack SR",
+    "label": "Desarrollador FullStack mid/SR",
     "image": "https://avatars.githubusercontent.com/u/85712228?v=4&s=128",
     "email": "arceprogramando@gmail.com",
     "phone": "+54 91150990913",
     "url": "https://arceprog.dev",
-    "summary": "Desarrollador de Software con 5 años de experiencia en desarrollo Full-Stack web y aplicaciones móviles. Técnico Universitario en Programación (UTN, 2025). Cursando el ingreso 2027 a Ingeniería Informática en la UNLaM. Experto en optimización de flujos de usuario, SEO y aplicaciones orientadas a clientes.",
+    "summary": "Desarrollador de Software en Full-Stack web y aplicaciones móviles. Trabajando actualmente en America Virtual. Técnico Universitario en Programación. Cursando Ingeniería Informática. Me especializo en Full Stack con React, Next.js y NestJS, y en apps móviles con React Native para productos reales.",
     "location": {
       "address": "Gonzalez Catan",
       "postalCode": "1759",
@@ -316,36 +316,14 @@
       "institution": "Autodidacta",
       "certificates": [
         {
-          "url": "https://cert.efset.org/5DYD2H",
-          "area": "Ingles Intermedio",
-          "description": "EFSET (referencia externa): B1 en lectura y comprensión auditiva; A2 en expresión oral. Complementa la formación presencial del CUI (ciclo básico cerrado en A2+; Nivel 7 Consolidación = MCER B1).",
-          "startDate": "2022-04-03",
-          "endDate": null,
-          "score": "9",
-          "courses": [
-            "Ingles"
-          ]
-        },
-        {
           "url": null,
           "area": "SQL",
-          "description": "Diseño de Base de Datos SQL , Estoy aprendiendo :(",
+          "description": "Diseño y modelado de bases de datos SQL: tablas, relaciones e integridad referencial. En práctica continua junto con PostgreSQL en proyectos.",
           "startDate": "2024-04-03",
           "endDate": null,
           "score": "9",
           "courses": [
             "SQL"
-          ]
-        },
-        {
-          "url": null,
-          "area": "Linux",
-          "description": "Entusiasta de Linux aveces escribo mkdir, ls, pwd, y rm -rf. Utilizo Fedora como mi distribución principal desde 2022.",
-          "startDate": "2022-04-03",
-          "endDate": null,
-          "score": "9",
-          "courses": [
-            "Linux"
           ]
         },
         {
@@ -554,7 +532,7 @@
     },
     {
       "language": "English",
-      "fluency": "CUI N7 Consolidación · MCER B1 (en curso) · A2+ ciclo básico · B1 lectura/escucha (EFSET)"
+      "fluency": "CUI Nivel 7 Consolidación · MCER B1 (en curso) · ciclo básico A2+"
     }
   ],
   "interests": [
@@ -578,12 +556,12 @@
   ],
   "projects": [
     {
-      "name": "Práctica Sysadmin Linux",
+      "name": "Práctica RHCSA / sysadmin",
       "isActive": true,
-      "description": "Práctica personal para un examen de sysadmin Linux: ejercicios y notas en la web mientras me preparo.",
+      "description": "Sitio de práctica interactiva para el path RHCSA: tiempos, modos Flatpak/Podman y glosario. Más completo que las notas del portfolio.",
       "highlights": [
         "Linux",
-        "Sysadmin",
+        "RHCSA",
         "HTML",
         "CSS"
       ],

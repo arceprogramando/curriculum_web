@@ -14,21 +14,20 @@ const ui = getUI(locale);
 const latestPosts = (await getCollection('rhcsa', ({ data }) => data.locale === locale && !data.draft))
   .sort((a, b) => a.data.moduleNumber - b.data.moduleNumber)
   .slice(0, 3);
-const latestIeltsPosts = (await getCollection('ielts', ({ data }) => data.locale === locale && !data.draft))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
-const latestPostmortems = (await getCollection('postmortems', ({ data }) => data.locale === locale && !data.draft))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
 ---
 
 <Section title={ui.currentPractices}>
   <span id="practicas-actuales" aria-hidden="true"></span>
   <div class="practice-group">
     <h3>
-      <a class="group-link" href={getLocalePath(locale, 'rhcsa-ex200')}>RHCSA EX200</a>
+      <a class="group-link" href={ui.rhcsaPracticeSiteUrl} target="_blank" rel="noopener noreferrer">
+        {ui.rhcsaBlogTitle}
+      </a>
     </h3>
     <p class="description">{ui.rhcsaBlogDescription}</p>
+    <p class="notes-link">
+      <a class="group-link" href={getLocalePath(locale, 'rhcsa-ex200')}>{ui.rhcsaPracticeNotesLabel}</a>
+    </p>
     <ul class="practice-list">
       {latestPosts.map((post) => (
         <li>
@@ -43,54 +42,10 @@ const latestPostmortems = (await getCollection('postmortems', ({ data }) => data
       ))}
     </ul>
   </div>
-
-  <div class="practice-group">
-    <h3>
-      <a class="group-link" href={getLocalePath(locale, 'ielts-practice')}>{ui.ieltsBlogTitle}</a>
-    </h3>
-    <p class="description">{ui.ieltsBlogDescription}</p>
-    <ul class="practice-list">
-      {latestIeltsPosts.map((post) => (
-        <li>
-          <header>
-            <a class="practice-link" href={getLocalePath(locale, `ielts-practice/${getContentEntrySlug(post.id)}`)}>
-              {post.data.title}
-            </a>
-            <small>{post.data.date.toLocaleDateString(locale === 'es' ? 'es-AR' : 'en-US')}</small>
-          </header>
-          <p>{post.data.excerpt}</p>
-        </li>
-      ))}
-    </ul>
-  </div>
-
-  <div class="practice-group">
-    <h3>
-      <a class="group-link" href={getLocalePath(locale, 'problematicas')}>{ui.problematicasBlogTitle}</a>
-    </h3>
-    <p class="description">{ui.problematicasBlogDescription}</p>
-    <ul class="practice-list">
-      {latestPostmortems.map((post) => (
-        <li>
-          <header>
-            <a class="practice-link" href={getLocalePath(locale, `problematicas/${getContentEntrySlug(post.id)}`)}>
-              {post.data.title}
-            </a>
-            <small>{post.data.date.toLocaleDateString(locale === 'es' ? 'es-AR' : 'en-US')}</small>
-          </header>
-          <p>{post.data.excerpt}</p>
-        </li>
-      ))}
-    </ul>
-  </div>
 </Section>
 
 <style>
   .practice-group {
-    margin-bottom: 24px;
-  }
-
-  .practice-group:last-child {
     margin-bottom: 0;
   }
 
@@ -116,11 +71,27 @@ const latestPostmortems = (await getCollection('postmortems', ({ data }) => data
     margin-bottom: 12px;
   }
 
+  .notes-link {
+    margin: 0 0 12px;
+  }
+
+  .notes-link .group-link {
+    background: transparent;
+    color: var(--color-text-dark);
+    padding: 0;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .notes-link .group-link:hover {
+    color: var(--color-text-secondary);
+  }
+
   .practice-list {
     display: flex;
     flex-direction: column;
     gap: 14px;
-    margin-bottom: 12px;
+    margin-bottom: 0;
   }
 
   header {
@@ -169,5 +140,4 @@ const latestPostmortems = (await getCollection('postmortems', ({ data }) => data
       gap: 2px;
     }
   }
-
 </style>

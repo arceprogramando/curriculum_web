@@ -1,12 +1,12 @@
 {
   "basics": {
     "name": "Felipe Arce",
-    "label": "Full Stack Developer · SR",
+    "label": "Full Stack Developer · mid/SR",
     "image": "https://avatars.githubusercontent.com/u/85712228?v=4&s=128",
     "email": "arceprogramando@gmail.com",
     "phone": "+54 91150990913",
     "url": "https://arceprog.dev",
-    "summary": "Software Developer with 5 years of experience in Full-Stack web development and mobile applications. University Programming Technician (UTN, 2025). Taking the 2027 Computer Engineering entrance course at UNLaM. Expert in user flow optimization, SEO, and client-oriented applications.",
+    "summary": "Software Developer in Full-Stack web development and mobile applications. Currently working at America Virtual. University Programming Technician. Studying Computer Engineering. I specialize in Full Stack with React, Next.js, and NestJS, and in React Native apps for real products.",
     "location": {
       "address": "Gonzalez Catan",
       "postalCode": "1759",
@@ -316,36 +316,14 @@
       "institution": "Self-taught",
       "certificates": [
         {
-          "url": "https://cert.efset.org/5DYD2H",
-          "area": "Intermediate English",
-          "description": "EFSET (external reference): B1 in reading and listening; A2 in spoken expression. Complements in-person CUI training (basic cycle completed at A2+; Level 7 Consolidation = CEFR B1).",
-          "startDate": "2022-04-03",
-          "endDate": null,
-          "score": "9",
-          "courses": [
-            "English"
-          ]
-        },
-        {
           "url": null,
           "area": "SQL",
-          "description": "SQL Database Design, I'm learning :(",
+          "description": "SQL database design and modeling: tables, relationships, and referential integrity. Ongoing practice alongside PostgreSQL in projects.",
           "startDate": "2024-04-03",
           "endDate": null,
           "score": "9",
           "courses": [
             "SQL"
-          ]
-        },
-        {
-          "url": null,
-          "area": "Linux",
-          "description": "Linux enthusiast sometimes I write mkdir, ls, pwd, and rm -rf. I use Fedora as my main distribution since 2022.",
-          "startDate": "2022-04-03",
-          "endDate": null,
-          "score": "9",
-          "courses": [
-            "Linux"
           ]
         },
         {
@@ -554,7 +532,7 @@
     },
     {
       "language": "English",
-      "fluency": "CUI L7 Consolidation · CEFR B1 (in progress) · A2+ basic cycle · B1 reading/listening (EFSET)"
+      "fluency": "CUI Level 7 Consolidation · CEFR B1 (in progress) · basic cycle A2+"
     }
   ],
   "interests": [
@@ -578,12 +556,12 @@
   ],
   "projects": [
     {
-      "name": "Linux Sysadmin Practice",
+      "name": "RHCSA / sysadmin practice",
       "isActive": true,
-      "description": "Personal practice site for a Linux sysadmin exam: web exercises and notes while I prepare.",
+      "description": "Interactive practice site for the RHCSA path: timers, Flatpak/Podman modes, and glossary. More complete than the portfolio notes.",
       "highlights": [
         "Linux",
-        "Sysadmin",
+        "RHCSA",
         "HTML",
         "CSS"
       ],
