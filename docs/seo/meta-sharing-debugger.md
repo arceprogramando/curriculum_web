@@ -17,7 +17,7 @@
 Causas frecuentes en foros y docs Meta:
 
 - Caché de WhatsApp **sin** API de refresh (probar `https://arceprog.dev/?wa=1`).
-- `og:image` con `?v=` o PNG problemático → usamos **`/og-card.jpg`** limpio (&lt;300 KB).
+- `og:image` con `?v=` o caché rota → URL limpia sin query (hoy **`/og-wa.png`**, &lt;50 KB).
 - Previews desactivadas en el cliente (Ajustes → Privacidad → Avanzado).
 - Pegar y enviar antes de ~10 s (WA necesita crawlear antes del send).
 
