@@ -38,35 +38,60 @@
           "startDate": "2025-12-01",
           "endDate": null,
           "description": "Fullstack development of the HR management system for Grupo Sabha: employees and org chart, leave and vacation workflows with approval, performance reviews, home office, recognition programs, internal news, and multi-company administration (business units, roles, and permissions). Backend with NestJS, PostgreSQL and Prisma (JWT, RBAC, audit, Swagger); frontend with Next.js 15, React 19 and shadcn/ui; Excel import/export of staff with validations.",
-          "skills": ["NestJS", "Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Tailwind", "JWT", "Swagger", "Excel"]
+          "skills": [
+            "NestJS",
+            "Next.js",
+            "React",
+            "TypeScript",
+            "PostgreSQL",
+            "Prisma",
+            "Tailwind",
+            "JWT",
+            "Swagger",
+            "Excel"
+          ]
         },
         {
           "title": "React Native Developer",
           "startDate": "2025-12-01",
           "endDate": null,
           "description": "SQLite implementation in event access control app by roster (OurClub), enabling offline storage of attendee data and connectivity-free operation.",
-          "skills": ["React Native", "SQLite", "TypeScript"]
+          "skills": [
+            "React Native",
+            "SQLite",
+            "TypeScript"
+          ]
         },
         {
           "title": "React Native Developer",
           "startDate": "2025-10-01",
           "endDate": "2025-12-01",
           "description": "Development of Notifications Notebook application for the Official Bulletin of students from Buenos Aires province schools (DGCYE), managing attendance, grades, and school trajectory.",
-          "skills": ["React Native", "TypeScript"]
+          "skills": [
+            "React Native",
+            "TypeScript"
+          ]
         },
         {
           "title": "Frontend Developer",
           "startDate": "2025-08-01",
           "endDate": "2025-10-01",
           "description": "Development of CRM for Gestión Seguros with React and Material UI, recording calls and client tracking.",
-          "skills": ["React", "Material UI", "TypeScript"]
+          "skills": [
+            "React",
+            "Material UI",
+            "TypeScript"
+          ]
         },
         {
           "title": "FullStack Developer",
           "startDate": "2025-06-01",
           "endDate": "2025-08-01",
           "description": "Maintenance and development on legacy OurClub project with AngularJS and .NET 3.1.",
-          "skills": ["AngularJS", ".NET 3.1"]
+          "skills": [
+            "AngularJS",
+            ".NET 3.1"
+          ]
         }
       ]
     },
@@ -80,7 +105,11 @@
           "startDate": "2022-12-01",
           "endDate": "2023-05-01",
           "description": "From December 2022 to May 2023 I built the frontend of a health platform, implementing the UI in HTML and CSS. Other people maintain the site you see today; I am no longer in charge of it.",
-          "skills": ["HTML", "CSS", "JavaScript"]
+          "skills": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+          ]
         }
       ]
     }
@@ -96,7 +125,9 @@
           "startDate": "2026-09-08",
           "endDate": "2026-10-17",
           "score": null,
-          "courses": ["Linux Fundamentals"]
+          "courses": [
+            "Linux Fundamentals"
+          ]
         },
         {
           "url": "https://rol.redhat.com/rol/app/courses/rh199-10.0",
@@ -105,7 +136,9 @@
           "startDate": "2026-08-27",
           "endDate": null,
           "score": null,
-          "courses": ["RHCSA Rapid Track"]
+          "courses": [
+            "RHCSA Rapid Track"
+          ]
         },
         {
           "url": "https://www.credly.com/badges/a6a4a878-0fec-4a05-9c66-57cc1e6de2f6/linked_in_profile",
@@ -114,7 +147,9 @@
           "startDate": "2026-01-01",
           "endDate": "2026-06-01",
           "score": null,
-          "courses": ["Red Hat System Administration II"]
+          "courses": [
+            "Red Hat System Administration II"
+          ]
         },
         {
           "url": "https://www.credly.com/badges/b3bb2779-eefd-4646-813c-e142e5c9d219/linked_in_profile",
@@ -123,7 +158,9 @@
           "startDate": "2025-07-01",
           "endDate": "2025-10-01",
           "score": null,
-          "courses": ["Red Hat System Administration"]
+          "courses": [
+            "Red Hat System Administration"
+          ]
         }
       ]
     },
@@ -137,7 +174,11 @@
           "startDate": "2026-07-20",
           "endDate": null,
           "score": null,
-          "courses": ["Mathematics", "Geometry", "Reading and writing seminar"]
+          "courses": [
+            "Mathematics",
+            "Geometry",
+            "Reading and writing seminar"
+          ]
         }
       ]
     },
@@ -151,7 +192,15 @@
           "startDate": "2024-01-01",
           "endDate": "2025-12-01",
           "score": "9",
-          "courses": ["C#", ".NET", "WPF", "SQL", "Astro", "React", "TypeScript"]
+          "courses": [
+            "C#",
+            ".NET",
+            "WPF",
+            "SQL",
+            "Astro",
+            "React",
+            "TypeScript"
+          ]
         }
       ]
     },
@@ -165,7 +214,11 @@
           "startDate": "2026-10-26",
           "endDate": null,
           "score": null,
-          "courses": ["English Consolidation Level 07", "CEFR B1", "In progress"]
+          "courses": [
+            "English Consolidation Level 07",
+            "CEFR B1",
+            "In progress"
+          ]
         },
         {
           "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00505809_01509288_1_0",
@@ -174,7 +227,10 @@
           "startDate": "2026-08-01",
           "endDate": "2026-10-17",
           "score": "76",
-          "courses": ["Basic English Level 06", "CEFR A2+"]
+          "courses": [
+            "Basic English Level 06",
+            "CEFR A2+"
+          ]
         },
         {
           "url": null,
@@ -183,7 +239,10 @@
           "startDate": "2026-06-03",
           "endDate": "2026-07-31",
           "score": null,
-          "courses": ["Basic English Level 05", "CEFR A2"]
+          "courses": [
+            "Basic English Level 05",
+            "CEFR A2"
+          ]
         },
         {
           "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00488612_01509288_1_0",
@@ -192,7 +251,10 @@
           "startDate": "2026-03-30",
           "endDate": "2026-05-18",
           "score": null,
-          "courses": ["Basic English Level 04", "CEFR A2"]
+          "courses": [
+            "Basic English Level 04",
+            "CEFR A2"
+          ]
         },
         {
           "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00477927_01509288_1_0",
@@ -201,7 +263,10 @@
           "startDate": "2026-01-13",
           "endDate": "2026-03-08",
           "score": null,
-          "courses": ["Basic English Level 03", "CEFR A1"]
+          "courses": [
+            "Basic English Level 03",
+            "CEFR A1"
+          ]
         },
         {
           "url": "https://api.cuiweb.edu.ar/certificadosnew/0090_00460949_01509288_1_0",
@@ -210,7 +275,10 @@
           "startDate": "2025-08-01",
           "endDate": "2025-12-01",
           "score": "82",
-          "courses": ["Basic English Level 02", "CEFR A1"]
+          "courses": [
+            "Basic English Level 02",
+            "CEFR A1"
+          ]
         }
       ]
     },
@@ -224,7 +292,9 @@
           "startDate": "2023-04-01",
           "endDate": "2023-11-01",
           "score": "9",
-          "courses": ["Backend Programming with Node.js, Express and MongoDB"]
+          "courses": [
+            "Backend Programming with Node.js, Express and MongoDB"
+          ]
         },
         {
           "url": "https://pub.coderhouse.com/legacy-certificates/6422ef2e1553510002cd5b4f",
@@ -233,7 +303,12 @@
           "startDate": "2022-08-01",
           "endDate": "2023-03-01",
           "score": "8",
-          "courses": ["ReactJS", "JavaScript", "HTML", "CSS"]
+          "courses": [
+            "ReactJS",
+            "JavaScript",
+            "HTML",
+            "CSS"
+          ]
         }
       ]
     },
@@ -247,7 +322,9 @@
           "startDate": "2022-04-03",
           "endDate": null,
           "score": "9",
-          "courses": ["English"]
+          "courses": [
+            "English"
+          ]
         },
         {
           "url": null,
@@ -256,7 +333,9 @@
           "startDate": "2024-04-03",
           "endDate": null,
           "score": "9",
-          "courses": ["SQL"]
+          "courses": [
+            "SQL"
+          ]
         },
         {
           "url": null,
@@ -265,7 +344,9 @@
           "startDate": "2022-04-03",
           "endDate": null,
           "score": "9",
-          "courses": ["Linux"]
+          "courses": [
+            "Linux"
+          ]
         },
         {
           "url": null,
@@ -274,7 +355,9 @@
           "startDate": "2022-04-03",
           "endDate": null,
           "score": "9",
-          "courses": ["Figma"]
+          "courses": [
+            "Figma"
+          ]
         }
       ]
     }
@@ -283,7 +366,13 @@
     {
       "name": "HTML",
       "level": "Master",
-      "keywords": ["Web Development", "Frontend", "Layout", "Seo", "SEM"]
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Layout",
+        "Seo",
+        "SEM"
+      ]
     },
     {
       "name": "CSS",
@@ -325,72 +414,137 @@
     {
       "name": "React",
       "level": "Advanced",
-      "keywords": ["Web Development", "Frontend", "JavaScript Library", "UI"]
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "JavaScript Library",
+        "UI"
+      ]
     },
     {
       "name": "React Native",
       "level": "Advanced",
-      "keywords": ["Mobile Development", "Frontend", "JavaScript", "iOS", "Android"]
+      "keywords": [
+        "Mobile Development",
+        "Frontend",
+        "JavaScript",
+        "iOS",
+        "Android"
+      ]
     },
     {
       "name": "Next.js",
       "level": "Intermediate",
-      "keywords": ["Web Development", "Frontend", "React", "Framework", "SSR"]
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "React",
+        "Framework",
+        "SSR"
+      ]
     },
     {
       "name": "Tailwind",
       "level": "Advanced",
-      "keywords": ["Web Development", "Frontend", "CSS Framework"]
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "CSS Framework"
+      ]
     },
     {
       "name": "Material UI",
       "level": "Advanced",
-      "keywords": ["Web Development", "Frontend", "React", "UI Framework"]
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "React",
+        "UI Framework"
+      ]
     },
     {
       "name": "Node.js",
       "level": "Advanced",
-      "keywords": ["Web Development", "Backend", "JavaScript", "Server"]
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "JavaScript",
+        "Server"
+      ]
     },
     {
       "name": "Express.js",
       "level": "Advanced",
-      "keywords": ["Web Development", "Backend", "JavaScript", "REST API"]
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "JavaScript",
+        "REST API"
+      ]
     },
     {
       "name": "NestJS",
       "level": "Intermediate",
-      "keywords": ["Web Development", "Backend", "TypeScript", "Framework"]
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "TypeScript",
+        "Framework"
+      ]
     },
     {
       "name": "MongoDB",
       "level": "Advanced",
-      "keywords": ["Database", "NoSQL", "Backend"]
+      "keywords": [
+        "Database",
+        "NoSQL",
+        "Backend"
+      ]
     },
     {
       "name": "PostgreSQL",
       "level": "Intermediate",
-      "keywords": ["Database", "SQL", "Backend"]
+      "keywords": [
+        "Database",
+        "SQL",
+        "Backend"
+      ]
     },
     {
       "name": "Git",
       "level": "Advanced",
-      "keywords": ["Version Control", "Collaboration", "Source Code"]
+      "keywords": [
+        "Version Control",
+        "Collaboration",
+        "Source Code"
+      ]
     },
     {
       "name": "GitHub",
       "level": "Advanced",
-      "keywords": ["Version Control", "Collaboration", "Git"]
+      "keywords": [
+        "Version Control",
+        "Collaboration",
+        "Git"
+      ]
     },
     {
       "name": "Figma",
       "level": "Intermediate",
-      "keywords": ["UX/UI Design", "Prototyping", "Collaboration"]
+      "keywords": [
+        "UX/UI Design",
+        "Prototyping",
+        "Collaboration"
+      ]
     },
     {
       "name": "Jira",
       "level": "Intermediate",
-      "keywords": ["Project Management", "Agile", "Scrum"]
+      "keywords": [
+        "Project Management",
+        "Agile",
+        "Scrum"
+      ]
     }
   ],
   "languages": [
@@ -406,7 +560,10 @@
   "interests": [
     {
       "name": "Wildlife",
-      "keywords": ["Ferrets", "Unicorns"]
+      "keywords": [
+        "Ferrets",
+        "Unicorns"
+      ]
     }
   ],
   "references": [
@@ -421,65 +578,112 @@
   ],
   "projects": [
     {
+      "name": "Linux Sysadmin Practice",
+      "isActive": true,
+      "description": "Personal practice site for a Linux sysadmin exam: web exercises and notes while I prepare.",
+      "highlights": [
+        "Linux",
+        "Sysadmin",
+        "HTML",
+        "CSS"
+      ],
+      "url": "https://exam-sysadmin-practice.arceprog.dev/"
+    },
+    {
       "name": "CV Builder",
       "isActive": true,
-      "description": "Free online CV builder: edit in the browser, live preview, and print a ready-to-send PDF. No signup; your data stays on your device.",
-      "highlights": ["Astro", "TypeScript", "HTML", "CSS"],
+      "description": "Free online CV builder: edit, preview and print a PDF. No signup; data stays on your device.",
+      "highlights": [
+        "Astro",
+        "TypeScript",
+        "HTML",
+        "CSS"
+      ],
       "url": "/en/crear-cv/",
       "github": "https://github.com/arceprogramando/curriculum_web"
     },
     {
       "name": "University Technical Degree in Programming (UTN)",
       "isActive": true,
-      "description": "Progress tracking site for the UTN CUDI Programming Technician program. Built during the degree; graduated in 2025.",
-      "highlights": ["Astro", "Html", "CSS", "Javascript"],
+      "description": "UTN CUDI programming degree tracker. Built during the course; graduated in 2025.",
+      "highlights": [
+        "Astro",
+        "Html",
+        "CSS",
+        "Javascript"
+      ],
       "url": "https://utn.arceprog.dev",
       "github": "https://github.com/arceprogramando/utn_cursoingreso"
     },
     {
       "name": "Microgenesis",
       "isActive": false,
-      "description": "Frontend I built from December 2022 to May 2023 for a health and maternity company. Other people maintain the current site.",
-      "highlights": ["HTML", "CSS", "JAVASCRIPT"],
+      "description": "Health/maternity frontend (Dec 2022–May 2023). Others maintain the live site now.",
+      "highlights": [
+        "HTML",
+        "CSS",
+        "JAVASCRIPT"
+      ],
       "url": "https://www.microgenesis.co/"
     },
     {
       "name": "First Portfolio",
       "isActive": true,
-      "description": "First portfolio done",
-      "highlights": ["HTML", "CSS", "Responsive Design"],
+      "description": "First portfolio: profile, projects and contact with HTML, CSS and responsive layout.",
+      "highlights": [
+        "HTML",
+        "CSS",
+        "Responsive Design"
+      ],
       "url": "https://arceprog.vercel.app",
       "github": "https://github.com/arceprogramando/arceprog"
     },
     {
       "name": "Architecture of a Javascript Server",
-      "isActive": true,
-      "description": "HTML, CSS, and JavaScript code playground for sharing",
-      "highlights": ["NodeJS", "Express", "MongoDB", "Handlebars"],
+      "isActive": false,
+      "description": "Playground to share HTML, CSS and JS. Node, Express, MongoDB and Handlebars.",
+      "highlights": [
+        "NodeJS",
+        "Express",
+        "MongoDB",
+        "Handlebars"
+      ],
       "url": "https://arquitectura-del-servidor-production.up.railway.app",
       "github": "https://github.com/arceprogramando/arquitectura-del-servidor"
     },
     {
       "name": "React For My Server",
-      "isActive": true,
-      "description": "React project done for CoderHouse",
-      "highlights": ["ReactJs", "Tailwind"],
+      "isActive": false,
+      "description": "React/Tailwind front for CoderHouse to use my API, plus a Wine World Figma prototype.",
+      "highlights": [
+        "ReactJs",
+        "Tailwind"
+      ],
       "url": "https://www.figma.com/proto/W2PsvXJEoywwCVJCjQMSpg/Wine-World?type=design&node-id=4-19824&t=UrJlvKtKGiMBgYue-0&scaling=min-zoom&page-id=1%3A4&starting-point-node-id=4%3A19824",
       "github": "https://github.com/arceprogramando/react-para-mi-servidor"
     },
     {
       "name": "Javascript Project",
       "isActive": true,
-      "description": "Javascript project done for CoderHouse",
-      "highlights": ["Javascript", "HTML", "CSS", "Bootstrap"],
+      "description": "First CoderHouse JS project with HTML, CSS and Bootstrap, deployed on GitHub Pages.",
+      "highlights": [
+        "Javascript",
+        "HTML",
+        "CSS",
+        "Bootstrap"
+      ],
       "url": "https://arceprogramando.github.io/primer_proyecto_javascript_coderhouse/",
       "github": "https://github.com/arceprogramando/primer_proyecto_javascript_coderhouse"
     },
     {
       "name": "HTML CSS Project",
       "isActive": true,
-      "description": "HTML project done for CoderHouse",
-      "highlights": ["HTML", "CSS", "Responsive Design"],
+      "description": "CoderHouse HTML/CSS responsive layout—one of my first formal front-end exercises.",
+      "highlights": [
+        "HTML",
+        "CSS",
+        "Responsive Design"
+      ],
       "url": "https://primer-proyecto-desarrolloweb-coderhouse.vercel.app",
       "github": "https://github.com/arceprogramando/primer_proyecto_desarrolloweb_coderhouse"
     }
@@ -489,7 +693,13 @@
       "simulationName": "No Country",
       "isActive": true,
       "description": "I developed multiple MVPs for the No Country platform, taking on the Frontend role with React, Next.js and Tailwind, in collaborative projects of 4 weeks.",
-      "highlights": ["React.js", "Next.js", "NestJS", "PostgreSQL", "Tailwind"],
+      "highlights": [
+        "React.js",
+        "Next.js",
+        "NestJS",
+        "PostgreSQL",
+        "Tailwind"
+      ],
       "projects": [
         {
           "name": "Recipe web-blog",

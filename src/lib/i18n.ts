@@ -37,6 +37,8 @@ export const LOCALE_CONFIG: Record<Locale, {
     aboutMe: string;
     workExperience: string;
     projects: string;
+    projectsShowMore: string;
+    projectsShowLess: string;
     education: string;
     educationEarlierShow: string;
     educationEarlierHide: string;
@@ -45,6 +47,7 @@ export const LOCALE_CONFIG: Record<Locale, {
     skills: string;
     jobSimulations: string;
     current: string;
+    projectLive: string;
     downloadCV: string;
     printCV: string;
     sendEmail: string;
@@ -133,6 +136,8 @@ export const LOCALE_CONFIG: Record<Locale, {
       aboutMe: 'Sobre mí',
       workExperience: 'Experiencia laboral',
       projects: 'Proyectos',
+      projectsShowMore: 'Ver más proyectos ({count})',
+      projectsShowLess: 'Ver menos proyectos',
       education: 'Educación',
       educationEarlierShow: 'Ver niveles {levels} · {from} – {to}',
       educationEarlierHide: 'Ocultar niveles {levels}',
@@ -141,6 +146,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       skills: 'Habilidades',
       jobSimulations: 'Simulaciones laborales',
       current: 'Actual',
+      projectLive: 'En línea',
       downloadCV: 'Descargar CV en PDF',
       printCV: 'Imprimir CV',
       sendEmail: 'Enviar un correo electrónico a',
@@ -243,6 +249,8 @@ export const LOCALE_CONFIG: Record<Locale, {
       aboutMe: 'About me',
       workExperience: 'Work Experience',
       projects: 'Projects',
+      projectsShowMore: 'Show more projects ({count})',
+      projectsShowLess: 'Show fewer projects',
       education: 'Education',
       educationEarlierShow: 'Show levels {levels} · {from} – {to}',
       educationEarlierHide: 'Hide levels {levels}',
@@ -251,6 +259,7 @@ export const LOCALE_CONFIG: Record<Locale, {
       skills: 'Skills',
       jobSimulations: 'Job Simulations',
       current: 'Current',
+      projectLive: 'Live',
       downloadCV: 'Download CV as PDF',
       printCV: 'Print CV',
       sendEmail: 'Send an email to',

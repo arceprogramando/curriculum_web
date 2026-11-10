@@ -1,0 +1,270 @@
+---
+import GitHub from '@/icons/GitHub.astro';
+
+interface Project {
+  name: string;
+  url: string;
+  description: string;
+  highlights: string[];
+  isActive: boolean;
+  github?: string;
+}
+
+interface Props {
+  project: Project;
+  index: number;
+  viewProject: string;
+  viewSourceCode: string;
+  projectLive: string;
+  /** Oculto al cargar; el botón “Ver más” lo va revelando. */
+  collapsed?: boolean;
+}
+
+const { project, index, viewProject, viewSourceCode, projectLive, collapsed = false } = Astro.props;
+const { url, description, highlights, name, isActive, github } = project;
+const external = /^https?:\/\//i.test(url);
+const num = String(index + 1).padStart(2, '0');
+---
+
+<li data-project-item hidden={collapsed}>
+  <article class:list={['project-card', { 'is-active': isActive }]}>
+    <div class="project-card__badges">
+      {
+        isActive ? (
+          <span class="project-card__live" title={projectLive} aria-label={projectLive}>
+            <span class="project-card__live-dot" aria-hidden="true" />
+          </span>
+        ) : null
+      }
+      <span class="project-card__num">#{num}</span>
+    </div>
+
+    <h3>
+      <a
+        href={url}
+        target={external ? '_blank' : undefined}
+        rel={external ? 'noopener noreferrer' : undefined}
+        title={`${viewProject} ${name}`}
+      >
+        {name}
+      </a>
+    </h3>
+
+    <p class="project-card__meta">
+      {
+        github ? (
+          <a
+            class="project-card__github"
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={`${viewSourceCode} ${name}`}
+            aria-label={`${viewSourceCode} ${name}`}
+          >
+            <GitHub />
+            <span>GitHub</span>
+          </a>
+        ) : (
+          <span class="project-card__github-spacer" aria-hidden="true" />
+        )
+      }
+    </p>
+
+    <p class="project-card__desc">{description}</p>
+
+    <footer class="project-card__tags">
+      {highlights.map((highlight) => (
+        <span>{highlight}</span>
+      ))}
+    </footer>
+  </article>
+</li>
+
+<style>
+  .project-card {
+    --projects-heading: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --projects-body: Menlo, Monaco, 'Lucida Console', 'Courier New', Courier, monospace;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    height: 100%;
+    padding: 1rem 1.05rem 1.05rem;
+    border-radius: 16px;
+    background: var(--color-bg-secondary);
+    color: var(--color-text-dark);
+    border: 2.5px solid var(--color-brand-primary);
+    box-shadow: 3px 3px 0 var(--color-brand-primary);
+    font-family: var(--projects-body);
+    letter-spacing: -0.025rem;
+  }
+
+  .project-card__badges {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    min-height: 1.7rem;
+  }
+
+  /* Punto verde = proyecto activo / publicado (texto en title/aria-label) */
+  .project-card__live {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .project-card__live-dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: var(--color-status-active);
+    box-shadow: 0 0 0 3px rgb(64 255 6 / 0.2);
+    animation: project-live-pulse 2.2s ease-in-out infinite;
+  }
+
+  @keyframes project-live-pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      box-shadow: 0 0 0 3px rgb(64 255 6 / 0.2);
+    }
+    50% {
+      opacity: 0.55;
+      transform: scale(0.82);
+      box-shadow: 0 0 0 6px rgb(64 255 6 / 0.08);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .project-card__live-dot {
+      animation: none;
+    }
+  }
+
+  .project-card__num {
+    display: inline-flex;
+    align-items: center;
+    margin-left: auto;
+    border-radius: 999px;
+    padding: 0.22rem 0.6rem;
+    font-family: var(--projects-body);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: -0.025rem;
+    color: var(--color-text-dark);
+    background: var(--color-bg-primary);
+    border: 1.5px solid var(--color-brand-primary);
+  }
+
+  .project-card h3 {
+    margin: 0.15rem 0 0;
+    font-family: var(--projects-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: normal;
+  }
+
+  .project-card h3 a {
+    color: inherit;
+    text-decoration: none;
+    text-wrap: balance;
+  }
+
+  .project-card h3 a:hover,
+  .project-card h3 a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .project-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0;
+    min-height: 1.25rem;
+    font-size: 0.82rem;
+    color: var(--color-text-primary);
+  }
+
+  .project-card__github-spacer {
+    display: inline-block;
+    height: 1.25rem;
+    width: 1px;
+  }
+
+  .project-card__github {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .project-card__github:hover {
+    color: var(--color-brand-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .project-card__github :global(svg) {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  .project-card__desc {
+    margin: 0;
+    flex: 1;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    color: var(--color-text-secondary);
+    text-wrap: pretty;
+  }
+
+  .project-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.35rem;
+    padding-top: 0.15rem;
+  }
+
+  .project-card__tags span {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 0.28rem 0.7rem;
+    font-family: var(--projects-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: -0.025rem;
+    color: var(--color-text-dark);
+    background: transparent;
+    border: 1.5px solid var(--color-brand-primary);
+  }
+
+  @media (min-width: 560px) {
+    .project-card {
+      padding: 1.1rem 1.15rem 1.15rem;
+    }
+  }
+
+  @media print {
+    .project-card {
+      break-inside: avoid;
+      box-shadow: none;
+      border: 1px solid #333;
+      background: #fff;
+      color: #111;
+    }
+
+    .project-card__live-dot {
+      background: #0a0;
+      box-shadow: none;
+    }
+  }
+</style>
