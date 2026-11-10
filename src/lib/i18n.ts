@@ -133,8 +133,8 @@ export const LOCALE_CONFIG: Record<Locale, {
     // metaDescription ~150–160 (Google). OG un poco más rico (LinkedIn); WA igual puede truncar.
     metaDescription: 'Desarrollador Full Stack en Buenos Aires. Técnico Universitario en Programación (UTN). React, Node.js y TypeScript. Portfolio, proyectos y notas RHCSA.',
     pageTitle: 'Felipe Arce | Desarrollador Full Stack',
-    ogTitle: 'Felipe Arce | Full Stack MERN · SR',
-    ogDescription: 'Full Stack MERN (SR) en Buenos Aires: React, Node.js y TypeScript. Técnico Universitario en Programación (UTN) y práctica sysadmin Linux.',
+    ogTitle: 'Felipe Arce | Full Stack MERN · SR · React & Node',
+    ogDescription: 'Desarrollador Full Stack MERN SR en Buenos Aires. Técnico Universitario en Programación (UTN). React, Node.js, TypeScript y Red Hat sysadmin.',
     keywords: 'Felipe Arce, desarrollador fullstack SR, desarrollador MERN, React, Node.js, MongoDB, Express, JavaScript, TypeScript, portfolio developer, programador web, frontend developer, backend developer, Buenos Aires, Argentina',
     jobTitle: 'Desarrollador FullStack SR',
     ui: {
@@ -252,8 +252,8 @@ export const LOCALE_CONFIG: Record<Locale, {
     pdfFile: '/FelipeAlemanArce_CV_eng_June_2026.pdf',
     metaDescription: 'Full Stack developer in Buenos Aires. University Programming Technician (UTN). React, Node.js and TypeScript. Portfolio, projects and RHCSA study notes.',
     pageTitle: 'Felipe Arce | Full Stack Developer',
-    ogTitle: 'Felipe Arce | Full Stack MERN · SR',
-    ogDescription: 'Full Stack MERN (SR) in Buenos Aires: React, Node.js and TypeScript. University Programming Technician (UTN) and Linux sysadmin practice.',
+    ogTitle: 'Felipe Arce | Full Stack MERN · SR · React & Node',
+    ogDescription: 'Full Stack MERN SR developer in Buenos Aires. University Programming Technician (UTN). React, Node.js, TypeScript, and Red Hat sysadmin.',
     keywords: 'Felipe Arce, full stack developer SR, MERN developer, React, Node.js, MongoDB, Express, JavaScript, TypeScript, developer portfolio, web programmer, frontend developer, backend developer, Buenos Aires, Argentina',
     jobTitle: 'Full Stack Developer · SR',
     ui: {
